@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 2
   itemName: Axe
   type: 1
+  subType: 1
   maxCapacity: 1
   isStackable: 0
   amount: 0
+  Information: "\uB3C4\uB07C"
   grade: 0
   iconReference:
     m_AssetGUID: 172774604c1bee84185a69041576525b

@@ -2,39 +2,48 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class InventoryView : MonoBehaviour, IInventoryView
 {
-    public event Action<ItemType> OnTabChanged;
+    public event Action<ItemType> OnItemTypeChanged;
     public event Action<int> OnItemClick;
+    public event Action<SubItemType> OnSubItemTypeClick;
     
     [SerializeField] private List<InventorySlotView> _slotPool = new List<InventorySlotView>();
-    [SerializeField] private Button EquipmentButton;
-    [SerializeField] private Button ToolButton;
-    [SerializeField] private Button GeneralButton;
-    [SerializeField] private Button FashionButton;
-    [SerializeField] private Button MountButton;
-
+    
+    [SerializeField] private ItemTypeButton[] TypeButtons;
+    [SerializeField] private SubItemTypeButton[] SubTypeButtons;
+    public SubItemTypeButtonCollection[] subTypeButtonCollection;
+    
     [SerializeField] private TextMeshProUGUI capacityText;
     [SerializeField] private GameObject infomationText;
 
+    [SerializeField] private ItemPanel _itemPanel;
+    [SerializeField] private GameObject dim;
+
     private void Awake()
     {
+        foreach (var button in SubTypeButtons)
+            button.Bind((type) => OnSubItemTypeClick?.Invoke(type));
+
+        foreach (var button in TypeButtons)
+            button.Bind((type) => OnItemTypeChanged?.Invoke(type));
+        
         foreach (var slot in _slotPool)
             slot.OnSlotClicked += (id) => OnItemClick?.Invoke(id);
+        
+        _itemPanel.OnConfirmAction += () =>
+        {
+            dim.SetActive(false);
+        };
     }
 
-    private void Start()
+    public void ShowItemInformation(InstanceItem item)
     {
-        EquipmentButton.onClick.AddListener(() => { OnTabChanged?.Invoke(ItemType.Equipment);});
-        ToolButton.onClick.AddListener(() => { OnTabChanged?.Invoke(ItemType.Tool);});
-        GeneralButton.onClick.AddListener(() => { OnTabChanged?.Invoke(ItemType.General);});
-        FashionButton.onClick.AddListener(() => { OnTabChanged?.Invoke(ItemType.Costume);});
-        MountButton.onClick.AddListener(() => { OnTabChanged?.Invoke(ItemType.Mount);});
+        _itemPanel.ShowInfo(item);
+        dim.SetActive(true);
     }
-
+    
     public void RenderItems(List<InstanceItem> items)
     {
         foreach (var slot in _slotPool)

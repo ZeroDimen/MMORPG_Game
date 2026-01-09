@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 4
   itemName: Coin
   type: 3
+  subType: 11
   maxCapacity: 999
   isStackable: 1
   amount: 0
+  Information: "\uB3C8\uC774\uB2E4~~~"
   grade: 0
   iconReference:
     m_AssetGUID: 3676a0b185daeb54fb257f700ba7ead4

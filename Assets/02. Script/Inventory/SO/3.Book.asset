@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 3
   itemName: Book
   type: 3
+  subType: 10
   maxCapacity: 999
   isStackable: 1
   amount: 0
+  Information: "\uCC45 \uC77D\uC790!"
   grade: 0
   iconReference:
     m_AssetGUID: ae496f5dad56ea645b72d374a0376368

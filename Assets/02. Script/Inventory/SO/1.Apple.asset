@@ -15,9 +15,11 @@ MonoBehaviour:
   id: 1
   itemName: Apple
   type: 3
+  subType: 9
   maxCapacity: 999
   isStackable: 1
   amount: 0
+  Information: "\uB9DB\uC788\uB294 \uC0AC\uACFC"
   grade: 0
   iconReference:
     m_AssetGUID: 5d9ba4e7d0964044ea54abe409d81dfd

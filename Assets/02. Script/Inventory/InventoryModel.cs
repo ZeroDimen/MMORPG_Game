@@ -8,7 +8,7 @@ public enum ItemType
     Equipment, 
     Tool, 
     General, 
-    Costume, 
+    Fashion, 
     Mount
 }
 
@@ -28,6 +28,7 @@ public class InstanceItem
     // 기본 정보
     public int ID { get; }
     public string Name { get; }
+    public string Information { get; }
     public ItemType Type { get; }
     public SubItemType SubType { get; }
     public int MaxCapacity { get; }
@@ -35,10 +36,11 @@ public class InstanceItem
     public int Amount;
     public AssetReferenceSprite IconReference { get; }
     
-    public InstanceItem(int id, string name, int amount, ItemType type, SubItemType subType, bool isStackable, AssetReferenceSprite iconReference)
+    public InstanceItem(int id, string name, string information, int amount, ItemType type, SubItemType subType, bool isStackable, AssetReferenceSprite iconReference)
     {
         ID = id;
         Name = name;
+        Information = information;
         Amount = amount;
         Type = type;
         SubType = subType;
@@ -86,7 +88,8 @@ public class InventoryModel
         }
         else
         {
-            _instanceItems.Add(new InstanceItem(itemID, originalData.itemName, amount, originalData.type,originalData.subType,
+            _instanceItems.Add(new InstanceItem(itemID, originalData.itemName, originalData.Information,
+                amount, originalData.type,originalData.subType,
                 originalData.isStackable, originalData.iconReference));
         }
 
@@ -98,7 +101,7 @@ public class InventoryModel
         if (filterType == ItemType.None) return _instanceItems;
         return _instanceItems.FindAll(item => item.Type == filterType);
     }
-
+    
     public void RemoveItem()
     {
         

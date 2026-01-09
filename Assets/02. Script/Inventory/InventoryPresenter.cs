@@ -7,6 +7,7 @@ public class InventoryPresenter
     private readonly InventoryView _view;
 
     private ItemType _currentType = ItemType.Equipment;
+    private SubItemType _currentSubType = SubItemType.None;
     private List<InstanceItem> _currentItems;
 
     public InventoryPresenter(InventoryModel model, InventoryView view)
@@ -14,25 +15,35 @@ public class InventoryPresenter
         _model = model;
         _view = view;
 
-        _model.OnInventoryChanged += RefreshCurrentCategory;
+        _model.OnInventoryChanged += RefreshCurrentItemType;
 
-        _view.OnTabChanged += OnCategorySelected;
+        _view.OnItemTypeChanged += OnItemTypeSelected;
         _view.OnItemClick += OnItemClick;
+        _view.OnSubItemTypeClick += OnSubItemTypeTypeSelected;
     }
 
     public void Init()
     {
-        RenderCategory(_currentType);
+        RenderItemType(_currentType);
     }
 
-    private void OnCategorySelected(ItemType type)
+    private void OnItemTypeSelected(ItemType type)
     {
+        // 서브 아이템 타입 모음집 교체
+        foreach (var colletion in _view.subTypeButtonCollection)
+        {
+            if(colletion.type == _currentType)
+                colletion.gameObject.SetActive(false);
+            if(colletion.type == type)
+                colletion.gameObject.SetActive(true);
+        }
         _currentType = type;
-        RenderCategory(type);
+        RenderItemType(type);
     }
 
-    private void OnSubCategorySelected(SubItemType subType)
+    private void OnSubItemTypeTypeSelected(SubItemType subType)
     {
+        _currentSubType = subType;
         if (subType == SubItemType.None)
         {
             _view.RenderItems(_currentItems);
@@ -45,15 +56,21 @@ public class InventoryPresenter
 
     private void OnItemClick(int index)
     {
-        Debug.Log($"Item {index} clicked!");
+        if(_currentSubType == SubItemType.None)
+            _view.ShowItemInformation(_currentItems[index]);
+        else
+        {
+            var selectedItems = _currentItems.FindAll(i => i.SubType == _currentSubType);
+            _view.ShowItemInformation(selectedItems[index]);
+        }
     }
 
-    private void RefreshCurrentCategory()
+    private void RefreshCurrentItemType()
     {
-        RenderCategory(_currentType);
+        RenderItemType(_currentType);
     }
 
-    private void RenderCategory(ItemType type)
+    private void RenderItemType(ItemType type)
     {
         _currentItems = _model.GetItemsByType(type);
 
