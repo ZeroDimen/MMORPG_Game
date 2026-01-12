@@ -11,6 +11,10 @@ public class PlayerStateIdle: PlayerState, ICharacterState
     {
         // Idle 애니메이션 실행
         _animator.SetBool(PlayerAniParamIdle, true);
+        
+        // Player Input에 대한 액션 할당
+        // _playerInput.actions["Fire"].performed += Attack;
+        _playerInput.actions["Jump"].performed += Jump;
     }
 
     public void Update()
@@ -28,6 +32,6 @@ public class PlayerStateIdle: PlayerState, ICharacterState
         
         // Player Input에 대한 액션 할당 해제
         // _playerInput.actions["Fire"].performed -= Attack;
-        // _playerInput.actions["Jump"].performed -= Jump;
+        _playerInput.actions["Jump"].performed -= Jump;
     }
 }

@@ -20,7 +20,13 @@ public class PlayerState
     {
         // _playerController.SetState
     }
-
+    
+    protected void Jump(InputAction.CallbackContext context)
+    {
+        _playerController.Jump();
+        _playerController.SetState(EPlayerState.Jump);
+    }
+    
     protected void Rotate(float x, float z)
     {
         if (_playerInput.camera != null)

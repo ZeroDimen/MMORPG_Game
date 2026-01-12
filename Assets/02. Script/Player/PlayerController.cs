@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Constants;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInput))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
     [SerializeField] private Transform headTransform;
     
     [Header("이동")] 
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
+    
+    [SerializeField] private float jumpHeight = 2f;
     
     public float BreakForce => breakForce;
     
@@ -56,18 +59,17 @@ public class PlayerController : MonoBehaviour
     {
         // 카메라 초기화
         _playerInput.camera = Camera.main;
-        if (_playerInput.camera != null)
+        if (_playerInput.camera != null && photonView.IsMine)
         {
             _playerInput.camera.GetComponent<CameraController>().SetTarget(headTransform, _playerInput);
         }
-        
         // 상태 초기화
         State = EPlayerState.None;
     }
 
     private void Update()
     {
-        if (State != EPlayerState.None)
+        if (State != EPlayerState.None && photonView.IsMine)
         {
             _states[State].Update();
         }
@@ -76,10 +78,17 @@ public class PlayerController : MonoBehaviour
     // 새로운 상태를 할당하는 함수
     public void SetState(EPlayerState state)
     {
-        if (State == state) return;
+        if (State == state || !photonView.IsMine) return;
         if (State != EPlayerState.None) _states[State].Exit();
         State = state;
         if (State != EPlayerState.None) _states[State].Enter();
+    }
+    
+    // 점프
+    public void Jump()
+    {
+        if (!_characterController.isGrounded) return;
+        _velocityY = Mathf.Sqrt(jumpHeight * -2f * Gravity);
     }
     
     private void OnAnimatorMove()

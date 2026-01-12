@@ -1,14 +1,42 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using UnityEngine;
+using Photon.Pun;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager :  MonoBehaviourPun
 {
-    [SerializeField] private GameObject playerPrefab;
+    private static GameManager instance;
     private bool _isCursorLock;
+
     
-    private void Start()
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null) instance = new GameManager();
+            return instance;
+        }
+    }
+    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Start()
     {
         Application.targetFrameRate = 120;
+        yield return null;
+        
+        PhotonNetwork.Instantiate("Maria", Vector3.up, Quaternion.identity);
+        Debug.Log("캐릭터 생성");
     }
 
     public void SetCursorLock()
@@ -17,14 +45,5 @@ public class GameManager : Singleton<GameManager>
         Cursor.lockState = _isCursorLock ? CursorLockMode.None : CursorLockMode.Locked;
         _isCursorLock = !_isCursorLock;
     }
-
-    protected override void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void OnSceneUnloaded(Scene scene)
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

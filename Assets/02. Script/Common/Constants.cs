@@ -4,6 +4,10 @@ public class Constants
 {
     public const float Gravity = -9.81f;
     
+    // ----------------------------------------
+    // Layer Mask
+    public static LayerMask GroundLayerMask => LayerMask.GetMask("Ground");
+    
     // Player 상태
     public enum EPlayerState
     {
@@ -15,4 +19,5 @@ public class Constants
     public static readonly int PlayerAniParamMove = Animator.StringToHash("move");
     public static readonly int PlayerAniParamJump = Animator.StringToHash("jump");
     public static readonly int PlayerAniParamMoveSpeed = Animator.StringToHash("move_speed");
+    public static readonly int PlayerAniParamGroundDistance = Animator.StringToHash("ground_distance");
 }
