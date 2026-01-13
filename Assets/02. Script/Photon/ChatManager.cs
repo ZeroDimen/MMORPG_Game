@@ -8,7 +8,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
 {
     
     [SerializeField]
-    private InputField inputField; // 메시지 입력 필드
+    private TMP_InputField inputField; // 메시지 입력 필드
     [SerializeField]
     private TMP_Text chattingList; // 접속 중인 플레이어 목록을 표시할 택스트 UI
     [SerializeField]
@@ -65,6 +65,19 @@ public class ChatManager : MonoBehaviourPunCallbacks
         }
 
         chattingList.text = chatters;
+    }
+    // 플레이어 접속시 호출되는 함수
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        string msg = string.Format("<color=#00ff00>[{0}] is joined.</color>", newPlayer.NickName);
+        ReceiveMsg(msg);
+    }
+
+    // 플레이어 퇴장시 호출되는 함수
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        string msg = string.Format("<color=#ff0000>[{0}] is left.</color>", otherPlayer.NickName);
+        ReceiveMsg(msg);
     }
 
     // RPC 메서드: 메시지를 수신하여 채팅 로그에 추가하는 메서드
