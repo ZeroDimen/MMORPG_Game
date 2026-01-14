@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,12 +41,14 @@ public class PlayerController : MonoBehaviourPun
         var playerStateIdle = new PlayerStateIdle(this,  _animator, _playerInput);
         var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
         var playerStateJump = new PlayerStateJump(this,  _animator, _playerInput);
+        var playerStateAttack = new PlayerStateAttack(this, _animator, _playerInput);
 
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
             { EPlayerState.Idle, playerStateIdle },
             { EPlayerState.Move, playerStateMove },
             { EPlayerState.Jump, playerStateJump },
+            { EPlayerState.Attack, playerStateAttack },
 
         };
         

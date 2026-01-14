@@ -18,7 +18,7 @@ public class PlayerState
 
     protected void Attack(InputAction.CallbackContext context)
     {
-        // _playerController.SetState
+        _playerController.SetState(EPlayerState.Attack);
     }
     
     protected void Jump(InputAction.CallbackContext context)
