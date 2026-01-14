@@ -27,10 +27,10 @@ public class SaveManager : MonoBehaviour
         CharacterSaveData data = new CharacterSaveData();
 
         // 2. 각 시스템에서 정보 수집
-        data.playerName = playerController.playerName;
-        data.level = playerController.level;
-        data.gold = playerController.gold;
-        data.pos = playerController.transform.position;
+        // data.playerName = playerController.playerName;
+        // data.level = playerController.level;
+        // data.gold = playerController.gold;
+        // data.pos = playerController.transform.position;
         
         // 인벤토리 모델에서 리스트 추출 (지난번에 이야기한 GetSaveData() 형태)
         data.inventoryItems = _inventoryModel.GetSaveData();
@@ -61,27 +61,27 @@ public class SaveManager : MonoBehaviour
     public void LoadGame()
     {
         // 1. 파일에서 데이터 읽어오기
-        CharacterSaveData data = Load();
+        // CharacterSaveData data = Load();
 
-        if (data == null)
-        {
-            Debug.LogWarning("불러올 저장 파일이 없습니다.");
-            return;
-        }
+        // if (data == null)
+        // {
+        //     Debug.LogWarning("불러올 저장 파일이 없습니다.");
+        //     return;
+        // }
 
         // 2. 플레이어 정보 복구
-        playerController.playerName = data.playerName;
-        playerController.level = data.level;
-        playerController.gold = data.gold;
+        // playerController.playerName = data.playerName;
+        // playerController.level = data.level;
+        // playerController.gold = data.gold;
     
         // 위치 복구 (캐릭터 컨트롤러 등이 있다면 일시적으로 끄고 이동해야 할 수 있음)
-        playerController.transform.position = data.pos;
+        // playerController.transform.position = data.pos;
 
         // 3. 인벤토리 정보 복구
-        if (_inventoryModel != null)
-        {
-            _inventoryModel.LoadData(data.inventoryItems);
-        }
+        // if (_inventoryModel != null)
+        // {
+        //     _inventoryModel.LoadData(data.inventoryItems);
+        // }
 
         Debug.Log("게임 데이터 복구 완료!");
     }
