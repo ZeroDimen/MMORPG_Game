@@ -90,8 +90,8 @@ public class Simple_NetworkManager : MonoBehaviourPunCallbacks
     {
         if (isConnect)
         {
-            Debug.Log("Room 접속 성공 및 씬 전환");
             PhotonNetwork.LoadLevel("Main");
+            Debug.Log("Room 접속 성공 및 씬 전환");
         }
     }
 

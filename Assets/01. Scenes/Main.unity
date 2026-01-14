@@ -521,6 +521,8 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585549}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -569,7 +571,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70.824455
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -595,8 +597,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.13715367, y: -0.69107676, z: 0.13604218, w: -0.6964872}
+  m_LocalPosition: {x: -1.6113615, y: -2.1777887, z: 2.538144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1817,7 +1819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1419241045}
-  - component: {fileID: 1419241046}
+  - component: {fileID: 1419241047}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1840,7 +1842,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1419241046
+--- !u!114 &1419241047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1849,7 +1851,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1419241044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3327039547f2ea8499ac9e9d5162a35b, type: 3}
+  m_Script: {fileID: 11500000, guid: 68bba0ca603f4debba0ffcfb25cf9c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Simple_GameManager
 --- !u!1 &1440418930
