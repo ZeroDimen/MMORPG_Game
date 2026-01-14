@@ -1,4 +1,9 @@
-﻿ID,Speaker,Context,EventType,EventParam
-101,김마을,안녕! 오늘 날씨가 참 좋지?,None,
-102,김마을,혹시 잃어버린 내 장화를 찾아줄 수 있니?,GiveQuest,Q_FindBoots_01
-103,김마을,고마워! 마을 밖 숲으로 가서 찾아봐줘.,None,
+﻿GroupKey,Speaker,Context,EventType,EventParam
+CHIEF_INTRO,촌장,"허허, 자네가 그 모험가인가?",None,
+CHIEF_INTRO,촌장,우리 마을에 온 걸 환영하네.,GiveItem,1001
+CHIEF_INTRO,촌장,오늘은,,
+CHIEF_INTRO,촌장,아니다,,
+CHIEF_INTRO,촌장,맞다,,
+CHIEF_INTRO,촌장,하지만,,
+CHIEF_INTRO,촌장,그치만,,
+CHIEF_INTRO,촌장,하하하,,
