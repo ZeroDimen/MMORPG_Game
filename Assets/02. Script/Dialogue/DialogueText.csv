@@ -1,0 +1,4 @@
+﻿ID,Speaker,Context,EventType,EventParam
+101,김마을,안녕! 오늘 날씨가 참 좋지?,None,
+102,김마을,혹시 잃어버린 내 장화를 찾아줄 수 있니?,GiveQuest,Q_FindBoots_01
+103,김마을,고마워! 마을 밖 숲으로 가서 찾아봐줘.,None,
