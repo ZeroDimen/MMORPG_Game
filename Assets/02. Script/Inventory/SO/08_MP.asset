@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b922d1d8d56af54ca6589320738452c, type: 3}
-  m_Name: 4.Coin
+  m_Name: 08_MP
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 4
-  itemName: Coin
+  id: 7
+  itemName: MP
   type: 3
-  subType: 11
-  maxCapacity: 999
-  isStackable: 1
+  subType: 8
+  maxCapacity: 1
+  isStackable: 0
   amount: 0
-  Information: "\uB3C8\uC774\uB2E4~~~"
+  Information: "MP\uC785\uB2C8\uB2F9"
   grade: 0
   iconReference:
-    m_AssetGUID: 3676a0b185daeb54fb257f700ba7ead4
+    m_AssetGUID: 6592b916f86b19e428db6f6847c7b6dd
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

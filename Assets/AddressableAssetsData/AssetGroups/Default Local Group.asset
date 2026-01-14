@@ -30,13 +30,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a39cb4b272639541b7bd5ac0649acf7
+    m_Address: Assets/99. Resources/Inventory/RPG_inventory_icons/Meat.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5d9ba4e7d0964044ea54abe409d81dfd
     m_Address: Assets/99. Resources/Inventory/RPG_inventory_icons/apple.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6592b916f86b19e428db6f6847c7b6dd
+    m_Address: Assets/99. Resources/Inventory/RPG_inventory_icons/mp.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae496f5dad56ea645b72d374a0376368
     m_Address: Assets/99. Resources/Inventory/RPG_inventory_icons/book.PNG
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e420c5bc93cb2604695a893500c897e3
+    m_Address: Assets/99. Resources/Inventory/RPG_inventory_icons/boots.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e52ea25af699fd445b7046374f81a5b9
+    m_Address: Assets/99. Resources/Inventory/RPG_inventory_icons/hp.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

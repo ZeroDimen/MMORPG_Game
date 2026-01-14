@@ -11,10 +11,8 @@ public class ItemData : ScriptableObject
     public SubItemType subType;
     public int maxCapacity;
     public bool isStackable;
-    public int amount;
     public string Information;
     
     // UI를 위한 정보
-    public int grade;
     public AssetReferenceSprite iconReference;
 }

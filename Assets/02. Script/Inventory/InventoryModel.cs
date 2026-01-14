@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 public enum ItemType
@@ -69,7 +70,6 @@ public class InventoryModel
     {
         ItemData originalData = _database.GetItemById(itemID);
         if (originalData == null) return;
-
         var existingItem = _instanceItems.Find(i => i.ID == itemID && originalData.isStackable);
 
         if (existingItem != null)
