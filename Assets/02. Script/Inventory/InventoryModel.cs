@@ -102,6 +102,46 @@ public class InventoryModel
         return _instanceItems.FindAll(item => item.Type == filterType);
     }
     
+    public List<ItemSaveData> GetSaveData()
+    {
+        List<ItemSaveData> saveDataList = new List<ItemSaveData>();
+        foreach (var item in _instanceItems)
+        {
+            // 아이템의 ID와 수량만 저장용 클래스에 담습니다.
+            saveDataList.Add(new ItemSaveData(item.ID, item.Amount));
+        }
+        return saveDataList;
+    }
+    
+    public void LoadData(List<ItemSaveData> savedItems)
+    {
+        _instanceItems.Clear(); // 기존 아이템 비우기
+
+        foreach (var save in savedItems)
+        {
+            // 아이템 데이터베이스에서 ID로 원본 ScriptableObject를 찾음
+            ItemData origin = _database.GetItemById(save.id);
+        
+            if (origin != null)
+            {
+                // 원본 정보를 바탕으로 인스턴스 생성 및 수량 설정
+                _instanceItems.Add(new InstanceItem(
+                    origin.id, 
+                    origin.itemName, 
+                    origin.Information, 
+                    save.amount, 
+                    origin.type, 
+                    origin.subType, 
+                    origin.isStackable, 
+                    origin.iconReference
+                ));
+            }
+        }
+
+        // 데이터가 바뀌었으므로 View를 새로고침하도록 이벤트 발생
+        OnInventoryChanged?.Invoke();
+    }
+    
     public void RemoveItem()
     {
         

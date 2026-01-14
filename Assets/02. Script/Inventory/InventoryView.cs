@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InventoryView : MonoBehaviour, IInventoryView
 {
+    public event Action OnRefreshInventory;
     public event Action<ItemType> OnItemTypeChanged;
     public event Action<int> OnItemClick;
     public event Action<SubItemType> OnSubItemTypeClick;
@@ -69,5 +70,10 @@ public class InventoryView : MonoBehaviour, IInventoryView
             capacityText.gameObject.SetActive(true);
             capacityText.text = $"{current} / {max}";
         }
+    }
+
+    private void OnEnable()
+    {
+        OnRefreshInventory?.Invoke();
     }
 }

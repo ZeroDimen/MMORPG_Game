@@ -22,6 +22,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         _presenter.Init();
+        SaveManager.Instance.Init(_model);
     }
     
     [ContextMenu("Add Test Item")]

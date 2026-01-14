@@ -17,6 +17,7 @@ public class InventoryPresenter
 
         _model.OnInventoryChanged += RefreshCurrentItemType;
 
+        _view.OnRefreshInventory += RefreshCurrentItemType;
         _view.OnItemTypeChanged += OnItemTypeSelected;
         _view.OnItemClick += OnItemClick;
         _view.OnSubItemTypeClick += OnSubItemTypeTypeSelected;
