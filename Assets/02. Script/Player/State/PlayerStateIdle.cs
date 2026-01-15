@@ -15,6 +15,8 @@ public class PlayerStateIdle: PlayerState, ICharacterState
         // Player Input에 대한 액션 할당
         _playerInput.actions["Fire"].performed += Attack;
         _playerInput.actions["Jump"].performed += Jump;
+        _playerInput.actions["Emotion1"].performed += Emotion1;
+        _playerInput.actions["Emotion2"].performed += Emotion2;
     }
 
     public void Update()
@@ -33,5 +35,7 @@ public class PlayerStateIdle: PlayerState, ICharacterState
         // Player Input에 대한 액션 할당 해제
         _playerInput.actions["Fire"].performed -= Attack;
         _playerInput.actions["Jump"].performed -= Jump;
+        _playerInput.actions["Emotion1"].performed -= Emotion1;
+        _playerInput.actions["Emotion2"].performed -= Emotion2;
     }
 }

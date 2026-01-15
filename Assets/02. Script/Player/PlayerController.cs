@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviourPun
         var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
         var playerStateJump = new PlayerStateJump(this,  _animator, _playerInput);
         var playerStateAttack = new PlayerStateAttack(this, _animator, _playerInput);
+        var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
+        var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
 
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Move, playerStateMove },
             { EPlayerState.Jump, playerStateJump },
             { EPlayerState.Attack, playerStateAttack },
+            { EPlayerState.Emotion1, playerStateEmotion1 },
+            { EPlayerState.Emotion2, playerStateEmotion2 },
 
         };
         

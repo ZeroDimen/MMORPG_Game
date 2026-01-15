@@ -26,6 +26,18 @@ public class PlayerState
         _playerController.Jump();
         _playerController.SetState(EPlayerState.Jump);
     }
+
+    protected void Emotion1(InputAction.CallbackContext context)
+    {
+        Debug.Log("Emotion1");
+        _playerController.SetState(EPlayerState.Emotion1);
+    }
+    
+    protected void Emotion2(InputAction.CallbackContext context)
+    {
+        Debug.Log("Emotion2");
+        _playerController.SetState(EPlayerState.Emotion2);
+    }
     
     protected void Rotate(float x, float z)
     {

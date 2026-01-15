@@ -823,6 +823,12 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: attack
+  - Type: 9
+    SynchronizeType: 1
+    Name: emotion1
+  - Type: 9
+    SynchronizeType: 1
+    Name: emotion2
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
