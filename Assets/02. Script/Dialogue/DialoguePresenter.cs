@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogueEntry
@@ -29,18 +30,20 @@ public class DialoguePresenter : MonoBehaviour
         LoadCSV();
     }
 
+    private void OnEnable()
+    {
+        GameEvents.OnDialogueRequested += StartDialogue;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnDialogueRequested -= StartDialogue;
+    }
+
     void Start()
     {
         view.OnNextClick += ShowNextLine;
         view.Show(false); // 처음엔 끄기
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartDialogue("CHIEF_INTRO");
-        }
     }
 
     private void LoadCSV()
@@ -122,11 +125,12 @@ public class DialoguePresenter : MonoBehaviour
         switch (type)
         {
             case "GiveItem":
-                Debug.Log($"[이벤트] 아이템 지급: ID {param}");
+                // Debug.Log($"[이벤트] 아이템 지급: ID {param}");
                 // TODO: InventoryModel.Instance.AddItem(int.Parse(param));
+                
                 break;
             case "GiveQuest":
-                Debug.Log($"[이벤트] 퀘스트 부여: {param}");
+                // Debug.Log($"[이벤트] 퀘스트 부여: {param}");
                 // TODO: QuestManager.Instance.Accept(param);
                 break;
         }
@@ -134,6 +138,7 @@ public class DialoguePresenter : MonoBehaviour
 
     private void EndDialogue()
     {
+        GameEvents.OnDialogueEnded?.Invoke();
         view.Show(false);
         _currentGroup = null;
         Debug.Log("대화 종료");

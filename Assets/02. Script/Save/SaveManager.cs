@@ -1,12 +1,13 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
     // 데이터를 가지고 있는 주체들을 참조합니다.
     private InventoryModel _inventoryModel;
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private SimplePlayer simplePlayer;
     
     private void Awake()
     {

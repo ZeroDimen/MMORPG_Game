@@ -64,6 +64,17 @@ public class InventoryModel
     public InventoryModel(ItemDataBase db)
     {
         _database = db;
+        GameEvents.OnQuestCompleted += GiveQuestReward;
+    }
+
+    private void GiveQuestReward(QuestData completedQuest)
+    {
+        if (completedQuest.rewardItem != null)
+        {
+            AddItem(completedQuest.rewardItem.id, completedQuest.rewardAmount);
+            Debug.Log($"[Reward] {completedQuest.title} 보상 획득: " +
+                      $"{completedQuest.rewardItem.itemName} x{completedQuest.rewardAmount}");
+        }
     }
 
     public void AddItem(int itemID, int amount)
@@ -94,6 +105,7 @@ public class InventoryModel
         }
 
         OnInventoryChanged?.Invoke();
+        GameEvents.OnQuestProgressUpdated?.Invoke(QuestType.Gather, itemID, amount);
     }
 
     public List<InstanceItem> GetItemsByType(ItemType filterType)
@@ -140,10 +152,5 @@ public class InventoryModel
 
         // 데이터가 바뀌었으므로 View를 새로고침하도록 이벤트 발생
         OnInventoryChanged?.Invoke();
-    }
-    
-    public void RemoveItem()
-    {
-        
     }
 }
