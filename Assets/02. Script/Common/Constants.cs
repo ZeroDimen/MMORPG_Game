@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Constants
 {
@@ -29,4 +30,33 @@ public class Constants
     public static readonly int PlayerAniParamEmotion2 = Animator.StringToHash("emotion2");
     public static readonly int PlayerAniParamMoveSpeed = Animator.StringToHash("move_speed");
     public static readonly int PlayerAniParamGroundDistance = Animator.StringToHash("ground_distance");
+    
+    
+    
+    
+    // ----------------------------------------
+    // Enemy 상태
+    public enum EEnemyState
+    {
+        None, Idle, Patrol, Chase, Attack, Hit, Dead
+    }
+    
+    // ----------------------------------------
+    // Enemy 애니메이터 파라미터
+    public static readonly int EnemyAniParamIdle = Animator.StringToHash("idle");
+    public static readonly int EnemyAniParamPatrol = Animator.StringToHash("patrol");
+    public static readonly int EnemyAniParamChase = Animator.StringToHash("chase");
+    public static readonly int EnemyAniParamAttack = Animator.StringToHash("attack");
+    public static readonly int EnemyAniParamHit = Animator.StringToHash("hit");
+    public static readonly int EnemyAniParamDead = Animator.StringToHash("dead");
+    public static readonly int EnemyAniParamMoveSpeed = Animator.StringToHash("move_speed");
+    
+    
+    [Serializable]
+    public class EnemyStatus
+    {
+        public int maxHp;
+        public int hp;
+        public int attackPower;
+    }
 }

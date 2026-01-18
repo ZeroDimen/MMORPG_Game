@@ -607,13 +607,13 @@ GameObject:
   - component: {fileID: 4953399179761471736}
   - component: {fileID: -3773575257534592719}
   - component: {fileID: 552964936359610061}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Maria
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4506219907333809406
 Transform:
   m_ObjectHideFlags: 0
