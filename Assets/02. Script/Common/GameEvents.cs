@@ -2,6 +2,8 @@ using System;
 
 public static class GameEvents
 {
+    public static Action<bool> OnInteraction;
+    
     public static Action<string> OnDialogueRequested;
     public static Action OnDialogueEnded;
 

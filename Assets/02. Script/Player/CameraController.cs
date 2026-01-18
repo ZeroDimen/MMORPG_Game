@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,10 +14,20 @@ public class CameraController : MonoBehaviour
     private float _azimuthAngle;
     private float _polarAngle;
 
+    private bool _isInteraction = true;
+
     private void Awake()
     {
         _azimuthAngle = 0f;
         _polarAngle = 0f;
+        
+        
+        GameEvents.OnInteraction += SetBoolIsInteraction;
+    }
+
+    private void Start()
+    {
+        // SetBoolIsInteraction(false);
     }
 
     private void LateUpdate()
@@ -50,11 +61,29 @@ public class CameraController : MonoBehaviour
         // 마우스 이동
         playerInput.actions["Look"].performed += OnActionLook;
         playerInput.actions["Look"].canceled += OnActionLook;
+
+        // playerInput.actions["Cursor"].started += ctx => _isInteraction = true;
+        // playerInput.actions["Cursor"].canceled += ctx => _isInteraction = false;
     }
     
     private void OnActionLook(InputAction.CallbackContext context)
     {
-        _lookVector = context.ReadValue<Vector2>();
+        if (!_isInteraction)
+        {
+            _lookVector = context.ReadValue<Vector2>();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    private void SetBoolIsInteraction(bool flag)
+    {
+        // _isInteraction = flag;
     }
 
     private Vector3 GetCameraPosition(float r, float polarAngle, float azimuthAngle)

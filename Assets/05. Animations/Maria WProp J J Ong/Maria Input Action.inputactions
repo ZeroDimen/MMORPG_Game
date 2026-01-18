@@ -218,6 +218,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b740af7a-0c0f-41e5-843d-da5878833ebf",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cursor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4a9ed16d-86dc-4414-a6f2-f145b48f2b99",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",

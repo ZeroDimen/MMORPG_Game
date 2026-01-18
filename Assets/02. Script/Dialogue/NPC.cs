@@ -1,4 +1,5 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -12,10 +13,13 @@ public class NPC : MonoBehaviour
     private bool isPlayerNearby = false;
     private Animator _anime;
     private static readonly int IsTalking = Animator.StringToHash("isTalking");
+    
+    private PhotonView PV;
 
     private void Awake()
     {
         _anime = GetComponent<Animator>();
+        PV = GetComponent<PhotonView>();
     }
 
     private void Update()
@@ -26,6 +30,7 @@ public class NPC : MonoBehaviour
 
     private void Talk()
     {
+        GameEvents.OnInteraction?.Invoke(true);
         cam.SetActive(true);
         GameEvents.OnDialogueEnded += TalkEnd;
         _anime.SetBool(IsTalking, true);
@@ -48,6 +53,7 @@ public class NPC : MonoBehaviour
 
     private void TalkEnd()
     {
+        GameEvents.OnInteraction?.Invoke(false);
         cam.SetActive(false);
         if (questToGive)
         {
@@ -61,13 +67,15 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        PhotonView targetPV = other.GetComponent<PhotonView>();
+        if (targetPV != null && targetPV.IsMine && other.CompareTag("Player"))
             isPlayerNearby = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        PhotonView targetPV = other.GetComponent<PhotonView>();
+        if (targetPV != null && targetPV.IsMine && other.CompareTag("Player"))
             isPlayerNearby = false;
     }
 }
