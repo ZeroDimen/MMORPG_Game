@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class QuestMenuEntry : MonoBehaviour
 {
     public TextMeshProUGUI titleText;
-    public TextMeshProUGUI statusText;
+    public TextMeshProUGUI contentText;
     public Toggle pinToggle;
 
     private QuestData _quest;
@@ -14,7 +15,8 @@ public class QuestMenuEntry : MonoBehaviour
     {
         _quest = quest;
         titleText.text = quest.title;
-        statusText.text = quest.IsCompleted ? "완료됨" : $"{quest.currentAmount}/{quest.targetAmount}";
+        string status = quest.IsCompleted ? "완료됨" : $"{quest.currentAmount}/{quest.targetAmount}";
+        contentText.text = $"{quest.description} : {status}";
         
         pinToggle.SetIsOnWithoutNotify(QuestManager.Instance.pinnedQuests.Contains(quest));
         

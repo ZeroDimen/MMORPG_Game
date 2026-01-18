@@ -5,6 +5,8 @@ public static class GameEvents
     public static Action<string> OnDialogueRequested;
     public static Action OnDialogueEnded;
 
+    public static Action OnAcceptActionTriggered;
+
     public static Action<QuestType, int, int> OnQuestProgressUpdated;
 
     public static Action<QuestData> OnQuestAccepted;

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    [SerializeField] private GameObject cam;
     public int npcID;
     public string npcName;
     public string talkGroupKey;
@@ -25,20 +26,35 @@ public class NPC : MonoBehaviour
 
     private void Talk()
     {
+        cam.SetActive(true);
         GameEvents.OnDialogueEnded += TalkEnd;
         _anime.SetBool(IsTalking, true);
         GameEvents.OnDialogueRequested?.Invoke(talkGroupKey);
 
         if (questToGive != null)
         {
-            GameEvents.OnQuestAccepted?.Invoke(questToGive);
-            questToGive = null;
+            if (questToGive.isMain)
+                GameEvents.OnDialogueEnded += GiveQuest;
+            else
+                GameEvents.OnAcceptActionTriggered += GiveQuest;
         }
         GameEvents.OnQuestProgressUpdated?.Invoke(QuestType.Talk, npcID, 1);
     }
 
+    private void GiveQuest()
+    {
+        GameEvents.OnQuestAccepted?.Invoke(questToGive);
+    }
+
     private void TalkEnd()
     {
+        cam.SetActive(false);
+        if (questToGive)
+        {
+            GameEvents.OnDialogueEnded -= GiveQuest;
+            GameEvents.OnAcceptActionTriggered -= GiveQuest;
+        }
+        
         _anime.SetBool(IsTalking, false);
         GameEvents.OnDialogueEnded -= TalkEnd;
     }

@@ -40,6 +40,9 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - ReceiveMsg
+  - RPC_ReceiveLoadData
+  - RPC_RequestLoadData
+  - RPC_SaveOnMaster
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

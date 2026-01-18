@@ -6,14 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Dialogue.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Dialogue.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Quest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Quest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueText.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueText.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NanumGothicBold SDF.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NanumGothicBold SDF.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/Quest 0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/Quest 0.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest [Panel].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Quest [Panel].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestTrackerPresenter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Save/DataManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/TMP/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -124,7 +130,9 @@
       <workItem from="1768456232816" duration="6028000" />
       <workItem from="1768498187507" duration="1071000" />
       <workItem from="1768556406339" duration="8424000" />
-      <workItem from="1768616356400" duration="3672000" />
+      <workItem from="1768616356400" duration="4217000" />
+      <workItem from="1768705247889" duration="4615000" />
+      <workItem from="1768720797936" duration="8361000" />
     </task>
     <servers />
   </component>

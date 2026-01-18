@@ -55,11 +55,11 @@ public class QuestManager : Singleton<QuestManager>
         GameEvents.OnQuestListChanged?.Invoke();
     }
 
-    private void AddQuest(QuestData questTemplate)
+    private void AddQuest(QuestData quest)
     {
-        if (!activeQuests.Contains(questTemplate))
+        if (!activeQuests.Contains(quest))
         {
-            QuestData newQuest = Instantiate(questTemplate);
+            QuestData newQuest = Instantiate(quest);
             newQuest.currentAmount = 0;
             
             activeQuests.Add(newQuest);

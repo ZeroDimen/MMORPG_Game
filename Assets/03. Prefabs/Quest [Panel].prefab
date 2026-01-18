@@ -682,5 +682,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestMenuEntry
   titleText: {fileID: 9020772727055916585}
-  statusText: {fileID: 3375475380599428370}
+  contentText: {fileID: 3375475380599428370}
   pinToggle: {fileID: 3432560626560634060}

@@ -125,13 +125,12 @@ public class DialoguePresenter : MonoBehaviour
         switch (type)
         {
             case "GiveItem":
-                // Debug.Log($"[이벤트] 아이템 지급: ID {param}");
                 // TODO: InventoryModel.Instance.AddItem(int.Parse(param));
                 
                 break;
             case "GiveQuest":
-                // Debug.Log($"[이벤트] 퀘스트 부여: {param}");
-                // TODO: QuestManager.Instance.Accept(param);
+                bool isMain = (param == "Main");
+                view.ShowQuestButton(isMain);
                 break;
         }
     }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questID: 0
   title: "\uCD0C\uC7A5\uC5D0\uAC8C \uAC00\uAE30"
+  isMain: 1
   description: "\uCD0C\uC7A5\uC744 \uCC3E\uC544\uC11C \uC774\uC57C\uAE30 \uD574\uBCF4\uC790"
   questType: 1
   targetID: 1

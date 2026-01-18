@@ -8,6 +8,7 @@ public class QuestData : ScriptableObject
 {
     public int questID;
     public string title;
+    public bool isMain;
     [TextArea] public string description;
 
     // 핵심: 이제 "목표" 자체를 타입으로 가집니다.
