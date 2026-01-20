@@ -2,11 +2,13 @@
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using static Constants;
 
 public class GameManager :  MonoBehaviourPun
 {
     private static GameManager instance;
     private bool _isCursorLock;
+    [SerializeField] private SpawnZone[] spawnPoints;
 
     public Canvas Canvas => GetCanvas();
     
@@ -36,11 +38,26 @@ public class GameManager :  MonoBehaviourPun
     {
         Application.targetFrameRate = 120;
         yield return null;
-        
-        PhotonNetwork.Instantiate("Maria", Vector3.up, Quaternion.identity);
-        Debug.Log("캐릭터 생성");
+        Spawner("Maria");
+        Spawner("Mutant");
     }
 
+    private void Spawner(string prefabName)
+    {
+        if (prefabName == "Maria")
+        {
+            PhotonNetwork.Instantiate("Maria", spawnPoints[0].point.position , Quaternion.identity);
+        }
+        else if (prefabName == "Mutant")
+        {
+            PhotonNetwork.Instantiate("Mutant", spawnPoints[1].point.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("파일 없음");
+        }
+    }
+    
     public void SetCursorLock()
     {
         Cursor.visible = _isCursorLock;

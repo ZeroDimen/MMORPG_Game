@@ -443,6 +443,73 @@ Transform:
   - {fileID: 180083269581245453}
   m_Father: {fileID: 7619417869576191348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &895524781779190983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6968040997933580751}
+  - component: {fileID: 7990923754513949686}
+  - component: {fileID: 6657009425449401975}
+  m_Layer: 7
+  m_Name: '[Collider] Attack'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6968040997933580751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895524781779190983}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.30513382, y: 0.029999971, z: 0.28722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4506219907333809406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7990923754513949686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895524781779190983}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1.2488794, y: 1.8190651, z: 1.0000001}
+  m_Center: {x: -0.124439724, y: 1.2418551, z: 0.76}
+--- !u!114 &6657009425449401975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895524781779190983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee38758ef218f9b41b0f5c8f51bd45b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordAttack
+  Damage: 30
 --- !u!1 &917560205457156218
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +698,7 @@ Transform:
   - {fileID: 2820743457290126706}
   - {fileID: 2282391903480861847}
   - {fileID: 640950517893958634}
+  - {fileID: 6968040997933580751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6663562192935883078
@@ -702,6 +770,7 @@ MonoBehaviour:
   jumpHeight: 2
   State: 0
   playerName: {fileID: 2997760728349481453}
+  attackCollider: {fileID: 7990923754513949686}
 --- !u!143 &4881905086631013706
 CharacterController:
   m_ObjectHideFlags: 0
@@ -812,7 +881,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: move
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: jump
   - Type: 1
     SynchronizeType: 2
@@ -829,6 +898,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: emotion2
+  - Type: 9
+    SynchronizeType: 1
+    Name: hit
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

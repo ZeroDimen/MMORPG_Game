@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviourPun
         var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
         var playerStateJump = new PlayerStateJump(this,  _animator, _playerInput);
         var playerStateAttack = new PlayerStateAttack(this, _animator, _playerInput);
+        var playerStateHit = new PlayerStateHit(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
         var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
 
@@ -51,13 +52,12 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Move, playerStateMove },
             { EPlayerState.Jump, playerStateJump },
             { EPlayerState.Attack, playerStateAttack },
+            { EPlayerState.Hit, playerStateHit },
             { EPlayerState.Emotion1, playerStateEmotion1 },
             { EPlayerState.Emotion2, playerStateEmotion2 },
 
         };
         
-        // Cursor 숨기기
-        _playerInput.actions["Cursor"].performed += _ => GameManager.Instance.SetCursorLock();
     }
 
     private void OnEnable()
@@ -87,6 +87,12 @@ public class PlayerController : MonoBehaviourPun
         if (State != EPlayerState.None) _states[State].Exit();
         State = state;
         if (State != EPlayerState.None) _states[State].Enter();
+    }
+    
+    [PunRPC]
+    public void SetHit(int damage, Vector3 attackDirection)
+    {
+        SetState(EPlayerState.Hit);
     }
     
     // 점프

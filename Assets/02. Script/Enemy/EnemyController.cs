@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AI;
 using static Constants;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviourPun
 {
     [Header("AI")]
     [SerializeField] private float patrolWaitTime = 1f;
@@ -113,6 +114,7 @@ public class EnemyController : MonoBehaviour
         if (State != EEnemyState.None) _states[State].Enter();
     }
 
+    [PunRPC]
     public void SetHit(int damage, Vector3 attackDirection)
     {
         if (_hpBarController)
@@ -120,6 +122,7 @@ public class EnemyController : MonoBehaviour
             enemyStatus.hp -= damage;
             float result = (float)enemyStatus.hp / enemyStatus.maxHp;
             _hpBarController.SetHp(result);
+            Debug.Log(result);
 
             if (enemyStatus.hp <= 0)
             {
@@ -197,16 +200,6 @@ public class EnemyController : MonoBehaviour
             }
         }
         return _targetTransform;
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        // if (other.gameObject.CompareTag("Ground"))
-        // {
-        //     Debug.Log("## Ground");
-        //     SetRagdollEnabled(true);
-        //     StartCoroutine(Disolve());
-        // }
     }
 
     #region Ragdoll 관련 함수
