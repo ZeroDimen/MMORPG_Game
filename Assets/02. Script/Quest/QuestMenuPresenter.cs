@@ -11,13 +11,11 @@ public class QuestMenuPresenter : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.OnQuestListChanged += RefreshMenu;
-        GameEvents.OnInteraction?.Invoke(true);
     }
 
     private void OnDisable()
     {
         GameEvents.OnQuestListChanged -= RefreshMenu;
-        GameEvents.OnInteraction?.Invoke(false);
     }
 
     public void RefreshMenu()

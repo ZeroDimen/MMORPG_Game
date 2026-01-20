@@ -6,6 +6,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
 {
     public static SaveManager Instance { get; private set; }
     private InventoryModel _inventoryModel;
+    
     // [SerializeField] private SimplePlayer simplePlayer;
     
     private void Awake()
@@ -40,6 +41,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
         
         if (_inventoryModel != null)
             data.inventoryItems = _inventoryModel.GetSaveData();
+        
 
         // 2. JSON 직렬화
         string json = JsonUtility.ToJson(data, true);
@@ -68,13 +70,11 @@ public class SaveManager : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.InRoom) return;
 
-        string myName = PhotonNetwork.LocalPlayer.NickName;
-        photonView.RPC("RPC_RequestLoadData", RpcTarget.MasterClient, myName);
-        Debug.Log($"[Client] 방장에게 데이터 로드 요청 중: {myName}");
+        photonView.RPC("RPC_RequestLoadData", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.NickName);
     }
 
     [PunRPC]
-    private void RPC_RequestLoadData(string playerName)
+    private void RPC_RequestLoadData(string playerName, PhotonMessageInfo info)
     {
         if (!PhotonNetwork.IsMasterClient) return;
 
@@ -83,7 +83,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
         {
             string json = File.ReadAllText(path);
             // 데이터를 요청한 클라이언트에게만 응답을 보냄 (RpcTarget.Others로 쏘고 닉네임 필터링 혹은 타겟 지정)
-            photonView.RPC("RPC_ReceiveLoadData", RpcTarget.Others, playerName, json);
+            photonView.RPC("RPC_ReceiveLoadData", info.Sender, playerName, json);
         }
         else
         {
@@ -111,7 +111,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
             {
                 _inventoryModel.LoadData(data.inventoryItems);
             }
-
+            
             Debug.Log($"[Client] 방장으로부터 데이터를 받아 복구 완료: {targetName}");
         }
     }

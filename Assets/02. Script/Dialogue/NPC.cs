@@ -30,7 +30,6 @@ public class NPC : MonoBehaviour
 
     private void Talk()
     {
-        GameEvents.OnInteraction?.Invoke(true);
         cam.SetActive(true);
         GameEvents.OnDialogueEnded += TalkEnd;
         _anime.SetBool(IsTalking, true);
@@ -53,7 +52,6 @@ public class NPC : MonoBehaviour
 
     private void TalkEnd()
     {
-        GameEvents.OnInteraction?.Invoke(false);
         cam.SetActive(false);
         if (questToGive)
         {

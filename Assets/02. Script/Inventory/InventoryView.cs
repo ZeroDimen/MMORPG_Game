@@ -75,11 +75,5 @@ public class InventoryView : MonoBehaviour, IInventoryView
     private void OnEnable()
     {
         OnRefreshInventory?.Invoke();
-        GameEvents.OnInteraction?.Invoke(true);
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.OnInteraction?.Invoke(false);
     }
 }
