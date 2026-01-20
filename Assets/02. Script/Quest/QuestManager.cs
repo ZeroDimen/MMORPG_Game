@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class QuestManager : Singleton<QuestManager>
 {
+    [Header("Database")] [SerializeField] private QuestDatabase questDatabase;
+    
     public List<QuestData> activeQuests = new List<QuestData>();
     public List<QuestData> pinnedQuests = new List<QuestData>();
     public List<int> completedQuestIDs = new List<int>();
@@ -91,6 +93,36 @@ public class QuestManager : Singleton<QuestManager>
         GameEvents.OnQuestListChanged?.Invoke();
     }
 
+    public List<QuestSaveData> GetActiveQuestSaveData()
+    {
+        List<QuestSaveData> saveDataList = new List<QuestSaveData>();
+        foreach (var quest in activeQuests)
+            saveDataList.Add(new QuestSaveData(quest.questID, quest.currentAmount, quest.IsCompleted, pinnedQuests.Contains(quest)));
+        return saveDataList;
+    }
+
+    public void LoadQuestData(List<QuestSaveData> activeData, List<int> completedIDs)
+    {
+        activeQuests.Clear();
+        pinnedQuests.Clear();
+        completedQuestIDs = new List<int>(completedIDs);
+
+        foreach (var data in activeData)
+        {
+            QuestData origin = questDatabase.GetQuestByID(data.questID);
+            if (origin != null)
+            {
+                QuestData newQuest = Instantiate(origin);
+                newQuest.currentAmount = data.currentAmount;
+                
+                activeQuests.Add(newQuest);
+                if(data.isPinned)
+                    pinnedQuests.Add(newQuest);
+            }
+        }
+        GameEvents.OnQuestListChanged?.Invoke();
+    }
+    
     protected override void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
     }

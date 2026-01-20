@@ -34,14 +34,15 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 1. 저장할 데이터 바구니 생성 및 정보 수집
         CharacterSaveData data = new CharacterSaveData();
         data.playerName = PhotonNetwork.LocalPlayer.NickName;
-        // data.level = simplePlayer.level;
-        // data.gold = simplePlayer.gold;
-        // data.pos = simplePlayer.transform.position;
-
         
         if (_inventoryModel != null)
             data.inventoryItems = _inventoryModel.GetSaveData();
-        
+
+        if (QuestManager.Instance != null)
+        {
+            data.activeQuests = QuestManager.Instance.GetActiveQuestSaveData();
+            data.completedQuestIDs = QuestManager.Instance.completedQuestIDs;
+        }
 
         // 2. JSON 직렬화
         string json = JsonUtility.ToJson(data, true);
@@ -110,6 +111,11 @@ public class SaveManager : MonoBehaviourPunCallbacks
             if (_inventoryModel != null)
             {
                 _inventoryModel.LoadData(data.inventoryItems);
+            }
+
+            if (QuestManager.Instance)
+            {
+                QuestManager.Instance.LoadQuestData(data.activeQuests, data.completedQuestIDs);
             }
             
             Debug.Log($"[Client] 방장으로부터 데이터를 받아 복구 완료: {targetName}");

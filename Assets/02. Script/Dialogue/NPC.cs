@@ -37,6 +37,9 @@ public class NPC : MonoBehaviour
 
         if (questToGive != null)
         {
+            if (QuestManager.Instance.completedQuestIDs.Contains(questToGive.questID))
+                return;
+            
             if (questToGive.isMain)
                 GameEvents.OnDialogueEnded += GiveQuest;
             else
