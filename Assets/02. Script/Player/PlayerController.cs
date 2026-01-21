@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviourPun
         _playerInput = GetComponent<PlayerInput>();
         _characterController = GetComponent<CharacterController>();
         
+        
+        
         // 상태 객체 초기화
         var playerStateIdle = new PlayerStateIdle(this,  _animator, _playerInput);
         var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
@@ -55,19 +57,31 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Hit, playerStateHit },
             { EPlayerState.Emotion1, playerStateEmotion1 },
             { EPlayerState.Emotion2, playerStateEmotion2 },
-
         };
-        
+
+        if (photonView.IsMine)
+        {
+            // chatting 상호작용
+            _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
+        }
+        GameManager.Instance.SetGameState(EGameState.Play);
     }
 
     private void OnEnable()
     {
+        // GameManager에서 LocalPlayer → PlayerController 접근할 수 있도록 설정
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.LocalPlayer.TagObject = this;
+        }
+        
         // 카메라 초기화
         _playerInput.camera = Camera.main;
         if (_playerInput.camera != null && photonView.IsMine)
         {
             _playerInput.camera.GetComponent<CameraController>().SetTarget(headTransform, _playerInput);
         }
+        
         // 상태 초기화
         State = EPlayerState.None;
     }
@@ -87,6 +101,26 @@ public class PlayerController : MonoBehaviourPun
         if (State != EPlayerState.None) _states[State].Exit();
         State = state;
         if (State != EPlayerState.None) _states[State].Enter();
+    }
+    
+    public void SetPlayerInputEnabled(bool enabled)
+    {
+        if (!photonView.IsMine) return;
+
+        if (enabled)
+        {
+            _playerInput.actions.FindAction("Jump").Enable();
+            _playerInput.actions.FindAction("Fire").Enable();
+            _playerInput.actions.FindAction("Look").Enable();
+            _playerInput.actions.FindAction("Move").Enable();
+        }
+        else
+        {
+            _playerInput.actions.FindAction("Jump").Disable();
+            _playerInput.actions.FindAction("Fire").Disable();
+            _playerInput.actions.FindAction("Look").Disable();
+            _playerInput.actions.FindAction("Move").Disable();
+        }
     }
     
     [PunRPC]

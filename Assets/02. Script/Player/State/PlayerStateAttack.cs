@@ -6,10 +6,9 @@ public class PlayerStateAttack: PlayerState, ICharacterState
 {
     public PlayerStateAttack(PlayerController playerController, Animator animator, PlayerInput playerInput) 
         : base(playerController, animator, playerInput) { }
-
+    
     public void Enter()
     {
-        _animator.SetTrigger(PlayerAniParamAttack);
         _playerInput.actions["Fire"].performed += AttackTrigger;
     }
 

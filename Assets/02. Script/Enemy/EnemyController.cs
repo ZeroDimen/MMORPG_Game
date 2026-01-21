@@ -122,7 +122,6 @@ public class EnemyController : MonoBehaviourPun
             enemyStatus.hp -= damage;
             float result = (float)enemyStatus.hp / enemyStatus.maxHp;
             _hpBarController.SetHp(result);
-            Debug.Log(result);
 
             if (enemyStatus.hp <= 0)
             {

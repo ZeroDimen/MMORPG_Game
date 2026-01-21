@@ -4,7 +4,17 @@ using UnityEngine;
 public class Constants
 {
     public const float Gravity = -9.81f;
-    
+
+
+
+
+
+
+    public enum EGameState
+    {
+        Play,
+        Interaction,
+    }
     // ----------------------------------------
     // Layer Mask
     public static LayerMask GroundLayerMask => LayerMask.GetMask("Ground");

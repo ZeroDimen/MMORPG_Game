@@ -7,7 +7,8 @@ public class PlayerState
     protected PlayerController _playerController;
     protected Animator _animator;
     protected PlayerInput _playerInput;
-    
+
+    private bool isAttacking = false;
     
     public PlayerState(PlayerController playerController, Animator animator, PlayerInput playerInput)
     {
@@ -18,6 +19,7 @@ public class PlayerState
 
     protected void Attack(InputAction.CallbackContext context)
     {
+        if (isAttacking) return;
         _playerController.SetState(EPlayerState.Attack);
     }
     
@@ -29,13 +31,11 @@ public class PlayerState
 
     protected void Emotion1(InputAction.CallbackContext context)
     {
-        Debug.Log("Emotion1");
         _playerController.SetState(EPlayerState.Emotion1);
     }
     
     protected void Emotion2(InputAction.CallbackContext context)
     {
-        Debug.Log("Emotion2");
         _playerController.SetState(EPlayerState.Emotion2);
     }
     
