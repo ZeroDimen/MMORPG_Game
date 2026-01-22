@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviourPun
         if (State != EPlayerState.None) _states[State].Enter();
     }
     
+    // EGameState.Interaction일때 조작 비활성화 
     public void SetPlayerInputEnabled(bool enabled)
     {
         if (!photonView.IsMine) return;
