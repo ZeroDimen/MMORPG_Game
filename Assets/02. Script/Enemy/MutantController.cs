@@ -2,21 +2,32 @@ using UnityEngine;
 
 public class MutantController : EnemyController
 {
-    [SerializeField] private Collider attackCollider;
-    
+    [SerializeField] private GameObject attackObj;
+
+    private Collider _attackCollider;
+    private MutantAttack _mutantAttack;
+
+    private void Start()
+    {
+        _attackCollider = attackObj.GetComponent<Collider>();
+        _mutantAttack = attackObj.GetComponent<MutantAttack>();
+    }
+
+
     public void EnableAttackCollider()
     {
-        if (attackCollider != null)
+        if (_attackCollider != null)
         {
-            attackCollider.enabled = true;
+            _mutantAttack.Damage = enemyStatus.attackPower;
+            _attackCollider.enabled = true;
         }
     }
     
     public void DisableAttackCollider()
     {
-        if (attackCollider != null)
+        if (_attackCollider != null)
         {
-            attackCollider.enabled = false;
+            _attackCollider.enabled = false;
         }
     }
 }

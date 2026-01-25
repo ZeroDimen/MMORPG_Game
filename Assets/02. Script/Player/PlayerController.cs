@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviourPun
     [Header("이동")] 
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
     
+    [Header("Status")]
+    [SerializeField] private PlayerStatus playerStatus;
+    
     [SerializeField] private float jumpHeight = 2f;
     
     public float BreakForce => breakForce;
@@ -21,10 +24,10 @@ public class PlayerController : MonoBehaviourPun
     private Animator _animator;
     private PlayerInput _playerInput;
     private CharacterController _characterController;
+    private PlayerHPBarController _playerHpBarController;
     
     // 상태 정보
     public EPlayerState State; 
-    // {get; private set;}
     private Dictionary<EPlayerState,ICharacterState> _states;
     
     // 캐릭터 이동 정보
@@ -38,13 +41,13 @@ public class PlayerController : MonoBehaviourPun
         _characterController = GetComponent<CharacterController>();
         
         
-        
         // 상태 객체 초기화
         var playerStateIdle = new PlayerStateIdle(this,  _animator, _playerInput);
         var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
         var playerStateJump = new PlayerStateJump(this,  _animator, _playerInput);
         var playerStateAttack = new PlayerStateAttack(this, _animator, _playerInput);
         var playerStateHit = new PlayerStateHit(this, _animator, _playerInput);
+        var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
         var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
 
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Jump, playerStateJump },
             { EPlayerState.Attack, playerStateAttack },
             { EPlayerState.Hit, playerStateHit },
+            { EPlayerState.Dead, playerStateDead },
             { EPlayerState.Emotion1, playerStateEmotion1 },
             { EPlayerState.Emotion2, playerStateEmotion2 },
         };
@@ -64,6 +68,7 @@ public class PlayerController : MonoBehaviourPun
             // chatting 상호작용
             _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
         }
+        _playerHpBarController = GetComponent<PlayerHPBarController>();
         GameManager.Instance.SetGameState(EGameState.Play);
     }
 
@@ -124,11 +129,30 @@ public class PlayerController : MonoBehaviourPun
         }
     }
     
-    [PunRPC]
+    
     public void SetHit(int damage, Vector3 attackDirection)
     {
-        SetState(EPlayerState.Hit);
+        if (!photonView.IsMine) return;
+        
+        int processDamage = damage - playerStatus.defense;
+        playerStatus.hp -= processDamage;
+
+        float result = (float)playerStatus.hp / playerStatus.maxHp;
+
+        _playerHpBarController.SetHp(result);
+        
+        if (playerStatus.hp <= 0)
+        {
+            SetState(EPlayerState.Dead);
+            _playerHpBarController.SetHp($"0 / {playerStatus.maxHp}");
+        }
+        else
+        {
+            SetState(EPlayerState.Hit);
+            _playerHpBarController.SetHp($"{playerStatus.hp} / {playerStatus.maxHp}");
+        }
     }
+
     
     // 점프
     public void Jump()

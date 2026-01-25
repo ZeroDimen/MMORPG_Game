@@ -21,15 +21,9 @@ public class EnemyController : MonoBehaviourPun
     [SerializeField] private float attackWaitTime = 0f;
 
     [Header("Status")]
-    [SerializeField] private EnemyStatus enemyStatus;
+    [SerializeField]
+    protected EnemyStatus enemyStatus;
     
-    [Header("Ragdoll")]
-    [SerializeField] private Collider[] ragdollColliders;
-    [SerializeField] private Rigidbody[] ragdollRigidbodies;
-    [SerializeField] private CharacterJoint[] ragdollJoints;
-    
-    [Header("Renderer")]
-    [SerializeField] private Renderer enemyRenderer;
     
     // AI 관련
     public float PatrolWaitTime => patrolWaitTime;
@@ -46,7 +40,7 @@ public class EnemyController : MonoBehaviourPun
     private NavMeshAgent _navMeshAgent;
     private Transform _targetTransform;
     
-    private HPBarController _hpBarController;
+    private EnemyHPBarController _enemyHpBarController;
     
     // 상태 관리
     public EEnemyState State;
@@ -63,8 +57,6 @@ public class EnemyController : MonoBehaviourPun
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
         
-        // Ragdoll 비활성화
-        SetRagdollEnabled(false);
         
         // NavMeshAgent 설정
         _navMeshAgent.updatePosition = false;
@@ -93,7 +85,7 @@ public class EnemyController : MonoBehaviourPun
         SetState(EEnemyState.Idle);
         
         // HP Bar 할당
-        _hpBarController = GetComponent<HPBarController>();
+        _enemyHpBarController = GetComponent<EnemyHPBarController>();
     }
 
     private void Update()
@@ -113,15 +105,14 @@ public class EnemyController : MonoBehaviourPun
         State = state;
         if (State != EEnemyState.None) _states[State].Enter();
     }
-
-    [PunRPC]
+    
     public void SetHit(int damage, Vector3 attackDirection)
     {
-        if (_hpBarController)
+        if (_enemyHpBarController)
         {
             enemyStatus.hp -= damage;
             float result = (float)enemyStatus.hp / enemyStatus.maxHp;
-            _hpBarController.SetHp(result);
+            _enemyHpBarController.SetHp(result);
 
             if (enemyStatus.hp <= 0)
             {
@@ -134,10 +125,9 @@ public class EnemyController : MonoBehaviourPun
                 var direction = attackDirection;
                 direction.y = 1f;
                 direction = direction.normalized;
-                var force = direction * 10f;
+                var force = direction * 3f;
                 
                 _rigidbody.AddForce(force, ForceMode.Impulse);
-                
                 _collider.isTrigger = false;
             }
             else
@@ -200,47 +190,7 @@ public class EnemyController : MonoBehaviourPun
         }
         return _targetTransform;
     }
-
-    #region Ragdoll 관련 함수
-
-    private void SetRagdollEnabled(bool isEnabled)
-    {
-        foreach (var ragdollCollider in ragdollColliders)
-        {
-            ragdollCollider.enabled = isEnabled;
-        }
-
-        foreach (var ragdollRigidbody in ragdollRigidbodies)
-        {
-            ragdollRigidbody.isKinematic = !isEnabled;
-            ragdollRigidbody.detectCollisions = isEnabled;
-        }
-        
-        _animator.enabled = !isEnabled;
-        _collider.enabled = !isEnabled;
-        _rigidbody.detectCollisions = !isEnabled;
-        
-        _animator.Rebind();
-        _animator.Update(0f);
-    }
-
-    IEnumerator Disolve()
-    {
-        var propertyBlock = new MaterialPropertyBlock();
-        enemyRenderer.GetPropertyBlock(propertyBlock);
-        var value = 0f;
-        while (value < 1f)
-        {
-            value += Time.deltaTime;
-            propertyBlock.SetFloat("_Cutoff", value);
-            enemyRenderer.SetPropertyBlock(propertyBlock);
-            yield return null;
-        }
-
-        Destroy(gameObject);
-    }
-
-    #endregion
+    
 
     private void OnDrawGizmos()
     {

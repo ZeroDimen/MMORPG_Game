@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class HPBarController : MonoBehaviour
+public class EnemyHPBarController : MonoBehaviour
 {
     [SerializeField] private GameObject hpBarPrefab;
     

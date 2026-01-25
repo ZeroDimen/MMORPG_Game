@@ -28,6 +28,7 @@ public class Constants
         Jump,
         Attack,
         Hit,
+        Dead,
         Emotion1,
         Emotion2,
     }
@@ -38,6 +39,7 @@ public class Constants
     public static readonly int PlayerAniParamJump = Animator.StringToHash("jump");
     public static readonly int PlayerAniParamAttack = Animator.StringToHash("attack");
     public static readonly int PlayerAniParamHit = Animator.StringToHash("hit");
+    public static readonly int PlayerAniParamDead = Animator.StringToHash("dead");
     public static readonly int PlayerAniParamEmotion1 = Animator.StringToHash("emotion1");
     public static readonly int PlayerAniParamEmotion2 = Animator.StringToHash("emotion2");
     public static readonly int PlayerAniParamMoveSpeed = Animator.StringToHash("move_speed");
@@ -69,6 +71,14 @@ public class Constants
         public Transform point;
         public float radius;
     }
+
+    [Serializable]
+    public class PlayerStatus
+    {
+        public int maxHp;
+        public int hp;
+        public int defense;
+    }
     
     [Serializable]
     public class EnemyStatus
@@ -76,5 +86,6 @@ public class Constants
         public int maxHp;
         public int hp;
         public int attackPower;
+        public int exp;
     }
 }
