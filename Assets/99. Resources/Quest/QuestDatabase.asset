@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestDatabase
   allQuests:
   - {fileID: 11400000, guid: 3c9f2589ef684f747adf7b03191ce332, type: 2}
+  - {fileID: 11400000, guid: b7cd9c684f5fa3d45bbee986bf30ccec, type: 2}

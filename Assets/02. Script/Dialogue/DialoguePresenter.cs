@@ -62,7 +62,7 @@ public class DialoguePresenter : MonoBehaviour
 
             DialogueEntry entry = new DialogueEntry
             {
-                groupKey = row[0].Trim(),
+                groupKey = row[0].Trim().Replace("\r", ""),
                 speaker = row[1].Trim(),
                 context = row[2].Trim(),
                 eventType = row[3].Trim(),

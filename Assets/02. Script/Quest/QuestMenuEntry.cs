@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class QuestMenuEntry : MonoBehaviour
 {
     public TextMeshProUGUI titleText;
-    public TextMeshProUGUI contentText;
+    public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI goalText;
     public Toggle pinToggle;
 
     private QuestData _quest;
@@ -15,8 +16,9 @@ public class QuestMenuEntry : MonoBehaviour
     {
         _quest = quest;
         titleText.text = quest.title;
-        string status = quest.IsCompleted ? "완료됨" : $"{quest.currentAmount}/{quest.targetAmount}";
-        contentText.text = $"{quest.description} : {status}";
+        descriptionText.text = quest.description;
+        goalText.text = quest.IsCompleted ? "<color=green>(완료)</color>" : quest.CurrentTask.Status;
+
         
         pinToggle.SetIsOnWithoutNotify(QuestManager.Instance.pinnedQuests.Contains(quest));
         

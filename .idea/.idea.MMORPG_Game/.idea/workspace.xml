@@ -6,11 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueText.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueText.csv.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventorySlotView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventorySlotView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/01_Armor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/01_Armor.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Inventory/Slot [Panel].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Inventory/Slot [Panel].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest Tracker List [Panel].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest Tracker List [Panel].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest [Panel].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest [Panel].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 0.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/QuestDatabase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/QuestDatabase.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +41,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/493b407efcb64dddad59f28bb0b831d3212400/0b/21e12c48/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/SimplePlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Inventory/EquipmentView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestDatabase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" root0="FORCE_HIGHLIGHTING" />
@@ -48,6 +72,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Quest&quot;,
@@ -125,7 +150,18 @@
       <workItem from="1768616356400" duration="4217000" />
       <workItem from="1768705247889" duration="4615000" />
       <workItem from="1768720797936" duration="17044000" />
-      <workItem from="1768883406323" duration="318000" />
+      <workItem from="1768883406323" duration="9725000" />
+      <workItem from="1768909017119" duration="1727000" />
+      <workItem from="1768960515661" duration="1724000" />
+      <workItem from="1769056064864" duration="597000" />
+      <workItem from="1769098750077" duration="8660000" />
+      <workItem from="1769127660204" duration="2589000" />
+      <workItem from="1769153395417" duration="10232000" />
+      <workItem from="1769170287601" duration="2542000" />
+      <workItem from="1769173768151" duration="296000" />
+      <workItem from="1769176973824" duration="4923000" />
+      <workItem from="1769283713296" duration="5728000" />
+      <workItem from="1769313379261" duration="10636000" />
     </task>
     <servers />
   </component>

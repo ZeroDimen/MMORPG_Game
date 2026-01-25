@@ -6,8 +6,9 @@ public class MariaPlayerController :PlayerController
 {
     [SerializeField] private TMP_Text playerName;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         if (photonView.IsMine)
         {
             playerName.text = PhotonNetwork.NickName;

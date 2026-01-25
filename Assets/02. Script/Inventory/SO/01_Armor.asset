@@ -16,11 +16,13 @@ MonoBehaviour:
   itemName: Armor
   type: 1
   subType: 2
+  detailType: 7
   maxCapacity: 1
   isStackable: 0
-  amount: 0
   Information: "\uBB34\uC801\uC758 \uAC11\uC637"
-  grade: 0
+  statBonusList:
+  - type: 5
+    value: 10
   iconReference:
     m_AssetGUID: 2f1eaeeaad36ee5469eff7ff158f37ba
     m_SubObjectName: 

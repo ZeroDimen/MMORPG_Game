@@ -15,10 +15,15 @@ MonoBehaviour:
   questID: 0
   title: "\uCD0C\uC7A5\uC5D0\uAC8C \uAC00\uAE30"
   isMain: 0
+  isSequential: 1
   description: "\uCD0C\uC7A5\uC744 \uCC3E\uC544\uC11C \uC774\uC57C\uAE30 \uD574\uBCF4\uC790"
-  questType: 1
-  targetID: 1
-  targetAmount: 1
+  questTasks:
+  - teskDescription: "\uCD0C\uC7A5\uC5D0\uAC8C \uB9D0\uC744 \uAC78\uAE30"
+    questType: 1
+    targetID: 1
+    targetAmount: 1
+    currentAmount: 0
+    questGiveTalkKey: Cheif_Talk_Give
+    questCompleteTalkKey: Chief_Talk_Complete
   rewardItem: {fileID: 11400000, guid: e80b207ba553ebb4198b8a082dd4c582, type: 2}
   rewardAmount: 1
-  currentAmount: 0

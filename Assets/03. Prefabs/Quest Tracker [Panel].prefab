@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 16099971053289920}
   - component: {fileID: 3588263731620112135}
   m_Layer: 5
-  m_Name: 'Quest Tracker List [Panel]'
+  m_Name: 'Quest Tracker [Panel]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

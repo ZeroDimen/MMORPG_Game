@@ -9,7 +9,6 @@ public class QuestEntry : MonoBehaviour
     public void Setup(QuestData quest)
     {
         titleText.text = quest.title;
-        string status = quest.IsCompleted ? "<color=green>(완료)</color>" : $"{quest.currentAmount}/{quest.targetAmount}";
-        contentText.text = $"{quest.description} : {status}";
+        contentText.text = quest.IsCompleted ? "<color=green>(완료)</color>" : quest.CurrentTask.Status;
     }
 }

@@ -31,15 +31,13 @@ public class CharacterSaveData
 public class QuestSaveData
 {
     public int questID;
-    public int currentAmount;
-    public bool isComleted;
+    public List<int> taskProgresses = new List<int>();
     public bool isPinned;
 
-    public QuestSaveData(int id, int amount, bool complete, bool pinned)
+    public QuestSaveData(int id, List<int> progresses, bool pinned)
     {
         questID = id;
-        currentAmount = amount;
-        isComleted = complete;
+        taskProgresses = progresses;
         isPinned = pinned;
     }
 }

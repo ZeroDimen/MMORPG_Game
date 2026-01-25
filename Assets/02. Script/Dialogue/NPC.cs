@@ -1,5 +1,6 @@
 using System;
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -33,19 +34,32 @@ public class NPC : MonoBehaviour
         cam.SetActive(true);
         GameEvents.OnDialogueEnded += TalkEnd;
         _anime.SetBool(IsTalking, true);
-        GameEvents.OnDialogueRequested?.Invoke(talkGroupKey);
 
-        if (questToGive != null)
+        // 퀘스트 완료
+        if (QuestManager.Instance.IsCompleteQuestByNPCID(QuestType.Talk, npcID, out var key))
         {
-            if (QuestManager.Instance.completedQuestIDs.Contains(questToGive.questID))
-                return;
-            
-            if (questToGive.isMain)
-                GameEvents.OnDialogueEnded += GiveQuest;
-            else
-                GameEvents.OnAcceptActionTriggered += GiveQuest;
+            GameEvents.OnDialogueRequested?.Invoke(key);
+            GameEvents.OnQuestProgressUpdated?.Invoke(QuestType.Talk, npcID, 1);
+            return;
         }
-        GameEvents.OnQuestProgressUpdated?.Invoke(QuestType.Talk, npcID, 1);
+
+        // 퀘스트 주기
+        if (questToGive != null && !QuestManager.Instance.IsProgressingQuestByQuestID(questToGive.questID))
+        {
+            if (!QuestManager.Instance.completedQuestIDs.Contains(questToGive.questID))
+            {
+                if (questToGive.isMain)
+                    GameEvents.OnDialogueEnded += GiveQuest;
+                else
+                    GameEvents.OnAcceptActionTriggered += GiveQuest;
+            
+                GameEvents.OnDialogueRequested?.Invoke(questToGive.CurrentTask.questGiveTalkKey);
+                return;
+            }
+        }
+        
+        // 일반 대화
+        GameEvents.OnDialogueRequested?.Invoke(talkGroupKey);
     }
 
     private void GiveQuest()

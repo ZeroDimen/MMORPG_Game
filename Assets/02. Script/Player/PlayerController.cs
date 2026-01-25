@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ using static Constants;
 public class PlayerController : MonoBehaviourPun
 {
     [SerializeField] private Transform headTransform;
+    public PlayerStatus Status { get; private set; }
     
     [Header("이동")] 
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
@@ -54,6 +56,12 @@ public class PlayerController : MonoBehaviourPun
         
         // Cursor 숨기기
         _playerInput.actions["Cursor"].performed += _ => GameManager.Instance.SetCursorLock();
+    }
+
+    protected virtual void Start()
+    {
+        // Status
+        Status = new PlayerStatus(100, 100, 15, 15, 10);
     }
 
     private void OnEnable()
