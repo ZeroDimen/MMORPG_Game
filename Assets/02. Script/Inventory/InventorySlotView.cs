@@ -23,17 +23,6 @@ public class InventorySlotView : MonoBehaviour
 
     private AsyncOperationHandle<Sprite> _iconHandle;
 
-    private void Awake()
-    {
-        GameEvents.OnItemEquipped += EquipUI;
-        GameEvents.OnItemUnEquipped += EquipUI;
-    }
-
-    private void EquipUI(InstanceItem item)
-    {
-        equipText.SetActive(item.isEquip);
-    }
-
     public void Setup(InstanceItem item)
     {
         // 1. 이전 로드 작업 해제 (메모리 관리)

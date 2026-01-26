@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ItemPanel : MonoBehaviour
 {
+    public event Action OnEquipAction;
     public event Action OnConfirmAction;
     
     [SerializeField] private TextMeshProUGUI itemName;
@@ -34,6 +35,7 @@ public class ItemPanel : MonoBehaviour
                 equipButton.onClick.AddListener(() =>
                 {
                     EquipmentPresenter.Instance.OnEquipment(item);
+                    OnEquipAction?.Invoke();
                     OnConfirmPanel();
                 });
             }
@@ -46,6 +48,7 @@ public class ItemPanel : MonoBehaviour
                 unEquipButton.onClick.AddListener((() =>
                 {
                     EquipmentPresenter.Instance.UnEquipment(item);
+                    OnEquipAction?.Invoke();
                     OnConfirmPanel();
                 }));
             }
@@ -81,10 +84,10 @@ public class ItemPanel : MonoBehaviour
             icon.sprite = checkHandle.Convert<Sprite>().Result;
         else
         {
-            _iconHandle = item.IconReference.LoadAssetAsync<Sprite>();
+            _iconHandle = Addressables.LoadAssetAsync<Sprite>(item.IconReference);
             _iconHandle.Completed += (handle) =>
             {
-                if (handle.Status == AsyncOperationStatus.Succeeded)
+                if (handle.Status == AsyncOperationStatus.Succeeded && this != null)
                     icon.sprite = handle.Result;
             };
         }
@@ -92,8 +95,11 @@ public class ItemPanel : MonoBehaviour
 
     public void OnConfirmPanel()
     {
-        if(_iconHandle.IsValid())
+        if (_iconHandle.IsValid())
+        {
             Addressables.Release(_iconHandle);
+            _iconHandle = default;
+        }
 
         itemName.text = "";
         information.text = "";

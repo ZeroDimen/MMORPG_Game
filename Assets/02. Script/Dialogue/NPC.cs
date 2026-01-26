@@ -1,11 +1,12 @@
 using System;
 using Photon.Pun;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] private GameObject cam;
+    public CinemachineCamera cam; 
     public int npcID;
     public string npcName;
     public string talkGroupKey;
@@ -31,7 +32,7 @@ public class NPC : MonoBehaviour
 
     private void Talk()
     {
-        cam.SetActive(true);
+        cam.Priority = 11;
         GameEvents.OnDialogueEnded += TalkEnd;
         _anime.SetBool(IsTalking, true);
 
@@ -69,7 +70,7 @@ public class NPC : MonoBehaviour
 
     private void TalkEnd()
     {
-        cam.SetActive(false);
+        cam.Priority = 0;
         if (questToGive)
         {
             GameEvents.OnDialogueEnded -= GiveQuest;

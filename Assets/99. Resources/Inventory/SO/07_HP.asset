@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b922d1d8d56af54ca6589320738452c, type: 3}
-  m_Name: 08_MP
+  m_Name: 07_HP
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 7
-  itemName: MP
+  id: 6
+  itemName: HP
   type: 3
   subType: 8
-  maxCapacity: 1
-  isStackable: 0
-  amount: 0
-  Information: "MP\uC785\uB2C8\uB2F9"
-  grade: 0
+  detailType: 0
+  maxCapacity: 999
+  isStackable: 1
+  Information: "\uBB3C\uC57D\uC785\uB2C8\uB2E4"
+  statBonusList: []
   iconReference:
-    m_AssetGUID: 6592b916f86b19e428db6f6847c7b6dd
+    m_AssetGUID: e52ea25af699fd445b7046374f81a5b9
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

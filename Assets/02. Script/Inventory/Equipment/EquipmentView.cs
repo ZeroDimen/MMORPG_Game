@@ -7,7 +7,8 @@ public class EquipmentView : MonoBehaviour
 
     public void RenderEquipment(InstanceItem item, DetailItemType type)
     {
-        slots.Find(i => i.detailType == type).Setup(item);
+        var slot = slots.Find(i => i.detailType == type);
+        slot.Setup(item);
     }
     
     

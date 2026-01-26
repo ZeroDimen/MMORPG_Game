@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b922d1d8d56af54ca6589320738452c, type: 3}
-  m_Name: 02_Apple
+  m_Name: 06_Boots
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 1
-  itemName: Apple
-  type: 3
-  subType: 11
+  id: 5
+  itemName: Boots
+  type: 1
+  subType: 2
+  detailType: 10
   maxCapacity: 1
   isStackable: 0
-  amount: 0
-  Information: "\uB9DB\uC788\uB294 \uC0AC\uACFC"
-  grade: 0
+  Information: "\uC2E0\uBC1C\uC785\uB2C8\uB2E4"
+  statBonusList:
+  - type: 6
+    value: 10
   iconReference:
-    m_AssetGUID: 4a39cb4b272639541b7bd5ac0649acf7
+    m_AssetGUID: e420c5bc93cb2604695a893500c897e3
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueText.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueText.csv.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventorySlotView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventorySlotView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/01_Armor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/01_Armor.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestEntry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Inventory/Slot [Panel].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Inventory/Slot [Panel].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest Tracker List [Panel].prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest Tracker List [Panel].prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest [Panel].prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Quest [Panel].prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 0.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/QuestDatabase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/QuestDatabase.asset" afterDir="false" />
-    </list>
+    <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,11 +15,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/493b407efcb64dddad59f28bb0b831d3212400/0b/21e12c48/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CutScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/SimplePlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Inventory/EquipmentView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -161,7 +134,7 @@
       <workItem from="1769173768151" duration="296000" />
       <workItem from="1769176973824" duration="4923000" />
       <workItem from="1769283713296" duration="5728000" />
-      <workItem from="1769313379261" duration="10636000" />
+      <workItem from="1769313379261" duration="21529000" />
     </task>
     <servers />
   </component>

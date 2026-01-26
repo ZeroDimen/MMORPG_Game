@@ -37,6 +37,8 @@ public class InventoryView : MonoBehaviour, IInventoryView
         {
             dim.SetActive(false);
         };
+
+        _itemPanel.OnEquipAction += OnRefreshInventory;
     }
 
     public void ShowItemInformation(InstanceItem item)

@@ -17,20 +17,13 @@ public class EquipmentSlotView : MonoBehaviour
             return;
         }
         
-        // 이전 로드 작업 해제 (메모리 관리)
         ReleaseIcon();
-        // 아이콘 비동기 로드 (Addressables)
         LoadIcon(item);
-        
     }
 
     private void LoadIcon(InstanceItem item)
     {
-        if (_iconHandle.IsValid())
-        {
-            Addressables.Release(_iconHandle);
-            _iconHandle = default; // 핸들 초기화
-        }
+        ReleaseIcon();
         
         if (item?.IconReference == null) return;
 

@@ -16,11 +16,13 @@ MonoBehaviour:
   itemName: Axe
   type: 1
   subType: 1
+  detailType: 1
   maxCapacity: 1
   isStackable: 0
-  amount: 0
   Information: "\uAC15\uD55C \uB3C4\uB07C"
-  grade: 0
+  statBonusList:
+  - type: 4
+    value: 20
   iconReference:
     m_AssetGUID: 172774604c1bee84185a69041576525b
     m_SubObjectName: 
