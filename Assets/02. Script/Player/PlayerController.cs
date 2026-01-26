@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
     
     [Header("Status")]
-    [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField]
+    protected internal PlayerStatus playerStatus;
     
     [SerializeField] private float jumpHeight = 2f;
     
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviourPun
         
         // 상태 초기화
         State = EPlayerState.None;
+        SetLevel();
     }
 
     private void Update()
@@ -151,6 +153,26 @@ public class PlayerController : MonoBehaviourPun
             SetState(EPlayerState.Hit);
             _playerHpBarController.SetHp($"{playerStatus.hp} / {playerStatus.maxHp}");
         }
+    }
+
+    public void SetExp(int amount)
+    {
+        playerStatus.exp += amount;
+        SetLevel();
+        _playerHpBarController.SetExp($"LV : {playerStatus.level} | {playerStatus.exp} / {playerStatus.maxExp}");
+        
+    }
+
+    private void SetLevel()
+    {
+        playerStatus.maxExp = playerStatus.level * 10;
+        if (playerStatus.exp >= playerStatus.maxExp)
+        {
+            playerStatus.exp -= playerStatus.maxExp;
+            playerStatus.level++;
+            SetExp(0);
+        }
+        
     }
 
     

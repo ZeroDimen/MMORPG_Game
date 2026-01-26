@@ -106,8 +106,9 @@ public class EnemyController : MonoBehaviourPun
         if (State != EEnemyState.None) _states[State].Enter();
     }
     
-    public void SetHit(int damage, Vector3 attackDirection)
+    public int SetHit(int damage, Vector3 attackDirection)
     {
+        if (State == EEnemyState.Dead) return 0;
         if (_enemyHpBarController)
         {
             enemyStatus.hp -= damage;
@@ -129,6 +130,11 @@ public class EnemyController : MonoBehaviourPun
                 
                 _rigidbody.AddForce(force, ForceMode.Impulse);
                 _collider.isTrigger = false;
+                
+                // 2초 후 비활성화
+                StartCoroutine(DisableAfterDelay(2f));
+                
+                return enemyStatus.exp;
             }
             else
             {
@@ -137,6 +143,12 @@ public class EnemyController : MonoBehaviourPun
                 StartCoroutine(Knockback(attackDirection));
             }
         }
+        return 0;
+    }
+    private IEnumerator DisableAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
     }
 
     private IEnumerator Knockback(Vector3 direction)

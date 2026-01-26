@@ -770,11 +770,15 @@ MonoBehaviour:
   playerStatus:
     maxHp: 100
     hp: 100
+    damage: 60
     defense: 10
+    level: 1
+    maxExp: 0
+    exp: 0
   jumpHeight: 2
   State: 0
   playerName: {fileID: 2997760728349481453}
-  attackCollider: {fileID: 7990923754513949686}
+  attackObj: {fileID: 895524781779190983}
 --- !u!114 &2583507576718065381
 MonoBehaviour:
   m_ObjectHideFlags: 0

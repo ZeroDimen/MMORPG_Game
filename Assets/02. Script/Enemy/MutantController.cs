@@ -18,7 +18,7 @@ public class MutantController : EnemyController
     {
         if (_attackCollider != null)
         {
-            _mutantAttack.Damage = enemyStatus.attackPower;
+            _mutantAttack.Damage = enemyStatus.damage;
             _attackCollider.enabled = true;
         }
     }

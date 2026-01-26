@@ -506,8 +506,8 @@ MonoBehaviour:
   enemyStatus:
     maxHp: 100
     hp: 100
-    attackPower: 70
-    exp: 0
+    damage: 30
+    exp: 20
   State: 0
   attackObj: {fileID: 3494730608326806384}
 --- !u!114 &6063300403715375140
