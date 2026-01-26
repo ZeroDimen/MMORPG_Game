@@ -506,7 +506,7 @@ MonoBehaviour:
   enemyStatus:
     maxHp: 100
     hp: 100
-    damage: 30
+    damage: 40
     exp: 20
   State: 0
   attackObj: {fileID: 3494730608326806384}
@@ -803,7 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188a5a7040ad2444cae395f0774239f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutantAttack
-  Damage: 10
+  damage: 0
 --- !u!1 &3650515801683158770
 GameObject:
   m_ObjectHideFlags: 0

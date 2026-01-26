@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviourPun
         Status.EXP += amount;
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
+        PlayerStatusView.Instance.UpdateStatusUI(Status);
         
     }
 

@@ -9,7 +9,7 @@ public class PlayerHPBarController : MonoBehaviourPun
     private Canvas _canvas;
     private PlayerHpBar _hpBar;
 
-    private void Awake()
+    private void Start()
     {
         if (photonView.IsMine)
         {
@@ -17,8 +17,8 @@ public class PlayerHPBarController : MonoBehaviourPun
             _hpBar = Instantiate(hpBarPrefab,_canvas.transform).GetComponent<PlayerHpBar>();
             _playerController = photonView.GetComponent<PlayerController>();
             
-            // SetHp($"{_playerController.Status.HP} / {_playerController.Status.MAXHP}");
-            // SetExp($"LV : {_playerController.Status.LV} | {_playerController.Status.EXP} / {_playerController.Status.MAXEXP}");
+            SetHp($"{_playerController.Status.HP} / {_playerController.Status.MAXHP}");
+            SetExp($"LV : {_playerController.Status.LV} | {_playerController.Status.EXP} / {_playerController.Status.MAXEXP}");
         }
     }
     
