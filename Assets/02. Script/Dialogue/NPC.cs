@@ -32,6 +32,7 @@ public class NPC : MonoBehaviour
 
     private void Talk()
     {
+        GameManager.Instance.SetGameState(Constants.EGameState.Interaction);
         cam.Priority = 11;
         GameEvents.OnDialogueEnded += TalkEnd;
         _anime.SetBool(IsTalking, true);
@@ -70,6 +71,7 @@ public class NPC : MonoBehaviour
 
     private void TalkEnd()
     {
+        GameManager.Instance.SetGameState(Constants.EGameState.Play);
         cam.Priority = 0;
         if (questToGive)
         {

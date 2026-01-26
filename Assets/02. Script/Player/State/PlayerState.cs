@@ -15,6 +15,8 @@ public class PlayerState
         _playerController = playerController;
         _animator = animator;
         _playerInput = playerInput;
+        _playerInput.actions["Cursor"].performed += OnCursor;
+        _playerInput.actions["Cursor"].canceled += OffCursor;
     }
 
     protected void Attack(InputAction.CallbackContext context)
@@ -37,6 +39,15 @@ public class PlayerState
     protected void Emotion2(InputAction.CallbackContext context)
     {
         _playerController.SetState(EPlayerState.Emotion2);
+    }
+    
+    private void OnCursor(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.SetGameState(EGameState.Interaction);
+    }
+    private void OffCursor(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.SetGameState(EGameState.Play);
     }
     
     protected void Rotate(float x, float z)

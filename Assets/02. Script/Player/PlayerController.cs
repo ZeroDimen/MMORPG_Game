@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviourPun
         
         // 상태 초기화
         State = EPlayerState.None;
+        
+        _playerInput.camera = Camera.main;
     }
 
     private void Update()
@@ -154,17 +156,17 @@ public class PlayerController : MonoBehaviourPun
     public void SetExp(int amount)
     {
         Status.EXP += amount;
-        // SetLevel();
-        // _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
+        SetLevel();
+        _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         
     }
 
     private void SetLevel()
     {
         Status.MAXEXP = Status.LV * 10;
-        if (Status.EXP >= Status.EXP)
+        if (Status.EXP >= Status.MAXEXP)
         {
-            Status.EXP -= Status.EXP;
+            Status.EXP -= Status.MAXEXP;
             Status.LV++;
             SetExp(0);
         }

@@ -771,6 +771,7 @@ MonoBehaviour:
   State: 0
   playerName: {fileID: 2997760728349481453}
   attackObj: {fileID: 895524781779190983}
+  Maria_Head: {fileID: 640950517893958634}
 --- !u!114 &2583507576718065381
 MonoBehaviour:
   m_ObjectHideFlags: 0

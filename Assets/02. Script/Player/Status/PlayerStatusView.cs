@@ -8,16 +8,22 @@ public class PlayerStatusView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI DEF;
     [SerializeField] private TextMeshProUGUI DEX;
 
-    [SerializeField] private PlayerController player;
+    public PlayerController player;
+    public static PlayerStatusView Instance;
 
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
         GameEvents.OnStatusChanged += UpdateStatusUI;
     }
 
     private void OnEnable()
     {
-        UpdateStatusUI(player.Status);
+        if(player != null)
+            UpdateStatusUI(player.Status);
     }
 
     private void UpdateStatusUI(PlayerStatus status)
