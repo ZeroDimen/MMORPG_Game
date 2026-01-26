@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviourPunCallbacks
 {
-    
     [SerializeField]
     private TMP_InputField inputField; // 메시지 입력 필드
     [SerializeField]
     private TMP_Text chattingList; // 접속 중인 플레이어 목록을 표시할 택스트 UI
     [SerializeField]
     private TMP_Text chatLog; // 채팅 로그를 표시할 택스트
-    [SerializeField]
-    private Button sendButton; // 메시지 전송 ㅂ튼
     [SerializeField]
     private ScrollRect scrollRect; // 채팅 로그의 스크롤을 제어하는 ScrollRect
     
@@ -23,10 +20,9 @@ public class ChatManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.IsMessageQueueRunning = true; // Photon의 메시지 큐가 작동하도록 설정
-        sendButton.onClick.AddListener(SendButtonOnClicked); // 버튼 클릭 이벤트에 연결
     }
     
-    public void SendButtonOnClicked() // 메시지 전송 시 호출
+    public void SendMsg() // 메시지 전송 함수
     {
         ChatterUpdate();
         // 메시지 입력 필드가 비어 있는지 확인

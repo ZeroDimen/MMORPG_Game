@@ -1,7 +1,7 @@
 using UnityEngine;
 
-// Spawn 에니메이션 후 Idle 상태로 전환하기 위한 함수
-public class PlayerSmbSpawn : StateMachineBehaviour
+// 에니메이션 후 Idle 상태로 전환하기 위한 함수
+public class PlayerSmbToIdle : StateMachineBehaviour
 {
     private PlayerController _playerController;
     
