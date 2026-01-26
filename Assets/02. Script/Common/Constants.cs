@@ -73,19 +73,6 @@ public class Constants
     }
 
     [Serializable]
-    public class PlayerStatus
-    {
-        public int maxHp;
-        public int hp;
-        public int damage;
-        public int defense;
-
-        public int level;
-        public int maxExp;
-        public int exp;
-    }
-    
-    [Serializable]
     public class EnemyStatus
     {
         public int maxHp;

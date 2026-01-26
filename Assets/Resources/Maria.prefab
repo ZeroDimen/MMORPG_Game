@@ -767,14 +767,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MariaPlayerController
   headTransform: {fileID: 640950517893958634}
   breakForce: 1
-  playerStatus:
-    maxHp: 100
-    hp: 100
-    damage: 60
-    defense: 10
-    level: 1
-    maxExp: 0
-    exp: 0
   jumpHeight: 2
   State: 0
   playerName: {fileID: 2997760728349481453}

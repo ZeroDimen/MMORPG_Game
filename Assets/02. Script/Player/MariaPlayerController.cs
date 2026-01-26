@@ -32,7 +32,7 @@ public class MariaPlayerController :PlayerController
     {
         if (_attackCollider != null)
         {
-            _swordAttack.Damage = playerStatus.damage;
+            _swordAttack.Damage = Status.ATK;
             _attackCollider.enabled = true;
         }
     }

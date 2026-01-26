@@ -15,10 +15,6 @@ public class PlayerController : MonoBehaviourPun
     [Header("이동")] 
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
     
-    [Header("Status")]
-    [SerializeField]
-    protected internal PlayerStatus playerStatus;
-    
     [SerializeField] private float jumpHeight = 2f;
     
     public float BreakForce => breakForce;
@@ -78,7 +74,7 @@ public class PlayerController : MonoBehaviourPun
     protected virtual void Start()
     {
         // Status
-        Status = new PlayerStatus(100, 100, 15, 15, 10);
+        Status = new PlayerStatus(100, 100, 100, 1, 10, 0, 50, 10, 10);
     }
 
     private void OnEnable()
@@ -89,16 +85,8 @@ public class PlayerController : MonoBehaviourPun
             PhotonNetwork.LocalPlayer.TagObject = this;
         }
         
-        // 카메라 초기화
-        _playerInput.camera = Camera.main;
-        if (_playerInput.camera != null && photonView.IsMine)
-        {
-            _playerInput.camera.GetComponent<CameraController>().SetTarget(headTransform, _playerInput);
-        }
-        
         // 상태 초기화
         State = EPlayerState.None;
-        SetLevel();
     }
 
     private void Update()
@@ -144,40 +132,40 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine) return;
         
-        int processDamage = damage - playerStatus.defense;
-        playerStatus.hp -= processDamage;
+        int processDamage = damage - Status.DEF;
+        Status.HP -= processDamage;
 
-        float result = (float)playerStatus.hp / playerStatus.maxHp;
+        float result = (float)Status.HP / Status.MAXHP;
 
         _playerHpBarController.SetHp(result);
         
-        if (playerStatus.hp <= 0)
+        if (Status.HP <= 0)
         {
             SetState(EPlayerState.Dead);
-            _playerHpBarController.SetHp($"0 / {playerStatus.maxHp}");
+            _playerHpBarController.SetHp($"0 / {Status.MAXHP}");
         }
         else
         {
             SetState(EPlayerState.Hit);
-            _playerHpBarController.SetHp($"{playerStatus.hp} / {playerStatus.maxHp}");
+            _playerHpBarController.SetHp($"{Status.HP} / {Status.MAXHP}");
         }
     }
 
     public void SetExp(int amount)
     {
-        playerStatus.exp += amount;
-        SetLevel();
-        _playerHpBarController.SetExp($"LV : {playerStatus.level} | {playerStatus.exp} / {playerStatus.maxExp}");
+        Status.EXP += amount;
+        // SetLevel();
+        // _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         
     }
 
     private void SetLevel()
     {
-        playerStatus.maxExp = playerStatus.level * 10;
-        if (playerStatus.exp >= playerStatus.maxExp)
+        Status.MAXEXP = Status.LV * 10;
+        if (Status.EXP >= Status.EXP)
         {
-            playerStatus.exp -= playerStatus.maxExp;
-            playerStatus.level++;
+            Status.EXP -= Status.EXP;
+            Status.LV++;
             SetExp(0);
         }
         
