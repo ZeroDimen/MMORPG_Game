@@ -1,9 +1,0 @@
-﻿GroupKey,Speaker,Context,EventType,EventParam
-CHIEF_INTRO,촌장,"허허, 자네가 그 모험가인가?",None,
-CHIEF_INTRO,촌장,우리 마을에 온 걸 환영하네.,GiveItem,1001
-CHIEF_INTRO,촌장,오늘은,,
-CHIEF_INTRO,촌장,아니다,,
-CHIEF_INTRO,촌장,맞다,,
-CHIEF_INTRO,촌장,하지만,,
-CHIEF_INTRO,촌장,그치만,,
-CHIEF_INTRO,촌장,하하하,,

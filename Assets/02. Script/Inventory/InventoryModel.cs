@@ -3,26 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public enum ItemType
-{
-    None, 
-    Equipment, 
-    Tool, 
-    General, 
-    Fashion, 
-    Mount
-}
-
-public enum SubItemType
-{
-    None,
-    Weapon, Armor, Accessory,                               // Equipment
-    Bag, TooolDecoration, MusicalInstrument, SheetMusic,    // Tool
-    Consumable, Food, Material, Goods, Quest,               // General
-    Costume, FashionDecoration, FashionWeapon,              // Fashion
-    CompanionPet, Mount, MountEquipment                     // Mount
-}
-
 [Serializable]
 public class InstanceItem
 {
@@ -32,12 +12,17 @@ public class InstanceItem
     public string Information { get; }
     public ItemType Type { get; }
     public SubItemType SubType { get; }
+    public DetailItemType DetailType { get; }
     public int MaxCapacity { get; }
     public bool IsStackable { get; }
     public int Amount;
+    public bool isEquip;
     public AssetReferenceSprite IconReference { get; }
+    public List<StatBonus> _statBonusList;
     
-    public InstanceItem(int id, string name, string information, int amount, ItemType type, SubItemType subType, bool isStackable, AssetReferenceSprite iconReference)
+    public InstanceItem(int id, string name, string information, int amount,
+        ItemType type, SubItemType subType, DetailItemType detailType,
+        bool isStackable, AssetReferenceSprite iconReference, List<StatBonus> statBonusList)
     {
         ID = id;
         Name = name;
@@ -45,8 +30,10 @@ public class InstanceItem
         Amount = amount;
         Type = type;
         SubType = subType;
+        DetailType = detailType;
         IsStackable = isStackable;
         IconReference = iconReference;
+        _statBonusList = statBonusList;
     }
 }
 
@@ -64,6 +51,17 @@ public class InventoryModel
     public InventoryModel(ItemDataBase db)
     {
         _database = db;
+        GameEvents.OnQuestCompleted += GiveQuestReward;
+    }
+
+    private void GiveQuestReward(QuestData completedQuest)
+    {
+        if (completedQuest.rewardItem != null)
+        {
+            AddItem(completedQuest.rewardItem.id, completedQuest.rewardAmount);
+            Debug.Log($"[Reward] {completedQuest.title} 보상 획득: " +
+                      $"{completedQuest.rewardItem.itemName} x{completedQuest.rewardAmount}");
+        }
     }
 
     public void AddItem(int itemID, int amount)
@@ -89,11 +87,12 @@ public class InventoryModel
         else
         {
             _instanceItems.Add(new InstanceItem(itemID, originalData.itemName, originalData.Information,
-                amount, originalData.type,originalData.subType,
-                originalData.isStackable, originalData.iconReference));
+                amount, originalData.type,originalData.subType, originalData.detailType,
+                originalData.isStackable, originalData.iconReference, originalData.statBonusList));
         }
 
         OnInventoryChanged?.Invoke();
+        GameEvents.OnQuestProgressUpdated?.Invoke(QuestType.Gather, itemID, amount);
     }
 
     public List<InstanceItem> GetItemsByType(ItemType filterType)
@@ -132,18 +131,15 @@ public class InventoryModel
                     save.amount, 
                     origin.type, 
                     origin.subType, 
+                    origin.detailType,
                     origin.isStackable, 
-                    origin.iconReference
+                    origin.iconReference,
+                    origin.statBonusList
                 ));
             }
         }
 
         // 데이터가 바뀌었으므로 View를 새로고침하도록 이벤트 발생
         OnInventoryChanged?.Invoke();
-    }
-    
-    public void RemoveItem()
-    {
-        
     }
 }

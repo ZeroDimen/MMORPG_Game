@@ -11,8 +11,9 @@ public class MariaPlayerController :PlayerController
     private Collider _attackCollider;
     private SwordAttack _swordAttack;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         if (photonView.IsMine)
         {
             playerName.text = PhotonNetwork.NickName;

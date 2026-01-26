@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +18,9 @@ public class CameraController : MonoBehaviour
     {
         _azimuthAngle = 0f;
         _polarAngle = 0f;
+        
     }
-
+    
     private void LateUpdate()
     {
         if (_target != null)
@@ -56,7 +58,7 @@ public class CameraController : MonoBehaviour
     {
         _lookVector = context.ReadValue<Vector2>();
     }
-
+    
     private Vector3 GetCameraPosition(float r, float polarAngle, float azimuthAngle)
     {
         float b = r * Mathf.Cos(polarAngle * Mathf.Deg2Rad);

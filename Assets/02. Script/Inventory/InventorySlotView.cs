@@ -17,6 +17,7 @@ public class InventorySlotView : MonoBehaviour
     [SerializeField] private Image frameImage; // 등급별 테두리
     [SerializeField] private TextMeshProUGUI amountText;
     [SerializeField] private TextMeshProUGUI itemName;
+    [SerializeField] private GameObject equipText;
 
     [Header("Settings")] [SerializeField] private Color[] gradeColors;
 
@@ -31,6 +32,7 @@ public class InventorySlotView : MonoBehaviour
         // 겹치기 가능한 아이템이고 1개보다 많을 때만 숫자 표시
         amountText.text = (item.IsStackable && item.Amount > 1) ? item.Amount.ToString() : "";
         itemName.text = item.Name;
+        equipText.SetActive(item.isEquip);
 
         // 3. 등급별 테두리 설정 (아이템 데이터에 Grade 정보가 있다고 가정)
         // if (item.Grade < gradeColors.Length)

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ItemPanel : MonoBehaviour
 {
+    public event Action OnEquipAction;
     public event Action OnConfirmAction;
     
     [SerializeField] private TextMeshProUGUI itemName;
@@ -14,14 +15,59 @@ public class ItemPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI amount;
     [SerializeField] private Image icon;
     [SerializeField] private Button confirmButton;
+    [SerializeField] private Button equipButton;
+    [SerializeField] private Button unEquipButton;
+    [SerializeField] private Button equipconfirmButton;
 
     private AsyncOperationHandle<Sprite> _iconHandle;
 
     public void ShowInfo(InstanceItem item)
     {
         gameObject.SetActive(true);
-        confirmButton.onClick.RemoveAllListeners();
-        confirmButton.onClick.AddListener(OnConfirmPanel);
+        if (item.Type == ItemType.Equipment)
+        {
+            if (!item.isEquip)
+            {
+                equipButton.gameObject.SetActive(true);
+                unEquipButton.gameObject.SetActive(false);
+                
+                equipButton.onClick.RemoveAllListeners();
+                equipButton.onClick.AddListener(() =>
+                {
+                    EquipmentPresenter.Instance.OnEquipment(item);
+                    OnEquipAction?.Invoke();
+                    OnConfirmPanel();
+                });
+            }
+            else
+            {
+                unEquipButton.gameObject.SetActive(true);
+                equipButton.gameObject.SetActive(false);
+                
+                unEquipButton.onClick.RemoveAllListeners();
+                unEquipButton.onClick.AddListener((() =>
+                {
+                    EquipmentPresenter.Instance.UnEquipment(item);
+                    OnEquipAction?.Invoke();
+                    OnConfirmPanel();
+                }));
+            }
+            
+            confirmButton.gameObject.SetActive(false);
+            equipconfirmButton.gameObject.SetActive(true);
+            equipconfirmButton.onClick.RemoveAllListeners();
+            equipconfirmButton.onClick.AddListener(OnConfirmPanel);
+        }
+        else
+        {
+            confirmButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(false);
+            equipconfirmButton.gameObject.SetActive(false);
+            unEquipButton.gameObject.SetActive(false);
+            
+            confirmButton.onClick.RemoveAllListeners();
+            confirmButton.onClick.AddListener(OnConfirmPanel);   
+        }
         
         itemName.text = item.Name;
         information.text = item.Information;
@@ -38,10 +84,10 @@ public class ItemPanel : MonoBehaviour
             icon.sprite = checkHandle.Convert<Sprite>().Result;
         else
         {
-            _iconHandle = item.IconReference.LoadAssetAsync<Sprite>();
+            _iconHandle = Addressables.LoadAssetAsync<Sprite>(item.IconReference);
             _iconHandle.Completed += (handle) =>
             {
-                if (handle.Status == AsyncOperationStatus.Succeeded)
+                if (handle.Status == AsyncOperationStatus.Succeeded && this != null)
                     icon.sprite = handle.Result;
             };
         }
@@ -49,8 +95,11 @@ public class ItemPanel : MonoBehaviour
 
     public void OnConfirmPanel()
     {
-        if(_iconHandle.IsValid())
+        if (_iconHandle.IsValid())
+        {
             Addressables.Release(_iconHandle);
+            _iconHandle = default;
+        }
 
         itemName.text = "";
         information.text = "";
