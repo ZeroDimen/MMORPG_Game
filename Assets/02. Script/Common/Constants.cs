@@ -14,6 +14,7 @@ public class Constants
     {
         Play,
         Interaction,
+        Alt,
     }
     // ----------------------------------------
     // Layer Mask

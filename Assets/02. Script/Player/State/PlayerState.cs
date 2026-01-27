@@ -43,10 +43,14 @@ public class PlayerState
     
     private void OnCursor(InputAction.CallbackContext context)
     {
-        GameManager.Instance.SetGameState(EGameState.Interaction);
+        if (GameManager.Instance.GameState == EGameState.Interaction)
+            return;
+        GameManager.Instance.SetGameState(EGameState.Alt);
     }
     private void OffCursor(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.GameState != EGameState.Alt)
+            return;
         GameManager.Instance.SetGameState(EGameState.Play);
     }
     
