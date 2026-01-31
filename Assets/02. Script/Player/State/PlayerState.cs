@@ -39,6 +39,7 @@ public class PlayerState
     protected void Emotion2(InputAction.CallbackContext context)
     {
         _playerController.SetState(EPlayerState.Emotion2);
+        GameManager.Instance.Spawner("Mutant");
     }
     
     private void OnCursor(InputAction.CallbackContext context)

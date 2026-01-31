@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static Constants;
 
 [RequireComponent(typeof(Animator))]
@@ -34,6 +35,12 @@ public class PlayerController : MonoBehaviourPun
     
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().name == "Intro")
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         // 컴포넌트 초기화
         _animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
