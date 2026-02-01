@@ -64,7 +64,7 @@ public class GameManager :  MonoBehaviourPun
 
     public void SetGameState(EGameState state)
     {
-        if (state == EGameState.Interaction)
+        if (state == EGameState.Interaction || state == EGameState.Alt)
         {
             Cursor.visible  = true;
             Cursor.lockState = CursorLockMode.None;

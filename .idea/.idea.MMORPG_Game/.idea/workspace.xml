@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/State/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/State/PlayerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Maria.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Maria.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +17,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/493b407efcb64dddad59f28bb0b831d3212400/0b/21e12c48/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CutScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CameraCut.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CutSceneCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,7 +52,7 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;VCam&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -147,6 +141,8 @@
       <workItem from="1769313379261" duration="21529000" />
       <workItem from="1769432078074" duration="1332000" />
       <workItem from="1769433457014" duration="3734000" />
+      <workItem from="1769509751960" duration="2132000" />
+      <workItem from="1769934949352" duration="6721000" />
     </task>
     <servers />
   </component>

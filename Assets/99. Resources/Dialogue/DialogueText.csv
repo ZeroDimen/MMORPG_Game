@@ -1,28 +1,29 @@
 ﻿GroupKey,Speaker,Context,EventType,EventParam
-Cheif_Talk_Give,마을 청년,어이 좋은 아침이야,,
+Cheif_Talk_Give,마을 청년,어이 좋은 아침이야,NpcCamera,1
 Cheif_Talk_Give,마을 청년,몸상태는 어때? 잠 좀 잤어?,,
 Cheif_Talk_Give,마을 청년,다른게 아니라 촌장이 너에게 볼일이 있다고 하더라고,,
 Cheif_Talk_Give,마을 청년,시간나면 촌장님한테 가봐,GiveQuest,
 ,,,,
-Chief_Talk_Complete,촌장,"허허, 자네가 그 모험가인가?",,
+Chief_Talk_Complete,촌장,허허 자네가 그 모험가인가?,NpcCamera,2
 Chief_Talk_Complete,촌장,우리 마을에 온 걸 환영하네.,,
 Chief_Talk_Complete,촌장,오늘은 다름이 아니라 자네가 어떤 사람인지 궁금해서 불러본거라네,,
 Chief_Talk_Complete,촌장,이것도 인연인데 우리마을이 자랑하는 갑옷을 하나 주겠네,,
 Chief_Talk_Complete,촌장,인벤토리에 넣어놨으니 나중에 확인해보게나,,
 Chief_Talk_Complete,촌장,그럼 느긋하게 쉬었다 가세,,
 ,,,,
-Boy_Talk,마을 청년,안녕!,,
+Boy_Talk,마을 청년,안녕!,NpcCamera,1
 Boy_Talk,마을 청년,우리 마을은 좀 어때?,,
 Boy_Talk,마을 청년,정말 평화롭고 좋은 마을 같지 않아?,,
 Boy_Talk,마을 청년,너도 그렇게 생각한다니 다행이야,,
 ,,,,
-Chief_Talk,촌장,요즘 날씨가 쌀쌀하구먼,,
+Chief_Talk,촌장,요즘 날씨가 쌀쌀하구먼,NpcCamera,2
 Chief_Talk,촌장,자네도 따뜻하게 입고 다니게나,,
 Chief_Talk,촌장,그나저나 요즘 마을 근처에 몬스터가 나와서 걱정이구먼,,
 Chief_Talk,촌장,자네도 밖에 나갈때는 조심하게나,,
 ,,,,
-Chief_Kill_Monster_Give,촌장,자네 혹시 괜찮다면 몬스터 좀 잡아주겠나?,,
-Chief_Kill_Monster_Give,촌장,역시 자네라면 식은죽 먹기겠지! 든든하구먼,GiveQuest,Main
+Chief_Kill_Monster_Give,촌장,자네 혹시 괜찮다면 몬스터 좀 잡아주겠나?,GiveQuest,Main
+Chief_Kill_Monster_Give,촌장,몬스터는 마을 외곽에 있다네,CutScene,100
+Chief_Kill_Monster_Give,촌장,역시 자네라면 식은죽 먹기겠지! 든든하구먼,,
 ,,,,
-Chief_Kill_Monster_Complete,마을 청년,오 벌써 해결한거야? 역시 대단한걸~,,
+Chief_Kill_Monster_Complete,마을 청년,오 벌써 해결한거야? 역시 대단한걸~,NpcCamera,1
 Chief_Kill_Monster_Complete,마을 청년,고마워! 다음에도 부탁할게!,,

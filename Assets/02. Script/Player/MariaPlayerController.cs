@@ -20,6 +20,10 @@ public class MariaPlayerController :PlayerController
         {
             playerName.text = PhotonNetwork.NickName;
             playerName.color = Color.green;
+            
+            GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
+            PlayerStatusView.Instance.player = this;
+            PlayerStatusView.Instance.UpdateStatusUI(Status);
         }
         else
         {
@@ -29,9 +33,8 @@ public class MariaPlayerController :PlayerController
         _attackCollider = attackObj.GetComponent<Collider>();
         _swordAttack = attackObj.GetComponent<SwordAttack>();
 
-        GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
-        PlayerStatusView.Instance.player = this;
-        // GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().LookAt = Maria_Head;
+        // GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
+        // PlayerStatusView.Instance.player = this;
     }
 
     public void EnableAttackCollider()

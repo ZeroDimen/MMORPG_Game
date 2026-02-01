@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4168067532700158702
+--- !u!1 &3914571542686318148
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5442612944995953363}
-  - component: {fileID: 2496718553013942027}
-  - component: {fileID: 3736622833840531889}
+  - component: {fileID: 8045729981393567870}
+  - component: {fileID: 1694416525021025264}
+  - component: {fileID: 940870979809078148}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -18,35 +18,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5442612944995953363
+--- !u!4 &8045729981393567870
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4168067532700158702}
+  m_GameObject: {fileID: 3914571542686318148}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.949, y: 2.36, z: 28.472}
+  m_LocalRotation: {x: -0.0001153362, y: -0.70033187, z: -0.0000049338405, w: 0.7138175}
+  m_LocalPosition: {x: 12.49, y: 1.23, z: -25.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2496718553013942027
+  m_Father: {fileID: 2743820482986467616}
+  m_LocalEulerAnglesHint: {x: -0.01, y: -88.907, z: 0.009}
+--- !u!114 &1694416525021025264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4168067532700158702}
+  m_GameObject: {fileID: 3914571542686318148}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 1
+    Enabled: 0
     m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
@@ -76,16 +76,54 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &3736622833840531889
+--- !u!114 &940870979809078148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4168067532700158702}
+  m_GameObject: {fileID: 3914571542686318148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cba8ac046b7a385479017c54e4390ff9, type: 3}
+  m_Script: {fileID: 11500000, guid: 762d04bdc98d3d549a8b6accd347b641, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CutScene
-  monsterCam: {fileID: 2496718553013942027}
+  m_EditorClassIdentifier: Assembly-CSharp::CutSceneCamera
+  id: 100
+  EveryThing:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  NPC:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!1 &7041663150458733912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2743820482986467616}
+  m_Layer: 0
+  m_Name: Cam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2743820482986467616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7041663150458733912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8045729981393567870}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

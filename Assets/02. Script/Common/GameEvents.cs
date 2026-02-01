@@ -20,4 +20,9 @@ public static class GameEvents
     public static Action<InstanceItem> OnItemUnEquipped;
     
     public static Action<PlayerStatus> OnStatusChanged;
+
+    public static Action<int> OnCameraChanged;
+    public static Action OnCurrentCameraChanged;
+
+    public static Action OnPlayerLevelUpEvent;
 }

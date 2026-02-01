@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviourPun
 
     [Header("Status")]
     [SerializeField]
-    protected EnemyStatus enemyStatus;
+    protected internal EnemyStatus enemyStatus;
     
     
     // AI 관련
