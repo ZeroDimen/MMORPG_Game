@@ -42,6 +42,7 @@ public class GameManager :  MonoBehaviourPun
     {
         Application.targetFrameRate = 120;
         yield return null;
+        AudioManager._instance.BgmPlay("Forest");
         Spawner("Maria");
     }
 
@@ -76,11 +77,13 @@ public class GameManager :  MonoBehaviourPun
         {
             Cursor.visible  = true;
             Cursor.lockState = CursorLockMode.None;
+            AudioManager._instance.BgmVolume(0.3f);
         }
         else if (state == EGameState.Play)
         {
             Cursor.visible  = false;
             Cursor.lockState = CursorLockMode.Locked;
+            AudioManager._instance.BgmVolume(1f);
         }
 
         GameState = state;
