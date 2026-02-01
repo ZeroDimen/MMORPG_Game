@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Camera/CutScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Camera/CutScene.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Dialogue/DialogueText.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Dialogue/DialogueText.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 0.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 1.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +142,7 @@
       <workItem from="1769432078074" duration="1332000" />
       <workItem from="1769433457014" duration="3734000" />
       <workItem from="1769509751960" duration="2132000" />
-      <workItem from="1769934949352" duration="5879000" />
+      <workItem from="1769934949352" duration="6721000" />
     </task>
     <servers />
   </component>
