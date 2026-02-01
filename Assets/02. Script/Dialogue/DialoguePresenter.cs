@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using WebSocketSharp;
 
 [System.Serializable]
 public class DialogueEntry
@@ -131,6 +132,14 @@ public class DialoguePresenter : MonoBehaviour
             case "GiveQuest":
                 bool isMain = (param == "Main");
                 view.ShowQuestButton(isMain);
+                break;
+            case "NpcCamera":
+                if (!param.IsNullOrEmpty())
+                    GameEvents.OnCameraChanged?.Invoke(int.Parse(param));
+                break;
+            case "CutScene":
+                if (!param.IsNullOrEmpty())
+                    GameEvents.OnCameraChanged?.Invoke(int.Parse(param));
                 break;
         }
     }

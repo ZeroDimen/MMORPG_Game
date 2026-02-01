@@ -22,13 +22,15 @@ MonoBehaviour:
   - teskDescription: "\uBAAC\uC2A4\uD130 3\uB9C8\uB9AC \uC0AC\uB0E5"
     questType: 2
     targetID: 0
+    taskID: 0
     targetAmount: 3
     currentAmount: 0
     questGiveTalkKey: Chief_Kill_Monster_Give
     questCompleteTalkKey: 
   - teskDescription: "\uB9C8\uC744 \uCCAD\uB144\uC5D0\uAC8C \uAC00\uC790"
     questType: 1
-    targetID: 0
+    targetID: 1
+    taskID: 0
     targetAmount: 1
     currentAmount: 0
     questGiveTalkKey: 
