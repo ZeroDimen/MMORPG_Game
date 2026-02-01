@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using static Constants;
 
 [RequireComponent(typeof(Animator))]
@@ -52,6 +53,11 @@ public class EnemyController : MonoBehaviourPun
 
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().name == "Intro")
+        {
+            Destroy(gameObject);
+            return;
+        }
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _rigidbody = GetComponent<Rigidbody>();

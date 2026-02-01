@@ -70,7 +70,7 @@ public class Constants
     public class SpawnZone
     {
         public Transform point;
-        public float radius;
+        public int radius;
     }
 
     [Serializable]

@@ -5,14 +5,18 @@ using static Constants;
 public class PlayerStateMove: PlayerState, ICharacterState
 {
     private float _moveSpeed;
+    private bool currentIsRunning;
     
     public PlayerStateMove(PlayerController playerController, Animator animator, PlayerInput playerInput) 
         : base(playerController, animator, playerInput) { }
 
     public void Enter()
     {
-        // Idle 애니메이션 실행
         _animator.SetBool(PlayerAniParamMove, true);
+        
+        AudioManager._instance.SfxPlay("Walk", true);
+        currentIsRunning = false;
+        
         
         // Player Input에 대한 액션 할당
         _playerInput.actions["Fire"].performed += Attack;
@@ -41,19 +45,40 @@ public class PlayerStateMove: PlayerState, ICharacterState
         {
             _moveSpeed += Time.deltaTime;
             _moveSpeed = Mathf.Clamp01(_moveSpeed);
+            wakingAudio(true);
         }
         else if (!isRun && _moveSpeed > 0f)
         {
             _moveSpeed -= Time.deltaTime * _playerController.BreakForce;
             _moveSpeed = Mathf.Clamp01(_moveSpeed);
+            wakingAudio(false);
         }
         _animator.SetFloat(PlayerAniParamMoveSpeed, _moveSpeed);
     }
 
+    private void wakingAudio(bool isRunning)
+    {
+        if (currentIsRunning != isRunning)
+        {
+            currentIsRunning = isRunning;
+            Debug.Log(currentIsRunning);
+            if (isRunning)
+            {
+                AudioManager._instance.SfxStop();
+                AudioManager._instance.SfxPlay("Run", true);
+            }
+            else
+            {
+                AudioManager._instance.SfxStop();
+                AudioManager._instance.SfxPlay("Walk", true);
+            }
+        }
+    }
+
     public void Exit()
     {
-        // Idle 애니메이션 중단
         _animator.SetBool(PlayerAniParamMove, false);
+        AudioManager._instance.SfxStop();
         // Player Input에 대한 액션 할당 해제
         _playerInput.actions["Fire"].performed -= Attack;
         _playerInput.actions["Jump"].performed -= Jump;
