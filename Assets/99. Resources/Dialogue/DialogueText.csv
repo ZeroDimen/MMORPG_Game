@@ -23,7 +23,7 @@ Chief_Talk,촌장,자네도 밖에 나갈때는 조심하게나,,
 ,,,,
 Chief_Kill_Monster_Give,촌장,자네 혹시 괜찮다면 몬스터 좀 잡아주겠나?,GiveQuest,Main
 Chief_Kill_Monster_Give,촌장,몬스터는 마을 외곽에 있다네,CutScene,100
+Chief_Kill_Monster_Give,촌장,요즘 몬스터 때문에 골치가 많이 아파서...,CreateMonster,
 Chief_Kill_Monster_Give,촌장,역시 자네라면 식은죽 먹기겠지! 든든하구먼,,
 ,,,,
 Chief_Kill_Monster_Complete,마을 청년,오 벌써 해결한거야? 역시 대단한걸~,NpcCamera,1
-Chief_Kill_Monster_Complete,마을 청년,고마워! 다음에도 부탁할게!,,

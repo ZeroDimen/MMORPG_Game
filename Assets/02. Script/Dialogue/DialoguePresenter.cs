@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using WebSocketSharp;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class DialogueEntry
@@ -141,6 +143,19 @@ public class DialoguePresenter : MonoBehaviour
                 if (!param.IsNullOrEmpty())
                     GameEvents.OnCameraChanged?.Invoke(int.Parse(param));
                 break;
+            case "CreateMonster":
+                StartCoroutine(SpawnMonster());
+                break;
+        }
+    }
+
+    IEnumerator SpawnMonster()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GameManager.Instance.Spawner("Mutant");
+            float rendomTime = Random.Range(0.2f, 1f);
+            yield return new WaitForSeconds(rendomTime);
         }
     }
 

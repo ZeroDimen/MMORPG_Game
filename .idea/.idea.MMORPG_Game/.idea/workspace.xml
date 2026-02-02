@@ -6,22 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Dialogue/DialogueText.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Dialogue/DialogueText.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +146,7 @@
       <workItem from="1769509751960" duration="2132000" />
       <workItem from="1769934949352" duration="6721000" />
       <workItem from="1770051066853" duration="4492000" />
-      <workItem from="1770055964004" duration="2065000" />
+      <workItem from="1770055964004" duration="2950000" />
     </task>
     <servers />
   </component>
