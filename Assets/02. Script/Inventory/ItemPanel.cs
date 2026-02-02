@@ -34,7 +34,7 @@ public class ItemPanel : MonoBehaviour
                 equipButton.onClick.RemoveAllListeners();
                 equipButton.onClick.AddListener(() =>
                 {
-                    EquipmentPresenter.Instance.OnEquipment(item);
+                    EquipmentPresenter.Instance.OnEquipment(item, false);
                     OnEquipAction?.Invoke();
                     OnConfirmPanel();
                 });

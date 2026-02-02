@@ -45,6 +45,7 @@ MonoBehaviour:
   - RPC_RequestLoadData
   - RPC_SaveOnMaster
   - SpawnB
+  - RPC_ReceiveLoadEmptyData
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

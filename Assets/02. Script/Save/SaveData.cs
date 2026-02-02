@@ -7,11 +7,13 @@ public class ItemSaveData
 {
     public int id;
     public int amount;
+    public bool isEquipment;
 
-    public ItemSaveData(int id, int amount)
+    public ItemSaveData(int id, int amount, bool isEquipment)
     {
         this.id = id;
         this.amount = amount;
+        this.isEquipment = isEquipment;
     }
 }
 
@@ -19,10 +21,17 @@ public class ItemSaveData
 public class CharacterSaveData
 {
     public string playerName;
-    public int level;
-    public int gold;
+    public int HP;
+    public int MAXHP;
+    public int LV;
+    public int MAXEXP;
+    public int EXP;
+    public int ATK;     // 공격력
+    public int DEF;     // 방어력
+    public int DEX;     // 이동속도
     public Vector3 pos;
     public List<ItemSaveData> inventoryItems = new List<ItemSaveData>();
+    public List<InstanceItem> equipmentItems = new List<InstanceItem>();
     public List<QuestSaveData> activeQuests = new List<QuestSaveData>();
     public List<int> completedQuestIDs = new List<int>();
 }

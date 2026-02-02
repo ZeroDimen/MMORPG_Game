@@ -1,3 +1,4 @@
+using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 
@@ -16,10 +17,16 @@ public class PlayerHPBarController : MonoBehaviourPun
             _canvas = GameManager.Instance.Canvas;
             _hpBar = Instantiate(hpBarPrefab,_canvas.transform).GetComponent<PlayerHpBar>();
             _playerController = photonView.GetComponent<PlayerController>();
-            
-            SetHp($"{_playerController.Status.HP} / {_playerController.Status.MAXHP}");
-            SetExp($"LV : {_playerController.Status.LV} | {_playerController.Status.EXP} / {_playerController.Status.MAXEXP}");
+
+            StartCoroutine(Init());
         }
+    }
+
+    IEnumerator Init()
+    {
+        yield return new WaitUntil((() => _playerController.Status != null));
+        SetHp($"{_playerController.Status.HP} / {_playerController.Status.MAXHP}");
+        SetExp($"LV : {_playerController.Status.LV} | {_playerController.Status.EXP} / {_playerController.Status.MAXEXP}");
     }
     
     public void SetHp(float hp)

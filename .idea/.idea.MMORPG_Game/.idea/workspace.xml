@@ -6,6 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/ItemPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/MariaPlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +68,7 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;VCam&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Save&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -95,10 +111,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4376">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="4376" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -143,6 +159,8 @@
       <workItem from="1769433457014" duration="3734000" />
       <workItem from="1769509751960" duration="2132000" />
       <workItem from="1769934949352" duration="6721000" />
+      <workItem from="1770051066853" duration="4492000" />
+      <workItem from="1770055964004" duration="2065000" />
     </task>
     <servers />
   </component>

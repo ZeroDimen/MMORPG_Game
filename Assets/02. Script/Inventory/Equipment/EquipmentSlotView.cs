@@ -41,7 +41,7 @@ public class EquipmentSlotView : MonoBehaviour
             {
                 // 이 핸들이 현재 클래스의 최신 핸들(_iconHandle)과 일치할 때만 이미지를 교체
                 // (로딩 중에 다른 아이템으로 데이터가 바뀌었을 경우를 대비)
-                if (this != null && gameObject.activeInHierarchy && _iconHandle.Equals(h))
+                if (this != null && iconImage != null && _iconHandle.Equals(h))
                 {
                     iconImage.sprite = h.Result;
                 }

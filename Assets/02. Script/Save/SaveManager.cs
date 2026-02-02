@@ -6,8 +6,8 @@ public class SaveManager : MonoBehaviourPunCallbacks
 {
     public static SaveManager Instance { get; private set; }
     private InventoryModel _inventoryModel;
-    
-    // [SerializeField] private SimplePlayer simplePlayer;
+
+    private PlayerController _player;
     
     private void Awake()
     {
@@ -34,6 +34,18 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 1. 저장할 데이터 바구니 생성 및 정보 수집
         CharacterSaveData data = new CharacterSaveData();
         data.playerName = PhotonNetwork.LocalPlayer.NickName;
+
+        if (_player != null)
+        {
+            data.HP = _player.Status.HP;
+            data.MAXHP = _player.Status.MAXHP;
+            data.LV = _player.Status.LV;
+            data.MAXEXP = _player.Status.MAXEXP;
+            data.EXP = _player.Status.EXP;
+            data.ATK = _player.Status.ATK;
+            data.DEF = _player.Status.DEF;
+            data.DEX = _player.Status.DEX;
+        }
         
         if (_inventoryModel != null)
             data.inventoryItems = _inventoryModel.GetSaveData();
@@ -67,10 +79,11 @@ public class SaveManager : MonoBehaviourPunCallbacks
     #region Load Logic (Master -> Client)
     
     // [클라이언트가 호출] 게임 시작 시 혹은 복구 시 방장에게 데이터를 달라고 요청함
-    public void LoadGameFromMaster()
+    public void LoadGameFromMaster(PlayerController player)
     {
         if (!PhotonNetwork.InRoom) return;
 
+        _player = player;
         photonView.RPC("RPC_RequestLoadData", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.NickName);
     }
 
@@ -88,8 +101,17 @@ public class SaveManager : MonoBehaviourPunCallbacks
         }
         else
         {
+            photonView.RPC("RPC_ReceiveLoadEmptyData", info.Sender, playerName);
             Debug.LogWarning($"[Master] {playerName}의 저장 파일을 찾을 수 없음.");
         }
+    }
+
+    [PunRPC]
+    private void RPC_ReceiveLoadEmptyData(string targetName)
+    {
+        if (PhotonNetwork.LocalPlayer.NickName != targetName) return;
+        _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 50, 10, 10);
+        Debug.Log("Working");
     }
 
     [PunRPC]
@@ -104,8 +126,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 2. 실제 게임 시스템에 데이터 적용 (기존 LoadGame의 역할)
         if (data != null)
         {
-            // 예: 플레이어 위치 복구
-            // simplePlayer.transform.position = data.pos;
+            _player.Status = new PlayerStatus(data.HP, data.MAXHP, data.LV, data.MAXEXP,
+                data.EXP, data.ATK, data.DEF, data.DEX);
+            PlayerStatusView.Instance.UpdateStatusUI(_player.Status);
             
             // 인벤토리 복구
             if (_inventoryModel != null)

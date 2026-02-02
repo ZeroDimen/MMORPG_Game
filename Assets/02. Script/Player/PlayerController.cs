@@ -11,7 +11,7 @@ using static Constants;
 public class PlayerController : MonoBehaviourPun
 {
     [SerializeField] private Transform headTransform;
-    public PlayerStatus Status { get; private set; }
+    public PlayerStatus Status;
     
     [Header("이동")] 
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
@@ -81,7 +81,8 @@ public class PlayerController : MonoBehaviourPun
     protected virtual void Start()
     {
         // Status
-        Status = new PlayerStatus(100, 100, 100, 1, 10, 0, 50, 10, 10);
+        // Status = new PlayerStatus(100, 100, 1, 10, 0, 50, 10, 10);
+        SaveManager.Instance.LoadGameFromMaster(this);
     }
 
     private void OnEnable()

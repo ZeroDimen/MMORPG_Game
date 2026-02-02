@@ -23,7 +23,7 @@ public class MariaPlayerController :PlayerController
             
             GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
             PlayerStatusView.Instance.player = this;
-            PlayerStatusView.Instance.UpdateStatusUI(Status);
+            StartCoroutine(PlayerStatusView.Instance.UpdateStatusUIRoutine());
         }
         else
         {

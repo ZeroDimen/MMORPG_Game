@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
+[Serializable]
 public enum ItemType
 {
     None, 
@@ -13,6 +14,7 @@ public enum ItemType
     Mount
 }
 
+[Serializable]
 public enum SubItemType
 {
     None,
@@ -23,12 +25,14 @@ public enum SubItemType
     CompanionPet, Mount, MountEquipment                     // Mount
 }
 
+[Serializable]
 public enum DetailItemType
 {
     None,
     Weapon, Earring, Necklace, Ring, Bracelet, Hat, Top, Gloves, Bottom, Shoes
 }
 
+[Serializable]
 public enum StatType
 {
     None,
