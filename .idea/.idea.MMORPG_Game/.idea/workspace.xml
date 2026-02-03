@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Dialogue/DialogueText.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Dialogue/DialogueText.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +96,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4376">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4376" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -146,7 +145,8 @@
       <workItem from="1769509751960" duration="2132000" />
       <workItem from="1769934949352" duration="6721000" />
       <workItem from="1770051066853" duration="4492000" />
-      <workItem from="1770055964004" duration="2950000" />
+      <workItem from="1770055964004" duration="3186000" />
+      <workItem from="1770102215937" duration="344000" />
     </task>
     <servers />
   </component>

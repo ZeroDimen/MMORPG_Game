@@ -16,8 +16,6 @@ public class CameraManager : MonoBehaviour
 
     private void CameraChange(int id)
     {
-        Debug.Log($"카메라 실행 {id}");
-
         currentCamID = id;
         var nextCam = camList.Find(cam => cam.id == id);
         nextCam.OnCameraAction?.Invoke();
