@@ -6,14 +6,21 @@ using UnityEngine;
 public class MutantAttack : MonoBehaviour
 {
     public int damage = 1;
+    private PhotonView enemyPV;
 
+    private void Start()
+    {
+        enemyPV = gameObject.transform.parent.GetComponent<PhotonView>();
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
+        if (!enemyPV.IsMine) return;
         var playerController = other.GetComponent<PlayerController>();
-        
         if (playerController)
         {
-            playerController.SetHit(damage, -transform.forward);
+            PhotonView playerView = playerController.photonView;
+            GameManager.Instance.HitPlayer(playerView, damage);
         }
     }
 }

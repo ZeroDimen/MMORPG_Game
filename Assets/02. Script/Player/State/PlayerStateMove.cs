@@ -61,7 +61,6 @@ public class PlayerStateMove: PlayerState, ICharacterState
         if (currentIsRunning != isRunning)
         {
             currentIsRunning = isRunning;
-            Debug.Log(currentIsRunning);
             if (isRunning)
             {
                 AudioManager._instance.SfxStop();

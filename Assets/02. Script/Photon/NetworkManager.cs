@@ -15,7 +15,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] private Button nextButton;
     [SerializeField] private Button serverButton;
     [SerializeField] private Image serverImage;
-    private bool isConnect = false;
     
     private void Awake()
     {
@@ -38,22 +37,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void ConnectRoom() 
     {
-        isConnect = true;
-        PhotonNetwork.NickName = nickNameField.text;
-        PhotonNetwork.JoinRoom(roomName);
-        Debug.Log("JoinRoom");
+        if (nickNameField.text != "")
+        {
+            PhotonNetwork.NickName = nickNameField.text;
+            PhotonNetwork.JoinRoom(roomName);
+            Debug.Log("JoinRoom");
+        }
     }
 
     private void CreateRoom() // 방(서버)생성을 요청 하는 함수
     {
-        isConnect = false;
+        PhotonNetwork.NickName = "ServerClient";
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = 10 });
     }
     public override void OnConnectedToMaster() // Photon Master Server 접속에 성공했을 경우 호출 되는 함수
     {
         Debug.Log("Master Server 접속");
         PhotonNetwork.JoinLobby(); // 방(서버)들의 목록을 관리하기 위해 로비에 접속하는 함수
-        nextButton.interactable = true;
         serverButton.interactable = true;
     }
 
@@ -69,6 +69,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             if (room.Name ==  roomName)
             {
                 serverImage.color = Color.green;
+                nextButton.interactable = true;
+                serverButton.interactable = false;
             }
         }
     }
@@ -88,11 +90,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public override void OnJoinedRoom() // 방(서버) 접속 성공시 호출되는 함수
     {
-        if (isConnect)
-        {
-            PhotonNetwork.LoadLevel("Main");
-            Debug.Log("Room 접속 성공 및 씬 전환");
-        }
+        PhotonNetwork.LoadLevel("Main");
+        Debug.Log("Room 접속 성공 및 씬 전환");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message) // 방(서버) 접속 실패시 호출되는 함수

@@ -2,21 +2,7 @@ using UnityEngine;
 
 public class PlayerStatus
 {
-    private int _hp;
-    public int HP
-    {
-        get => _hp;
-        set
-        {
-            _hp += value;
-            if (_hp <= 0)
-            {
-                // TODO : 죽는 로직
-                Debug.Log("죽었습니다.");
-            }
-        }
-    }
-
+    public int HP;
     public int MAXHP;
     public int MP;
     public int LV;
@@ -28,7 +14,7 @@ public class PlayerStatus
 
     public PlayerStatus(int hp, int maxhp, int mp, int lv, int maxexp, int exp, int atk, int def, int dex)
     {
-        _hp = hp;
+        HP = hp;
         MAXHP = maxhp;
         MP = mp;
 
