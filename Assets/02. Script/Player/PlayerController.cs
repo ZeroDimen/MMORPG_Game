@@ -72,18 +72,16 @@ public class PlayerController : MonoBehaviourPun
         {
             // chatting 상호작용
             _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
+            
+            // GameManager에서 LocalPlayer → PlayerController 접근할 수 있도록 설정
+            PhotonNetwork.LocalPlayer.TagObject = this;
+            
         }
         SaveManager.Instance.LoadGameFromMaster(this);
     }
 
     private void OnEnable()
     {
-        // GameManager에서 LocalPlayer → PlayerController 접근할 수 있도록 설정
-        if (photonView.IsMine)
-        {
-            PhotonNetwork.LocalPlayer.TagObject = this;
-        }
-        
         // 상태 초기화
         State = EPlayerState.None;
         

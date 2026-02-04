@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Photon.Pun;
+using Unity.Cinemachine;
 using UnityEngine.UI;
 using static Constants;
 
@@ -12,6 +13,10 @@ public class GameManager :  MonoBehaviourPun
     [SerializeField] private GameObject chattingInputField;
     [SerializeField] private GameObject playerCam;
 
+    private CinemachineCamera cinemachineCamera;
+    private CinemachineOrbitalFollow cinemachineOrbitalFollow;
+    private CinemachineRotationComposer  cinemachineRotationComposer;
+    
     public Canvas Canvas => GetCanvas();
     
     public EGameState GameState { get; private set; }
@@ -42,10 +47,15 @@ public class GameManager :  MonoBehaviourPun
     {
         Application.targetFrameRate = 120;
         yield return null;
+        
+        cinemachineCamera = playerCam.GetComponent<CinemachineCamera>();
+        cinemachineOrbitalFollow = playerCam.GetComponent<CinemachineOrbitalFollow>();
+        cinemachineRotationComposer = playerCam.GetComponent<CinemachineRotationComposer>();
+        
         AudioManager._instance.BgmPlay("Forest");
         if (PhotonNetwork.IsMasterClient)
         {
-            playerCam.SetActive(false);
+            cinemachineCamera.enabled = false;
             yield break;
         }
         Set_Spawner("Maria");
@@ -130,17 +140,20 @@ public class GameManager :  MonoBehaviourPun
         {
             Cursor.visible  = true;
             Cursor.lockState = CursorLockMode.None;
+            cinemachineOrbitalFollow.enabled = false;
+            cinemachineRotationComposer.enabled = false;
             AudioManager._instance.BgmVolume(0.3f);
         }
         else if (state == EGameState.Play)
         {
             Cursor.visible  = false;
             Cursor.lockState = CursorLockMode.Locked;
+            cinemachineOrbitalFollow.enabled = true;
+            cinemachineRotationComposer.enabled = true;
             AudioManager._instance.BgmVolume(1f);
         }
 
         GameState = state;
-        
         if (PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
         {
             pc.SetPlayerInputEnabled(state == EGameState.Play);
