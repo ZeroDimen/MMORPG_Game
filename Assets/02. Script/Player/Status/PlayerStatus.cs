@@ -4,7 +4,6 @@ public class PlayerStatus
 {
     public int HP;
     public int MAXHP;
-    public int MP;
     public int LV;
     public int MAXEXP;
     public int EXP;
@@ -12,11 +11,10 @@ public class PlayerStatus
     public int DEF;     // 방어력
     public int DEX;     // 이동속도
 
-    public PlayerStatus(int hp, int maxhp, int mp, int lv, int maxexp, int exp, int atk, int def, int dex)
+    public PlayerStatus(int hp, int maxhp, int lv, int maxexp, int exp, int atk, int def, int dex)
     {
         HP = hp;
         MAXHP = maxhp;
-        MP = mp;
 
         LV = lv;
         MAXEXP = maxexp;
@@ -38,9 +36,6 @@ public class PlayerStatus
             {
                 case StatType.HP :
                     HP += status.value;
-                    break;
-                case StatType.MP :
-                    MP += status.value;
                     break;
                 case StatType.ATK :
                     ATK += status.value;
@@ -64,9 +59,6 @@ public class PlayerStatus
             {
                 case StatType.HP :
                     HP -= status.value;
-                    break;
-                case StatType.MP :
-                    MP -= status.value;
                     break;
                 case StatType.ATK :
                     ATK -= status.value;

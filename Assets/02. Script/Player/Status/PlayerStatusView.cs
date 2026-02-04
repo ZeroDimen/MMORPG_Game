@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -24,8 +25,14 @@ public class PlayerStatusView : MonoBehaviour
 
     private void OnEnable()
     {
-        if(player != null)
-            UpdateStatusUI(player.Status);
+        if (player != null)
+            StartCoroutine(UpdateStatusUIRoutine());
+    }
+
+    public IEnumerator UpdateStatusUIRoutine()
+    {
+        yield return new WaitUntil((() => player.Status != null));
+        UpdateStatusUI(player.Status);
     }
 
     public void UpdateStatusUI(PlayerStatus status)

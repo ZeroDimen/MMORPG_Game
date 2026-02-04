@@ -1,17 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78e47f972f92e6b4490493a69f76881d, type: 3}
-  m_Name: QuestDatabase
-  m_EditorClassIdentifier: Assembly-CSharp::QuestDatabase
-  allQuests:
-  - {fileID: 11400000, guid: 3c9f2589ef684f747adf7b03191ce332, type: 2}
-  - {fileID: 11400000, guid: b7cd9c684f5fa3d45bbee986bf30ccec, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:528a630c9ff01c400b561bcc97d7ba03581268278e6cb85923846e05928d459c
+size 589

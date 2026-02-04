@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -9,7 +9,8 @@ using static Constants;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviourPun
 {
-    public PlayerStatus Status { get; private set; }
+    [SerializeField] private Transform headTransform;
+    public PlayerStatus Status;
     
     [Header("이동")] 
     [SerializeField] [Range(1, 5)] private float breakForce = 1f;
@@ -68,13 +69,13 @@ public class PlayerController : MonoBehaviourPun
     protected virtual void Start()
     {
         // Status
-        Status = new PlayerStatus(100, 100, 100, 1, 10, 0, 50, 10, 10);
         
         if (photonView.IsMine)
         {
             // chatting 상호작용
             _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
         }
+        SaveManager.Instance.LoadGameFromMaster(this);
     }
 
     private void OnEnable()

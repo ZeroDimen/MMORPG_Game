@@ -1,18 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!1045 &1
-EditorBuildSettings:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/01. Scenes/Intro.unity
-    guid: d638491ecf9a82547b106e14c7c8457c
-  - enabled: 1
-    path: Assets/01. Scenes/Main.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 15a8ee02d17855347b28cfebd13fd9e8, type: 2}
-    com.unity.input.settings: {fileID: 11400000, guid: 6ac2c99e3a15b04489b1aa43beb1fc29, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_UseUCBPForAssetBundles: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:fb475eef74714b3f9557e4d720a3e8b70ff0b05b217e0cd458042e1c08b7681c
+size 713

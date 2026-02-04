@@ -107,7 +107,7 @@ public class InventoryModel
         foreach (var item in _instanceItems)
         {
             // 아이템의 ID와 수량만 저장용 클래스에 담습니다.
-            saveDataList.Add(new ItemSaveData(item.ID, item.Amount));
+            saveDataList.Add(new ItemSaveData(item.ID, item.Amount, item.isEquip));
         }
         return saveDataList;
     }
@@ -124,18 +124,24 @@ public class InventoryModel
             if (origin != null)
             {
                 // 원본 정보를 바탕으로 인스턴스 생성 및 수량 설정
-                _instanceItems.Add(new InstanceItem(
-                    origin.id, 
-                    origin.itemName, 
-                    origin.Information, 
-                    save.amount, 
-                    origin.type, 
-                    origin.subType, 
+                var item = new InstanceItem(
+                    origin.id,
+                    origin.itemName,
+                    origin.Information,
+                    save.amount,
+                    origin.type,
+                    origin.subType,
                     origin.detailType,
-                    origin.isStackable, 
+                    origin.isStackable,
                     origin.iconReference,
-                    origin.statBonusList
-                ));
+                    origin.statBonusList);
+                
+                _instanceItems.Add(item);
+
+                if (save.isEquipment)
+                {
+                    EquipmentPresenter.Instance.OnEquipment(item, true);
+                }
             }
         }
 
