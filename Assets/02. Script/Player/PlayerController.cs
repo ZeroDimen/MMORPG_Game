@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using static Constants;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviourPun
 {
-    [SerializeField] private Transform headTransform;
     public PlayerStatus Status { get; private set; }
     
     [Header("이동")] 
@@ -35,12 +33,6 @@ public class PlayerController : MonoBehaviourPun
     
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "Intro")
-        {
-            Destroy(gameObject);
-            return;
-        }
-        
         // 컴포넌트 초기화
         _animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
@@ -68,12 +60,7 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Emotion1, playerStateEmotion1 },
             { EPlayerState.Emotion2, playerStateEmotion2 },
         };
-
-        if (photonView.IsMine)
-        {
-            // chatting 상호작용
-            _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
-        }
+        
         _playerHpBarController = GetComponent<PlayerHPBarController>();
         GameManager.Instance.SetGameState(EGameState.Play);
     }
@@ -82,6 +69,12 @@ public class PlayerController : MonoBehaviourPun
     {
         // Status
         Status = new PlayerStatus(100, 100, 100, 1, 10, 0, 50, 10, 10);
+        
+        if (photonView.IsMine)
+        {
+            // chatting 상호작용
+            _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
+        }
     }
 
     private void OnEnable()
@@ -137,7 +130,7 @@ public class PlayerController : MonoBehaviourPun
     }
     
     
-    public void SetHit(int damage, Vector3 attackDirection)
+    public void SetHit(int damage)
     {
         if (!photonView.IsMine) return;
         
@@ -162,6 +155,7 @@ public class PlayerController : MonoBehaviourPun
 
     public void SetExp(int amount)
     {
+        if (!photonView.IsMine) return;
         Status.EXP += amount;
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
@@ -180,7 +174,6 @@ public class PlayerController : MonoBehaviourPun
         }
         
     }
-
     
     // 점프
     public void Jump()

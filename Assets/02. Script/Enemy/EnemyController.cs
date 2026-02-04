@@ -53,11 +53,6 @@ public class EnemyController : MonoBehaviourPun
 
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "Intro")
-        {
-            Destroy(gameObject);
-            return;
-        }
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -112,7 +107,7 @@ public class EnemyController : MonoBehaviourPun
         if (State != EEnemyState.None) _states[State].Enter();
     }
     
-    public int SetHit(int damage, Vector3 attackDirection)
+    public int SetHit(int damage)
     {
         if (State == EEnemyState.Dead) return 0;
         if (_enemyHpBarController)
@@ -129,7 +124,7 @@ public class EnemyController : MonoBehaviourPun
                 _rigidbody.isKinematic = false;
                 _rigidbody.useGravity = true;
                 
-                var direction = attackDirection;
+                var direction = transform.forward;
                 direction.y = 1f;
                 direction = direction.normalized;
                 var force = direction * 3f;
@@ -146,11 +141,13 @@ public class EnemyController : MonoBehaviourPun
             {
                 // 피격 처리
                 SetState(EEnemyState.Hit);
-                StartCoroutine(Knockback(attackDirection));
+                StartCoroutine(Knockback(transform.forward));
             }
         }
         return 0;
     }
+
+   
     private IEnumerator DisableAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);

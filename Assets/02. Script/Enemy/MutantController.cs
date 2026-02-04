@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class MutantController : EnemyController
@@ -12,8 +13,7 @@ public class MutantController : EnemyController
         _attackCollider = attackObj.GetComponent<Collider>();
         _mutantAttack = attackObj.GetComponent<MutantAttack>();
     }
-
-
+    
     public void EnableAttackCollider()
     {
         if (_attackCollider != null)

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Photon.Pun;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Constants;
 
@@ -11,6 +10,7 @@ public class GameManager :  MonoBehaviourPun
     private bool _isCursorLock;
     [SerializeField] private SpawnZone[] spawnPoints;
     [SerializeField] private GameObject chattingInputField;
+    [SerializeField] private GameObject playerCam;
 
     public Canvas Canvas => GetCanvas();
     
@@ -43,17 +43,70 @@ public class GameManager :  MonoBehaviourPun
         Application.targetFrameRate = 120;
         yield return null;
         AudioManager._instance.BgmPlay("Forest");
-        Spawner("Maria");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            playerCam.SetActive(false);
+            yield break;
+        }
+        Set_Spawner("Maria");
     }
 
-    public void Spawner(string prefabName)
+    public void Set_Spawner(string prefabName)
+    {
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        string Name = PhotonNetwork.LocalPlayer.NickName;
+        photonView.RPC("RPC_Spawner", RpcTarget.MasterClient,prefabName ,Name, actorNumber);
+    }
+
+    public void HitEnemy(PhotonView enemyView,PhotonView playerView, int damage)
+    {
+        photonView.RPC("RPC_RequestEnemyDamage", RpcTarget.All,enemyView.ViewID, playerView.ViewID, damage);
+    }
+
+    public void HitPlayer(PhotonView playerView, int damage)
+    {
+        photonView.RPC("RPC_RequestPlayerDamage", RpcTarget.All,playerView.ViewID, damage);
+    }
+
+   
+    [PunRPC]
+    private void RPC_RequestPlayerDamage(int playerView, int damage)
+    {
+        PhotonView playerPV = PhotonView.Find(playerView);
+        PlayerController playerController = playerPV.GetComponent<PlayerController>();
+        playerController.SetHit(damage);
+    }
+    
+    [PunRPC]
+    private void RPC_RequestEnemyDamage(int enemyView, int playerView,  int damage)
+    {
+        PhotonView enemyPV = PhotonView.Find(enemyView);
+        
+        EnemyController enemyController = enemyPV.GetComponent<EnemyController>();
+        int exp = enemyController.SetHit(damage);
+
+        if (exp > 0)
+        {
+            PhotonView playerPV = PhotonView.Find(playerView);
+            PlayerController playerController = playerPV.GetComponent<PlayerController>();
+            playerController.SetExp(exp);
+        }
+    }
+    [PunRPC]
+    private void RPC_Spawner(string prefabName, string objName, int actorNumber)
     {
         Vector3 spownPos;
         switch (prefabName)
         {
             case "Maria":
+                GameObject obj = null;
+                
                 spownPos = GetRandomPosition(spawnPoints[0].point, spawnPoints[0].radius);
-                PhotonNetwork.Instantiate("Maria", spownPos , Quaternion.identity);
+                PhotonNetwork.NickName = objName;
+                obj = PhotonNetwork.Instantiate("Maria", spownPos , Quaternion.identity);
+                
+                PhotonView pv =  obj.GetComponent<PhotonView>();
+                pv.TransferOwnership(actorNumber);
                 break;
             case "Mutant":
                 spownPos = GetRandomPosition(spawnPoints[1].point, spawnPoints[1].radius);

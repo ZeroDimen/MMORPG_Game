@@ -57,6 +57,7 @@ public class ChatManager : MonoBehaviourPunCallbacks
         // 현재 접속 중인 모든 플레이어 닉네임을 리스트에 추가
         foreach (Player player in PhotonNetwork.PlayerList)
         {
+            if (player.IsMasterClient) continue; // 마스터 클라이언트 제외
             chatters += player.NickName + "\n";
         }
 

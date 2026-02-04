@@ -5,12 +5,10 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     public int Damage = 1;
-    private PlayerController playerController;
     private PhotonView playerPV;
 
     private void Start()
     {
-        playerController = gameObject.transform.parent.GetComponent<PlayerController>();
         playerPV = gameObject.transform.parent.GetComponent<PhotonView>();
     }
 
@@ -20,8 +18,8 @@ public class SwordAttack : MonoBehaviour
         var enemyController = other.GetComponent<EnemyController>();
         if (enemyController)
         {
-            int exp = enemyController.SetHit(Damage, transform.forward);
-            playerController.SetExp(exp);
+            PhotonView enemyView = enemyController.photonView;
+            GameManager.Instance.HitEnemy(enemyView,playerPV, Damage);
         }
     }
 }
