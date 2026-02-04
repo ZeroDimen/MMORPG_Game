@@ -153,7 +153,7 @@ public class DialoguePresenter : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            GameManager.Instance.Spawner("Mutant");
+            GameManager.Instance.Set_Spawner("Mutant");
             float rendomTime = Random.Range(0.2f, 1f);
             yield return new WaitForSeconds(rendomTime);
         }
