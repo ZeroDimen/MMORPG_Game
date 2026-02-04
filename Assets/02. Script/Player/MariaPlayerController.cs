@@ -34,9 +34,6 @@ public class MariaPlayerController :PlayerController
         }
         _attackCollider = attackObj.GetComponent<Collider>();
         _swordAttack = attackObj.GetComponent<SwordAttack>();
-        
-        // GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
-        // PlayerStatusView.Instance.player = this;
     }
 
     public void EnableAttackCollider()

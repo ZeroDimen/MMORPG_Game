@@ -765,6 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be615ef167df4238bd469aa15f2a41ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MariaPlayerController
+  headTransform: {fileID: 0}
   breakForce: 1
   jumpHeight: 2
   State: 0

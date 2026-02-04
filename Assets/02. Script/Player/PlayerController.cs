@@ -68,8 +68,6 @@ public class PlayerController : MonoBehaviourPun
 
     protected virtual void Start()
     {
-        // Status
-        
         if (photonView.IsMine)
         {
             // chatting 상호작용
