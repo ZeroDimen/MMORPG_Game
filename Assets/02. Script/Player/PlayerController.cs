@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] private float jumpHeight = 2f;
     
     public float BreakForce => breakForce;
+
+    [SerializeField] private AudioClip[] _audioClips;
+    public AudioSource Audio { get; private set; }
     
     // 컴포넌트 캐싱
     private Animator _animator;
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviourPun
         _animator = GetComponent<Animator>();
         _playerInput = GetComponent<PlayerInput>();
         _characterController = GetComponent<CharacterController>();
+        Audio = GetComponent<AudioSource>();
         
         
         // 상태 객체 초기화
@@ -196,5 +200,57 @@ public class PlayerController : MonoBehaviourPun
         _velocityY += Gravity * Time.deltaTime;
         movePosition.y = _velocityY * Time.deltaTime;
         _characterController.Move(movePosition);
+    }
+
+    [PunRPC]
+    public void GiveSfxPlay(string clipName, bool islong = false)
+    {
+        SfxPlay(clipName, islong);
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(ReceiveSfxPlay), RpcTarget.Others, clipName, id, islong);
+    }
+
+    [PunRPC]
+    public void ReceiveSfxPlay(string clipName, int viewId, bool islong)
+    {
+        if(photonView.ViewID == viewId)
+            SfxPlay(clipName, islong);
+    }
+    
+    public void SfxPlay(string clipName, bool islong) // 효과음을 출력하는 함수
+    {
+        foreach (var clip in _audioClips)
+        {
+            if (clip.name == clipName)
+            {
+                if (!islong)
+                {
+                    Audio.PlayOneShot(clip);
+                    return;
+                }
+                else
+                {
+                    Audio.clip = clip;
+                    Audio.Play();
+                    return;
+                }
+            }
+        }
+        Debug.Log($"{clipName} not found");
+    }
+
+    [PunRPC]
+    public void GiveSfxStop()
+    {
+        Audio.Stop();
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(RecieveSfxStop), RpcTarget.Others, id);
+    }
+
+    [PunRPC]
+    public void RecieveSfxStop(int viewID)
+    {
+        if(photonView.ViewID == viewID)
+            Audio.Stop();
     }
 }
