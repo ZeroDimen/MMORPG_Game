@@ -1,5 +1,6 @@
 using System.IO;
 using Photon.Pun;
+using UnityEditor;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviourPunCallbacks
@@ -23,6 +24,15 @@ public class SaveManager : MonoBehaviourPunCallbacks
     private string GetSavePath(string playerName)
     {
         return Path.Combine(Application.persistentDataPath, $"{playerName}_save.json");
+    }
+
+    private void Quit()
+    {
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
     
     #region Save Logic (Client -> Master)
@@ -62,6 +72,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 3. 방장(MasterClient)에게만 RPC 전송
         photonView.RPC("RPC_SaveOnMaster", RpcTarget.MasterClient, data.playerName, json);
         Debug.Log($"[Client] 방장에게 저장 요청을 보냈습니다: {data.playerName}");
+        Quit();
     }
 
     [PunRPC]
