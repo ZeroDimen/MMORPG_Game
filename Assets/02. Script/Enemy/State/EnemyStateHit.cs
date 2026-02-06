@@ -8,6 +8,7 @@ public class EnemyStateHit: EnemyState, ICharacterState
 
     public void Enter()
     {
+        _enemyController.GiveSfxPlay("EnemyHit");
         _navMeshAgent.isStopped = true;
         _animator.SetTrigger(EnemyAniParamHit);
     }

@@ -14,7 +14,8 @@ public class PlayerStateMove: PlayerState, ICharacterState
     {
         _animator.SetBool(PlayerAniParamMove, true);
         
-        AudioManager._instance.SfxPlay("Walk", true);
+        // AudioManager._instance.SfxPlay("Walk", true);
+        _playerController.GiveSfxPlay("Walk", true);
         currentIsRunning = false;
         
         
@@ -63,13 +64,17 @@ public class PlayerStateMove: PlayerState, ICharacterState
             currentIsRunning = isRunning;
             if (isRunning)
             {
-                AudioManager._instance.SfxStop();
-                AudioManager._instance.SfxPlay("Run", true);
+                // AudioManager._instance.SfxStop();
+                // AudioManager._instance.SfxPlay("Run", true);
+                _playerController.GiveSfxStop();
+                _playerController.GiveSfxPlay("Run", true);
             }
             else
             {
-                AudioManager._instance.SfxStop();
-                AudioManager._instance.SfxPlay("Walk", true);
+                // AudioManager._instance.SfxStop();
+                // AudioManager._instance.SfxPlay("Walk", true);
+                _playerController.GiveSfxStop();
+                _playerController.GiveSfxPlay("Walk", true);
             }
         }
     }
@@ -78,6 +83,7 @@ public class PlayerStateMove: PlayerState, ICharacterState
     {
         _animator.SetBool(PlayerAniParamMove, false);
         AudioManager._instance.SfxStop();
+        _playerController.GiveSfxStop();
         // Player Input에 대한 액션 할당 해제
         _playerInput.actions["Fire"].performed -= Attack;
         _playerInput.actions["Jump"].performed -= Jump;

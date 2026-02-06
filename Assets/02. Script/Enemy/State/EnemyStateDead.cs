@@ -9,6 +9,7 @@ public class EnemyStateDead : EnemyState, ICharacterState
 
     public void Enter()
     {
+        _enemyController.GiveSfxPlay("EnemyDead");
         _navMeshAgent.isStopped = true;
         _navMeshAgent.enabled = false;
         

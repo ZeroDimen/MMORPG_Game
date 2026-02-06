@@ -14,6 +14,7 @@ public class EquipmentPresenter : Singleton<EquipmentPresenter>
         if(!isLoaded)
             GameEvents.OnItemEquipped?.Invoke(item);
         view.RenderEquipment(item, item.DetailType);
+        AudioManager._instance.SfxPlay("Equipment");
     }
 
     public void UnEquipment(InstanceItem item)

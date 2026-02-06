@@ -9,6 +9,7 @@ public class EnemyStateAttack: EnemyState, ICharacterState
 
     public void Enter()
     {
+        _enemyController.GiveSfxPlay("EnemyAttack");
         _animator.SetTrigger(EnemyAniParamAttack);
     }
 
