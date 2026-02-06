@@ -45,23 +45,14 @@ public class AudioManager : MonoBehaviour
         audioSources[1].Stop();
     }
     
-    public void SfxPlay(string clipName, bool islong = false) // 효과음을 출력하는 함수
+    public void SfxPlay(string clipName) // 효과음을 출력하는 함수
     {
         foreach (var clip in sfxClips)
         {
             if (clip.name == clipName)
             {
-                if (!islong)
-                {
-                    audioSources[1].PlayOneShot(clip);
-                    return;
-                }
-                else
-                {
-                    audioSources[1].clip = clip;
-                    audioSources[1].Play();
-                    return;
-                }
+                audioSources[1].PlayOneShot(clip);
+                return;
             }
         }
 

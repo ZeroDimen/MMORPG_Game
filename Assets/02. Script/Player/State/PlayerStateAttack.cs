@@ -10,7 +10,8 @@ public class PlayerStateAttack: PlayerState, ICharacterState
     public void Enter()
     {
         _animator.SetTrigger(PlayerAniParamAttack);
-        AudioManager._instance.SfxPlay("Attack");
+        _playerController.GiveSfxPlay("Attack");
+        
         // 연속 공격 추가시 필요함
         // _playerInput.actions["Fire"].performed += AttackTrigger;
     }

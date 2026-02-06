@@ -25,6 +25,7 @@ public class PlayerStateJump: PlayerState, ICharacterState
         // Ground Distance 업데이트
         var playerPosition = _playerController.transform.position;
         var distance = GetDistanceToGround(playerPosition, GroundLayerMask, 10f);
+  
         _animator.SetFloat(PlayerAniParamGroundDistance, distance);
         
         Debug.DrawRay(playerPosition, Vector3.down * 10f, Color.red);
@@ -32,6 +33,6 @@ public class PlayerStateJump: PlayerState, ICharacterState
 
     public void Exit()
     {
-        
+        _playerController.GiveSfxPlay("Landing");
     }
 }
