@@ -123,6 +123,7 @@ public class EnemyController : MonoBehaviourPun
             {
                 // 사망 처리
                 SetState(EEnemyState.Dead);
+                QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 0, 1);
                 
                 _rigidbody.isKinematic = false;
                 _rigidbody.useGravity = true;

@@ -38,7 +38,7 @@ public class MariaPlayerController :PlayerController
 
     public void EnableAttackCollider()
     {
-        if (_attackCollider != null)
+        if (_attackCollider != null && photonView.IsMine)
         {
             _swordAttack.Damage = Status.ATK;
             _attackCollider.enabled = true;
