@@ -28,6 +28,8 @@ public class SaveManager : MonoBehaviourPunCallbacks
 
     private void Quit()
     {
+        GameObject player = _player.gameObject;
+        PhotonNetwork.Destroy(player);
         #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
         #else
