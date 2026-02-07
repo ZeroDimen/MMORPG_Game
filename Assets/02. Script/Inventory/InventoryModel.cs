@@ -17,12 +17,13 @@ public class InstanceItem
     public bool IsStackable { get; }
     public int Amount;
     public bool isEquip;
+    public Sprite img;
     public AssetReferenceSprite IconReference { get; }
     public List<StatBonus> _statBonusList;
     
     public InstanceItem(int id, string name, string information, int amount,
         ItemType type, SubItemType subType, DetailItemType detailType,
-        bool isStackable, AssetReferenceSprite iconReference, List<StatBonus> statBonusList)
+        bool isStackable, AssetReferenceSprite iconReference, List<StatBonus> statBonusList, Sprite image)
     {
         ID = id;
         Name = name;
@@ -34,6 +35,7 @@ public class InstanceItem
         IsStackable = isStackable;
         IconReference = iconReference;
         _statBonusList = statBonusList;
+        img = image;
     }
 }
 
@@ -88,7 +90,7 @@ public class InventoryModel
         {
             _instanceItems.Add(new InstanceItem(itemID, originalData.itemName, originalData.Information,
                 amount, originalData.type,originalData.subType, originalData.detailType,
-                originalData.isStackable, originalData.iconReference, originalData.statBonusList));
+                originalData.isStackable, originalData.iconReference, originalData.statBonusList, originalData.img));
         }
 
         OnInventoryChanged?.Invoke();
@@ -134,7 +136,8 @@ public class InventoryModel
                     origin.detailType,
                     origin.isStackable,
                     origin.iconReference,
-                    origin.statBonusList);
+                    origin.statBonusList,
+                    origin.img);
                 
                 _instanceItems.Add(item);
 

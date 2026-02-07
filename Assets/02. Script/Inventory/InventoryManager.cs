@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
+        itemDataBase.Initialize();
         _model = new InventoryModel(itemDataBase);
         _presenter = new InventoryPresenter(_model, inventoryView);
     }

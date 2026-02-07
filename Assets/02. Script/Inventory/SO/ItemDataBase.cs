@@ -7,13 +7,18 @@ public class ItemDataBase : ScriptableObject
     public List<ItemData> itemDatas; // 인스펙터 노출용
     private Dictionary<int, ItemData> _itemDict = new(); // 실제 검색용
     
-    private void OnValidate()
-    {
-        // 에디터에서 값을 수정하거나 리스트를 건드리면 즉시 실행됨
-        BuildDictionary();
-    }
+    // private void OnValidate()
+    // {
+    //     // 에디터에서 값을 수정하거나 리스트를 건드리면 즉시 실행됨
+    //     BuildDictionary();
+    // }
 
-    public void OnAfterDeserialize()
+    // public void OnAfterDeserialize()
+    // {
+    //     BuildDictionary();
+    // }
+    
+    public void Initialize() 
     {
         BuildDictionary();
     }

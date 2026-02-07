@@ -60,6 +60,7 @@ public class ItemData : ScriptableObject
     public bool isStackable;
     public string Information;
     public List<StatBonus> statBonusList;
+    public Sprite img;
     
     // UI를 위한 정보
     public AssetReferenceSprite iconReference;
