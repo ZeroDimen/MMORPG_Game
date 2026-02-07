@@ -18,7 +18,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     private void Awake()
     {
-        Screen.SetResolution(1920, 1080, false); // 해상도 설정
+        Screen.SetResolution(1920, 1080, true); // 해상도 설정
         PhotonNetwork.SendRate = 60; // 내 컴퓨터 게임 정보에 대한 전송률
         PhotonNetwork.SerializationRate = 30; // Photon View 관측 중인 대상에 대한 전송률
         PhotonNetwork.GameVersion = gameVersion; // 버전 설정
