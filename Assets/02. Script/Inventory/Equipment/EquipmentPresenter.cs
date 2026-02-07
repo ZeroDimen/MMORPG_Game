@@ -11,10 +11,12 @@ public class EquipmentPresenter : Singleton<EquipmentPresenter>
     {
         item.isEquip = true;
         equipmenItems.Add(item);
-        if(!isLoaded)
+        if (!isLoaded)
+        {
             GameEvents.OnItemEquipped?.Invoke(item);
+            AudioManager._instance.SfxPlay("Equipment");
+        }
         view.RenderEquipment(item, item.DetailType);
-        AudioManager._instance.SfxPlay("Equipment");
     }
 
     public void UnEquipment(InstanceItem item)
