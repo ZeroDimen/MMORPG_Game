@@ -253,4 +253,5 @@ public class PlayerController : MonoBehaviourPun
         if(photonView.ViewID == viewID)
             Audio.Stop();
     }
+    
 }

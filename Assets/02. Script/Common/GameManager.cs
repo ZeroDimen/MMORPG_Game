@@ -15,7 +15,9 @@ public class GameManager :  MonoBehaviourPun
 
     private CinemachineCamera cinemachineCamera;
     private CinemachineOrbitalFollow cinemachineOrbitalFollow;
-    private CinemachineRotationComposer  cinemachineRotationComposer;
+
+    private Vector2 cinemachineObitalHRange;
+    private Vector2 cinemachineObitalVRange;
     
     public Canvas Canvas => GetCanvas();
     
@@ -50,7 +52,9 @@ public class GameManager :  MonoBehaviourPun
         
         cinemachineCamera = playerCam.GetComponent<CinemachineCamera>();
         cinemachineOrbitalFollow = playerCam.GetComponent<CinemachineOrbitalFollow>();
-        cinemachineRotationComposer = playerCam.GetComponent<CinemachineRotationComposer>();
+
+        cinemachineObitalHRange = cinemachineOrbitalFollow.HorizontalAxis.Range;
+        cinemachineObitalVRange = cinemachineOrbitalFollow.VerticalAxis.Range;
         
         AudioManager._instance.BgmPlay("Forest");
         if (PhotonNetwork.IsMasterClient)
@@ -140,16 +144,23 @@ public class GameManager :  MonoBehaviourPun
         {
             Cursor.visible  = true;
             Cursor.lockState = CursorLockMode.None;
-            cinemachineOrbitalFollow.enabled = false;
-            cinemachineRotationComposer.enabled = false;
+
+            float currentH = cinemachineOrbitalFollow.HorizontalAxis.Value; 
+            float currentV = cinemachineOrbitalFollow.VerticalAxis.Value;
+
+            cinemachineOrbitalFollow.HorizontalAxis.Range = new Vector2(currentH, currentH);
+            cinemachineOrbitalFollow.VerticalAxis.Range = new Vector2(currentV, currentV);
+            
             AudioManager._instance.BgmVolume(0.3f);
         }
         else if (state == EGameState.Play)
         {
             Cursor.visible  = false;
             Cursor.lockState = CursorLockMode.Locked;
-            cinemachineOrbitalFollow.enabled = true;
-            cinemachineRotationComposer.enabled = true;
+
+            cinemachineOrbitalFollow.HorizontalAxis.Range = cinemachineObitalHRange;
+            cinemachineOrbitalFollow.VerticalAxis.Range = cinemachineObitalVRange;
+            
             AudioManager._instance.BgmVolume(1f);
         }
 
