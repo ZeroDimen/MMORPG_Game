@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2bc31f9729fd7df4a8ddac5fa70279b9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 145808
+  packageName: Terrain Sample Asset Pack
+  packageVersion: 2.0.1
+  assetPath: Assets/TerrainSampleAssets/TerrainLayers/Black_Sand_TerrainLayer.terrainlayer
+  uploadId: 511657

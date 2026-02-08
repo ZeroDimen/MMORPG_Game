@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5634a5b02905d174e9261cb590984640
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 145808
+  packageName: Terrain Sample Asset Pack
+  packageVersion: 2.0.1
+  assetPath: Assets/TerrainSampleAssets/TerrainLayers/Grass_B_TerrainLayer.terrainlayer
+  uploadId: 511657
