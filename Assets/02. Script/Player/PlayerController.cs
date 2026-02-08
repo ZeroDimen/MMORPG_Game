@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviourPun
     public void SetExp(int amount)
     {
         if (!photonView.IsMine) return;
-        Status.EXP += amount;
+        GameEvents.OnSetExp?.Invoke(Status.EXP + amount);
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         PlayerStatusView.Instance.UpdateStatusUI(Status);
@@ -165,11 +165,11 @@ public class PlayerController : MonoBehaviourPun
 
     private void SetLevel()
     {
-        Status.MAXEXP = Status.LV * 10;
+        GameEvents.OnSetMaxExp?.Invoke(Status.LV * 10);
         if (Status.EXP >= Status.MAXEXP)
         {
-            Status.EXP -= Status.MAXEXP;
-            Status.LV++;
+            GameEvents.OnSetExp?.Invoke(Status.EXP - Status.MAXEXP);
+            GameEvents.OnSetLevel?.Invoke(Status.LV + 1);
             GameEvents.OnPlayerLevelUpEvent?.Invoke();
             SetExp(0);
         }

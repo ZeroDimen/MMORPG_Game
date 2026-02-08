@@ -26,6 +26,24 @@ public class PlayerStatus
 
         GameEvents.OnItemEquipped += AddStatus;
         GameEvents.OnItemUnEquipped += RemoveStatus;
+        GameEvents.OnSetExp += SetExp;
+        GameEvents.OnSetMaxExp += SetMaxExp;
+        GameEvents.OnSetLevel += SetLevel;
+    }
+
+    public void SetExp(int Exp)
+    {
+        EXP = Exp;
+    }
+
+    public void SetMaxExp(int MaxExp)
+    {
+        MAXEXP = MaxExp;
+    }
+
+    public void SetLevel(int Level)
+    {
+        LV = Level;
     }
 
     private void AddStatus(InstanceItem item)
