@@ -27,6 +27,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings(); // Photon Master Server에 접속을 요청하는 함수
+        PhotonNetwork.ConnectToRegion("kr");
+        
         nextButton.onClick.AddListener(ConnectRoom);
         serverButton.onClick.AddListener(CreateRoom);
         

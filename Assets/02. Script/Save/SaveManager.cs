@@ -1,3 +1,4 @@
+using System.Collections;
 using System.IO;
 using Photon.Pun;
 using UnityEditor;
@@ -26,10 +27,16 @@ public class SaveManager : MonoBehaviourPunCallbacks
         return Path.Combine(Application.persistentDataPath, $"{playerName}_save.json");
     }
 
-    private void Quit()
+    private IEnumerator  Quit()
     {
         GameObject player = _player.gameObject;
         PhotonNetwork.Destroy(player);
+        
+        // Destory될때까지 기다리기
+        yield return new WaitForSeconds(0.2f);
+        PhotonNetwork.Disconnect();
+        yield return new WaitForSeconds(0.2f);
+        
         #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
         #else
@@ -74,11 +81,10 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 3. 방장(MasterClient)에게만 RPC 전송
         photonView.RPC("RPC_SaveOnMaster", RpcTarget.MasterClient, data.playerName, json);
         Debug.Log($"[Client] 방장에게 저장 요청을 보냈습니다: {data.playerName}");
-        Quit();
     }
 
     [PunRPC]
-    private void RPC_SaveOnMaster(string playerName, string json)
+    private void RPC_SaveOnMaster(string playerName, string json, PhotonMessageInfo info)
     {
         if (!PhotonNetwork.IsMasterClient) return;
         
@@ -86,6 +92,13 @@ public class SaveManager : MonoBehaviourPunCallbacks
         string path = GetSavePath(playerName);
         File.WriteAllText(path, json);
         Debug.Log($"[Master] {playerName}의 데이터를 저장 완료: {path}");
+        photonView.RPC("RPC_SaveComplete", info.Sender);
+    }
+
+    [PunRPC]
+    private void RPC_SaveComplete()
+    {
+        StartCoroutine(Quit());
     }
     #endregion
     
