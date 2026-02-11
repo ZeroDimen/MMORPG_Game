@@ -29,5 +29,6 @@ public class QuestMenuEntry : MonoBehaviour
     private void OnToggleChanged(bool isOn)
     {
         GameEvents.OnQuestPinChanged?.Invoke(_quest, isOn);
+        AudioManager._instance.SfxPlay("Button");
     }
 }

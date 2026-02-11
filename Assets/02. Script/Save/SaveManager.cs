@@ -137,6 +137,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.LocalPlayer.NickName != targetName) return;
         _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 50, 10, 10);
+        _player._playerHpBarController.SetHp($"{100} / {100}");
         Debug.Log("Working");
     }
 
@@ -154,6 +155,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
         {
             _player.Status = new PlayerStatus(data.HP, data.MAXHP, data.LV, data.MAXEXP,
                 data.EXP, data.ATK, data.DEF, data.DEX);
+            _player._playerHpBarController.SetHp($"{data.HP} / {data.MAXHP}");
             PlayerStatusView.Instance.UpdateStatusUI(_player.Status);
             
             // 인벤토리 복구
