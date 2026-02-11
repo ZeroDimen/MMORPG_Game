@@ -156,6 +156,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
             if (!_player.photonView.IsMine) return;
             _player.Status = new PlayerStatus(data.HP, data.MAXHP, data.LV, data.MAXEXP,
                 data.EXP, data.ATK, data.DEF, data.DEX);
+            _player._playerHpBarController.SetHp((float)data.HP / data.MAXHP);
             _player._playerHpBarController.SetHp($"{data.HP} / {data.MAXHP}");
             PlayerStatusView.Instance.UpdateStatusUI(_player.Status);
             

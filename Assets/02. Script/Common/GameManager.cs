@@ -104,6 +104,8 @@ public class GameManager :  MonoBehaviourPun
             PhotonView playerPV = PhotonView.Find(playerView);
             PlayerController playerController = playerPV.GetComponent<PlayerController>();
             playerController.SetExp(exp);
+            
+            if (!photonView.IsMine) return;
             photonView.RPC("RPC_MonsterKillQuest", info.Sender);
         }
     }

@@ -22,8 +22,15 @@ public class MariaPlayerController :PlayerController
         {
             playerName.text = PhotonNetwork.NickName;
             playerName.color = Color.green;
-            
-            GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
+
+            var vCamObj = GameObject.FindWithTag("PlayerCam");
+            if (vCamObj != null)
+            {
+                var vCam = vCamObj.GetComponent<CinemachineCamera>();
+                vCam.Follow = Maria_Head;
+                vCam.LookAt = Maria_Head;
+            }
+            // GameObject.Find("PlayerCam").GetComponent<CinemachineCamera>().Follow = Maria_Head;
             PlayerStatusView.Instance.player = this;
             StartCoroutine(PlayerStatusView.Instance.UpdateStatusUIRoutine());
         }
