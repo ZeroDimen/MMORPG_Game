@@ -92,7 +92,7 @@ public class GameManager :  MonoBehaviourPun
     }
     
     [PunRPC]
-    private void RPC_RequestEnemyDamage(int enemyView, int playerView,  int damage)
+    private void RPC_RequestEnemyDamage(int enemyView, int playerView,  int damage, PhotonMessageInfo info)
     {
         PhotonView enemyPV = PhotonView.Find(enemyView);
         
@@ -104,8 +104,16 @@ public class GameManager :  MonoBehaviourPun
             PhotonView playerPV = PhotonView.Find(playerView);
             PlayerController playerController = playerPV.GetComponent<PlayerController>();
             playerController.SetExp(exp);
+            photonView.RPC("RPC_MonsterKillQuest", info.Sender);
         }
     }
+
+    [PunRPC]
+    private void RPC_MonsterKillQuest()
+    {
+        QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 0, 1);
+    }
+    
     [PunRPC]
     private void RPC_Spawner(string prefabName, string objName, int actorNumber)
     {

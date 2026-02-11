@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Enemy/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Enemy/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +166,8 @@
       <workItem from="1770496768881" duration="1470000" />
       <workItem from="1770732742231" duration="2512000" />
       <workItem from="1770769469550" duration="495000" />
-      <workItem from="1770782085914" duration="2755000" />
+      <workItem from="1770782085914" duration="4006000" />
+      <workItem from="1770804262962" duration="460000" />
     </task>
     <servers />
   </component>
