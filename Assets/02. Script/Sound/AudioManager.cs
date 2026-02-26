@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private AudioClip[] sfxClips;
     
-    [SerializeField] private AudioSource[] audioSources;
+    public AudioSource[] audioSources;
     
     public static AudioManager _instance;
     void Awake()
@@ -38,6 +38,19 @@ public class AudioManager : MonoBehaviour
     public void BgmVolume(float volume)
     {
         audioSources[0].volume = volume;
+    }
+    
+    public void SFXVolume(float volume)
+    {
+        audioSources[1].volume = volume;
+    }
+
+    public void IsSoundMute(bool isMute, string target)
+    {
+        if (target == "BGM")
+            audioSources[0].mute = !isMute;
+        else if (target == "SFX")
+            audioSources[1].mute = !isMute;
     }
 
     public void SfxStop()

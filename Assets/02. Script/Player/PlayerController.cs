@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviourPun
             
         }
         SaveManager.Instance.LoadGameFromMaster(this);
+        
+        if(photonView.IsMine)
+            AudioPanelView.instance.mySfxAudioSources.Add(Audio);
+        else
+            AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
     }
 
     private void OnEnable()

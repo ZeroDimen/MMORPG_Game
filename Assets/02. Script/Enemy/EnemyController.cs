@@ -92,6 +92,14 @@ public class EnemyController : MonoBehaviourPun
         _enemyHpBarController = GetComponent<EnemyHPBarController>();
     }
 
+    private void Start()
+    {
+        if(photonView.IsMine)
+            AudioPanelView.instance.mySfxAudioSources.Add(Audio);
+        else
+            AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
+    }
+
     private void Update()
     {
         if (State != EEnemyState.Dead && State != EEnemyState.None)
