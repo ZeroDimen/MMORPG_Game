@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviourPun
         var playerStateIdle = new PlayerStateIdle(this,  _animator, _playerInput);
         var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
         var playerStateJump = new PlayerStateJump(this,  _animator, _playerInput);
+        var playerStateSpawn = new PlayerStateSpawn(this,  _animator, _playerInput);
         var playerStateAttack = new PlayerStateAttack(this, _animator, _playerInput);
         var playerStateHit = new PlayerStateHit(this, _animator, _playerInput);
         var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Idle, playerStateIdle },
             { EPlayerState.Move, playerStateMove },
             { EPlayerState.Jump, playerStateJump },
+            { EPlayerState.Spawn , playerStateSpawn },
             { EPlayerState.Attack, playerStateAttack },
             { EPlayerState.Hit, playerStateHit },
             { EPlayerState.Dead, playerStateDead },
@@ -74,6 +76,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
+            SetState(EPlayerState.Spawn);
             // chatting 상호작용
             _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
             
