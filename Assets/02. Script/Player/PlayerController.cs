@@ -76,7 +76,8 @@ public class PlayerController : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            SetState(EPlayerState.Spawn);
+            SetSpawn();
+            // SetState(EPlayerState.Spawn);
             // chatting 상호작용
             _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
             
@@ -256,5 +257,21 @@ public class PlayerController : MonoBehaviourPun
         if(photonView.ViewID == viewID)
             Audio.Stop();
     }
+    
+    private void SetSpawn()
+    {
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(ReceiveSpawn), RpcTarget.Others, id);
+    }
+    
+    [PunRPC]
+    public void ReceiveSpawn(int viewID)
+    {
+        if (photonView.ViewID == viewID)
+        {
+            SetState(EPlayerState.Spawn);
+        }
+    }
+    
     
 }

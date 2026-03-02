@@ -998,6 +998,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: dead
+  - Type: 9
+    SynchronizeType: 1
+    Name: spawn
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

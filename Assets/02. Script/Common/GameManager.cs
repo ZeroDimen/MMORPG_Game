@@ -69,17 +69,17 @@ public class GameManager :  MonoBehaviourPun
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         string Name = PhotonNetwork.LocalPlayer.NickName;
-        photonView.RPC("RPC_Spawner", RpcTarget.MasterClient,prefabName ,Name, actorNumber);
+        photonView.RPC(nameof(RPC_Spawner), RpcTarget.MasterClient,prefabName ,Name, actorNumber);
     }
 
     public void HitEnemy(PhotonView enemyView,PhotonView playerView, int damage)
     {
-        photonView.RPC("RPC_RequestEnemyDamage", RpcTarget.All,enemyView.ViewID, playerView.ViewID, damage);
+        photonView.RPC(nameof(RPC_RequestEnemyDamage), RpcTarget.All,enemyView.ViewID, playerView.ViewID, damage);
     }
 
     public void HitPlayer(PhotonView playerView, int damage)
     {
-        photonView.RPC("RPC_RequestPlayerDamage", RpcTarget.All,playerView.ViewID, damage);
+        photonView.RPC(nameof(RPC_RequestPlayerDamage), RpcTarget.All,playerView.ViewID, damage);
     }
 
    
@@ -118,8 +118,11 @@ public class GameManager :  MonoBehaviourPun
                 spownPos = GetRandomPosition(spawnPoints[0].point, spawnPoints[0].radius);
                 PhotonNetwork.NickName = objName;
                 obj = PhotonNetwork.Instantiate("Maria", spownPos , Quaternion.identity);
-                
                 PhotonView pv =  obj.GetComponent<PhotonView>();
+                
+                string name = $"(Maria)_{objName}";
+                photonView.RPC(nameof(RPC_SetName), RpcTarget.AllBuffered, pv.ViewID, name);
+                
                 pv.TransferOwnership(actorNumber);
                 break;
             case "Mutant":
@@ -207,6 +210,17 @@ public class GameManager :  MonoBehaviourPun
         }
 
         return result;
+    }
+
+    [PunRPC]
+    private void RPC_SetName(int viewID , string name)
+    {
+        PhotonView pv = PhotonView.Find(viewID);
+
+        if (pv != null)
+        {
+            pv.gameObject.name = name;
+        }
     }
     
 }
