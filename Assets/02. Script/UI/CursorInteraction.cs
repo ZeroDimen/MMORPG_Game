@@ -12,10 +12,4 @@ public class CursorInteraction : MonoBehaviour
     {
         GameManager.Instance.SetGameState(Constants.EGameState.Play);
     }
-
-    private void Update()
-    {
-        if(GameManager.Instance.GameState != Constants.EGameState.Interaction)
-            GameManager.Instance.SetGameState(Constants.EGameState.Interaction);
-    }
 }

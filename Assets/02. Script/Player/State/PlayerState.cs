@@ -9,6 +9,7 @@ public class PlayerState
     protected PlayerInput _playerInput;
 
     private bool isAttacking = false;
+    private bool flag = false;
     
     public PlayerState(PlayerController playerController, Animator animator, PlayerInput playerInput)
     {
@@ -47,12 +48,17 @@ public class PlayerState
         if (GameManager.Instance.GameState == EGameState.Interaction)
             return;
         GameManager.Instance.SetGameState(EGameState.Alt);
+        flag = true;
     }
     private void OffCursor(InputAction.CallbackContext context)
     {
-        if (GameManager.Instance.GameState != EGameState.Alt)
-            return;
-        GameManager.Instance.SetGameState(EGameState.Play);
+        // if (GameManager.Instance.GameState != EGameState.Alt)
+        //     return;
+        if (flag == true)
+        {
+            GameManager.Instance.SetGameState(EGameState.Play);
+            flag = false;
+        }
     }
     
     protected void Rotate(float x, float z)

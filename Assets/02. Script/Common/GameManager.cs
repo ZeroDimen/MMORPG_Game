@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Unity.Cinemachine;
+using Unity.Mathematics;
+using Unity.Mathematics.Geometry;
 using UnityEngine.UI;
 using static Constants;
+using Random = UnityEngine.Random;
 
 public class GameManager :  MonoBehaviourPun
 {
@@ -22,6 +27,10 @@ public class GameManager :  MonoBehaviourPun
     public Canvas Canvas => GetCanvas();
     
     public EGameState GameState { get; private set; }
+
+    private int _interactionCount = 0;
+
+    public List<PhotonView> playerList;
     
     public static GameManager Instance
     {
@@ -63,6 +72,11 @@ public class GameManager :  MonoBehaviourPun
             yield break;
         }
         Set_Spawner("Maria");
+    }
+
+    private void Update()
+    {
+        Debug.Log(_interactionCount);
     }
 
     public void Set_Spawner(string prefabName)
@@ -131,6 +145,7 @@ public class GameManager :  MonoBehaviourPun
                 
                 PhotonView pv =  obj.GetComponent<PhotonView>();
                 pv.TransferOwnership(actorNumber);
+                playerList.Add(pv);
                 break;
             case "Mutant":
                 spownPos = GetRandomPosition(spawnPoints[1].point, spawnPoints[1].radius);
@@ -149,6 +164,30 @@ public class GameManager :  MonoBehaviourPun
     }
 
     public void SetGameState(EGameState state)
+    {
+        if (state == EGameState.Interaction || state == EGameState.Alt)
+            _interactionCount++;
+        else if (state == EGameState.Play)
+            _interactionCount = Mathf.Max(0, _interactionCount - 1);
+
+        if (_interactionCount > 0)
+        {
+            ApplyStateEffects(EGameState.Interaction);
+            GameState = EGameState.Interaction;
+        }
+        else
+        {
+            ApplyStateEffects(EGameState.Play);
+            GameState = EGameState.Play;
+        }
+        
+        if (PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
+        {
+            pc.SetPlayerInputEnabled(state == EGameState.Play);
+        }
+    }
+
+    private void ApplyStateEffects(EGameState state)
     {
         if (state == EGameState.Interaction || state == EGameState.Alt)
         {
@@ -172,12 +211,6 @@ public class GameManager :  MonoBehaviourPun
             cinemachineOrbitalFollow.VerticalAxis.Range = cinemachineObitalVRange;
             
             AudioManager._instance.BgmVolume(1f);
-        }
-
-        GameState = state;
-        if (PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
-        {
-            pc.SetPlayerInputEnabled(state == EGameState.Play);
         }
     }
     
