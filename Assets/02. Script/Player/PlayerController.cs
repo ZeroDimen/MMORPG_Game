@@ -69,7 +69,6 @@ public class PlayerController : MonoBehaviourPun
         };
         
         _playerHpBarController = GetComponent<PlayerHPBarController>();
-        GameManager.Instance.SetGameState(EGameState.Play);
     }
 
     protected virtual void Start()
@@ -77,15 +76,16 @@ public class PlayerController : MonoBehaviourPun
         if (photonView.IsMine)
         {
             SetSpawn();
-            // SetState(EPlayerState.Spawn);
+            
             // chatting 상호작용
             _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
             
             // GameManager에서 LocalPlayer → PlayerController 접근할 수 있도록 설정
             PhotonNetwork.LocalPlayer.TagObject = this;
             
+            GameManager.Instance.SetGameState(EGameState.Play);
+            SaveManager.Instance.LoadGameFromMaster(this);
         }
-        SaveManager.Instance.LoadGameFromMaster(this);
     }
 
     private void OnEnable()

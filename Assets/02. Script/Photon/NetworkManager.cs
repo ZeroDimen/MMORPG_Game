@@ -16,6 +16,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] private Button serverButton;
     [SerializeField] private Image serverImage;
     
+    
     private void Awake()
     {
         Screen.SetResolution(1920, 1080, true); // 해상도 설정
@@ -27,7 +28,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings(); // Photon Master Server에 접속을 요청하는 함수
-        PhotonNetwork.ConnectToRegion("kr");
         
         nextButton.onClick.AddListener(ConnectRoom);
         serverButton.onClick.AddListener(CreateRoom);
@@ -92,12 +92,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public override void OnJoinedRoom() // 방(서버) 접속 성공시 호출되는 함수
     {
-        PhotonNetwork.LoadLevel("Main");
-        Debug.Log("Room 접속 성공 및 씬 전환");
+        PhotonNetwork.IsMessageQueueRunning = false; // Scene 변경시 네트워크 메시지 일시정지
+        StartCoroutine(FadeLoad());
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message) // 방(서버) 접속 실패시 호출되는 함수
     {
         Debug.Log($"MMORPG_Room 접속 실패, {returnCode},  {message}");
     }
+
+    IEnumerator FadeLoad()
+    {
+        Debug.Log("Room 접속 성공 및 씬 전환");
+        yield return StartCoroutine(FadeManager.Instance.Fade(1));
+        yield return new WaitForSeconds(0.2f);
+        PhotonNetwork.LoadLevel("Main");
+    }
+
+    
 }
