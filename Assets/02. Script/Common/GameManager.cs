@@ -76,7 +76,7 @@ public class GameManager :  MonoBehaviourPun
 
     private void Update()
     {
-        Debug.Log(_interactionCount);
+        // Debug.Log(_interactionCount);
     }
 
     public void Set_Spawner(string prefabName)
