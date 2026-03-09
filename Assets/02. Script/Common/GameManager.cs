@@ -76,7 +76,7 @@ public class GameManager :  MonoBehaviourPun
 
     private void Update()
     {
-        // Debug.Log(_interactionCount);
+        // Debug.Log($"현재 모드 : {GameState} 현재 UI 카운트 : {_interactionCount}");
     }
 
     public void Set_Spawner(string prefabName)

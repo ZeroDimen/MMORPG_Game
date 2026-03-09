@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,9 @@ public class AudioPanelView : MonoBehaviour
     public Toggle MyBGMtoggle;
     public Toggle MySFXtoggle;
     public Toggle OtherSFXtoggle;
+    public TextMeshProUGUI MyBGMvalue;
+    public TextMeshProUGUI MySFXvalue;
+    public TextMeshProUGUI OtherSFXvalue;
 
     public List<AudioSource> mySfxAudioSources;
     public List<AudioSource> otherSfxAudioSources;
@@ -27,13 +31,22 @@ public class AudioPanelView : MonoBehaviour
 
     void Start()
     {
-        MyBGMslider.onValueChanged.AddListener(AudioManager._instance.BgmVolume);
+        MyBGMslider.onValueChanged.AddListener((value) =>
+        {
+            AudioManager._instance.BgmVolume(value);
+            MyBGMvalue.text = Mathf.RoundToInt(value * 100).ToString();
+        });
         MySFXslider.onValueChanged.AddListener((value) =>
         {
             AudioManager._instance.SFXVolume(value);
             MySfxValueChange(value);
+            MySFXvalue.text = Mathf.RoundToInt(value * 100).ToString();
         });
-        OtherSFXslider.onValueChanged.AddListener(OtherSfxValueChange);
+        OtherSFXslider.onValueChanged.AddListener((value) =>
+        {
+            OtherSfxValueChange(value);
+            OtherSFXvalue.text = Mathf.RoundToInt(value * 100).ToString();
+        });
         
         
         MyBGMtoggle.onValueChanged.AddListener((value) =>
@@ -46,11 +59,6 @@ public class AudioPanelView : MonoBehaviour
             MySfxMute(value);
         });
         OtherSFXtoggle.onValueChanged.AddListener(OtherSfxMute);
-
-        MyBGMslider.value = AudioManager._instance.audioSources[0].volume;
-        MySFXslider.value = AudioManager._instance.audioSources[1].volume;
-        MyBGMtoggle.isOn = !AudioManager._instance.audioSources[0].mute;
-        MySFXtoggle.isOn = !AudioManager._instance.audioSources[1].mute;
     }
 
     private void MySfxValueChange(float value)
@@ -86,5 +94,54 @@ public class AudioPanelView : MonoBehaviour
             if (sound != null)
                 sound.mute = !value;
         }
+    }
+
+    public void DataSave()
+    {
+        // Slider
+        PlayerPrefs.SetFloat("MyBGMslider", MyBGMslider.value);
+        PlayerPrefs.SetFloat("MySFXslider", MySFXslider.value);
+        PlayerPrefs.SetFloat("OtherSFXslider", OtherSFXslider.value);
+        
+        // Toggle
+        PlayerPrefs.SetInt("MyBGMtoggle", MyBGMtoggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("MySFXtoggle", MySFXtoggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("OtherSFXtoggle", OtherSFXtoggle.isOn ? 1 : 0);
+        
+        PlayerPrefs.Save();
+    }
+
+    public void DataLoad()
+    {
+        // Data Load
+        float bgmVol = PlayerPrefs.GetFloat("MyBGMslider", 1f);
+        float sfxVol = PlayerPrefs.GetFloat("MySFXslider", 1f);
+        float otherSfxVol = PlayerPrefs.GetFloat("OtherSFXslider", 0.7f);
+
+        bool bgmOn = PlayerPrefs.GetInt("MyBGMtoggle", 1) == 1;
+        bool sfxOn = PlayerPrefs.GetInt("MySFXtoggle", 1) == 1;
+        bool otherSfxOn = PlayerPrefs.GetInt("OtherSFXtoggle", 1) == 1;
+        
+        // UI
+        MyBGMslider.value = bgmVol;
+        MySFXslider.value = sfxVol;
+        OtherSFXslider.value = otherSfxVol;
+
+        MyBGMtoggle.isOn = bgmOn;
+        MySFXtoggle.isOn = sfxOn;
+        OtherSFXtoggle.isOn = otherSfxOn;
+
+        MyBGMvalue.text = Mathf.RoundToInt(bgmVol * 100).ToString();
+        MySFXvalue.text = Mathf.RoundToInt(sfxVol * 100).ToString();
+        OtherSFXvalue.text = Mathf.RoundToInt(otherSfxVol * 100).ToString();
+        
+        // Audio Function
+        AudioManager._instance.BgmVolume(bgmVol);
+        AudioManager._instance.SFXVolume(sfxVol);
+        AudioManager._instance.IsSoundMute(bgmOn, "BGM");
+        AudioManager._instance.IsSoundMute(sfxOn, "SFX");
+        
+        MySfxValueChange(sfxVol);
+        OtherSfxValueChange(otherSfxVol);
     }
 }

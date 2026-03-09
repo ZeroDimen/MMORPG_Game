@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -17,6 +18,7 @@ public class SettingManager : MonoBehaviour
     private ColorAdjustments colorAdjustments;
 
     private List<SettingSelector> _selectors;
+    private AudioPanelView _audioPanelView;
     
 
     private void Awake()
@@ -28,6 +30,8 @@ public class SettingManager : MonoBehaviour
 
         SettingSelector[] allSelectors = GetComponentsInChildren<SettingSelector>(true);
         _selectors = new List<SettingSelector>(allSelectors);
+
+        _audioPanelView = GetComponentInChildren<AudioPanelView>(true);
     }
 
     private void Start()
@@ -40,19 +44,25 @@ public class SettingManager : MonoBehaviour
         }
 
         globalVolume.profile.TryGet(out colorAdjustments);
-        LoadData();
+
+        StartCoroutine(LoadData());
     }
 
-    private void LoadData()
+    IEnumerator LoadData()
     {
+        yield return null;
+        
         foreach(var selector in _selectors)
             selector.LoadData();
+        
+        _audioPanelView.DataLoad();
     }
 
     public void SaveData()
     {
         foreach(var selector in _selectors)
             selector.SaveData();
+        _audioPanelView.DataSave();
     }
 
     private void SelectTab(int index)
@@ -92,7 +102,7 @@ public class SettingManager : MonoBehaviour
                 selector.OnVsync(index != 0);
                 break;
             case GraphicSetting.Texture :
-                QualitySettings.globalTextureMipmapLimit = index;
+                QualitySettings.globalTextureMipmapLimit = 2 - index;
                 break;
             case GraphicSetting.Shadow :
                 switch (index)
