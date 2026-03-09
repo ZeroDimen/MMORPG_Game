@@ -26,24 +26,28 @@ public class PlayerStatus
 
         GameEvents.OnItemEquipped += AddStatus;
         GameEvents.OnItemUnEquipped += RemoveStatus;
-        GameEvents.OnSetExp += SetExp;
-        GameEvents.OnSetMaxExp += SetMaxExp;
-        GameEvents.OnSetLevel += SetLevel;
     }
 
-    public void SetExp(int Exp)
+    public void SetStatus(string status, int value)
     {
-        EXP = Exp;
-    }
-
-    public void SetMaxExp(int MaxExp)
-    {
-        MAXEXP = MaxExp;
-    }
-
-    public void SetLevel(int Level)
-    {
-        LV = Level;
+        switch (status)
+        {
+            case "EXP" :
+                EXP = value;
+                break;
+            case "MAXEXP" :
+                MAXEXP = value;
+                break;
+            case "LV" :
+                LV = value;
+                break;
+            case "HP" :
+                HP = value;
+                break;
+            case "MAXHP" :
+                MAXHP = value;
+                break;
+        }
     }
 
     private void AddStatus(InstanceItem item)

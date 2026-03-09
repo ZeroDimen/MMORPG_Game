@@ -65,7 +65,8 @@ public class NPC : MonoBehaviour
 
     private void GiveQuest()
     {
-        GameEvents.OnQuestAccepted?.Invoke(questToGive);
+        if(isPlayerNearby)
+            GameEvents.OnQuestAccepted?.Invoke(questToGive);
     }
 
     private void TalkEnd()

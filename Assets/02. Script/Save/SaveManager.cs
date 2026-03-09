@@ -107,8 +107,8 @@ public class SaveManager : MonoBehaviourPunCallbacks
     // [클라이언트가 호출] 게임 시작 시 혹은 복구 시 방장에게 데이터를 달라고 요청함
     public void LoadGameFromMaster(PlayerController player)
     {
-        if (!PhotonNetwork.InRoom) return;
-
+        if (!PhotonNetwork.InRoom || !player.photonView.IsMine) return;
+        
         _player = player;
         photonView.RPC("RPC_RequestLoadData", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.NickName);
     }
@@ -135,8 +135,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_ReceiveLoadEmptyData(string targetName)
     {
-        if (PhotonNetwork.LocalPlayer.NickName != targetName) return;
+        if (PhotonNetwork.LocalPlayer.NickName != targetName || !_player.photonView.IsMine) return;
         _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 50, 10, 10);
+        _player._playerHpBarController.SetHp($"{100} / {100}");
         Debug.Log("Working");
     }
 
@@ -152,8 +153,11 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 2. 실제 게임 시스템에 데이터 적용 (기존 LoadGame의 역할)
         if (data != null)
         {
+            if (!_player.photonView.IsMine) return;
             _player.Status = new PlayerStatus(data.HP, data.MAXHP, data.LV, data.MAXEXP,
                 data.EXP, data.ATK, data.DEF, data.DEX);
+            _player._playerHpBarController.SetHp((float)data.HP / data.MAXHP);
+            _player._playerHpBarController.SetHp($"{data.HP} / {data.MAXHP}");
             PlayerStatusView.Instance.UpdateStatusUI(_player.Status);
             
             // 인벤토리 복구

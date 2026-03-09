@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviourPun
     private Animator _animator;
     private PlayerInput _playerInput;
     private CharacterController _characterController;
-    private PlayerHPBarController _playerHpBarController;
+    public PlayerHPBarController _playerHpBarController { get; private set; }
     
     // 상태 정보
     public EPlayerState State; 
@@ -86,6 +86,12 @@ public class PlayerController : MonoBehaviourPun
             GameManager.Instance.SetGameState(EGameState.Play);
             SaveManager.Instance.LoadGameFromMaster(this);
         }
+        SaveManager.Instance.LoadGameFromMaster(this);
+        
+        if(photonView.IsMine)
+            AudioPanelView.instance.mySfxAudioSources.Add(Audio);
+        else
+            AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
     }
 
     private void OnEnable()
@@ -137,10 +143,10 @@ public class PlayerController : MonoBehaviourPun
     
     public void SetHit(int damage)
     {
-        if (!photonView.IsMine) return;
+        if (!photonView.IsMine || Status == null) return;
         
         int processDamage = damage - Status.DEF;
-        Status.HP -= processDamage;
+        Status.SetStatus("HP", Status.HP - processDamage);
 
         float result = (float)Status.HP / Status.MAXHP;
 
@@ -160,8 +166,13 @@ public class PlayerController : MonoBehaviourPun
 
     public void SetExp(int amount)
     {
-        if (!photonView.IsMine) return;
-        GameEvents.OnSetExp?.Invoke(Status.EXP + amount);
+        if (!photonView.IsMine || Status == null) return;
+        
+        if(amount != 0)
+            Status.SetStatus("EXP", Status.EXP + amount);
+        else
+            Status.SetStatus("EXP", 0);
+
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         PlayerStatusView.Instance.UpdateStatusUI(Status);
@@ -169,11 +180,12 @@ public class PlayerController : MonoBehaviourPun
 
     private void SetLevel()
     {
-        GameEvents.OnSetMaxExp?.Invoke(Status.LV * 10);
+        if (Status == null) return;
+        Status.SetStatus("MAXEXP", Status.LV * 10);
         if (Status.EXP >= Status.MAXEXP)
         {
-            GameEvents.OnSetExp?.Invoke(Status.EXP - Status.MAXEXP);
-            GameEvents.OnSetLevel?.Invoke(Status.LV + 1);
+            Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);
+            Status.SetStatus("LV", Status.LV + 1);
             GameEvents.OnPlayerLevelUpEvent?.Invoke();
             SetExp(0);
         }

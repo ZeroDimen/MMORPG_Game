@@ -6,22 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemDataBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemDataBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/01_Armor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/01_Armor.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/02_Apple.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/02_Apple.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/03_Axe.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/03_Axe.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/04_Book.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/04_Book.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/05_Coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/05_Coins.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/06_Boots.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/06_Boots.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/07_HP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/07_HP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/08_MP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/08_MP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Setting/SettingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Setting/SettingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Setting.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Setting.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +38,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestTrackerPresenter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Setting/SettingManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Setting/SettingSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/UI/ButtonUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@02433b2481ab/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/TMP/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
@@ -70,7 +61,7 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Setting&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -88,7 +79,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/바탕 화면/새 폴더\MMORPG Game_2026-01-02.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Build_Test\MMORPG Game_2026-01-02.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\00052\OneDrive\바탕 화면\새 폴더" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -175,6 +166,20 @@
       <workItem from="1770205982481" duration="1729000" />
       <workItem from="1770472350587" duration="1865000" />
       <workItem from="1770496768881" duration="1470000" />
+      <workItem from="1770732742231" duration="2512000" />
+      <workItem from="1770769469550" duration="495000" />
+      <workItem from="1770782085914" duration="4006000" />
+      <workItem from="1770804262962" duration="3364000" />
+      <workItem from="1772092408318" duration="4878000" />
+      <workItem from="1772101429357" duration="3631000" />
+      <workItem from="1772497523911" duration="1950000" />
+      <workItem from="1772500571708" duration="822000" />
+      <workItem from="1772501415497" duration="12000" />
+      <workItem from="1772535372358" duration="352000" />
+      <workItem from="1772756319328" duration="1210000" />
+      <workItem from="1772783151470" duration="9844000" />
+      <workItem from="1772981121903" duration="8972000" />
+      <workItem from="1773048934877" duration="3342000" />
     </task>
     <servers />
   </component>

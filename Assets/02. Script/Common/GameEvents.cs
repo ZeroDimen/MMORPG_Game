@@ -25,8 +25,4 @@ public static class GameEvents
     public static Action OnCurrentCameraChanged;
 
     public static Action OnPlayerLevelUpEvent;
-
-    public static Action<int> OnSetExp;
-    public static Action<int> OnSetMaxExp;
-    public static Action<int> OnSetLevel;
 }

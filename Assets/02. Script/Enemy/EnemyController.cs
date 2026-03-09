@@ -92,6 +92,14 @@ public class EnemyController : MonoBehaviourPun
         _enemyHpBarController = GetComponent<EnemyHPBarController>();
     }
 
+    private void Start()
+    {
+        if(photonView.IsMine)
+            AudioPanelView.instance.mySfxAudioSources.Add(Audio);
+        else
+            AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
+    }
+
     private void Update()
     {
         if (State != EEnemyState.Dead && State != EEnemyState.None)
@@ -123,7 +131,6 @@ public class EnemyController : MonoBehaviourPun
             {
                 // 사망 처리
                 SetState(EEnemyState.Dead);
-                QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 0, 1);
                 
                 _rigidbody.isKinematic = false;
                 _rigidbody.useGravity = true;
