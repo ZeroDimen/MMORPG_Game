@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviourPun
         var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
         var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
+        var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput);
 
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Dead, playerStateDead },
             { EPlayerState.Emotion1, playerStateEmotion1 },
             { EPlayerState.Emotion2, playerStateEmotion2 },
+            { EPlayerState.Skill1, playerStateSkill1 },
         };
         
         _playerHpBarController = GetComponent<PlayerHPBarController>();

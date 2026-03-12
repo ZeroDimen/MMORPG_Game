@@ -40,8 +40,14 @@ public class PlayerState
     protected void Emotion2(InputAction.CallbackContext context)
     {
         _playerController.SetState(EPlayerState.Emotion2);
-        GameManager.Instance.Set_Spawner("Mutant");
     }
+    
+    protected void Skill1(InputAction.CallbackContext context)
+    {
+        _playerController.SetState(EPlayerState.Skill1);
+    }
+    
+    
     
     private void OnCursor(InputAction.CallbackContext context)
     {
