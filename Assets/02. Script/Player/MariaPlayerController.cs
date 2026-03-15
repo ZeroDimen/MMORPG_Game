@@ -7,11 +7,10 @@ using UnityEngine;
 public class MariaPlayerController :PlayerController
 {
     [SerializeField] private TMP_Text playerName;
-    [SerializeField] private GameObject attackObj;
     [SerializeField] private Transform Maria_Head;
     
     private Collider _attackCollider;
-    private SwordAttack _swordAttack;
+    private MariaDamageManager _mariaDamageManager;
 
     protected override void Start()
     {
@@ -38,25 +37,6 @@ public class MariaPlayerController :PlayerController
         {
             playerName.text = photonView.Owner.NickName;
             playerName.color = Color.red;
-        }
-        _attackCollider = attackObj.GetComponent<Collider>();
-        _swordAttack = attackObj.GetComponent<SwordAttack>();
-    }
-
-    public void EnableAttackCollider()
-    {
-        if (_attackCollider != null && photonView.IsMine)
-        {
-            _swordAttack.Damage = Status.ATK;
-            _attackCollider.enabled = true;
-        }
-    }
-    
-    public void DisableAttackCollider()
-    {
-        if (_attackCollider != null)
-        {
-            _attackCollider.enabled = false;
         }
     }
 }

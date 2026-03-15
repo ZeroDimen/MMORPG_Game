@@ -11,6 +11,8 @@ public class PlayerStatus
     public int DEF;     // 방어력
     public int DEX;     // 이동속도
 
+    public int Skill1 = 70; // 수정필요
+
     public PlayerStatus(int hp, int maxhp, int lv, int maxexp, int exp, int atk, int def, int dex)
     {
         HP = hp;

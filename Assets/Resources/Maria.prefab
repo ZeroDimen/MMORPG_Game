@@ -460,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6968040997933580751
 Transform:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.2488794, y: 1.8190651, z: 1.0000001}
   m_Center: {x: -0.124439724, y: 1.2418551, z: 0.76}
@@ -777,7 +777,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43f3065a97754ac4a86ecba3f80d5e92, type: 3}
   State: 0
   playerName: {fileID: 2997760728349481453}
-  attackObj: {fileID: 895524781779190983}
   Maria_Head: {fileID: 640950517893958634}
 --- !u!114 &2583507576718065381
 MonoBehaviour:
@@ -1303,8 +1302,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5872498474080607864}
+  - component: {fileID: 3808415261900656836}
+  - component: {fileID: 159258996601048491}
   m_Layer: 0
-  m_Name: '[Skill] 1'
+  m_Name: '[Collider] Skill1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,6 +1327,40 @@ Transform:
   - {fileID: 173981347285977405}
   m_Father: {fileID: 4506219907333809406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3808415261900656836
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799098180988745040}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 9}
+  m_Center: {x: 0, y: 0, z: 5.5}
+--- !u!114 &159258996601048491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799098180988745040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee38758ef218f9b41b0f5c8f51bd45b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordAttack
+  Damage: 1
 --- !u!1 &2839241089205679250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,6 +3175,10 @@ PrefabInstance:
       value: FlameThrower
       objectReference: {fileID: 0}
     - target: {fileID: 1634767862067424, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685911702664702, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
