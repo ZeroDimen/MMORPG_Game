@@ -59,15 +59,16 @@ public partial class PartySystem
         Debug.Log("실패");
     }
 
-    public void Secede(string playerName)
+    public void RequestSecede(string playerName)
     {
-        pv.RPC(nameof(ApplySecede), RpcTarget.MasterClient, playerName);
+        var myPartyData = JsonConvert.SerializeObject(MyParty);
+        pv.RPC(nameof(Secede), RpcTarget.MasterClient, playerName, myPartyData);
     }
 
     [PunRPC]
-    public void ApplySecede(string playerName)
+    public void SuccessSecede()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
-        
+        MyParty = null;
+        RequestPartyListData();
     }
 }

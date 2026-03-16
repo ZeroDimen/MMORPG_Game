@@ -37,7 +37,9 @@ public class PartyInformationView : MonoBehaviour
 
     private void SecedeButton()
     {
-        PartySystem.instance.Secede(PhotonNetwork.LocalPlayer.NickName);
+        if (PartySystem.instance.MyParty == null) return;
+        PartySystem.instance.RequestSecede(PhotonNetwork.LocalPlayer.NickName);
+        gameObject.SetActive(false);
     }
 
     private void UpdateMemberUI()
@@ -47,6 +49,7 @@ public class PartyInformationView : MonoBehaviour
         currentPartyMember.Clear();
         
         var party = PartySystem.instance.MyParty;
+        if (party == null) return;
         foreach (var member in party._member)
         {
             var obj = Instantiate(memberPrefab, partyListParentsTransform);

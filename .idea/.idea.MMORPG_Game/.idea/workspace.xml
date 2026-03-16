@@ -9,9 +9,11 @@
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyInformationView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyInformationView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +200,8 @@
       <workItem from="1773635604870" duration="1292000" />
       <workItem from="1773640726852" duration="606000" />
       <workItem from="1773641428235" duration="2195000" />
-      <workItem from="1773643687547" duration="8020000" />
+      <workItem from="1773643687547" duration="9843000" />
+      <workItem from="1773654460111" duration="1249000" />
     </task>
     <servers />
   </component>

@@ -29,6 +29,7 @@ public class PartySearchView : MonoBehaviour
 
     private void CreatePartyButton()
     {
+        if (PartySystem.instance.MyParty != null) return;
         createPartyPanel.SetActive(true);
     }
 }

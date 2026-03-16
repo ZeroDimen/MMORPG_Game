@@ -37,8 +37,17 @@ public partial class PartySystem
             ServerToClientPartyList();
         }
         else
-        {
             pv.RPC(nameof(Failure), info.Sender);
-        }
+    }
+    
+    [PunRPC]
+    public void Secede(string playerName, string data, PhotonMessageInfo info)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        var partyData = JsonConvert.DeserializeObject<Party>(data);
+        var party = partyList.Find(i => i._manager == partyData._manager);
+
+        party?._member.Remove(playerName);
+        pv.RPC(nameof(SuccessSecede), info.Sender);
     }
 }

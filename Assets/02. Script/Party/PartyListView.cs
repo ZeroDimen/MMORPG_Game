@@ -27,6 +27,7 @@ public class PartyListView : MonoBehaviour
 
     private void ParticipationButton()
     {
+        if (PartySystem.instance.MyParty != null) return;
         PartySystem.instance.Participation(managerName, PhotonNetwork.LocalPlayer.NickName);
     }
 }
