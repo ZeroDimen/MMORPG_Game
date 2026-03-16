@@ -7,7 +7,13 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +24,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/da/206d9925/RuntimeMethodInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/493b407efcb64dddad59f28bb0b831d3212400/0b/21e12c48/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e0525d8228db4b5da20c0396fc5fbfc73ac00/25/43a98312/PhotonPeer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CameraCut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CutSceneCamera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -31,6 +39,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySystemClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySystemServer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -183,7 +193,13 @@
       <workItem from="1772981121903" duration="8972000" />
       <workItem from="1773048934877" duration="3342000" />
       <workItem from="1773296773678" duration="4446000" />
-      <workItem from="1773307577621" duration="5500000" />
+      <workItem from="1773307577621" duration="7553000" />
+      <workItem from="1773472204726" duration="3376000" />
+      <workItem from="1773480947435" duration="3675000" />
+      <workItem from="1773635604870" duration="1292000" />
+      <workItem from="1773640726852" duration="606000" />
+      <workItem from="1773641428235" duration="2195000" />
+      <workItem from="1773643687547" duration="1509000" />
     </task>
     <servers />
   </component>

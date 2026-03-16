@@ -22,8 +22,10 @@ public class PartyListView : MonoBehaviour
     {
         title.text = party._title;
         numberOfpeple.text = $"{party._member.Count} / 4";
-        participation.onClick.AddListener(ParticipationButton);
         managerName = party._manager;
+        
+        // participation.onClick.RemoveAllListeners();
+        // participation.onClick.AddListener(ParticipationButton);
     }
 
     private void ParticipationButton()
