@@ -20,8 +20,6 @@ public partial class PartySystem
     [PunRPC]
     public void UpdateListUI(string data)
     {
-        // var partyListData = JsonUtility.FromJson<PartyDataWrapper>(data);
-        // partyList = partyListData.partyList;
         partyList = JsonConvert.DeserializeObject<List<Party>>(data);
         
         foreach (var party in currentViewParty)
@@ -30,25 +28,28 @@ public partial class PartySystem
         
         foreach (var party in partyList)
         {
+            if (MyParty != null && MyParty._manager == party._manager)
+                MyParty = party;
             var obj = Instantiate(partyPrefab, partyParentsTransform);
             var partyListView = obj.GetComponent<PartyListView>();
             partyListView.ViewParty(party);
             currentViewParty.Add(partyListView);
         }
+        partyMemberChanged?.Invoke();
     }
 
     public void Participation(string managerName, string playerName)
     {
-        // if (!pv.IsMine) return;
         pv.RPC(nameof(ParticipationButton), RpcTarget.MasterClient, managerName, playerName);
     }
     
     
     [PunRPC]
-    public void SuccessParticipation()
+    public void SuccessParticipation(string data)
     {
         // 성공
-        Debug.Log("성공");
+        var party = JsonConvert.DeserializeObject<Party>(data);
+        MyParty = party;
     }
 
     [PunRPC]

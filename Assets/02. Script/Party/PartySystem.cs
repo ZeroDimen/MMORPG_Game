@@ -5,7 +5,7 @@ using Photon.Pun;
 using UnityEngine;
 
 [Serializable]
-public struct Party
+public class Party
 {
     public string _title;
     public string _manager;
@@ -35,11 +35,6 @@ public struct Party
     //     
     // }
 }
-[Serializable]
-public class PartyDataWrapper
-{
-    public List<Party> partyList;
-}
 
 public partial class PartySystem : MonoBehaviour
 {
@@ -51,6 +46,8 @@ public partial class PartySystem : MonoBehaviour
     [SerializeField] private Transform partyParentsTransform;
 
     private PhotonView pv;
+    public Party MyParty { private set; get; }
+    public event Action partyMemberChanged;
     private void Awake()
     {
         if (instance == null)
