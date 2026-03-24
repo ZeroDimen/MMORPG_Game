@@ -10,6 +10,7 @@ using static Constants;
 public class PlayerController : MonoBehaviourPun
 {
     [SerializeField] private Transform headTransform;
+    [SerializeField] private SkillManager _skillManager;
     public PlayerStatus Status;
     
     [Header("이동")] 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviourPun
         _playerInput = GetComponent<PlayerInput>();
         _characterController = GetComponent<CharacterController>();
         Audio = GetComponent<AudioSource>();
+        _skillManager = GameObject.FindWithTag("SkillManager").GetComponent<SkillManager>();
         
         
         // 상태 객체 초기화
@@ -54,8 +56,8 @@ public class PlayerController : MonoBehaviourPun
         var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
         var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
-        var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput);
-
+        var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput, _skillManager);
+        
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
             { EPlayerState.Idle, playerStateIdle },

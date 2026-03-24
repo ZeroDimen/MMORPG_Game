@@ -7,6 +7,7 @@ public class PlayerState
     protected PlayerController _playerController;
     protected Animator _animator;
     protected PlayerInput _playerInput;
+    protected SkillManager _skillManager;
 
     private bool isAttacking = false;
     private bool flag = false;

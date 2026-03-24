@@ -50,7 +50,7 @@ public class MariaDamageManager : MonoBehaviour
                 break;
                 
             case "Skill1":
-                Damage = playerStatus.Skill1;
+                // Damage = playerStatus.Skill1;
                 break;
         }
     }
