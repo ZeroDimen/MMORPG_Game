@@ -29,14 +29,9 @@ public class Party
 
         return false;
     }
-    
-    // public bool SecedeMember(string name)
-    // {
-    //     
-    // }
 }
 
-public partial class PartySystem : MonoBehaviour
+public partial class PartySystem : MonoBehaviourPunCallbacks
 {
     public static PartySystem instance;
     public List<Party> partyList = new List<Party>();
@@ -47,7 +42,7 @@ public partial class PartySystem : MonoBehaviour
 
     private PhotonView pv;
     public Party MyParty { private set; get; }
-    public event Action partyMemberChanged;
+    public event Action PartyMemberChanged;
     private void Awake()
     {
         if (instance == null)

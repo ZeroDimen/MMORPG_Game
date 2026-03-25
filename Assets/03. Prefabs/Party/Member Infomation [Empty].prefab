@@ -327,7 +327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyInformationListView
   nickName: {fileID: 7453742285405449659}
   level: {fileID: 7091372561652093758}
-  status: {fileID: 96191421108305304}
+  information: {fileID: 96191421108305304}
+  memberStatusPanel: {fileID: 0}
 --- !u!1 &5683401909689124133
 GameObject:
   m_ObjectHideFlags: 0

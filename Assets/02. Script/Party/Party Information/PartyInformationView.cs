@@ -11,6 +11,8 @@ public class PartyInformationView : MonoBehaviour
     [SerializeField] private GameObject memberPrefab;
     [SerializeField] private Transform partyListParentsTransform;
 
+    [SerializeField] private GameObject memberStatusPanel;
+
     private List<GameObject> currentPartyMember;
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class PartyInformationView : MonoBehaviour
 
     private void Start()
     {
-        PartySystem.instance.partyMemberChanged += UpdateMemberUI;
+        PartySystem.instance.PartyMemberChanged += UpdateMemberUI;
     }
 
     private void ConfirmButton()
@@ -53,7 +55,9 @@ public class PartyInformationView : MonoBehaviour
         foreach (var member in party._member)
         {
             var obj = Instantiate(memberPrefab, partyListParentsTransform);
-            obj.GetComponent<PartyInformationListView>().MemberView(member);
+            var listView = obj.GetComponent<PartyInformationListView>(); 
+            listView.MemberView(member);
+            listView.memberStatusPanel = memberStatusPanel;
             currentPartyMember.Add(obj);
         }
     }

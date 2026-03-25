@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public partial class PartySystem
@@ -35,7 +36,7 @@ public partial class PartySystem
             partyListView.ViewParty(party);
             currentViewParty.Add(partyListView);
         }
-        partyMemberChanged?.Invoke();
+        PartyMemberChanged?.Invoke();
     }
 
     public void Participation(string managerName, string playerName)

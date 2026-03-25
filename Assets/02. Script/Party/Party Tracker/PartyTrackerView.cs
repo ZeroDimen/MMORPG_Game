@@ -10,7 +10,7 @@ public class PartyTrackerView : MonoBehaviour
     private void Start()
     {
         currentPartyMember = new List<GameObject>();
-        PartySystem.instance.partyMemberChanged += UpdateMemberUI;
+        PartySystem.instance.PartyMemberChanged += UpdateMemberUI;
     }
 
     private void UpdateMemberUI()
