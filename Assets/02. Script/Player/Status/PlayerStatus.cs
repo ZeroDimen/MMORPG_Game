@@ -48,6 +48,9 @@ public class PlayerStatus
             case "MAXHP" :
                 MAXHP = value;
                 break;
+            case "ATK" :
+                ATK = value;
+                break;
         }
     }
 

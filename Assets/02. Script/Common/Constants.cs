@@ -32,8 +32,8 @@ public class Constants
         Hit,
         Dead,
         Emotion1,
-        Emotion2,
         Skill1,
+        Skill2,
     }
     
     // Player 애니메이터 파라미터
@@ -45,8 +45,8 @@ public class Constants
     public static readonly int PlayerAniParamHit = Animator.StringToHash("hit");
     public static readonly int PlayerAniParamDead = Animator.StringToHash("dead");
     public static readonly int PlayerAniParamEmotion1 = Animator.StringToHash("emotion1");
-    public static readonly int PlayerAniParamEmotion2 = Animator.StringToHash("emotion2");
     public static readonly int PlayerAniParamSkill1 = Animator.StringToHash("skill1");
+    public static readonly int PlayerAniParamSkill2 = Animator.StringToHash("skill2");
     public static readonly int PlayerAniParamMoveSpeed = Animator.StringToHash("move_speed");
     public static readonly int PlayerAniParamGroundDistance = Animator.StringToHash("ground_distance");
     

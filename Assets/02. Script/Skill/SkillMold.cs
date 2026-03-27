@@ -8,7 +8,11 @@ public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public GameObject skillInfoObj;
     
     public TMP_Text skillInfoSkillName;
-    public TMP_Text skillInfoSkillScript;
+    public TMP_Text skillInfoSkillCooltime;
+    public TMP_Text skillInfoSkillDamage;
+    public TMP_Text skillInfoSkillDescription;
+
+    public int skillDamage;
     public int skillCooltime;
     
     public Image skillIcon;
@@ -30,7 +34,9 @@ public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         skillInfoObj.transform.localPosition = new Vector3(skillInfoPos.x + gameObject.transform.localPosition.x, skillInfoPos.y, skillInfoPos.z);
 
         skillInfoSkillName.text = skillName;
-        skillInfoSkillScript.text = skillScript;
+        skillInfoSkillCooltime.text = skillCooltime.ToString();
+        skillInfoSkillDamage.text = skillDamage.ToString();
+        skillInfoSkillDescription.text = skillScript;
         
         skillInfoObj.SetActive(true);
     }

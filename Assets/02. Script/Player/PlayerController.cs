@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -55,8 +56,8 @@ public class PlayerController : MonoBehaviourPun
         var playerStateHit = new PlayerStateHit(this, _animator, _playerInput);
         var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
-        var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
         var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput, _skillManager);
+        var playerStateSkill2 = new PlayerStateSkill2(this, _animator, _playerInput,_skillManager);
         
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
@@ -68,8 +69,8 @@ public class PlayerController : MonoBehaviourPun
             { EPlayerState.Hit, playerStateHit },
             { EPlayerState.Dead, playerStateDead },
             { EPlayerState.Emotion1, playerStateEmotion1 },
-            { EPlayerState.Emotion2, playerStateEmotion2 },
             { EPlayerState.Skill1, playerStateSkill1 },
+            { EPlayerState.Skill2, playerStateSkill2 },
         };
         
         _playerHpBarController = GetComponent<PlayerHPBarController>();
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviourPun
             
             GameManager.Instance.SetGameState(EGameState.Play);
             SaveManager.Instance.LoadGameFromMaster(this);
+            StartCoroutine(GetPlayerStatus());
         }
         SaveManager.Instance.LoadGameFromMaster(this);
         
@@ -180,12 +182,14 @@ public class PlayerController : MonoBehaviourPun
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         PlayerStatusView.Instance.UpdateStatusUI(Status);
+        _skillManager.SetSkillData(Status.ATK);
     }
 
     private void SetLevel()
     {
         if (Status == null) return;
         Status.SetStatus("MAXEXP", Status.LV * 10);
+        Status.SetStatus("ATK", (int)Math.Round((Status.LV * 2.5) + 50));
         if (Status.EXP >= Status.MAXEXP)
         {
             Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);
@@ -193,6 +197,7 @@ public class PlayerController : MonoBehaviourPun
             GameEvents.OnPlayerLevelUpEvent?.Invoke();
             SetExp(0);
         }
+        
         
     }
     
@@ -288,6 +293,11 @@ public class PlayerController : MonoBehaviourPun
             SetState(EPlayerState.Spawn);
         }
     }
-    
+
+    IEnumerator GetPlayerStatus()
+    {
+        yield return new WaitUntil((() => Status != null));
+        _skillManager.SetSkillData(Status.ATK);
+    }
     
 }

@@ -992,9 +992,6 @@ MonoBehaviour:
     Name: emotion1
   - Type: 9
     SynchronizeType: 1
-    Name: emotion2
-  - Type: 9
-    SynchronizeType: 1
     Name: hit
   - Type: 9
     SynchronizeType: 1
@@ -1005,6 +1002,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: skill1
+  - Type: 9
+    SynchronizeType: 1
+    Name: skill2
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
