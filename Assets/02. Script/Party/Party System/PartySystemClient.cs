@@ -2,14 +2,15 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Photon.Pun;
 using Photon.Realtime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class PartySystem
 {
     // Server 에게 파티 생성 요청
-    public void RequestCreateParty(string title, string managerName)
+    public void RequestCreateParty(string title, string managerName, JoinType type)
     {
-        pv.RPC(nameof(CreatePartyButton), RpcTarget.MasterClient, title, managerName);
+        pv.RPC(nameof(CreatePartyButton), RpcTarget.MasterClient, title, managerName, (int)type);
     }
 
     // Server에게 파티 리스트 요청
@@ -41,7 +42,7 @@ public partial class PartySystem
 
     public void Participation(string managerName, string playerName)
     {
-        pv.RPC(nameof(ParticipationButton), RpcTarget.MasterClient, managerName, playerName);
+        pv.RPC(nameof(RequestParticipation), RpcTarget.MasterClient, managerName, playerName);
     }
     
     
@@ -71,5 +72,19 @@ public partial class PartySystem
     {
         MyParty = null;
         RequestPartyListData();
+    }
+
+    [PunRPC]
+    public void RequestParticipationToManager(string managerName, string playerName)
+    {
+        if (managerName != PhotonNetwork.NickName) return;
+        OnRequestPartySignUp?.Invoke(playerName, managerName);
+        Debug.Log("파티장의 화면에서 신청화면 띄우기");
+    }
+
+    public void AnswerParticipationToServer(string managerName, string playerName, bool answer)
+    {
+        pv.RPC(nameof(AnswerParticipationFromManager), RpcTarget.MasterClient, managerName, playerName, answer);
+        Debug.Log("파티장 결과 서버에게 보내기");
     }
 }

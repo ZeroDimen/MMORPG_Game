@@ -6,26 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyInformationListView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyInformationListView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyInformationView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyInformationView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemClient.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemClient.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemServer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySystemServer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyTrackerListView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyTrackerListView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyTrackerView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyTrackerView.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Member Infomation [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Member Infomation [Empty].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +38,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,6 +54,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@02433b2481ab/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/TMP/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -218,6 +207,9 @@
       <workItem from="1774228694302" duration="4181000" />
       <workItem from="1774336881950" duration="3828000" />
       <workItem from="1774347310016" duration="2563000" />
+      <workItem from="1774397388654" duration="4083000" />
+      <workItem from="1774518202348" duration="1654000" />
+      <workItem from="1774589440185" duration="8743000" />
     </task>
     <servers />
   </component>
