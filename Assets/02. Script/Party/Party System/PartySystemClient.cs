@@ -52,6 +52,7 @@ public partial class PartySystem
         // 성공
         var party = JsonConvert.DeserializeObject<Party>(data);
         MyParty = party;
+        Debug.Log("파티 가입 성공~");
     }
 
     [PunRPC]

@@ -15,6 +15,7 @@ public partial class PartySystem
         partyList.Add(party);
         pv.RPC(nameof(SuccessParticipation), info.Sender, partyData);
         ServerToClientPartyList();
+        Debug.Log($"저의 이름은 {PhotonNetwork.LocalPlayer.NickName} 이고 넘버는 {PhotonNetwork.LocalPlayer.ActorNumber}");
     }
     // Server에 있는 파티 리스트를 각 클라이언트로 전송
     [PunRPC]
@@ -22,7 +23,7 @@ public partial class PartySystem
     {
         if (!PhotonNetwork.IsMasterClient) return;
         var data = JsonConvert.SerializeObject(partyList);
-        pv.RPC(nameof(UpdateListUI), RpcTarget.All, data);
+        pv.RPC(nameof(UpdateListUI), RpcTarget.Others, data);
     }
 
     [PunRPC]
@@ -61,28 +62,36 @@ public partial class PartySystem
     [PunRPC]
     public void AnswerParticipationFromManager(string managerName, string playerName, bool answer, PhotonMessageInfo info)
     {
+        if (!PhotonNetwork.IsMasterClient) return;
+        
         Debug.Log("방장의 답변을 서버에서 받음");
         var party = partyList.Find(i => i._manager == managerName);
         if (party == null) return;
         
-        var isParticipation = party.CanParticipation(playerName);
-        if (!isParticipation) return;
-
         Player applicant = null;
         foreach (var p in PhotonNetwork.PlayerList)
         {
-            if (p.NickName == playerName)
+            if (p.NickName == playerName && p.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
             {
                 applicant = p;
                 break;
             }
         }
-        
+
+        if (applicant == null)
+        {
+            Debug.Log("신청자를 찾을 수 없습니다.");
+            return;
+        }
+
+        Debug.Log($"신청자의 이름은 {applicant.NickName} 입니다. 그리고 저는 {PhotonNetwork.NickName} 입니다.");
         if (answer == false)
         {
             pv.RPC(nameof(Failure), applicant);
             return;
         }
+
+        if (!party.CanParticipation(playerName)) return;
         
         party._member.Add(playerName);
         var partyData = JsonConvert.SerializeObject(party);

@@ -62,4 +62,9 @@ public partial class PartySystem : MonoBehaviourPunCallbacks
         currentViewParty = new List<PartyListView>();
         OnRequestPartySignUp += GetComponentInChildren<PartySignUpPanelView>(true).UpdateUI;
     }
+
+    private void Update()
+    {
+        Debug.Log($"닉네임 {PhotonNetwork.NickName} 이건가? {PhotonNetwork.LocalPlayer.NickName} 이거야?");
+    }
 }

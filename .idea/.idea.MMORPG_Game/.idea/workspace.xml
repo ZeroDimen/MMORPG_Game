@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +206,9 @@
       <workItem from="1774347310016" duration="2563000" />
       <workItem from="1774397388654" duration="4083000" />
       <workItem from="1774518202348" duration="1654000" />
-      <workItem from="1774589440185" duration="8743000" />
+      <workItem from="1774589440185" duration="8929000" />
+      <workItem from="1774607256393" duration="5483000" />
+      <workItem from="1774888797811" duration="1953000" />
     </task>
     <servers />
   </component>
