@@ -11,7 +11,7 @@ using static Constants;
 public class PlayerController : MonoBehaviourPun
 {
     [SerializeField] private Transform headTransform;
-    [SerializeField] private SkillManager _skillManager;
+    public SkillManager skillManager;
     public PlayerStatus Status;
     
     [Header("이동")] 
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviourPun
         _playerInput = GetComponent<PlayerInput>();
         _characterController = GetComponent<CharacterController>();
         Audio = GetComponent<AudioSource>();
-        _skillManager = GameObject.FindWithTag("SkillManager").GetComponent<SkillManager>();
+        skillManager = GameObject.FindWithTag("SkillManager").GetComponent<SkillManager>();
         
         
         // 상태 객체 초기화
@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviourPun
         var playerStateHit = new PlayerStateHit(this, _animator, _playerInput);
         var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
-        var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput, _skillManager);
-        var playerStateSkill2 = new PlayerStateSkill2(this, _animator, _playerInput,_skillManager);
+        var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput, skillManager);
+        var playerStateSkill2 = new PlayerStateSkill2(this, _animator, _playerInput,skillManager);
         
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
@@ -182,14 +182,14 @@ public class PlayerController : MonoBehaviourPun
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         PlayerStatusView.Instance.UpdateStatusUI(Status);
-        _skillManager.SetSkillData(Status.ATK);
+        skillManager.SetSkillData(Status.LV);
     }
 
     private void SetLevel()
     {
         if (Status == null) return;
         Status.SetStatus("MAXEXP", Status.LV * 10);
-        Status.SetStatus("ATK", (int)Math.Round((Status.LV * 2.5) + 50));
+        Status.SetStatus("ATK", (int)Math.Round((Status.LV * 2.5) + 50)); // 2.5는 래벨당 성장 공격력
         if (Status.EXP >= Status.MAXEXP)
         {
             Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);
@@ -297,7 +297,7 @@ public class PlayerController : MonoBehaviourPun
     IEnumerator GetPlayerStatus()
     {
         yield return new WaitUntil((() => Status != null));
-        _skillManager.SetSkillData(Status.ATK);
+        skillManager.SetSkillData(Status.LV);
     }
     
 }

@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordAttack
   Damage: 30
+  mariaPlayerController: {fileID: 1352892008713876386}
 --- !u!1 &917560205457156218
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +702,7 @@ Transform:
   - {fileID: 640950517893958634}
   - {fileID: 6968040997933580751}
   - {fileID: 5872498474080607864}
+  - {fileID: 1054930671934991287}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6663562192935883078
@@ -768,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MariaPlayerController
   headTransform: {fileID: 0}
-  _skillManager: {fileID: 0}
+  skillManager: {fileID: 0}
   breakForce: 1
   jumpHeight: 2
   _audioClips:
@@ -1305,8 +1307,9 @@ GameObject:
   - component: {fileID: 5872498474080607864}
   - component: {fileID: 3808415261900656836}
   - component: {fileID: 159258996601048491}
+  - component: {fileID: 4427635063835870497}
   m_Layer: 0
-  m_Name: '[Collider] Skill1'
+  m_Name: '[Collider] Fire Strike'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1362,6 +1365,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordAttack
   Damage: 1
+  mariaPlayerController: {fileID: 1352892008713876386}
+--- !u!114 &4427635063835870497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799098180988745040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a341784eeb36d2c499f59e5e78d340e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TickCollider
+  tickInterval: 0.3
+  collider: {fileID: 3808415261900656836}
 --- !u!1 &2839241089205679250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,6 +3181,90 @@ Transform:
   - {fileID: 609274830973549020}
   m_Father: {fileID: 686215066930980104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9160803812125261523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1054930671934991287}
+  - component: {fileID: 3139112175865294437}
+  - component: {fileID: 6876133865115268634}
+  - component: {fileID: 3698145526739394816}
+  m_Layer: 0
+  m_Name: '[Collider] Water Spin'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1054930671934991287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160803812125261523}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 437630067791340823}
+  m_Father: {fileID: 4506219907333809406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3139112175865294437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160803812125261523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 2, z: 5}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6876133865115268634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160803812125261523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee38758ef218f9b41b0f5c8f51bd45b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariaDamageManager
+  Damage: 1
+  mariaPlayerController: {fileID: 1352892008713876386}
+--- !u!114 &3698145526739394816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160803812125261523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a341784eeb36d2c499f59e5e78d340e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TickCollider
+  tickInterval: 0.3
+  collider: {fileID: 3139112175865294437}
 --- !u!1001 &178545953134160303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3232,4 +3334,82 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4584431484625042, guid: 007c57e2df8e9b144b99f471b84f3d56, type: 3}
   m_PrefabInstance: {fileID: 178545953134160303}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2156549786958473697
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1054930671934991287}
+    m_Modifications:
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330053056624616938, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_Name
+      value: WaterSpell1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330053056624616938, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+--- !u!4 &437630067791340823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2017433003128589558, guid: 78ab352e15a114204bf5ec278a00b5d8, type: 3}
+  m_PrefabInstance: {fileID: 2156549786958473697}
   m_PrefabAsset: {fileID: 0}

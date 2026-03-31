@@ -6,14 +6,18 @@ public class MariaDamageManager : MonoBehaviour
 {
     public int Damage = 1;
     private PhotonView playerPV;
+    [SerializeField] private MariaPlayerController mariaPlayerController;
     private PlayerStatus playerStatus;
+    private SkillMold skillMold;
     private string ObjName = null;
 
     private void Start()
     {
         playerPV = gameObject.transform.parent.GetComponent<PhotonView>();
-        playerStatus = gameObject.transform.parent.GetComponent<MariaPlayerController>().Status;
-        ObjName = gameObject.name;
+        playerStatus = mariaPlayerController.Status;
+        
+        ObjName = gameObject.name.Replace("[Collider] ", "");
+        skillMold = mariaPlayerController.skillManager.GetSkillData(ObjName);
         
         DamageSetting(ObjName);
     }
@@ -33,25 +37,29 @@ public class MariaDamageManager : MonoBehaviour
             GameManager.Instance.HitEnemy(enemyView,playerPV, Damage);
         }
     }
+    
 
-    private void DamageSetting(string text)
+    private void DamageSetting(string skillName)
     {
         if (playerStatus == null)
         {
             return;
         }
-        
-        string name = text.Substring(text.IndexOf(']') + 1).Trim(); // 오브젝트 이름으로 검색하기 위함
-        
-        switch (name)
+
+        switch (skillName)
         {
             case "Attack":
                 Damage = playerStatus.ATK;
                 break;
-                
-            case "Skill1":
-                // Damage = playerStatus.Skill1;
+
+            case "Fire Strike":
+                // Damage = skillMold.skillDamage;
+                Damage = 10;
                 break;
+            case "Water Spin":
+                Damage = 5;
+                break;
+
         }
     }
 }

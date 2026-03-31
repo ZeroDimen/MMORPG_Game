@@ -20,31 +20,33 @@ public class SkillManager : MonoBehaviour
             GameObject moldObj = Instantiate(Skill_mold, Skill_mold.transform.parent);
             skillmoldObj[i] = moldObj.GetComponent<SkillMold>();
             
-            // skillmoldObj[i].skillIcon.sprite = skillDatas[i].skillIcon;
-            // skillmoldObj[i].skillName = skillDatas[i].skillName;
-            // skillmoldObj[i].skillCooltime = skillDatas[i].skillCooltime;
-            // skillmoldObj[i].skillDamage = skillDatas[i].skillDamage;
-            // skillmoldObj[i].skillScript = skillDatas[i].skillDescription;
-            
             moldObj.SetActive(true);
         }
     }
 
-    public void SetSkillData(int ATK = 0)
+    public void SetSkillData(int LV = 1)
     {
         for (int i = 0; i < skillDatas.Length; i++) // 수정필요 skillData 수 많큼 출력
         {
-            // GameObject moldObj = Instantiate(Skill_mold, Skill_mold.transform.parent);
-            // skillmoldObj[i] = moldObj.GetComponent<SkillMold>();
-            
             skillmoldObj[i].skillIcon.sprite = skillDatas[i].skillIcon;
             skillmoldObj[i].skillName = skillDatas[i].skillName;
             skillmoldObj[i].skillCooltime = skillDatas[i].skillCooltime;
-            skillmoldObj[i].skillDamage = skillDatas[i].skillDamage + ATK;
+            skillmoldObj[i].skillDamage = skillDatas[i].skillBaseDamage + skillDatas[i].skillLVDamage * LV;
             skillmoldObj[i].skillScript = skillDatas[i].skillDescription;
-            
-            // moldObj.SetActive(true);
         }
+    }
+
+    // 이름을 사용하여 스킬 데이터를 반환 하는 함수
+    public SkillMold GetSkillData(string skillName)
+    {
+        foreach (var skill in skillmoldObj)
+        {
+            if (skill.skillName == skillName)
+            {
+                return skill;
+            }
+        }
+        return null;
     }
 
     public void StartCooltime(int num)
