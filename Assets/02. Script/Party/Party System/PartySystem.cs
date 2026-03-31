@@ -30,8 +30,12 @@ public class Party
     public bool CanParticipation(string name)
     {
         if (_member.Count >= 4) return false;
-        // _member.Add(name);
         return true;
+    }
+
+    public bool IsMyParty(string name)
+    {
+        return _member.Contains(name);
     }
 }
 
@@ -40,6 +44,7 @@ public partial class PartySystem : MonoBehaviourPunCallbacks
     public static PartySystem instance;
     public List<Party> partyList = new List<Party>();
     [SerializeField] private GameObject partyPrefab;
+    [SerializeField] private GameObject messagePrefab;
 
     private List<PartyListView> currentViewParty;
     [SerializeField] private Transform partyParentsTransform;
@@ -61,10 +66,5 @@ public partial class PartySystem : MonoBehaviourPunCallbacks
         pv = GetComponent<PhotonView>();
         currentViewParty = new List<PartyListView>();
         OnRequestPartySignUp += GetComponentInChildren<PartySignUpPanelView>(true).UpdateUI;
-    }
-
-    private void Update()
-    {
-        Debug.Log($"닉네임 {PhotonNetwork.NickName} 이건가? {PhotonNetwork.LocalPlayer.NickName} 이거야?");
     }
 }

@@ -30,7 +30,7 @@ public partial class PartySystem
         
         foreach (var party in partyList)
         {
-            if (MyParty != null && MyParty._manager == party._manager)
+            if (party.IsMyParty(PhotonNetwork.NickName))
                 MyParty = party;
             var obj = Instantiate(partyPrefab, partyParentsTransform);
             var partyListView = obj.GetComponent<PartyListView>();
@@ -56,10 +56,9 @@ public partial class PartySystem
     }
 
     [PunRPC]
-    public void Failure()
+    public void Failure(string message)
     {
-        // 실패했다고 창 띄우기
-        Debug.Log("실패");
+        ShowMessage(message);
     }
 
     public void RequestSecede(string playerName)
@@ -80,12 +79,18 @@ public partial class PartySystem
     {
         if (managerName != PhotonNetwork.NickName) return;
         OnRequestPartySignUp?.Invoke(playerName, managerName);
-        Debug.Log("파티장의 화면에서 신청화면 띄우기");
     }
 
     public void AnswerParticipationToServer(string managerName, string playerName, bool answer)
     {
         pv.RPC(nameof(AnswerParticipationFromManager), RpcTarget.MasterClient, managerName, playerName, answer);
-        Debug.Log("파티장 결과 서버에게 보내기");
+    }
+
+    [PunRPC]
+    public void ShowMessage(string context)
+    {
+        GameObject panel = Instantiate(messagePrefab, transform);
+        var cs = panel.GetComponent<PartyMessageView>();
+        cs.ViewText(context);
     }
 }

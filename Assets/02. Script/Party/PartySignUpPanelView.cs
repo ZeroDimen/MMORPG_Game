@@ -23,7 +23,6 @@ public class PartySignUpPanelView : MonoBehaviour
 
     public void UpdateUI(string playerName, string managerName)
     {
-        Debug.Log("업데이트 UI");
         gameObject.SetActive(true);
         nickName.text = playerName;
         _playerName = playerName;
