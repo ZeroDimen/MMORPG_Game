@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,15 +11,19 @@ public class PartySignUpPanelView : MonoBehaviour
     [SerializeField] private Button refusalButton;
     [SerializeField] private Button informationButton;
     [SerializeField] private TextMeshProUGUI nickName;
+    [SerializeField] private TextMeshProUGUI timer;
 
     [SerializeField] private GameObject statusPanel;
 
     private string _playerName;
     private string _managerName;
+
+    private int limitTime = 15;
     private void Start()
     {
         acceptButton.onClick.AddListener(OnAcceptButton);
         refusalButton.onClick.AddListener(OnRefusalButton);
+        StartCoroutine(Timer());
     }
 
     public void UpdateUI(string playerName, string managerName)
@@ -28,6 +33,17 @@ public class PartySignUpPanelView : MonoBehaviour
         _playerName = playerName;
         _managerName = managerName;
         informationButton.onClick.AddListener(OnInformationButton);
+    }
+
+    private IEnumerator Timer()
+    {
+        while (limitTime > 0)
+        {
+            timer.text = $"{limitTime}초 남았습니다.";
+            limitTime--;
+            yield return new WaitForSeconds(1f);
+        }
+        OnRefusalButton();
     }
 
     private void OnInformationButton()
