@@ -93,4 +93,16 @@ public partial class PartySystem
         var cs = panel.GetComponent<PartyMessageView>();
         cs.ViewText(context);
     }
+
+    public void ModifySetting()
+    {
+        var myPartyData = JsonConvert.SerializeObject(MyParty);
+        pv.RPC(nameof(RequestModifyParty), RpcTarget.MasterClient, myPartyData);
+    }
+
+    public void DelegateManager(string playerName)
+    {
+        var myPartyData = JsonConvert.SerializeObject(MyParty);
+        pv.RPC(nameof(RequestDelegateManager), RpcTarget.MasterClient, myPartyData, playerName);
+    }
 }

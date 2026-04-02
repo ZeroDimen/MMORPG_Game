@@ -129,4 +129,30 @@ public partial class PartySystem
         }
         pv.RPC(nameof(SuccessSecede), info.Sender);
     }
+
+    [PunRPC]
+    public void RequestModifyParty(string data)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        var partyData = JsonConvert.DeserializeObject<Party>(data);
+        var index = partyList.FindIndex(i => i._manager == partyData._manager);
+        if (index != -1)
+        {
+            partyList[index] = partyData;
+            ServerToClientPartyList();
+        }
+    }
+
+    [PunRPC]
+    public void RequestDelegateManager(string data, string playerName)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        var partyData = JsonConvert.DeserializeObject<Party>(data);
+        var party = partyList.Find(i => i._manager == partyData._manager);
+        if (party != null)
+        {
+            party._manager = playerName;
+            ServerToClientPartyList();
+        }
+    }
 }

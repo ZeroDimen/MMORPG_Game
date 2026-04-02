@@ -7,7 +7,15 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyInformationListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyInformationListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party Tracker/PartyTrackerListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party Tracker/PartyTrackerListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Member Infomation [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Member Infomation [Empty].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,6 +218,8 @@
       <workItem from="1774944649925" duration="7290000" />
       <workItem from="1775034543621" duration="540000" />
       <workItem from="1775035215941" duration="29000" />
+      <workItem from="1775159896444" duration="3482000" />
+      <workItem from="1775163646199" duration="4520000" />
     </task>
     <servers />
   </component>

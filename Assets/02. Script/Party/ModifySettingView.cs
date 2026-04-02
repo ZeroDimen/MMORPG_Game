@@ -1,9 +1,10 @@
+using System;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PartyCreateView : MonoBehaviour
+public class ModifySettingView : MonoBehaviour
 {
     [SerializeField] private TMP_InputField title;
     [SerializeField] private Toggle instantToggle;
@@ -11,28 +12,38 @@ public class PartyCreateView : MonoBehaviour
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
 
+    private Party party;
     private void Start()
     {
         confirmButton.onClick.AddListener(OnConfirmButton);
         cancelButton.onClick.AddListener(OnCancelButton);
+    }
 
-        instantToggle.isOn = true;
-        requestToggle.isOn = false;
+    private void OnEnable()
+    {
+        party = PartySystem.instance.MyParty;
+        
+        title.text = party._title;
+
+        var isInstant = party._joinType == JoinType.Instant;
+        
+        instantToggle.SetIsOnWithoutNotify(isInstant);
+        requestToggle.SetIsOnWithoutNotify(!isInstant);
     }
 
     private void OnConfirmButton()
     {
         if (string.IsNullOrEmpty(title.text)) return;
         var type = GetJoinType();
-        PartySystem.instance.RequestCreateParty(title.text, PhotonNetwork.LocalPlayer.NickName, type);
+        party._title = title.text;
+        party._joinType = type;
+        PartySystem.instance.ModifySetting();
         OnCancelButton();
     }
 
     private void OnCancelButton()
     {
         title.text = "";
-        instantToggle.isOn = true;
-        requestToggle.isOn = false;
         gameObject.SetActive(false);
     }
 
