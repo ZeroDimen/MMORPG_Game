@@ -57,6 +57,7 @@ public class SkillManager : MonoBehaviour
     public IEnumerator Cooltime(int num)
     {
         float time = 0f;
+        skillmoldObj[num].skillUse = false;
         while (time < skillmoldObj[num].skillCooltime)
         {
             skillmoldObj[num].skillIconCooltime.fillAmount = Mathf.Lerp(1f, 0f, time / skillmoldObj[num].skillCooltime);
@@ -65,5 +66,11 @@ public class SkillManager : MonoBehaviour
         }
         
         skillmoldObj[num].skillIconCooltime.fillAmount = 0f;
+        skillmoldObj[num].skillUse = true;
+    }
+
+    public bool GetSkillUse(int num)
+    {
+        return skillmoldObj[num].skillUse;
     }
 }

@@ -38,15 +38,16 @@ public class PlayerState
         _playerController.SetState(EPlayerState.Emotion1);
     }
     
+    protected void Skill1(InputAction.CallbackContext context)
+    {
+        _playerController.SetState(EPlayerState.Skill1);
+    }
+    
     protected void Skill2(InputAction.CallbackContext context)
     {
         _playerController.SetState(EPlayerState.Skill2);
     }
     
-    protected void Skill1(InputAction.CallbackContext context)
-    {
-        _playerController.SetState(EPlayerState.Skill1);
-    }
     
     
     

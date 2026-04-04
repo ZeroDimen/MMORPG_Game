@@ -9,5 +9,5 @@ public class SkillData : ScriptableObject
     public int skillLVDamage;
     public int skillCooltime;
     public Sprite skillIcon;
-    
+
 }

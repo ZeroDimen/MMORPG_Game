@@ -13,8 +13,15 @@ public class PlayerStateSkill2: PlayerState, ICharacterState
 
     public void Enter()
     {
+        if (!_skillManager.GetSkillUse(1))
+        {
+            Debug.Log("스킬 2을 사용할 수 없습니다.");
+            _playerController.SetState(EPlayerState.Idle);
+            return;
+        }
         // Skill2 애니메이션 실행
         _animator.SetTrigger(PlayerAniParamSkill2);
+        
         _skillManager.StartCooltime(1);
     }
 

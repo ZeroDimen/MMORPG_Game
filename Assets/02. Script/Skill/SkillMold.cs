@@ -14,6 +14,7 @@ public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public int skillDamage;
     public int skillCooltime;
+    public bool skillUse;
     
     public Image skillIcon;
     public Image skillIconCooltime;
@@ -26,6 +27,7 @@ public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void Start()
     {
         skillInfoPos = skillInfoObj.transform.localPosition;
+        skillUse = true;
     }
     
     
