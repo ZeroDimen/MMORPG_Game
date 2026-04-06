@@ -53,13 +53,18 @@ public class MariaDamageManager : MonoBehaviour
                 break;
 
             case "Fire Strike":
-                // Damage = skillMold.skillDamage;
-                Damage = 10;
+                Damage = skillMold.skillDamage;
+                Debug.Log($"{skillName} : {Damage}");
                 break;
             case "Water Spin":
-                Damage = 5;
+                Damage = skillMold.skillDamage;
+                Debug.Log($"{skillName} : {Damage}");
                 break;
-
         }
+    }
+
+    private void SkillInstate()
+    {
+        
     }
 }
