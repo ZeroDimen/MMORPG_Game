@@ -49,6 +49,7 @@ public partial class PartySystem
             party._member.Add(playerName);
             var partyData = JsonConvert.SerializeObject(party);
             pv.RPC(nameof(SuccessParticipation), info.Sender, partyData);
+            DungeonSystem.instance.RequestUpdateUI(party);
             ServerToClientPartyList();
         }
         else if(party._joinType == JoinType.Request)
@@ -58,7 +59,7 @@ public partial class PartySystem
     }
 
     [PunRPC]
-    public void AnswerParticipationFromManager(string managerName, string playerName, bool answer, PhotonMessageInfo info)
+    public void AnswerParticipationFromManager(string managerName, string playerName, bool answer, string message, PhotonMessageInfo info)
     {
         if (!PhotonNetwork.IsMasterClient) return;
         
@@ -77,21 +78,20 @@ public partial class PartySystem
 
         if (applicant == null)
         {
-            var message = "신청자를 찾을 수 없습니다.";
-            pv.RPC(nameof(ShowMessage), info.Sender, message);
+            var m = "신청자를 찾을 수 없습니다.";
+            pv.RPC(nameof(ShowMessage), info.Sender, m);
             return;
         }
 
         if (partyList.Any(p => p.IsMyParty(applicant.NickName)))
         {
-            var message = "상대방은 이미 파티가 있습니다.";
-            pv.RPC(nameof(Failure), info.Sender, message);
+            var m = "상대방은 이미 파티가 있습니다.";
+            pv.RPC(nameof(Failure), info.Sender, m);
             return;
         }
 
         if (answer == false)
         {
-            var message = "상대방이 거절했습니다.";
             pv.RPC(nameof(Failure), applicant, message);
             return;
         }
@@ -102,6 +102,7 @@ public partial class PartySystem
         var partyData = JsonConvert.SerializeObject(party);
         pv.RPC(nameof(SuccessParticipation), info.Sender, partyData);
         pv.RPC(nameof(SuccessParticipation), applicant, partyData);
+        DungeonSystem.instance.RequestUpdateUI(party);
         
         ServerToClientPartyList();
     }
@@ -125,9 +126,11 @@ public partial class PartySystem
                     if (nextManager != null) party._manager = nextManager;
                 }
                 party._member.Remove(playerName);
+                DungeonSystem.instance.RequestUpdateUI(party);
             }
         }
         pv.RPC(nameof(SuccessSecede), info.Sender);
+        DungeonSystem.instance.RequestCancel(party, playerName);
     }
 
     [PunRPC]

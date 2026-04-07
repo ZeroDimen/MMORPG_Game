@@ -7,14 +7,12 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyInformationListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyInformationListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party Tracker/PartyTrackerListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party Tracker/PartyTrackerListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Member Infomation [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Member Infomation [Empty].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyMessageView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/MessageView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyMessageView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/MessageView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +24,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.render-pipelines.universal/Runtime/2D/Clipper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/da/206d9925/RuntimeMethodInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/493b407efcb64dddad59f28bb0b831d3212400/0b/21e12c48/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e0525d8228db4b5da20c0396fc5fbfc73ac00/25/43a98312/PhotonPeer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -36,6 +35,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/SimplePlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPanelView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyMemberInformationView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -219,7 +220,9 @@
       <workItem from="1775034543621" duration="540000" />
       <workItem from="1775035215941" duration="29000" />
       <workItem from="1775159896444" duration="3482000" />
-      <workItem from="1775163646199" duration="4520000" />
+      <workItem from="1775163646199" duration="4620000" />
+      <workItem from="1775192330753" duration="611000" />
+      <workItem from="1775534548174" duration="17177000" />
     </task>
     <servers />
   </component>

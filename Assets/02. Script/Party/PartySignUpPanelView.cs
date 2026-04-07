@@ -43,7 +43,10 @@ public class PartySignUpPanelView : MonoBehaviour
             limitTime--;
             yield return new WaitForSeconds(1f);
         }
-        OnRefusalButton();
+
+        var message = "응답이 없습니다.";
+        PartySystem.instance.AnswerParticipationToServer(_managerName, _playerName, false, message);
+        gameObject.SetActive(false);
     }
 
     private void OnInformationButton()
@@ -55,13 +58,14 @@ public class PartySignUpPanelView : MonoBehaviour
 
     private void OnAcceptButton()
     {
-        PartySystem.instance.AnswerParticipationToServer(_managerName, _playerName, true);
+        PartySystem.instance.AnswerParticipationToServer(_managerName, _playerName, true, "");
         gameObject.SetActive(false);
     }
 
     private void OnRefusalButton()
     {
-        PartySystem.instance.AnswerParticipationToServer(_managerName, _playerName, false);
+        var message = "상대방이 거절했습니다.";
+        PartySystem.instance.AnswerParticipationToServer(_managerName, _playerName, false, message);
         gameObject.SetActive(false);
     }
 }

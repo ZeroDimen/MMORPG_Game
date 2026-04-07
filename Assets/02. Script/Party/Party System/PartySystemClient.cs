@@ -81,16 +81,16 @@ public partial class PartySystem
         OnRequestPartySignUp?.Invoke(playerName, managerName);
     }
 
-    public void AnswerParticipationToServer(string managerName, string playerName, bool answer)
+    public void AnswerParticipationToServer(string managerName, string playerName, bool answer, string message)
     {
-        pv.RPC(nameof(AnswerParticipationFromManager), RpcTarget.MasterClient, managerName, playerName, answer);
+        pv.RPC(nameof(AnswerParticipationFromManager), RpcTarget.MasterClient, managerName, playerName, answer, message);
     }
 
     [PunRPC]
     public void ShowMessage(string context)
     {
         GameObject panel = Instantiate(messagePrefab, transform);
-        var cs = panel.GetComponent<PartyMessageView>();
+        var cs = panel.GetComponent<MessageView>();
         cs.ViewText(context);
     }
 

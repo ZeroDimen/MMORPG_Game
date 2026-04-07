@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PartyMessageView : MonoBehaviour
+public class MessageView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI context;
     [SerializeField] private Button confirm;

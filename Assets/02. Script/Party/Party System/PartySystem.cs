@@ -18,6 +18,7 @@ public class Party
     public string _manager;
     public List<string> _member;
     public JoinType _joinType;
+    public int acceptMember;
 
     public Party(string title, string name, JoinType joinType)
     {
@@ -25,6 +26,7 @@ public class Party
         _manager = name;
         _member = new List<string> { _manager };
         _joinType = joinType;
+        acceptMember = 0;
     }
 
     public bool CanParticipation(string name)
