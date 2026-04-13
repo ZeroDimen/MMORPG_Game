@@ -87,9 +87,12 @@ public class PlayerController : MonoBehaviourPun
             SaveManager.Instance.LoadGameFromMaster(this);
         }
         SaveManager.Instance.LoadGameFromMaster(this);
-        
-        if(photonView.IsMine)
+
+        if (photonView.IsMine)
+        {
             AudioPanelView.instance.mySfxAudioSources.Add(Audio);
+            PhotonNetwork.LocalPlayer.TagObject = this;
+        }
         else
             AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
     }
@@ -284,6 +287,4 @@ public class PlayerController : MonoBehaviourPun
             SetState(EPlayerState.Spawn);
         }
     }
-    
-    
 }

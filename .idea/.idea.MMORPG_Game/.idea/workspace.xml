@@ -7,13 +7,12 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/Party System/PartySystemServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyMessageView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/MessageView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyMessageView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/MessageView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Party__System&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dungeon&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -222,7 +221,11 @@
       <workItem from="1775159896444" duration="3482000" />
       <workItem from="1775163646199" duration="4620000" />
       <workItem from="1775192330753" duration="611000" />
-      <workItem from="1775534548174" duration="17177000" />
+      <workItem from="1775534548174" duration="18452000" />
+      <workItem from="1775660066273" duration="1300000" />
+      <workItem from="1775732056112" duration="95000" />
+      <workItem from="1776061159409" duration="4575000" />
+      <workItem from="1776071912759" duration="1852000" />
     </task>
     <servers />
   </component>

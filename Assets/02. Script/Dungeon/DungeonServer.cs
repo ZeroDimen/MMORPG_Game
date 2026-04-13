@@ -39,6 +39,22 @@ public partial class DungeonSystem
     {
         Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
         party.acceptMember++;
+
+        if (party.acceptMember == party._member.Count)
+        {
+            foreach (var player in PhotonNetwork.PlayerList)
+            {
+                foreach (var member in party._member.Where(member => player.NickName == member))
+                {
+                    pv.RPC(nameof(TeleportPlayer), player);
+                    pv.RPC(nameof(OffPanel), player);
+                    Debug.Log(player.NickName);
+                }
+            }
+
+            return;
+        }
+        
         PartySystem.instance.ServerToClientPartyList();
         
         foreach (var player in PhotonNetwork.PlayerList)
@@ -75,15 +91,13 @@ public partial class DungeonSystem
         
         foreach (var player in PhotonNetwork.PlayerList)
         {
-            foreach (var member in party._member.Where(member => player.NickName == member))
+            if (playerName == player.NickName)
             {
-                if (playerName == member)
-                {
-                    pv.RPC(nameof(OffPanel), player);
-                    continue;
-                }
-                pv.RPC(nameof(OnCancel), player, message);
+                pv.RPC(nameof(OffPanel), player);
+                continue;
             }
+            foreach (var member in party._member.Where(member => player.NickName == member))
+                pv.RPC(nameof(OnCancel), player, message);
         }
     }
 

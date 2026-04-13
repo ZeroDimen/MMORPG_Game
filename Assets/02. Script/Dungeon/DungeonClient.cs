@@ -51,4 +51,12 @@ public partial class DungeonSystem
         Debug.Log("패널 끄기");
         dungeonPanel.SetActive(false);
     }
+
+    [PunRPC]
+    public void TeleportPlayer()
+    {
+        var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
+        if(player != null)
+            player.transform.position = new Vector3(-500, 5, 0);
+    }
 }
