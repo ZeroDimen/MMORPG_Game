@@ -1,3 +1,5 @@
+using ExitGames.Client.Photon;
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerStatus
@@ -27,6 +29,7 @@ public class PlayerStatus
 
         GameEvents.OnItemEquipped += AddStatus;
         GameEvents.OnItemUnEquipped += RemoveStatus;
+        SetProperties();
     }
 
     public void SetStatus(string status, int value)
@@ -52,6 +55,22 @@ public class PlayerStatus
                 ATK = value;
                 break;
         }
+
+        SetProperties();
+    }
+
+    private void SetProperties()
+    {
+        var props = new Hashtable
+        {
+            { "Hp", HP },
+            { "MaxHp", MAXHP },
+            { "ATK", ATK },
+            { "DEF", DEF },
+            { "DEX", DEX },
+            { "LV", LV }
+        };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
     }
 
     private void AddStatus(InstanceItem item)

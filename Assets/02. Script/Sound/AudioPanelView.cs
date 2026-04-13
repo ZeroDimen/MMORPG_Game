@@ -130,7 +130,7 @@ public class AudioPanelView : MonoBehaviour
         MyBGMtoggle.isOn = bgmOn;
         MySFXtoggle.isOn = sfxOn;
         OtherSFXtoggle.isOn = otherSfxOn;
-
+        
         MyBGMvalue.text = Mathf.RoundToInt(bgmVol * 100).ToString();
         MySFXvalue.text = Mathf.RoundToInt(sfxVol * 100).ToString();
         OtherSFXvalue.text = Mathf.RoundToInt(otherSfxVol * 100).ToString();

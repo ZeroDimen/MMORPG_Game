@@ -140,7 +140,7 @@ public class GameManager :  MonoBehaviourPun
                 GameObject obj = null;
                 
                 spownPos = GetRandomPosition(spawnPoints[0].point, spawnPoints[0].radius);
-                PhotonNetwork.NickName = objName;
+                // PhotonNetwork.NickName = objName;
                 obj = PhotonNetwork.Instantiate("Maria", spownPos , Quaternion.identity);
                 PhotonView pv =  obj.GetComponent<PhotonView>();
                 
