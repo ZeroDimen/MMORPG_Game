@@ -10,6 +10,7 @@ public class PlayerStatus
     public int ATK;     // 공격력
     public int DEF;     // 방어력
     public int DEX;     // 이동속도
+    
 
     public PlayerStatus(int hp, int maxhp, int lv, int maxexp, int exp, int atk, int def, int dex)
     {
@@ -46,6 +47,9 @@ public class PlayerStatus
                 break;
             case "MAXHP" :
                 MAXHP = value;
+                break;
+            case "ATK" :
+                ATK = value;
                 break;
         }
     }

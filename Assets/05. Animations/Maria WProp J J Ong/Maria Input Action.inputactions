@@ -70,18 +70,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Emotion2",
+                    "name": "Chat",
                     "type": "Button",
-                    "id": "70137640-20d4-4664-a961-ed457896948a",
+                    "id": "af57f454-5987-44af-b577-20c28e9293e4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Chat",
+                    "name": "Skill1",
                     "type": "Button",
-                    "id": "af57f454-5987-44af-b577-20c28e9293e4",
+                    "id": "da474396-ea76-4cfb-89af-51924c169a51",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skill2",
+                    "type": "Button",
+                    "id": "19c5f5eb-e25c-4834-aa38-107c5baea81c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -299,39 +308,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Alt + 2",
-                    "id": "6e17337c-4f9b-4c71-9e3f-221a15aa99c3",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Emotion2",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "5011ea34-17ab-4605-99ce-e116b9ff0a7c",
-                    "path": "<Keyboard>/leftAlt",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Emotion2",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "dfcd4371-2777-4299-ab9f-d0e5b1392cac",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Emotion2",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "63ff263c-a873-458c-8398-99465470438a",
                     "path": "<Keyboard>/enter",
@@ -339,6 +315,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Chat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d650d07-e3b1-4153-a7fb-f2d2a158914e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Key,Mouse",
+                    "action": "Skill1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff8efedc-9809-4588-a944-f5b679c21f07",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

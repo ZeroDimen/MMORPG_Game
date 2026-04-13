@@ -152,7 +152,12 @@ public class EnemyController : MonoBehaviourPun
             {
                 // 피격 처리
                 SetState(EEnemyState.Hit);
-                StartCoroutine(Knockback(transform.forward));
+                if (enemyStatus.maxHp / 3 <= damage)
+                {
+                    StartCoroutine(Knockback(transform.forward));
+                }
+
+                Debug.Log(enemyStatus.maxHp / 3);
             }
         }
         return 0;

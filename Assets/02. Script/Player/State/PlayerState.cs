@@ -7,6 +7,7 @@ public class PlayerState
     protected PlayerController _playerController;
     protected Animator _animator;
     protected PlayerInput _playerInput;
+    protected SkillManager _skillManager;
 
     private bool isAttacking = false;
     private bool flag = false;
@@ -37,11 +38,18 @@ public class PlayerState
         _playerController.SetState(EPlayerState.Emotion1);
     }
     
-    protected void Emotion2(InputAction.CallbackContext context)
+    protected void Skill1(InputAction.CallbackContext context)
     {
-        _playerController.SetState(EPlayerState.Emotion2);
-        GameManager.Instance.Set_Spawner("Mutant");
+        _playerController.SetState(EPlayerState.Skill1);
     }
+    
+    protected void Skill2(InputAction.CallbackContext context)
+    {
+        _playerController.SetState(EPlayerState.Skill2);
+    }
+    
+    
+    
     
     private void OnCursor(InputAction.CallbackContext context)
     {
