@@ -139,6 +139,9 @@ public class PlayerController : MonoBehaviourPun
             _playerInput.actions.FindAction("Fire").Enable();
             _playerInput.actions.FindAction("Look").Enable();
             _playerInput.actions.FindAction("Move").Enable();
+            _playerInput.actions.FindAction("Skill1").Enable();
+            _playerInput.actions.FindAction("Skill2").Enable();
+            
         }
         else
         {
@@ -146,6 +149,8 @@ public class PlayerController : MonoBehaviourPun
             _playerInput.actions.FindAction("Fire").Disable();
             _playerInput.actions.FindAction("Look").Disable();
             _playerInput.actions.FindAction("Move").Disable();
+            _playerInput.actions.FindAction("Skill1").Disable();
+            _playerInput.actions.FindAction("Skill2").Disable();
         }
     }
     
