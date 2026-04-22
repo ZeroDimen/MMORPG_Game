@@ -72,6 +72,7 @@ public class GameManager :  MonoBehaviourPun
             yield break;
         }
         Set_Spawner("Maria");
+        Set_Spawner("Boss");
     }
 
     private void Update()
@@ -153,6 +154,10 @@ public class GameManager :  MonoBehaviourPun
             case "Mutant":
                 spownPos = GetRandomPosition(spawnPoints[1].point, spawnPoints[1].radius);
                 PhotonNetwork.Instantiate("Mutant", spownPos, Quaternion.identity);
+                break;
+            case "Boss":
+                spownPos = GetRandomPosition(spawnPoints[1].point, spawnPoints[1].radius);
+                PhotonNetwork.Instantiate("Boss", spownPos, Quaternion.identity);
                 break;
             default:
                 Debug.Log("파일 없음");
