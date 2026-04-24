@@ -8,8 +8,9 @@ public class MutantController : EnemyController
     private Collider _attackCollider;
     private MutantAttack _mutantAttack;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         _attackCollider = attackObj.GetComponent<Collider>();
         _mutantAttack = attackObj.GetComponent<MutantAttack>();
     }

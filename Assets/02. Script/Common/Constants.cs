@@ -58,6 +58,7 @@ public class Constants
     public enum EEnemyState
     {
         None, Idle, Patrol, Chase, Attack, Hit, Dead,
+        Skill1,
     }
     
     // ----------------------------------------
@@ -69,6 +70,9 @@ public class Constants
     public static readonly int EnemyAniParamHit = Animator.StringToHash("hit");
     public static readonly int EnemyAniParamDead = Animator.StringToHash("dead");
     public static readonly int EnemyAniParamMoveSpeed = Animator.StringToHash("move_speed");
+    
+    // Boss 애니메이터 파라미터
+    public static readonly int EnemyAniParamSkill1 = Animator.StringToHash("skill1");
     
     [Serializable]
     public class SpawnZone

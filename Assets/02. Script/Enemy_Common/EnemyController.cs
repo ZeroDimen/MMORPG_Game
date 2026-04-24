@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 using static Constants;
 
 [RequireComponent(typeof(Animator))]
@@ -37,24 +35,24 @@ public class EnemyController : MonoBehaviourPun
 
     private Collider[] _detectionResults = new Collider[1];
     
-    private Animator _animator;
-    private NavMeshAgent _navMeshAgent;
+    protected Animator _animator;
+    protected NavMeshAgent _navMeshAgent;
     private Transform _targetTransform;
     
     private EnemyHPBarController _enemyHpBarController;
     
     [SerializeField] private AudioClip[] _audioClips;
-    public AudioSource Audio { get; private set; }
+    private AudioSource Audio { get; set; }
     
     // 상태 관리
     public EEnemyState State;
-    private Dictionary<EEnemyState, ICharacterState> _states;
+    protected internal Dictionary<EEnemyState, ICharacterState> _states;
     
     // Dead 연출
     private Rigidbody _rigidbody;
     private Collider _collider;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();

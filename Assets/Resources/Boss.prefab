@@ -1510,6 +1510,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c276e7e241394d54080334f6d16ec31a, type: 3}
   - {fileID: 8300000, guid: 5c6dd6833f202eb489b1f9fa86ceddc2, type: 3}
   State: 0
+  a: 0
 --- !u!114 &3104831817741509129
 MonoBehaviour:
   m_ObjectHideFlags: 0
