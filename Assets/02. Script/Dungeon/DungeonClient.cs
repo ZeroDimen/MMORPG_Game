@@ -58,5 +58,6 @@ public partial class DungeonSystem
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
         if(player != null)
             player.transform.position = new Vector3(-500, 5, 0);
+        dungeonLight.EnterDungeon();
     }
 }

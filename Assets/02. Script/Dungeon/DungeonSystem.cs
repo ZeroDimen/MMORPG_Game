@@ -9,6 +9,7 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     public static DungeonSystem instance;
     private PhotonView pv;
     private List<Party> dungeonPartyList;
+    [SerializeField] private DungeonLight dungeonLight;
 
     [SerializeField] private GameObject messagePrefab;
     [SerializeField] private GameObject dungeonPanel;
