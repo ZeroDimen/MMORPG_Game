@@ -21,6 +21,7 @@ public class MariaPlayerController :PlayerController
         {
             playerName.text = PhotonNetwork.NickName;
             playerName.color = Color.green;
+            GameManager.LocalPlayer = gameObject;
 
             var vCamObj = GameObject.FindWithTag("PlayerCam");
             if (vCamObj != null)

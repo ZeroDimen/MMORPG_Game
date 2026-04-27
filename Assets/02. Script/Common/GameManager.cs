@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 
 public class GameManager :  MonoBehaviourPun
 {
+    public static GameObject LocalPlayer;
     private static GameManager instance;
     private bool _isCursorLock;
     [SerializeField] private SpawnZone[] spawnPoints;
