@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public partial class DungeonSystem : MonoBehaviourPunCallbacks
 {
@@ -10,6 +11,7 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     private PhotonView pv;
     private List<Party> dungeonPartyList;
     [SerializeField] private DungeonLight dungeonLight;
+    [SerializeField] private Image fadePanel;
 
     [SerializeField] private GameObject messagePrefab;
     [SerializeField] private GameObject dungeonPanel;

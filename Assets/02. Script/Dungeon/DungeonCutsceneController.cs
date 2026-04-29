@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
