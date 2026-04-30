@@ -27,8 +27,6 @@ public class DungeonCutsceneController : MonoBehaviour
         if (playerInput != null)
             playerInput.enabled = false;
         RenderSettings.fogDensity = 0.1f;
-        Debug.Log("이거 작동이 안되는건가?");
-        Debug.Log(RenderSettings.fogDensity);
     }
 
     public void OnCutsceneEnd()
@@ -47,7 +45,7 @@ public class DungeonCutsceneController : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / fogFadeDuration;
-            RenderSettings.fogDensity = Mathf.Lerp(startDensity, 0f, t);
+            RenderSettings.fogDensity = Mathf.Lerp(startDensity, 0.02f, t);
             yield return null;
         }
     }
@@ -56,7 +54,7 @@ public class DungeonCutsceneController : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasPlayed)
         {
-            // hasPlayed = true; // 한 번만 재생
+            hasPlayed = true; // 한 번만 재생
             timeline.Play();
         }
     }
