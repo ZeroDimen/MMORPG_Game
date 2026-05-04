@@ -16,6 +16,8 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject messagePrefab;
     [SerializeField] private GameObject dungeonPanel;
 
+    [SerializeField] private GameObject elevator;
+    private int _monsterNum = 3;
     private void Awake()
     {
         if (instance == null)

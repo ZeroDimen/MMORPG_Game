@@ -51,7 +51,8 @@ public partial class DungeonSystem
                     Debug.Log(player.NickName);
                 }
             }
-
+            for(int i = 0; i < 3; i++)
+                GameManager.Instance.SpawnMonster(2);
             return;
         }
         
@@ -110,5 +111,12 @@ public partial class DungeonSystem
             foreach (var member in party._member.Where(member => player.NickName == member))
                 pv.RPC(nameof(UpdatePanelUI), player, party.acceptMember, party._member.Count);
         }
+    }
+    
+    public void KillMonster()
+    {
+        _monsterNum--;
+        if(_monsterNum <= 0)
+            pv.RPC(nameof(OnElevator), RpcTarget.Others);
     }
 }

@@ -122,6 +122,7 @@ public class GameManager :  MonoBehaviourPun
             
             if (!photonView.IsMine) return;
             photonView.RPC("RPC_MonsterKillQuest", info.Sender);
+            DungeonSystem.instance.KillMonster();
         }
     }
 
@@ -159,6 +160,12 @@ public class GameManager :  MonoBehaviourPun
                 Debug.Log("파일 없음");
                 break;
         }
+    }
+
+    public void SpawnMonster(int index)
+    {
+        var spawnPos = GetRandomPosition(spawnPoints[index].point, spawnPoints[index].radius);
+        PhotonNetwork.Instantiate("Mutant", spawnPos, Quaternion.identity);
     }
 
     Vector3 GetRandomPosition(Transform point, float radius)

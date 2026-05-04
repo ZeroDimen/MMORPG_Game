@@ -53,6 +53,9 @@ public class EnemyController : MonoBehaviourPun
     // Dead 연출
     private Rigidbody _rigidbody;
     private Collider _collider;
+    
+    // 스폰 위치
+    public bool isDungeon = false;
 
     private void Awake()
     {

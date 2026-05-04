@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -113,14 +114,27 @@ public class FallingBrick : MonoBehaviour
     // ─────────────────────────────────────────
     // 데미지 처리
     // ─────────────────────────────────────────
-    void OnCollisionEnter(Collision col)
-    {
-        if (!col.gameObject.CompareTag("Player")) return;
-        if (!isRunning) return;
+    // void OnCollisionEnter(Collision col)
+    // {
+    //     if (!col.gameObject.CompareTag("Player")) return;
+    //     if (!isRunning) return;
+    //
+    //     var player = col.transform.GetComponent<PlayerController>();
+    //     if (!player.photonView.IsMine) return;
+    //     player.SetHit(15);
+    //     
+    //     Debug.Log($"[FallingBrick] 낙하 데미지: {damage}");
+    // }
 
-        // var hp = col.gameObject.GetComponent<PlayerHealth>();
-        // if (hp != null) hp.TakeDamage(damage);
-        Debug.Log($"[FallingBrick] 낙하 데미지: {damage}");
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Player")) return;
+        if (!isRunning) return;
+        
+        var player = other.transform.GetComponent<PlayerController>();
+        if (!player.photonView.IsMine) return;
+        if(player != null)
+            player.SetHit(15);
     }
 
     void OnDrawGizmos()

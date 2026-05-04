@@ -55,6 +55,12 @@ public partial class DungeonSystem
     }
 
     [PunRPC]
+    public void OnElevator()
+    {
+        elevator.SetActive(true);
+    }
+
+    [PunRPC]
     public void TeleportPlayer()
     {
         // var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
