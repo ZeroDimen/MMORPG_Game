@@ -51,8 +51,13 @@ public partial class DungeonSystem
                     Debug.Log(player.NickName);
                 }
             }
-            for(int i = 0; i < 3; i++)
-                GameManager.Instance.SpawnMonster(2);
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (_hasPlayed == false)
+                    GameManager.Instance.SpawnMonster(2);
+            }
+            _hasPlayed = true;
             return;
         }
         
@@ -118,5 +123,20 @@ public partial class DungeonSystem
         _monsterNum--;
         if(_monsterNum <= 0)
             pv.RPC(nameof(OnElevator), RpcTarget.Others);
+    }
+
+    public void RequestTimeline(string playerName)
+    {
+        Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        foreach (var player in PhotonNetwork.PlayerList)
+        {
+            foreach (var member in party._member.Where(member => player.NickName == member))
+            {
+                pv.RPC(nameof(PlayTimeline), player);
+                Debug.Log("RequestTimeline");
+            }
+        }
     }
 }

@@ -7,15 +7,12 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/NavMesh-Room2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/NavMesh-Room2.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonCutsceneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonCutsceneController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/FallingBrick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/FallingBrick.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Enemy/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Enemy/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/3D Characters/Maria WProp J J Ong/Maria WProp J J Ong.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/3D Characters/Maria WProp J J Ong/Maria WProp J J Ong.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,6 +239,9 @@
       <workItem from="1777287676762" duration="975000" />
       <workItem from="1777502124629" duration="3079000" />
       <workItem from="1777850146524" duration="4017000" />
+      <workItem from="1778157597385" duration="2596000" />
+      <workItem from="1778160263524" duration="150000" />
+      <workItem from="1778160484237" duration="369000" />
     </task>
     <servers />
   </component>

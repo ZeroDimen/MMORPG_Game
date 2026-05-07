@@ -1,14 +1,38 @@
+using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
 public class DungeonCutsceneController : MonoBehaviour
 {
+    public static DungeonCutsceneController instance;
+    
+    private PhotonView _pv;
     private float fogFadeDuration = 10f;
     public PlayableDirector timeline;
     private bool hasPlayed = false;
+    private bool hasStart = false;
+    private bool hasEnd = false;
+
+    private List<GameObject> _monsters = new List<GameObject>();
+    public Transform[] spawnPos;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        _pv = GetComponent<PhotonView>();
+    }
 
     public void OnFogFadeOut()
     {
@@ -23,6 +47,8 @@ public class DungeonCutsceneController : MonoBehaviour
             return;
         }
         
+        _pv.RPC(nameof(StartCutScene), RpcTarget.MasterClient);
+        
         PlayerInput playerInput = GameManager.LocalPlayer.GetComponent<PlayerInput>();
         if (playerInput != null)
             playerInput.enabled = false;
@@ -31,6 +57,7 @@ public class DungeonCutsceneController : MonoBehaviour
 
     public void OnCutsceneEnd()
     {
+        _pv.RPC(nameof(EndCutScene), RpcTarget.MasterClient);
         PlayerInput playerInput = GameManager.LocalPlayer.GetComponent<PlayerInput>();
         if (playerInput != null)
             playerInput.enabled = true;
@@ -49,13 +76,60 @@ public class DungeonCutsceneController : MonoBehaviour
             yield return null;
         }
     }
+
+    public void PlayTimeline()
+    {
+        timeline.Play();
+    }
+
+    [PunRPC]
+    public void StartCutScene()
+    {
+        if (hasStart && !PhotonNetwork.IsMasterClient) return;
+
+        Debug.Log("StartCutScene");
+        hasStart = true;
+        for (int i = 0; i < 3; i++)
+        {
+            var obj = PhotonNetwork.Instantiate("Mutant", spawnPos[i].position, Quaternion.identity);
+            _monsters.Add(obj);
+            obj.GetComponent<Animator>().enabled = false;
+            obj.GetComponent<NavMeshAgent>().enabled = false;
+        }
+    }
+
+    [PunRPC]
+    public void EndCutScene()
+    {
+        if (hasEnd && !PhotonNetwork.IsMasterClient) return;
+
+        Debug.Log("EndCutScene");
+        hasEnd = true;
+        foreach (var monster in _monsters)
+        {
+            monster.GetComponent<Animator>().enabled = true;
+            monster.GetComponent<NavMeshAgent>().enabled = true;
+        }
+    }
+
+    [PunRPC]
+    public void RequestPlayTimeline(PhotonMessageInfo info)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        if (!hasPlayed)
+        {
+            Debug.Log(info.Sender.NickName);
+            Debug.Log("RequestPlayTimeline");
+            hasPlayed = true; // 한 번만 재생
+            DungeonSystem.instance.RequestTimeline(info.Sender.NickName);
+        }
+    }
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasPlayed)
+        if (other.CompareTag("Player") && !PhotonNetwork.IsMasterClient)
         {
-            hasPlayed = true; // 한 번만 재생
-            timeline.Play();
+            _pv.RPC(nameof(RequestPlayTimeline), RpcTarget.MasterClient);
         }
     }
 }

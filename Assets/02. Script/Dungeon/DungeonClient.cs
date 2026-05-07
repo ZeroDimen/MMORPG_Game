@@ -116,4 +116,11 @@ public partial class DungeonSystem
             yield return null;
         }
     }
+
+    [PunRPC]
+    public void PlayTimeline()
+    {
+        DungeonCutsceneController.instance.PlayTimeline();
+        Debug.Log("PlayTimeline");
+    }
 }
