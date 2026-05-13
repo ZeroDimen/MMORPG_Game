@@ -509,6 +509,7 @@ MonoBehaviour:
     hp: 100
     damage: 40
     exp: 20
+  partyId: 
   _audioClips:
   - {fileID: 8300000, guid: bdc79805d2416614fb1bdf2fa8908c9a, type: 3}
   - {fileID: 8300000, guid: c276e7e241394d54080334f6d16ec31a, type: 3}

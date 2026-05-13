@@ -122,7 +122,8 @@ public class GameManager :  MonoBehaviourPun
             
             if (!photonView.IsMine) return;
             photonView.RPC("RPC_MonsterKillQuest", info.Sender);
-            DungeonSystem.instance.KillMonster();
+            if(!string.IsNullOrEmpty(enemyController.partyId))
+                DungeonSystem.instance.KillMonster(enemyController.partyId);
         }
     }
 
@@ -162,10 +163,11 @@ public class GameManager :  MonoBehaviourPun
         }
     }
 
-    public void SpawnMonster(int index)
+    public void SpawnMonsterInDungeon(int index, string manager)
     {
         var spawnPos = GetRandomPosition(spawnPoints[index].point, spawnPoints[index].radius);
-        PhotonNetwork.Instantiate("Mutant", spawnPos, Quaternion.identity);
+        GameObject monster = PhotonNetwork.Instantiate("Mutant", spawnPos, Quaternion.identity);
+        monster.GetComponent<EnemyController>().partyId = manager;
     }
 
     Vector3 GetRandomPosition(Transform point, float radius)

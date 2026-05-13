@@ -19,6 +19,7 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject elevator;
     private int _monsterNum = 3;
     private bool _hasPlayed = false;
+    private Dictionary<string, int> partyKillCount;
     private void Awake()
     {
         if (instance == null)
@@ -31,5 +32,6 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     {
         pv = GetComponent<PhotonView>();
         dungeonPartyList = new List<Party>();
+        partyKillCount = new Dictionary<string, int>();
     }
 }

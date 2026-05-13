@@ -55,7 +55,7 @@ public partial class DungeonSystem
             for (int i = 0; i < 3; i++)
             {
                 if (_hasPlayed == false)
-                    GameManager.Instance.SpawnMonster(2);
+                    GameManager.Instance.SpawnMonsterInDungeon(2, party._manager);
             }
             _hasPlayed = true;
             return;
@@ -118,11 +118,22 @@ public partial class DungeonSystem
         }
     }
     
-    public void KillMonster()
+    public void KillMonster(string partyId)
     {
-        _monsterNum--;
-        if(_monsterNum <= 0)
-            pv.RPC(nameof(OnElevator), RpcTarget.Others);
+        if (!partyKillCount.ContainsKey(partyId))
+            partyKillCount[partyId] = 0;
+
+        partyKillCount[partyId]++;
+
+        if (partyKillCount[partyId] >= _monsterNum)
+        {
+            Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(partyId));
+            foreach (var player in PhotonNetwork.PlayerList)
+            {
+                foreach (var member in party._member.Where(member => player.NickName == member))
+                    pv.RPC(nameof(OnElevator), player);
+            }
+        }
     }
 
     public void RequestTimeline(string playerName)

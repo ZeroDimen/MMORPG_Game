@@ -24,7 +24,8 @@ public class EnemyController : MonoBehaviourPun
     [Header("Status")]
     [SerializeField]
     protected internal EnemyStatus enemyStatus;
-    
+
+    public string partyId;
     
     // AI 관련
     public float PatrolWaitTime => patrolWaitTime;
