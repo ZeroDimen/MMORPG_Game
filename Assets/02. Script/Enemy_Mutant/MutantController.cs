@@ -6,20 +6,20 @@ public class MutantController : EnemyController
     [SerializeField] private GameObject attackObj;
 
     private Collider _attackCollider;
-    private MutantAttack _mutantAttack;
+    private EnemyAttack _enemyAttack;
 
     protected override void Awake()
     {
         base.Awake();
         _attackCollider = attackObj.GetComponent<Collider>();
-        _mutantAttack = attackObj.GetComponent<MutantAttack>();
+        _enemyAttack = attackObj.GetComponent<EnemyAttack>();
     }
     
     public void EnableAttackCollider()
     {
         if (_attackCollider != null)
         {
-            _mutantAttack.damage = enemyStatus.damage;
+            _enemyAttack.damage = enemyStatus.damage;
             _attackCollider.enabled = true;
         }
     }

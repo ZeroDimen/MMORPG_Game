@@ -160,6 +160,10 @@ public class PlayerController : MonoBehaviourPun
         if (!photonView.IsMine || Status == null) return;
         
         int processDamage = damage - Status.DEF;
+        if (processDamage <= 0)
+        {
+            processDamage = 1;
+        }
         Status.SetStatus("HP", Status.HP - processDamage);
 
         float result = (float)Status.HP / Status.MAXHP;

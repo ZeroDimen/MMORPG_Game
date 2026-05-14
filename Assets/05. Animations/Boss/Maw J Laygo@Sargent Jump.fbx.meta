@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4a2c14e8f1eacb42864229ae600ef1c
+guid: 0dcc0654f02ab724b8b98b3edf8433d0
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -31,22 +31,22 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mutant Roaring
+      name: Sargent Jump
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 324
+      lastFrame: 190
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1

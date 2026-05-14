@@ -1,15 +1,12 @@
-using UnityEngine;
 using static Constants;
 
 public class BossController : EnemyController
 {
-    [SerializeField] private int a = 0;
-
     protected override void Awake()
     {
         
         base.Awake();
-        var bossStateChase = new BossStateChase(this, _animator, _navMeshAgent);
+        var bossStateChase = new BossStateChase(this, _animator, _navMeshAgent, enemyStatus);
         var enemyStateSkill1 = new EnemyStateSkill1(this, _animator, _navMeshAgent);
         
         if (_states.ContainsKey(EEnemyState.Chase))

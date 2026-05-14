@@ -771,7 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MariaPlayerController
   headTransform: {fileID: 0}
   skillManager: {fileID: 0}
-  breakForce: 1
+  breakForce: 3.4
   jumpHeight: 2
   _audioClips:
   - {fileID: 8300000, guid: e97d2f55c6b56fb4e82197aff813ab15, type: 3}
