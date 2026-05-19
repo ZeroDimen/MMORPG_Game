@@ -4,6 +4,11 @@ using UnityEngine;
 /// <summary>
 /// 위아래로만 이동하는 발판
 /// riseHeight로 얼마나 올라갈지 설정, Gizmo로 범위 확인 가능
+/// 
+/// [카메라 떨림 방지]
+/// - 이동은 FixedUpdate에서 처리해서 물리/카메라 타이밍에 맞춤
+/// - 자식으로 붙은 플레이어(SetParent)도 FixedUpdate 타이밍에 함께 이동
+/// - Cinemachine Brain의 UpdateMethod = LateUpdate 로 설정되어 있어야 함
 /// </summary>
 public class MovingPlatform : MonoBehaviour
 {
@@ -17,47 +22,92 @@ public class MovingPlatform : MonoBehaviour
     [Header("왕복 설정")]
     public bool loop = true;            // true = 계속 왕복, false = 위에서 멈춤
 
-    private Vector3 bottomPos;
-    private Vector3 topPos;
-    private Transform ridingPlayer;
+    // 내부 상태 머신
+    private enum State { MovingUp, WaitTop, MovingDown, WaitBottom, Stopped }
+    private State _state = State.MovingUp;
+    private float _waitTimer;
+
+    private Vector3 _bottomPos;
+    private Vector3 _topPos;
+    private Transform _ridingPlayer;
 
     void Start()
     {
-        bottomPos = transform.position;
-        topPos = bottomPos + Vector3.up * riseHeight;
-
-        StartCoroutine(PlatformLoop());
+        _bottomPos = transform.position;
+        _topPos = _bottomPos + Vector3.up * riseHeight;
+        _state = State.MovingUp;
     }
 
-    IEnumerator PlatformLoop()
+    // ─────────────────────────────────────────
+    // FixedUpdate에서 이동 처리
+    // → 자식인 플레이어도 같은 타이밍에 이동
+    // → 카메라(LateUpdate)는 이동이 끝난 후 위치를 읽기 때문에 떨림 없음
+    // ─────────────────────────────────────────
+    void FixedUpdate()
     {
-        while (true)
+        switch (_state)
         {
-            // 1. 아래 → 위로 올라가기
-            yield return StartCoroutine(MoveTo(topPos, riseSpeed));
+            case State.MovingUp:
+                MoveStep(_topPos, riseSpeed);
+                if (ReachedTarget(_topPos))
+                {
+                    _state = State.WaitTop;
+                    _waitTimer = waitAtTop;
+                }
+                break;
 
-            // 2. 위에서 대기
-            yield return new WaitForSeconds(waitAtTop);
+            case State.WaitTop:
+                _waitTimer -= Time.fixedDeltaTime;
+                if (_waitTimer <= 0f)
+                {
+                    if (!loop)
+                    {
+                        _state = State.Stopped;
+                    }
+                    else
+                    {
+                        _state = State.MovingDown;
+                    }
+                }
+                break;
 
-            if (!loop) yield break;
+            case State.MovingDown:
+                MoveStep(_bottomPos, descendSpeed);
+                if (ReachedTarget(_bottomPos))
+                {
+                    _state = State.WaitBottom;
+                    _waitTimer = waitAtBottom;
+                }
+                break;
 
-            // 3. 위 → 아래로 내려가기
-            yield return StartCoroutine(MoveTo(bottomPos, descendSpeed));
+            case State.WaitBottom:
+                _waitTimer -= Time.fixedDeltaTime;
+                if (_waitTimer <= 0f)
+                {
+                    _state = State.MovingUp;
+                }
+                break;
 
-            // 4. 아래에서 대기
-            yield return new WaitForSeconds(waitAtBottom);
+            case State.Stopped:
+                // 아무것도 하지 않음
+                break;
         }
     }
 
-    IEnumerator MoveTo(Vector3 target, float speed)
+    private void MoveStep(Vector3 target, float speed)
     {
-        while (Vector3.Distance(transform.position, target) > 0.01f)
+        transform.position = Vector3.MoveTowards(
+            transform.position, target, speed * Time.fixedDeltaTime);
+    }
+
+    private bool ReachedTarget(Vector3 target)
+    {
+        if (Vector3.Distance(transform.position, target) <= 0.01f)
         {
-            transform.position = Vector3.MoveTowards(
-                transform.position, target, speed * Time.deltaTime);
-            yield return null;
+            transform.position = target;
+            return true;
         }
-        transform.position = target;
+        return false;
     }
 
     // ─────────────────────────────────────────
@@ -67,8 +117,8 @@ public class MovingPlatform : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        ridingPlayer = other.transform;
-        ridingPlayer.SetParent(transform);
+        _ridingPlayer = other.transform;
+        _ridingPlayer.SetParent(transform);
         Debug.Log("[MovingPlatform] 탑승!");
     }
 
@@ -76,10 +126,10 @@ public class MovingPlatform : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        if (ridingPlayer != null)
+        if (_ridingPlayer != null)
         {
-            ridingPlayer.SetParent(null);
-            ridingPlayer = null;
+            _ridingPlayer.SetParent(null);
+            _ridingPlayer = null;
         }
         Debug.Log("[MovingPlatform] 하차!");
     }
@@ -89,7 +139,7 @@ public class MovingPlatform : MonoBehaviour
     // ─────────────────────────────────────────
     void OnDrawGizmos()
     {
-        Vector3 bottom = Application.isPlaying ? bottomPos : transform.position;
+        Vector3 bottom = Application.isPlaying ? _bottomPos : transform.position;
         Vector3 top = bottom + Vector3.up * riseHeight;
 
         Gizmos.color = Color.blue;
