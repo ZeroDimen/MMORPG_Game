@@ -62,7 +62,7 @@ public class BossStateChase: EnemyState, ICharacterState
         {
             // 공격
             if (!_navMeshAgent.pathPending &&
-                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
+                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance* 2f &&
                 _waitTime > _enemyController.AttackWaitTime &&
                 DetectionTargetInSight(detectionTargetTransform.position))
             {
