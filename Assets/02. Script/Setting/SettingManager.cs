@@ -144,7 +144,6 @@ public class SettingManager : MonoBehaviour
     {
         ScreenMode selected = (ScreenMode)index;
         Debug.Log(selected);
-        Debug.Log(111);
         switch (selected)
         {
             case ScreenMode.FullScreen :
