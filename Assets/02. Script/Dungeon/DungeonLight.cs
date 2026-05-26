@@ -31,5 +31,8 @@ public class DungeonLight : MonoBehaviour
     {
         directionalLight.intensity = _directionValue;
         RenderSettings.ambientMode = AmbientMode.Skybox;
+        RenderSettings.ambientIntensity = _ambientValue;
+        RenderSettings.reflectionIntensity = _reflectionValue;
+        RenderSettings.fog = false;
     }
 }

@@ -23,15 +23,11 @@ public partial class DungeonSystem
             pv.RPC(nameof(OnMessagePanel), info.Sender, message);
             return;
         }
-        
-        if(!dungeonPartyList.Contains(party))
+
+        if (!dungeonPartyList.Contains(party))
             dungeonPartyList.Add(party);
 
-        foreach (var player in PhotonNetwork.PlayerList)
-        {
-            foreach (var member in party._member.Where(member => player.NickName == member))
-                pv.RPC(nameof(UpdatePanelUI), player, party.acceptMember, party._member.Count);
-        }
+        SendRpcToPartyMembers(party, nameof(UpdatePanelUI), party.acceptMember, party._member.Count);
     }
 
     [PunRPC]
@@ -42,17 +38,10 @@ public partial class DungeonSystem
 
         if (party.acceptMember == party._member.Count)
         {
-            foreach (var player in PhotonNetwork.PlayerList)
-            {
-                foreach (var member in party._member.Where(member => player.NickName == member))
-                {
-                    pv.RPC(nameof(TeleportPlayer), player);
-                    pv.RPC(nameof(OffPanel), player);
-                    Debug.Log(player.NickName);
-                }
-            }
+            SendRpcToPartyMembers(party, nameof(TeleportPlayer));
+            SendRpcToPartyMembers(party, nameof(OffPanel));
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < MonsterNum; i++)
             {
                 if (_hasPlayed == false)
                     GameManager.Instance.SpawnMonsterInDungeon(2, party._manager);
@@ -60,14 +49,10 @@ public partial class DungeonSystem
             _hasPlayed = true;
             return;
         }
-        
+
         PartySystem.instance.ServerToClientPartyList();
-        
-        foreach (var player in PhotonNetwork.PlayerList)
-        {
-            foreach (var member in party._member.Where(member => player.NickName == member))
-                pv.RPC(nameof(UpdatePanelUI), player, party.acceptMember, party._member.Count);
-        }
+
+        SendRpcToPartyMembers(party, nameof(UpdatePanelUI), party.acceptMember, party._member.Count);
     }
 
     [PunRPC]
@@ -78,23 +63,19 @@ public partial class DungeonSystem
         dungeonPartyList.Remove(party);
         PartySystem.instance.ServerToClientPartyList();
         var message = "파티원 중 한명이 취소 하였습니다.";
-        
-        foreach (var player in PhotonNetwork.PlayerList)
-        {
-            foreach (var member in party._member.Where(member => player.NickName == member))
-                pv.RPC(nameof(OnCancel), player, message);
-        }
+
+        SendRpcToPartyMembers(party, nameof(OnCancel), message);
     }
 
     public void RequestCancel(Party party, string playerName)
     {
         if (!dungeonPartyList.Contains(party)) return;
-        
+
         party.acceptMember = 0;
         dungeonPartyList.Remove(party);
         PartySystem.instance.ServerToClientPartyList();
         var message = "파티원 중 한명이 탈퇴하였습니다.";
-        
+
         foreach (var player in PhotonNetwork.PlayerList)
         {
             if (playerName == player.NickName)
@@ -110,14 +91,10 @@ public partial class DungeonSystem
     public void RequestUpdateUI(Party party)
     {
         if (!dungeonPartyList.Contains(party)) return;
-        
-        foreach (var player in PhotonNetwork.PlayerList)
-        {
-            foreach (var member in party._member.Where(member => player.NickName == member))
-                pv.RPC(nameof(UpdatePanelUI), player, party.acceptMember, party._member.Count);
-        }
+
+        SendRpcToPartyMembers(party, nameof(UpdatePanelUI), party.acceptMember, party._member.Count);
     }
-    
+
     public void KillMonster(string partyId)
     {
         if (!partyKillCount.ContainsKey(partyId))
@@ -125,14 +102,10 @@ public partial class DungeonSystem
 
         partyKillCount[partyId]++;
 
-        if (partyKillCount[partyId] >= _monsterNum)
+        if (partyKillCount[partyId] >= MonsterNum)
         {
             Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(partyId));
-            foreach (var player in PhotonNetwork.PlayerList)
-            {
-                foreach (var member in party._member.Where(member => player.NickName == member))
-                    pv.RPC(nameof(OnElevator), player);
-            }
+            SendRpcToPartyMembers(party, nameof(OnElevator));
         }
     }
 
@@ -141,13 +114,6 @@ public partial class DungeonSystem
         Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
         if (!PhotonNetwork.IsMasterClient) return;
 
-        foreach (var player in PhotonNetwork.PlayerList)
-        {
-            foreach (var member in party._member.Where(member => player.NickName == member))
-            {
-                pv.RPC(nameof(PlayTimeline), player);
-                Debug.Log("RequestTimeline");
-            }
-        }
+        SendRpcToPartyMembers(party, nameof(PlayTimeline));
     }
 }

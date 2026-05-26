@@ -10,7 +10,7 @@ using UnityEngine.Playables;
 public class DungeonCutsceneController : MonoBehaviour
 {
     public static DungeonCutsceneController instance;
-    
+
     private PhotonView _pv;
     private float fogFadeDuration = 10f;
     public PlayableDirector timeline;
@@ -46,9 +46,9 @@ public class DungeonCutsceneController : MonoBehaviour
             Debug.LogError("LocalPlayer가 null입니다!");
             return;
         }
-        
+
         _pv.RPC(nameof(StartCutScene), RpcTarget.MasterClient);
-        
+
         PlayerInput playerInput = GameManager.LocalPlayer.GetComponent<PlayerInput>();
         if (playerInput != null)
             playerInput.enabled = false;
@@ -85,11 +85,12 @@ public class DungeonCutsceneController : MonoBehaviour
     [PunRPC]
     public void StartCutScene()
     {
-        if (hasStart && !PhotonNetwork.IsMasterClient) return;
+        if (!PhotonNetwork.IsMasterClient) return;
+        if (hasStart) return;   
 
         Debug.Log("StartCutScene");
         hasStart = true;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < DungeonSystem.MonsterNum; i++)
         {
             var obj = PhotonNetwork.Instantiate("Mutant", spawnPos[i].position, Quaternion.identity);
             _monsters.Add(obj);
@@ -101,7 +102,8 @@ public class DungeonCutsceneController : MonoBehaviour
     [PunRPC]
     public void EndCutScene()
     {
-        if (hasEnd && !PhotonNetwork.IsMasterClient) return;
+        if (!PhotonNetwork.IsMasterClient) return;
+        if (hasEnd) return;
 
         Debug.Log("EndCutScene");
         hasEnd = true;
@@ -124,7 +126,7 @@ public class DungeonCutsceneController : MonoBehaviour
             DungeonSystem.instance.RequestTimeline(info.Sender.NickName);
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !PhotonNetwork.IsMasterClient)
