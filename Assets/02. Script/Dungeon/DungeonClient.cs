@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
@@ -53,10 +55,72 @@ public partial class DungeonSystem
     }
 
     [PunRPC]
+    public void OnElevator()
+    {
+        elevator.SetActive(true);
+    }
+
+    [PunRPC]
     public void TeleportPlayer()
     {
+        // var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
+        // if(player != null)
+        //     player.transform.position = new Vector3(-500, 5, 0);
+        // dungeonLight.EnterDungeon();
+
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
-        if(player != null)
-            player.transform.position = new Vector3(-500, 5, 0);
+        if (player != null)
+            StartCoroutine(Teleport(player));
+    }
+
+    private IEnumerator Teleport(PlayerController player)
+    {
+        yield return StartCoroutine(FadeIn(3f));
+        
+        CharacterController cc = player.GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = false;
+        player.transform.position = new Vector3(-500, 5, 0);
+        if (cc != null) cc.enabled = true;
+        dungeonLight.EnterDungeon();
+
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(FadeOut(3f));
+    }
+    
+    // 페이드 아웃 (밝아짐)
+    public IEnumerator FadeOut(float duration)
+    {
+        float elapsed = 0f;
+        fadePanel.color = new Color(0, 0, 0, 1); // 검정
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
+            fadePanel.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+    }
+
+    // 페이드 인 (어두워짐)
+    public IEnumerator FadeIn(float duration)
+    {
+        float elapsed = 0f;
+        fadePanel.color = new Color(0, 0, 0, 0); // 투명
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, elapsed / duration);
+            fadePanel.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+    }
+
+    [PunRPC]
+    public void PlayTimeline()
+    {
+        DungeonCutsceneController.instance.PlayTimeline();
+        Debug.Log("PlayTimeline");
     }
 }

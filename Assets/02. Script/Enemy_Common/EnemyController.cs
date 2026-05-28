@@ -22,7 +22,8 @@ public class EnemyController : MonoBehaviourPun
     [Header("Status")]
     [SerializeField]
     protected internal EnemyStatus enemyStatus;
-    
+
+    public string partyId;
     
     // AI 관련
     public float PatrolWaitTime => patrolWaitTime;
@@ -51,6 +52,9 @@ public class EnemyController : MonoBehaviourPun
     // Dead 연출
     private Rigidbody _rigidbody;
     private Collider _collider;
+    
+    // 스폰 위치
+    public bool isDungeon = false;
 
     protected virtual void Awake()
     {

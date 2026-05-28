@@ -18,7 +18,7 @@ public class Constants
     }
     // ----------------------------------------
     // Layer Mask
-    public static LayerMask GroundLayerMask => LayerMask.GetMask("Ground");
+    public static LayerMask GroundLayerMask => LayerMask.GetMask("Ground", "Dungeon");
     
     // Player 상태
     public enum EPlayerState

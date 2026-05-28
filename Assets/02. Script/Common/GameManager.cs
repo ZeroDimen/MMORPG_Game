@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 
 public class GameManager :  MonoBehaviourPun
 {
+    public static GameObject LocalPlayer;
     private static GameManager instance;
     private bool _isCursorLock;
     [SerializeField] private SpawnZone[] spawnPoints;
@@ -122,6 +123,8 @@ public class GameManager :  MonoBehaviourPun
             
             if (!photonView.IsMine) return;
             photonView.RPC("RPC_MonsterKillQuest", info.Sender);
+            if(!string.IsNullOrEmpty(enemyController.partyId))
+                DungeonSystem.instance.KillMonster(enemyController.partyId);
         }
     }
 
@@ -163,6 +166,13 @@ public class GameManager :  MonoBehaviourPun
                 Debug.Log("파일 없음");
                 break;
         }
+    }
+
+    public void SpawnMonsterInDungeon(int index, string manager)
+    {
+        var spawnPos = GetRandomPosition(spawnPoints[index].point, spawnPoints[index].radius);
+        GameObject monster = PhotonNetwork.Instantiate("Mutant", spawnPos, Quaternion.identity);
+        monster.GetComponent<EnemyController>().partyId = manager;
     }
 
     Vector3 GetRandomPosition(Transform point, float radius)

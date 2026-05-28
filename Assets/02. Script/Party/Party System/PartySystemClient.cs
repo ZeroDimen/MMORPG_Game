@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Photon.Pun;
-using Photon.Realtime;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class PartySystem
@@ -59,6 +57,12 @@ public partial class PartySystem
     public void Failure(string message)
     {
         ShowMessage(message);
+    }
+    
+    [PunRPC]
+    public void Failure()
+    {
+        ShowMessage("참여할 수 없습니다.");
     }
 
     public void RequestSecede(string playerName)

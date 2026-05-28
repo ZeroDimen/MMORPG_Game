@@ -676,6 +676,7 @@ GameObject:
   - component: {fileID: 4953399179761471736}
   - component: {fileID: -3773575257534592719}
   - component: {fileID: 552964936359610061}
+  - component: {fileID: 5939479578794113722}
   m_Layer: 8
   m_Name: Maria
   m_TagString: Player
@@ -1010,6 +1011,18 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &5939479578794113722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149940253081974556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05cfe14d6aae7e48af1b827de891e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIInputHandler
 --- !u!1 &1443117326038527163
 GameObject:
   m_ObjectHideFlags: 0
