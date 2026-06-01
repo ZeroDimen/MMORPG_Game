@@ -9,7 +9,7 @@ public class EnemyStateSkill1: EnemyState, ICharacterState
 
     public void Enter()
     {
-        _animator.SetTrigger(EnemyAniParamSkill1);
+        _enemyController.RpcSetTrigger(EnemyAniParamSkill1); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
     }
 
     public void Update()

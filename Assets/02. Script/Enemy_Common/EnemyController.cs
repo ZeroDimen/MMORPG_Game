@@ -104,6 +104,7 @@ public class EnemyController : MonoBehaviourPun
 
     private void Update()
     {
+        if (!PhotonNetwork.IsMasterClient) return; // IsMasterClient만 State를 수정
         if (State != EEnemyState.Dead && State != EEnemyState.None)
         {
             _states[State].Update();
@@ -112,6 +113,7 @@ public class EnemyController : MonoBehaviourPun
 
     public void SetState(EEnemyState state)
     {
+        if (!PhotonNetwork.IsMasterClient) return; // IsMasterClient만 State를 수정
         if (State == state) return;
         if (State == EEnemyState.Dead) return;
 
@@ -298,5 +300,42 @@ public class EnemyController : MonoBehaviourPun
         if(photonView.ViewID == viewID)
             Audio.Stop();
     }
-    
+    // MasterClient에서 호출 → 모든 클라이언트의 Animator에 Trigger를 동기화
+    public void RpcSetTrigger(int paramHash)
+    {
+        photonView.RPC(nameof(RPC_SetAnimatorTrigger), RpcTarget.All, paramHash);
+    }
+
+    // 모든 클라이언트에서 실행 — Animator Trigger 파라미터 적용
+    [PunRPC]
+    public void RPC_SetAnimatorTrigger(int paramHash)
+    {
+        _animator.SetTrigger(paramHash);
+    }
+
+    // MasterClient에서 호출 → 모든 클라이언트의 Animator에 Bool을 동기화
+    public void RpcSetBool(int paramHash, bool value)
+    {
+        photonView.RPC(nameof(RPC_SetAnimatorBool), RpcTarget.All, paramHash, value);
+    }
+
+    // 모든 클라이언트에서 실행 — Animator Bool 파라미터 적용
+    [PunRPC]
+    public void RPC_SetAnimatorBool(int paramHash, bool value)
+    {
+        _animator.SetBool(paramHash, value);
+    }
+
+    // MasterClient에서 호출 → 모든 클라이언트의 Animator에 Float을 동기화
+    public void RpcSetFloat(int paramHash, float value)
+    {
+        photonView.RPC(nameof(RPC_SetAnimatorFloat), RpcTarget.All, paramHash, value);
+    }
+
+    // 모든 클라이언트에서 실행 — Animator Float 파라미터 적용
+    [PunRPC]
+    public void RPC_SetAnimatorFloat(int paramHash, float value)
+    {
+        _animator.SetFloat(paramHash, value);
+    }
 }
