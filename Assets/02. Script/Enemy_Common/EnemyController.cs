@@ -106,7 +106,8 @@ public class EnemyController : MonoBehaviourPun
     {
         if (State != EEnemyState.Dead && State != EEnemyState.None)
         {
-            _states[State].Update();
+            if(_navMeshAgent.enabled && _navMeshAgent.isOnNavMesh)
+                _states[State].Update();
         }
     }
 
