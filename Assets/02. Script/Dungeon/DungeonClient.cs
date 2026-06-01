@@ -68,6 +68,8 @@ public partial class DungeonSystem
         //     player.transform.position = new Vector3(-500, 5, 0);
         // dungeonLight.EnterDungeon();
 
+        if (PhotonNetwork.IsMasterClient) return;
+        
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
         if (player != null)
             StartCoroutine(Teleport(player));
@@ -82,6 +84,8 @@ public partial class DungeonSystem
         player.transform.position = new Vector3(-500, 5, 0);
         if (cc != null) cc.enabled = true;
         dungeonLight.EnterDungeon();
+        
+        exitDungeonButton.SetActive(true);
 
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(FadeOut(3f));
@@ -120,7 +124,32 @@ public partial class DungeonSystem
     [PunRPC]
     public void PlayTimeline()
     {
+        if (PhotonNetwork.IsMasterClient) return;
+        
         DungeonCutsceneController.instance.PlayTimeline();
         Debug.Log("PlayTimeline");
+    }
+    
+    public void ExitDungeon()
+    {
+        var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
+        if (player != null)
+            StartCoroutine(ExitDungeonCoroutine(player));
+    }
+
+    private IEnumerator ExitDungeonCoroutine(PlayerController player)
+    {
+        yield return StartCoroutine(FadeIn(3f));
+
+        CharacterController cc = player.GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = false;
+        player.transform.position = fieldSpawnPos.position;
+        if (cc != null) cc.enabled = true;
+        dungeonLight.ExitDungeon();
+        
+        exitDungeonButton.SetActive(false);
+
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(FadeOut(3f));
     }
 }

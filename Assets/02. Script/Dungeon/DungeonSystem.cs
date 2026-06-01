@@ -21,6 +21,8 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     public const int MonsterNum = 3;
     private bool _hasPlayed = false;
     private Dictionary<string, int> partyKillCount;
+    [SerializeField] private Transform fieldSpawnPos;
+    [SerializeField] private GameObject exitDungeonButton;
     private void Awake()
     {
         if (instance == null)
