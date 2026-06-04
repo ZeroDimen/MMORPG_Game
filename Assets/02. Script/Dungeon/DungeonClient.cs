@@ -135,6 +135,8 @@ public partial class DungeonSystem
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
         if (player != null)
             StartCoroutine(ExitDungeonCoroutine(player));
+        
+        PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
     }
 
     private IEnumerator ExitDungeonCoroutine(PlayerController player)
