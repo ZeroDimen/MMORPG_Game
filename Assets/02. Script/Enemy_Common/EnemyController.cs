@@ -196,7 +196,38 @@ public class EnemyController : MonoBehaviourPun
         transform.position = targetPosition;
     }
 
-    private void OnAnimatorMove()
+// 타겟 Transform 외부 접근용
+    public Transform TargetTransform => _targetTransform;
+
+    // 점프 공격 이동 코루틴 (MasterClient 전용)
+    public IEnumerator JumpToTarget(Vector3 targetPos, float duration, float jumpHeight)
+    {
+        Vector3 startPos = transform.position;
+        // Y는 시작/끝 위치 기준, 수평 이동은 XZ만
+        Vector3 endPos = new Vector3(targetPos.x, startPos.y, targetPos.z);
+        float elapsed = 0f;
+
+        _navMeshAgent.isStopped = true;
+        _navMeshAgent.velocity = Vector3.zero;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            // XZ: lerp, Y: 포물선
+            Vector3 pos = Vector3.Lerp(startPos, endPos, t);
+            pos.y += jumpHeight * Mathf.Sin(Mathf.PI * t);
+            transform.position = pos;
+            _navMeshAgent.nextPosition = pos;
+            yield return null;
+        }
+
+        transform.position = endPos;
+        _navMeshAgent.isStopped = false;
+        _navMeshAgent.Warp(endPos);
+    }
+
+        private void OnAnimatorMove()
     {
         var position = _animator.rootPosition;
         _navMeshAgent.nextPosition = position;
