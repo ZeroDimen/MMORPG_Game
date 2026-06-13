@@ -188,6 +188,12 @@ public class QuestManager : Singleton<QuestManager>
         HandleProgressUpdate(QuestType.Kill, 0, 1);
     }
     
+    [ContextMenu("Kill Boss")]
+    public void KillBossTest()
+    {
+        HandleProgressUpdate(QuestType.Kill, 100, 1);
+    }
+    
     protected override void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
     }
