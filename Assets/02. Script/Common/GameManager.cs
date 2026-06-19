@@ -123,8 +123,14 @@ public class GameManager :  MonoBehaviourPun
             
             if (!photonView.IsMine) return;
             photonView.RPC("RPC_MonsterKillQuest", info.Sender);
+            // 보스 스폰 시 partyId(파티장 이름)가 반드시 세팅돼 있어야 클리어 처리가 동작한다.
             if(!string.IsNullOrEmpty(enemyController.partyId))
-                DungeonSystem.instance.KillMonster(enemyController.partyId);
+            {
+                if (enemyController is BossController)
+                    DungeonSystem.instance.OnBossDefeated(enemyController.partyId); // 보스 전용: 던전 클리어
+                else
+                    DungeonSystem.instance.KillMonster(enemyController.partyId);     // 일반 몹: 엘리베이터 카운트
+            }
         }
     }
 
