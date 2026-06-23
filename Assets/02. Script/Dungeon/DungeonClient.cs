@@ -180,6 +180,8 @@ public partial class DungeonSystem
 
     private IEnumerator BossClearRoutine()
     {
+        QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 100, 1);
+        
         // 1) 승리 사운드 (클립 미등록 시 SfxPlay가 로그만 남기고 무시)
         if (AudioManager._instance != null)
             AudioManager._instance.SfxPlay("DungeonClear");
