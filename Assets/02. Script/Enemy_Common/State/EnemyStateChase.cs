@@ -12,7 +12,7 @@ public class EnemyStateChase: EnemyState, ICharacterState
     public void Enter()
     {
         _navMeshAgent.isStopped = false;
-        _animator.SetBool(EnemyAniParamChase, true);
+        _enemyController.RpcSetBool(EnemyAniParamChase, true); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
 
         _waitTime = 0f;
     }
@@ -58,7 +58,7 @@ public class EnemyStateChase: EnemyState, ICharacterState
 
     public void Exit()
     {
-        _animator.SetBool(EnemyAniParamChase, false);
+        _enemyController.RpcSetBool(EnemyAniParamChase, false);
     }
     
     //

@@ -17,7 +17,7 @@ public class BossStateChase: EnemyState, ICharacterState
     public void Enter()
     {
         _navMeshAgent.isStopped = false;
-        _animator.SetBool(EnemyAniParamChase, true);
+        _enemyController.RpcSetBool(EnemyAniParamChase, true); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
 
         _waitTime = 0f;
     }
@@ -36,7 +36,7 @@ public class BossStateChase: EnemyState, ICharacterState
 
     public void Exit()
     {
-        _animator.SetBool(EnemyAniParamChase, false);
+        _enemyController.RpcSetBool(EnemyAniParamChase, false);
     }
     
     private bool DetectionTargetInSight(Vector3 position)
@@ -77,11 +77,11 @@ public class BossStateChase: EnemyState, ICharacterState
             if (DetectionTargetInSight(detectionTargetTransform.position)
                 && _navMeshAgent.remainingDistance > _enemyController.MinimumRunDistance)
             {
-                _animator.SetFloat(EnemyAniParamMoveSpeed, 1);
+                _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 1f);
             }
             else
             {
-                _animator.SetFloat(EnemyAniParamMoveSpeed, 0);
+                _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 0f);
             }
             
             _navMeshAgent.SetDestination(detectionTargetTransform.position);
@@ -115,11 +115,11 @@ public class BossStateChase: EnemyState, ICharacterState
             if (DetectionTargetInSight(detectionTargetTransform.position)
                 && _navMeshAgent.remainingDistance > _enemyController.MinimumRunDistance)
             {
-                _animator.SetFloat(EnemyAniParamMoveSpeed, 0.7f);
+                _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 0.7f); 
             }
             else
             {
-                _animator.SetFloat(EnemyAniParamMoveSpeed, 0);
+                _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 0f);
             }
             
             _navMeshAgent.SetDestination(detectionTargetTransform.position);
