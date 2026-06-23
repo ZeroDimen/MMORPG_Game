@@ -145,6 +145,11 @@ public class PlayerController : MonoBehaviourPun
         }
         else
         {
+            if (State == EPlayerState.Move)
+                SetState(EPlayerState.Idle);
+            
+            GiveSfxStop();
+            
             _playerInput.actions.FindAction("Jump").Disable();
             _playerInput.actions.FindAction("Fire").Disable();
             _playerInput.actions.FindAction("Look").Disable();

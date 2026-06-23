@@ -109,6 +109,15 @@ public partial class DungeonSystem
         }
     }
 
+    // 보스 처치 시 마스터에서 호출 → 파티 전원에게 클리어 연출/자동 복귀 브로드캐스트
+    public void OnBossDefeated(string partyId)
+    {
+        Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(partyId));
+        if (party == null) return;
+
+        SendRpcToPartyMembers(party, nameof(OnBossClear));
+    }
+
     public void RequestTimeline(string playerName)
     {
         Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));

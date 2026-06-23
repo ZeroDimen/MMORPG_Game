@@ -104,7 +104,8 @@ public class EnemyController : MonoBehaviourPun
         if (!PhotonNetwork.IsMasterClient) return; // IsMasterClient만 State를 수정
         if (State != EEnemyState.Dead && State != EEnemyState.None)
         {
-            _states[State].Update();
+            if(_navMeshAgent.enabled && _navMeshAgent.isOnNavMesh)
+                _states[State].Update();
         }
     }
 

@@ -21,6 +21,9 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     public const int MonsterNum = 3;
     private bool _hasPlayed = false;
     private Dictionary<string, int> partyKillCount;
+    [SerializeField] private Transform fieldSpawnPos;
+    [SerializeField] private GameObject exitDungeonButton;
+    [SerializeField] private GameObject clearBanner; // "DUNGEON CLEAR!" 배너 UI (기본 비활성)
     private void Awake()
     {
         if (instance == null)

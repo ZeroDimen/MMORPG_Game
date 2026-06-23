@@ -27,13 +27,3 @@ Chief_Kill_Monster_Give,촌장,요즘 몬스터 때문에 골치가 많이 아�
 Chief_Kill_Monster_Give,촌장,역시 자네라면 식은죽 먹기겠지! 든든하구먼,,
 ,,,,
 Chief_Kill_Monster_Complete,마을 청년,오 벌써 해결한거야? 역시 대단한걸~,NpcCamera,1
-,,,,
-Chief_Kill_Boss_Give,촌장,자네 드디어 왔는가. 긴히 부탁할 것이 있네,NpcCamera,2
-Chief_Kill_Boss_Give,촌장,저 던전 가장 깊은 곳에 오래된 악령이 잠들어 있다네,,
-Chief_Kill_Boss_Give,촌장,놈이 깨어나면 이 마을도 무사하지 못할 걸세,,
-Chief_Kill_Boss_Give,촌장,부디 자네가 그 던전의 주인을 처치해 주게,,
-Chief_Kill_Boss_Give,촌장,결코 만만한 상대가 아니니 단단히 각오하게나,GiveQuest,Main
-,,,,
-Chief_Kill_Boss_Complete,촌장,그 무시무시한 기운이… 정말 사라졌군,NpcCamera,2
-Chief_Kill_Boss_Complete,촌장,자네가 던전의 주인을 처치했단 말인가. 믿기지 않는구먼,,
-Chief_Kill_Boss_Complete,촌장,이 은혜는 잊지 않겠네. 자네는 이 마을의 진정한 영웅일세,,

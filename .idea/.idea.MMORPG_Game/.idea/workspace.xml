@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/SimplePlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonBossTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonLight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPanelView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" root0="FORCE_HIGHLIGHTING" />
@@ -238,6 +240,12 @@
       <workItem from="1778632263486" duration="1313000" />
       <workItem from="1779819948031" duration="1638000" />
       <workItem from="1779851463280" duration="487000" />
+      <workItem from="1780272650050" duration="6619000" />
+      <workItem from="1780508703650" duration="1494000" />
+      <workItem from="1780682184151" duration="631000" />
+      <workItem from="1780809778509" duration="972000" />
+      <workItem from="1781862312235" duration="1362000" />
+      <workItem from="1781866631909" duration="1404000" />
     </task>
     <servers />
   </component>
