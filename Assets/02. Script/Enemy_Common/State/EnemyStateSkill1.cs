@@ -23,9 +23,22 @@ public void Enter()
 private System.Collections.IEnumerator JumpWithDelay(Vector3 targetPos)
     {
         yield return new WaitForSeconds(1.0f); // 준비 자세 대기
+
+        // 체공 시작 → AoE 인디케이터 표시
+        _enemyController.ShowJumpIndicator(targetPos, 6.0f, 6.0f);
+
+        // 플레이어 위치로 포물선 이동
         yield return _enemyController.StartCoroutine(
-            _enemyController.JumpToTarget(targetPos, 1.0f, 2.0f) // 체공 1.0초, 높이 2.0
+            _enemyController.JumpToTarget(targetPos, 1.0f, 2.0f)
         );
+
+        // 착지 → 인디케이터 제거 + 데미지 판정
+        _enemyController.HideJumpIndicator();
+
+        // halfExtents = BoxCollider 월드 크기(6x6)의 절반, 데미지 = 10
+        Vector3 landPos     = _enemyController.transform.position;
+        Vector3 halfExtents = new Vector3(3.0f, 0.5f, 3.0f);
+        _enemyController.RpcJumpLandingDamage(landPos, halfExtents, 10);
     }
 
 
