@@ -73,12 +73,7 @@ public class GameManager :  MonoBehaviourPun
             yield break;
         }
         Set_Spawner("Maria");
-        Set_Spawner("Boss");
-    }
-
-    private void Update()
-    {
-        // Debug.Log($"현재 모드 : {GameState} 현재 UI 카운트 : {_interactionCount}");
+        // Set_Spawner("Boss");
     }
 
     public void Set_Spawner(string prefabName)
@@ -165,8 +160,9 @@ public class GameManager :  MonoBehaviourPun
                 PhotonNetwork.Instantiate("Mutant", spownPos, Quaternion.identity);
                 break;
             case "Boss":
-                spownPos = GetRandomPosition(spawnPoints[1].point, spawnPoints[1].radius);
-                PhotonNetwork.Instantiate("Boss", spownPos, Quaternion.identity);
+                spownPos = GetRandomPosition(spawnPoints[3].point, spawnPoints[3].radius);
+                var boss = PhotonNetwork.Instantiate("Boss", spownPos, Quaternion.identity);
+                boss.GetComponent<EnemyController>().partyId = objName; // 보스 처치 → 클리어 감지의 핵심
                 break;
             default:
                 Debug.Log("파일 없음");
@@ -179,6 +175,13 @@ public class GameManager :  MonoBehaviourPun
         var spawnPos = GetRandomPosition(spawnPoints[index].point, spawnPoints[index].radius);
         GameObject monster = PhotonNetwork.Instantiate("Mutant", spawnPos, Quaternion.identity);
         monster.GetComponent<EnemyController>().partyId = manager;
+    }
+    
+    public void SpawnBossInDungeon(string manager)
+    {
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        string Name = PhotonNetwork.LocalPlayer.NickName;
+        photonView.RPC(nameof(RPC_Spawner), RpcTarget.MasterClient,"Boss" ,Name, actorNumber);
     }
 
     Vector3 GetRandomPosition(Transform point, float radius)

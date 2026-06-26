@@ -24,6 +24,8 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     [SerializeField] private Transform fieldSpawnPos;
     [SerializeField] private GameObject exitDungeonButton;
     [SerializeField] private GameObject clearBanner; // "DUNGEON CLEAR!" 배너 UI (기본 비활성)
+    
+    private HashSet<string> bossSpawnedParties = new HashSet<string>();
     private void Awake()
     {
         if (instance == null)
