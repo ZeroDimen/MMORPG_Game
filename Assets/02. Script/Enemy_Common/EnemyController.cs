@@ -236,14 +236,14 @@ public class EnemyController : MonoBehaviourPun
     }
 
 // 일// 일반 근접 공격(Attack) 데미지 판정 RPC (1회만 호출되어야 함)
-    public void RpcAttackDamage(int damage)
+    public void RpcAttackDamage()
     {
         Vector3 localCenter = new Vector3(0.10f, 1.11f, 1.46f);
         Vector3 worldCenter = transform.TransformPoint(localCenter);
         Vector3 halfExtents = new Vector3(1.335f, 1.795f, 1.725f);
         Quaternion rot = transform.rotation;
-
-        photonView.RPC(nameof(DoAttackDamage), RpcTarget.All, worldCenter, halfExtents, rot, damage);
+        
+        photonView.RPC(nameof(DoAttackDamage), RpcTarget.All, worldCenter, halfExtents, rot, enemyStatus.damage);
     }
 
     [PunRPC]

@@ -560,7 +560,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4412271081424571888}
   - component: {fileID: 7463963993852376421}
-  - component: {fileID: 4782127667069345374}
   m_Layer: 0
   m_Name: '[Collider] Attack'
   m_TagString: Untagged
@@ -604,19 +603,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3373244, y: 1.797014, z: 1.7231362}
   m_Center: {x: 0.100622326, y: 1.1101745, z: 1.462391}
---- !u!114 &4782127667069345374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2960598849826660777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188a5a7040ad2444cae395f0774239f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
 --- !u!1 &2985755179651763472
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +613,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8260647843099709332}
   - component: {fileID: 1977226925492936346}
-  - component: {fileID: 197061710961592911}
   m_Layer: 0
   m_Name: '[Collider] Jump Attack'
   m_TagString: Untagged
@@ -671,19 +656,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 0.1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &197061710961592911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2985755179651763472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188a5a7040ad2444cae395f0774239f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 20
 --- !u!1 &3093580519496185979
 GameObject:
   m_ObjectHideFlags: 0

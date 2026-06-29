@@ -20,7 +20,7 @@ public class EnemySmbAttack : StateMachineBehaviour
 
         _damageApplied = true;
         if (!Photon.Pun.PhotonNetwork.IsMasterClient) return;
-        _enemyController.RpcAttackDamage(10);
+        _enemyController.RpcAttackDamage(); // enemyStatus.damage 만큼 데미지
     }
 
 
