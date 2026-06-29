@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -24,6 +25,7 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     [SerializeField] private Transform fieldSpawnPos;
     [SerializeField] private GameObject exitDungeonButton;
     [SerializeField] private GameObject clearBanner; // "DUNGEON CLEAR!" 배너 UI (기본 비활성)
+    [SerializeField] private CinemachineImpulseSource impulseSource; // 보스 등장 카메라 흔들림용 (미할당 시 흔들림만 생략)
     
     private HashSet<string> bossSpawnedParties = new HashSet<string>();
     private void Awake()

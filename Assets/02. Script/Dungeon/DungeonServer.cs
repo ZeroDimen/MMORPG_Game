@@ -121,6 +121,7 @@ public partial class DungeonSystem
         if (!bossSpawnedParties.Add(party._manager)) return;
 
         GameManager.Instance.SpawnBossInDungeon(party._manager);
+        SendRpcToPartyMembers(party, nameof(OnBossSpawnEffect)); // 파티 전원에게 등장 연출 재생
     }
 
     // 보스 처치 시 마스터에서 호출 → 파티 전원에게 클리어 연출/자동 복귀 브로드캐스트

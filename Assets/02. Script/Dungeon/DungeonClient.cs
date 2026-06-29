@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public partial class DungeonSystem 
+public partial class DungeonSystem
 {
     public void OnDungeonPanel()
     {
@@ -166,6 +167,10 @@ public partial class DungeonSystem
             Debug.Log("[DEBUG] Boss Clear 강제 실행 (F9)");
             StartCoroutine(BossClearRoutine());
         }
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            DungeonCutsceneController.instance.OnFogFadeOut();
+        }
     }
 #endif
 
@@ -180,8 +185,16 @@ public partial class DungeonSystem
 
     private IEnumerator BossClearRoutine()
     {
+        // 0) 우승 순간 슬로우모션 (실시간 대기 → 슬로우 중에도 정확히 1.2초)
+        float origFixed = Time.fixedDeltaTime;
+        Time.timeScale = 0.4f;
+        Time.fixedDeltaTime = origFixed * Time.timeScale;
+        yield return new WaitForSecondsRealtime(8f);
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = origFixed;
+
         QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 100, 1);
-        
+
         // 1) 승리 사운드 (클립 미등록 시 SfxPlay가 로그만 남기고 무시)
         if (AudioManager._instance != null)
             AudioManager._instance.SfxPlay("DungeonClear");
@@ -198,5 +211,52 @@ public partial class DungeonSystem
 
         // 4) 파티 탈퇴 (기존 ExitDungeon과 동일)
         PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
+    }
+
+    // 보스 등장 → 파티 전원에게 브로드캐스트되는 등장 연출 (입력잠금 + 슬로우모션 + 카메라 흔들림)
+    [PunRPC]
+    public void OnBossSpawnEffect()
+    {
+        if (PhotonNetwork.IsMasterClient) return; // 마스터는 호스트 전용
+
+        StartCoroutine(BossSpawnEffectRoutine());
+    }
+
+    private IEnumerator BossSpawnEffectRoutine()
+    {
+        var input = GameManager.LocalPlayer != null
+            ? GameManager.LocalPlayer.GetComponent<PlayerInput>()
+            : null;
+        if (input != null) input.enabled = false; // 입력 잠금
+
+        float origFixed = Time.fixedDeltaTime;
+        Time.timeScale = 0.4f;                      // 슬로우모션
+        Time.fixedDeltaTime = origFixed * Time.timeScale;
+
+        StartCoroutine(CameraShake(1.2f, 0.6f)); // 지진형 카메라 흔들림(슬로우모션 창과 동시 진행)
+
+        yield return new WaitForSecondsRealtime(4f);
+
+        Time.timeScale = 1f;                        // 복원
+        Time.fixedDeltaTime = origFixed;
+        if (input != null) input.enabled = true;
+    }
+
+    // 지진형 카메라 흔들림: 짧은 임펄스를 랜덤 방향으로 반복 → 지속 떨림 후 감쇠
+    private IEnumerator CameraShake(float duration, float magnitude)
+    {
+        if (impulseSource == null) yield break;
+
+        float elapsed = 0f;
+        const float interval = 0.04f; // 발생 간격(작을수록 촘촘한 떨림)
+        while (elapsed < duration)
+        {
+            float falloff = 1f - (elapsed / duration);          // 점점 약해짐
+            Vector3 dir = Random.insideUnitSphere;
+            dir.z *= 0.3f;                                       // 전후 흔들림은 약하게(좌우/상하 위주)
+            impulseSource.GenerateImpulseWithVelocity(dir * magnitude * falloff);
+            elapsed += interval;
+            yield return new WaitForSecondsRealtime(interval);  // 슬로우모션 중에도 실시간 진행
+        }
     }
 }
