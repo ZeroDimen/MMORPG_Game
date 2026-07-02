@@ -146,7 +146,7 @@ public class EnemyController : MonoBehaviourPun
                 _collider.isTrigger = false;
 
                 // 2초 후 비활성화
-                StartCoroutine(DisableAfterDelay(2f));
+                StartCoroutine(DisableAfterDelay(3f));
 
                 return enemyStatus.exp;
             }
@@ -158,8 +158,6 @@ public class EnemyController : MonoBehaviourPun
                 {
                     StartCoroutine(Knockback(transform.forward));
                 }
-
-                Debug.Log(enemyStatus.maxHp / 3);
             }
         }
 
