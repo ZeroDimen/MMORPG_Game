@@ -28,6 +28,9 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     [SerializeField] private CinemachineImpulseSource impulseSource; // 보스 등장 카메라 흔들림용 (미할당 시 흔들림만 생략)
     
     private HashSet<string> bossSpawnedParties = new HashSet<string>();
+    
+    public CinemachineBrain brain;
+    public CinemachineCamera bossCam;
     private void Awake()
     {
         if (instance == null)
