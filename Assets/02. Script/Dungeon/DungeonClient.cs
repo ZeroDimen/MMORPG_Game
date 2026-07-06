@@ -182,10 +182,11 @@ public partial class DungeonSystem
 
     private IEnumerator BossClearRoutine()
     {
+        UIManager.Instance.OnBossHpBar();
         float origFixed = Time.fixedDeltaTime;
         Time.timeScale = 0.4f;
         Time.fixedDeltaTime = origFixed * Time.timeScale;
-        yield return new WaitForSecondsRealtime(8f);
+        yield return new WaitForSecondsRealtime(6.5f);
         Time.timeScale = 1f;
         Time.fixedDeltaTime = origFixed;
 
@@ -215,6 +216,7 @@ public partial class DungeonSystem
 
     private IEnumerator BossSpawnEffectRoutine()
     {
+        UIManager.Instance.OnBossHpBar();
         var input = GameManager.LocalPlayer != null
             ? GameManager.LocalPlayer.GetComponent<PlayerInput>()
             : null;
@@ -223,7 +225,10 @@ public partial class DungeonSystem
         float origFixed = Time.fixedDeltaTime;
         Time.timeScale = 0.4f;                      
         Time.fixedDeltaTime = origFixed * Time.timeScale;
+        fadePanel.color = new Color(0, 0, 0, 1);
         StartCoroutine(SwitchWithCut());
+        yield return new WaitForSeconds(1.5f);
+        fadePanel.color = new Color(0, 0, 0, 0);
         StartCoroutine(CameraShake(1.2f, 0.6f)); 
 
         yield return new WaitForSecondsRealtime(4f);

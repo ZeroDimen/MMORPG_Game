@@ -8,7 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Enemy_Common/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Enemy_Common/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/UI/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/FloorTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/FloorTileTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/MovingPlatform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Enemy_Boss/BossHpBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyMemberInformationView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -251,6 +254,7 @@
       <workItem from="1782463655180" duration="5508000" />
       <workItem from="1782728556473" duration="1966000" />
       <workItem from="1782983707410" duration="5108000" />
+      <workItem from="1783329167466" duration="4515000" />
     </task>
     <servers />
   </component>

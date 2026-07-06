@@ -128,6 +128,9 @@ public class EnemyController : MonoBehaviourPun
             enemyStatus.hp -= damage;
             float result = (float)enemyStatus.hp / enemyStatus.maxHp;
             _enemyHpBarController.SetHp(result);
+            if (this is BossController)
+                UIManager.Instance.UpdateBossHpBar(result);
+                
 
             if (enemyStatus.hp <= 0)
             {

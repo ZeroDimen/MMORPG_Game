@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
     public GameObject InventoryPanel;
     public GameObject PartySearchPanel;
     public GameObject MenuPanel;
+    public GameObject BossHpBar;
+
+    [SerializeField]
+    public BossHpBar _bossHpBar;
 
     void Awake()
     {
@@ -36,5 +40,16 @@ public class UIManager : MonoBehaviour
     public void OnMenuPanel()
     {
         MenuPanel.SetActive(!MenuPanel.activeSelf);
+    }
+
+    public void OnBossHpBar()
+    {
+        BossHpBar.SetActive(!BossHpBar.activeSelf);
+        _bossHpBar.SetMaxHp();
+    }
+    
+    public void UpdateBossHpBar(float hp)
+    {
+        _bossHpBar.SetHp(hp);
     }
 }
