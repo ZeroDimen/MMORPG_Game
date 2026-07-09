@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviourPun
 
     // 캐릭터 이동 정보
     private float _velocityY;
+    
+    private bool _cursorHeld = false;
 
     private void Awake()
     {
@@ -83,12 +85,15 @@ public class PlayerController : MonoBehaviourPun
             SetSpawn();
 
             // chatting 상호작용
-            _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
+            _playerInput.actions["Chat"].performed += OnChat;
+            
+            _playerInput.actions["Cursor"].performed += OnCursor;
+            _playerInput.actions["Cursor"].canceled += OffCursor;
 
             // GameManager에서 LocalPlayer → PlayerController 접근할 수 있도록 설정
             PhotonNetwork.LocalPlayer.TagObject = this;
 
-            GameManager.Instance.SetGameState(EGameState.Play);
+            GameManager.Instance.ResetToPlay();
             SaveManager.Instance.LoadGameFromMaster(this);
             StartCoroutine(GetPlayerStatus());
         }
@@ -320,4 +325,32 @@ public class PlayerController : MonoBehaviourPun
         skillManager.SetSkillData(Status.LV);
     }
 
+    private void OnCursor(InputAction.CallbackContext _)
+    {
+        if (_cursorHeld) return;
+        if (GameManager.Instance.GameState != EGameState.Play) return;
+
+        GameManager.Instance.PushState(EGameState.Interaction);
+        _cursorHeld = true;
+    }
+    
+    private void OffCursor(InputAction.CallbackContext _)
+    {
+        if (!_cursorHeld) return;
+
+        GameManager.Instance.PopState(EGameState.Interaction);
+        _cursorHeld = false;
+    }
+    
+    private void OnDestroy()
+    {
+        if (!photonView.IsMine) return;
+
+        _playerInput.actions["Chat"].performed -= OnChat;
+        _playerInput.actions["Cursor"].performed -= OnCursor;
+        _playerInput.actions["Cursor"].canceled  -= OffCursor;
+    }
+    
+    private void OnChat(InputAction.CallbackContext _)
+        => GameManager.Instance.SetChattingInputField();
 }

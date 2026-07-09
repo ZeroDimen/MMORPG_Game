@@ -49,7 +49,7 @@ public class NPC : MonoBehaviour
 
     private void Talk()
     {
-        GameManager.Instance.SetGameState(Constants.EGameState.Interaction);
+        GameManager.Instance.PushState(Constants.EGameState.Interaction);
         _anime.SetBool(IsTalking, true);
 
         // 대화 종료 시 마무리(카메라 복귀/상태 복귀/메인 퀘스트 부여) 구독
@@ -94,7 +94,7 @@ public class NPC : MonoBehaviour
     private void TalkEnd()
     {
         GameEvents.OnCurrentCameraChanged?.Invoke();
-        GameManager.Instance.SetGameState(Constants.EGameState.Play);
+        GameManager.Instance.PopState(Constants.EGameState.Interaction);
 
         // 메인 퀘스트는 대화가 끝나면 즉시 부여 (GiveQuest 가 내부에서 _pendingQuest 정리)
         if (_pendingQuest != null && _pendingQuest.isMain)

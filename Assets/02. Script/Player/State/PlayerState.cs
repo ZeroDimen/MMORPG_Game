@@ -10,15 +10,12 @@ public class PlayerState
     protected SkillManager _skillManager;
 
     private bool isAttacking = false;
-    private bool flag = false;
     
     public PlayerState(PlayerController playerController, Animator animator, PlayerInput playerInput)
     {
         _playerController = playerController;
         _animator = animator;
         _playerInput = playerInput;
-        _playerInput.actions["Cursor"].performed += OnCursor;
-        _playerInput.actions["Cursor"].canceled += OffCursor;
     }
 
     protected void Attack(InputAction.CallbackContext context)
@@ -46,27 +43,6 @@ public class PlayerState
     protected void Skill2(InputAction.CallbackContext context)
     {
         _playerController.SetState(EPlayerState.Skill2);
-    }
-    
-    
-    
-    
-    private void OnCursor(InputAction.CallbackContext context)
-    {
-        if (GameManager.Instance.GameState == EGameState.Interaction)
-            return;
-        GameManager.Instance.SetGameState(EGameState.Alt);
-        flag = true;
-    }
-    private void OffCursor(InputAction.CallbackContext context)
-    {
-        // if (GameManager.Instance.GameState != EGameState.Alt)
-        //     return;
-        if (flag == true)
-        {
-            GameManager.Instance.SetGameState(EGameState.Play);
-            flag = false;
-        }
     }
     
     protected void Rotate(float x, float z)

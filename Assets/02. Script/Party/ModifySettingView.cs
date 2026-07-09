@@ -2,6 +2,7 @@ using System;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ModifySettingView : MonoBehaviour
@@ -17,6 +18,9 @@ public class ModifySettingView : MonoBehaviour
     {
         confirmButton.onClick.AddListener(OnConfirmButton);
         cancelButton.onClick.AddListener(OnCancelButton);
+        
+        title.onSelect.AddListener(OnFieldSelect);
+        title.onDeselect.AddListener(OnFieldDeselect);
     }
 
     private void OnEnable()
@@ -44,11 +48,26 @@ public class ModifySettingView : MonoBehaviour
     private void OnCancelButton()
     {
         title.text = "";
+        
+        if (EventSystem.current.currentSelectedGameObject == title.gameObject)
+            EventSystem.current.SetSelectedGameObject(null);
+        
+        GameManager.Instance.PopState(Constants.EGameState.Interaction);
+        
         gameObject.SetActive(false);
+    }
+    
+    private void OnDestroy()
+    {
+        title.onSelect.RemoveListener(OnFieldSelect);
+        title.onDeselect.RemoveListener(OnFieldDeselect);
     }
 
     private JoinType GetJoinType()
     {
         return instantToggle.isOn ? JoinType.Instant : JoinType.Request;
     }
+    
+    private void OnFieldSelect(string _) => GameManager.Instance.PushState(Constants.EGameState.TextInput);
+    private void OnFieldDeselect(string _) => GameManager.Instance.PopState(Constants.EGameState.TextInput);
 }

@@ -27,20 +27,13 @@ public class GameManager :  MonoBehaviourPun
     
     public Canvas Canvas => GetCanvas();
     
-    public EGameState GameState { get; private set; }
-
-    private int _interactionCount = 0;
-
     public List<PhotonView> playerList;
-    
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null) instance = new GameManager();
-            return instance;
-        }
-    }
+
+    private readonly List<EGameState> _stateStack = new();
+    public EGameState GameState =>_stateStack.Count > 0 ? _stateStack[^1] : EGameState.Play;
+    private EGameState _lastApplied = EGameState.Play;
+
+    public static GameManager Instance => instance;
     
     private void Awake()
     {
@@ -190,68 +183,68 @@ public class GameManager :  MonoBehaviourPun
         return point.position + new Vector3(randomCircle.x, 0, randomCircle.y);
     }
 
-    public void SetGameState(EGameState state)
+    public void PushState(EGameState state)
     {
-        if (state == EGameState.Interaction || state == EGameState.Alt)
-            _interactionCount++;
-        else if (state == EGameState.Play)
-            _interactionCount = Mathf.Max(0, _interactionCount - 1);
+        if (state == EGameState.Play) return;
+        _stateStack.Add(state);
+        RefreshState();
+    }
 
-        if (_interactionCount > 0)
-        {
-            ApplyStateEffects(EGameState.Interaction);
-            GameState = EGameState.Interaction;
-        }
-        else
-        {
-            ApplyStateEffects(EGameState.Play);
-            GameState = EGameState.Play;
-        }
+    public void PopState(EGameState state)
+    {
+        int idx = _stateStack.LastIndexOf(state);
+        if (idx < 0) return;
+        _stateStack.RemoveAt(idx);
+        RefreshState();
+    }
+
+    private void RefreshState()
+    {
+        var current = GameState;
+        ApplyStateEffects(current);
         
-        if (PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
-        {
-            pc.SetPlayerInputEnabled(state == EGameState.Play);
-        }
+        if(PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
+            pc.SetPlayerInputEnabled(current == EGameState.Play);
+    }
+    
+    public void ResetToPlay()
+    {
+        _stateStack.Clear();
+        RefreshState();
     }
 
     private void ApplyStateEffects(EGameState state)
     {
-        if (state == EGameState.Interaction || state == EGameState.Alt)
+        bool isPlay = state == EGameState.Play;
+        bool wasPlay = _lastApplied == EGameState.Play;
+
+        Cursor.visible = !isPlay;
+        Cursor.lockState = isPlay ? CursorLockMode.Locked : CursorLockMode.None;
+        AudioManager._instance.BgmVolume(isPlay ? 1f : 0.3f);
+        
+        if (isPlay && !wasPlay)
         {
-            Cursor.visible  = true;
-            Cursor.lockState = CursorLockMode.None;
-
-            float currentH = cinemachineOrbitalFollow.HorizontalAxis.Value; 
-            float currentV = cinemachineOrbitalFollow.VerticalAxis.Value;
-
-            cinemachineOrbitalFollow.HorizontalAxis.Range = new Vector2(currentH, currentH);
-            cinemachineOrbitalFollow.VerticalAxis.Range = new Vector2(currentV, currentV);
-            
-            AudioManager._instance.BgmVolume(0.3f);
-        }
-        else if (state == EGameState.Play)
-        {
-            Cursor.visible  = false;
-            Cursor.lockState = CursorLockMode.Locked;
-
             cinemachineOrbitalFollow.HorizontalAxis.Range = cinemachineObitalHRange;
-            cinemachineOrbitalFollow.VerticalAxis.Range = cinemachineObitalVRange;
-            
-            AudioManager._instance.BgmVolume(1f);
+            cinemachineOrbitalFollow.VerticalAxis.Range   = cinemachineObitalVRange;
         }
+        else if (!isPlay && wasPlay)
+        {
+            float h = cinemachineOrbitalFollow.HorizontalAxis.Value;
+            float v = cinemachineOrbitalFollow.VerticalAxis.Value;
+            cinemachineOrbitalFollow.HorizontalAxis.Range = new Vector2(h, h);
+            cinemachineOrbitalFollow.VerticalAxis.Range   = new Vector2(v, v);
+        }
+
+        _lastApplied = state;
     }
     
     public void SetChattingInputField()
     {
-        chattingInputField.SetActive(!chattingInputField.activeSelf);
-        if (chattingInputField.activeSelf)
-        {
-            SetGameState(EGameState.Interaction);
-        }
-        else
-        {
-            SetGameState(EGameState.Play);
-        }
+        bool willOpen = !chattingInputField.activeSelf;
+        chattingInputField.SetActive(willOpen);
+        
+        if(willOpen) PushState(EGameState.TextInput);
+        else PopState(EGameState.TextInput);
     }
 
     
