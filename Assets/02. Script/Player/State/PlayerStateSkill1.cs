@@ -21,6 +21,7 @@ public class PlayerStateSkill1: PlayerState, ICharacterState
         }
         // Skill1 애니메이션 실행
         _animator.SetTrigger(PlayerAniParamSkill1);
+        _playerController.GiveSfxPlay("Skill_Fire");
         _skillManager.StartCooltime(0);
     }
 

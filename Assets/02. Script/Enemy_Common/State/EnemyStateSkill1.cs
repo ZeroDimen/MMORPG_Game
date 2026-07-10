@@ -39,6 +39,7 @@ private System.Collections.IEnumerator JumpWithDelay(Vector3 targetPos)
         Vector3 landPos     = _enemyController.transform.position;
         Vector3 halfExtents = new Vector3(3.0f, 0.5f, 3.0f);
         _enemyController.RpcJumpLandingDamage(landPos, halfExtents, 30);
+        _enemyController.GiveSfxPlay("Boss_Jump");
     }
 
 

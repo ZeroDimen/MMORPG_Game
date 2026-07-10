@@ -88,6 +88,7 @@ public partial class DungeonSystem
         exitDungeonButton.SetActive(true);
 
         yield return new WaitForSeconds(2f);
+        AudioManager._instance.BgmPlay("Dungeon");
         yield return StartCoroutine(FadeOut(3f));
     }
     
