@@ -7,16 +7,10 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/Constants.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/ModifySettingView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/ModifySettingView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/State/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/State/PlayerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/UI/CursorInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/UI/CursorInteraction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/UI/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/UI/UIHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Message Panel [Panel].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Message Panel [Panel].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +259,9 @@
       <workItem from="1783340195090" duration="12000" />
       <workItem from="1783572384274" duration="1925000" />
       <workItem from="1783580886028" duration="3438000" />
+      <workItem from="1783670823818" duration="4638000" />
+      <workItem from="1783678035887" duration="1205000" />
+      <workItem from="1783930156044" duration="1514000" />
     </task>
     <servers />
   </component>

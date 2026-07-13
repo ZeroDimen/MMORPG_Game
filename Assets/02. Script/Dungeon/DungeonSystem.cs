@@ -31,6 +31,12 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     
     public CinemachineBrain brain;
     public CinemachineCamera bossCam;
+    public CinemachineCamera bossCam2;
+    public CinemachineCamera bossCam3;
+
+    [SerializeField] private Letterbox _letterbox;
+
+    public Transform cheat;
     private void Awake()
     {
         if (instance == null)

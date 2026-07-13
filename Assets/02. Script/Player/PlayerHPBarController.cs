@@ -15,7 +15,8 @@ public class PlayerHPBarController : MonoBehaviourPun
         if (photonView.IsMine)
         {
             _canvas = GameManager.Instance.Canvas;
-            _hpBar = Instantiate(hpBarPrefab,_canvas.transform).GetComponent<PlayerHpBar>();
+            Transform canvasGroup = _canvas.GetComponentInChildren<CanvasGroup>().transform;
+            _hpBar = Instantiate(hpBarPrefab,canvasGroup).GetComponent<PlayerHpBar>();
             _playerController = photonView.GetComponent<PlayerController>();
             // 캔버스 자식 중 가장 아래로 이동
             _hpBar.transform.SetAsFirstSibling();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -168,6 +169,14 @@ public partial class DungeonSystem
         if (Input.GetKeyDown(KeyCode.F8))
         {
             DungeonCutsceneController.instance.OnFogFadeOut();
+            var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
+            if (player != null)
+            {
+                CharacterController cc = player.GetComponent<CharacterController>();
+                if (cc != null) cc.enabled = false;
+                player.transform.position = cheat.position;
+                if (cc != null) cc.enabled = true;
+            }
         }
     }
 #endif
@@ -225,13 +234,17 @@ public partial class DungeonSystem
         float origFixed = Time.fixedDeltaTime;
         Time.timeScale = 0.4f;                      
         Time.fixedDeltaTime = origFixed * Time.timeScale;
+        
         fadePanel.color = new Color(0, 0, 0, 1);
         StartCoroutine(SwitchWithCut());
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.3f);
         fadePanel.color = new Color(0, 0, 0, 0);
+        
+        yield return StartCoroutine(_letterbox.Show());
         StartCoroutine(CameraShake(1.2f, 0.6f)); 
-
+        
         yield return new WaitForSecondsRealtime(4f);
+        yield return StartCoroutine(_letterbox.Hide());
         bossCam.Priority.Value = 0;
         Time.timeScale = 1f;                        
         Time.fixedDeltaTime = origFixed;
