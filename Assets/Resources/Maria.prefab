@@ -779,6 +779,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ed393d684ec0c41468888dbcf2bd272c, type: 3}
   - {fileID: 8300000, guid: 8792f961a1e13a141b796c5b70eb1e63, type: 3}
   - {fileID: 8300000, guid: 43f3065a97754ac4a86ecba3f80d5e92, type: 3}
+  - {fileID: 8300000, guid: d7d27e5e95230ee44b17d0ed8458cf1c, type: 3}
+  - {fileID: 8300000, guid: 8563350b79f8b3c4aa751ac9baee3bf0, type: 3}
   State: 0
   playerName: {fileID: 2997760728349481453}
   Maria_Head: {fileID: 640950517893958634}

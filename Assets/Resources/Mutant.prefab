@@ -426,7 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7349069337838971436}
   - component: {fileID: 7215692384638986670}
-  - component: {fileID: 2180945875205078324}
+  - component: {fileID: 5968197817395857101}
   - component: {fileID: 6063300403715375140}
   - component: {fileID: 4534482450857038035}
   - component: {fileID: 6203549768330753123}
@@ -457,7 +457,6 @@ Transform:
   m_Children:
   - {fileID: 278977087834379927}
   - {fileID: 7546057391157316136}
-  - {fileID: 6038370358416807049}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7215692384638986670
@@ -482,7 +481,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2180945875205078324
+--- !u!114 &5968197817395857101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,9 +490,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2908329152724868232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776ed173be84f5c49bd22c6613fafcea, type: 3}
+  m_Script: {fileID: 11500000, guid: 01bcf4cdc09461c4d99d11498c348717, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MutantController
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   patrolWaitTime: 1
   patrolChance: 30
   patrolDetectionDistance: 10
@@ -507,7 +506,7 @@ MonoBehaviour:
   enemyStatus:
     maxHp: 100
     hp: 100
-    damage: 40
+    damage: 15
     exp: 20
   partyId: 
   _audioClips:
@@ -516,7 +515,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c6dd6833f202eb489b1f9fa86ceddc2, type: 3}
   State: 0
   isDungeon: 0
-  attackObj: {fileID: 3494730608326806384}
 --- !u!114 &6063300403715375140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,73 +839,6 @@ Transform:
   - {fileID: 2812736478146157087}
   m_Father: {fileID: 5020836751688076704}
   m_LocalEulerAnglesHint: {x: -20.489494, y: -2.0920358, z: 4.906294}
---- !u!1 &3494730608326806384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6038370358416807049}
-  - component: {fileID: 7325349995783455308}
-  - component: {fileID: 1901194509228454512}
-  m_Layer: 9
-  m_Name: '[Collider] Attack'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6038370358416807049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3494730608326806384}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7349069337838971436}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7325349995783455308
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3494730608326806384}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.87382674, y: 1, z: 0.7373345}
-  m_Center: {x: 0.20503199, y: 0.81999993, z: 1.25}
---- !u!114 &1901194509228454512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3494730608326806384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188a5a7040ad2444cae395f0774239f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MutantAttack
-  damage: 0
 --- !u!1 &3650515801683158770
 GameObject:
   m_ObjectHideFlags: 0

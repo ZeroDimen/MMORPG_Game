@@ -9,8 +9,8 @@ public class EnemyStateAttack: EnemyState, ICharacterState
 
     public void Enter()
     {
-        _enemyController.GiveSfxPlay("EnemyAttack");
         _enemyController.RpcSetTrigger(EnemyAniParamAttack); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
+        _enemyController.GiveSfxPlay("EnemyAttack");
     }
 
     public void Update()
