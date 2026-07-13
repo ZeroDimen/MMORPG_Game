@@ -6,8 +6,8 @@ public class Letterbox : MonoBehaviour
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private RectTransform top;
     [SerializeField] private RectTransform bottom;
-    [SerializeField] private float height = 120f;
-    [SerializeField] private float duration = 0.6f;
+     private float height = 120f;
+     private float duration = 2f;
 
     public IEnumerator Show() => Animate(0f, height);
     public IEnumerator Hide() => Animate(height, 0f);

@@ -15,6 +15,7 @@ public class Constants
         Play,
         Interaction,
         TextInput,
+        Cutscene
     }
     // ----------------------------------------
     // Layer Mask

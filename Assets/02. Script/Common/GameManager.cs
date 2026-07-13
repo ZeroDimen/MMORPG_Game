@@ -217,9 +217,12 @@ public class GameManager :  MonoBehaviourPun
     {
         bool isPlay = state == EGameState.Play;
         bool wasPlay = _lastApplied == EGameState.Play;
+        bool isCutscene = state == EGameState.Cutscene;
 
-        Cursor.visible = !isPlay;
-        Cursor.lockState = isPlay ? CursorLockMode.Locked : CursorLockMode.None;
+        bool hideCursor = isPlay || isCutscene;
+        Cursor.visible = !hideCursor;
+        Cursor.lockState = hideCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        
         AudioManager._instance.BgmVolume(isPlay ? 1f : 0.3f);
         
         if (isPlay && !wasPlay)

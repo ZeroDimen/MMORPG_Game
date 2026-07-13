@@ -225,30 +225,28 @@ public partial class DungeonSystem
 
     private IEnumerator BossSpawnEffectRoutine()
     {
-        UIManager.Instance.OnBossHpBar();
-        var input = GameManager.LocalPlayer != null
-            ? GameManager.LocalPlayer.GetComponent<PlayerInput>()
-            : null;
-        if (input != null) input.enabled = false; 
-
-        float origFixed = Time.fixedDeltaTime;
-        Time.timeScale = 0.4f;                      
-        Time.fixedDeltaTime = origFixed * Time.timeScale;
+        GameManager.Instance.PushState(Constants.EGameState.Cutscene);
         
         fadePanel.color = new Color(0, 0, 0, 1);
-        StartCoroutine(SwitchWithCut());
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1f);
+        
+        CutTo(bossCam);
         fadePanel.color = new Color(0, 0, 0, 0);
+        yield return _letterbox.Show();
+        StartCoroutine(CameraShake(0.8f, 0.6f)); 
         
-        yield return StartCoroutine(_letterbox.Show());
-        StartCoroutine(CameraShake(1.2f, 0.6f)); 
+        yield return new WaitForSeconds(4f);
+
+        CutTo(bossCam2);
+        yield return new WaitForSeconds(3f);
+
+        CutTo(bossCam3);
+        yield return new WaitForSeconds(3f);
         
-        yield return new WaitForSecondsRealtime(4f);
         yield return StartCoroutine(_letterbox.Hide());
-        bossCam.Priority.Value = 0;
-        Time.timeScale = 1f;                        
-        Time.fixedDeltaTime = origFixed;
-        if (input != null) input.enabled = true;
+        CutTo(null);
+        UIManager.Instance.OnBossHpBar();
+        GameManager.Instance.PopState(Constants.EGameState.Cutscene);
     }
 
     private IEnumerator CameraShake(float duration, float magnitude)
@@ -268,17 +266,18 @@ public partial class DungeonSystem
         }
     }
     
-    private IEnumerator SwitchWithCut()
+    private void CutTo(CinemachineCamera cam)
     {
-        var originalBlend = brain.DefaultBlend;
-
         brain.DefaultBlend = new CinemachineBlendDefinition(
             CinemachineBlendDefinition.Styles.Cut, 0f);
 
-        bossCam.Priority.Value = 100;
-        
-        yield return null;
+        bossCam.Priority.Value = 0;
+        bossCam2.Priority.Value = 0;
+        bossCam3.Priority.Value  = 0;
 
-        brain.DefaultBlend = originalBlend;
+        if (cam != null) cam.Priority.Value = 100;
+        else
+            brain.DefaultBlend = new CinemachineBlendDefinition(
+                CinemachineBlendDefinition.Styles.EaseIn, 1f);
     }
 }
