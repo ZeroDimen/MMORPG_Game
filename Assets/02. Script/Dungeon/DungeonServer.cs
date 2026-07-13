@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
@@ -107,6 +108,20 @@ public partial class DungeonSystem
             Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(partyId));
             SendRpcToPartyMembers(party, nameof(OnElevator));
         }
+    }
+    
+    public void RequestSpawnBoss(string playerName)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
+        if (party == null) return;
+
+        // HashSet.Add는 이미 있으면 false 반환 → 한 줄로 파티별 중복 차단
+        if (!bossSpawnedParties.Add(party._manager)) return;
+
+        GameManager.Instance.SpawnBossInDungeon(party._manager);
+        SendRpcToPartyMembers(party, nameof(OnBossSpawnEffect)); // 파티 전원에게 등장 연출 재생
     }
 
     // 보스 처치 시 마스터에서 호출 → 파티 전원에게 클리어 연출/자동 복귀 브로드캐스트

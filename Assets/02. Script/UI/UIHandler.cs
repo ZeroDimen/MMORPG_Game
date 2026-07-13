@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Constants;
 
 public class UIInputHandler : MonoBehaviour, IPunOwnershipCallbacks
 {
@@ -9,6 +10,8 @@ public class UIInputHandler : MonoBehaviour, IPunOwnershipCallbacks
     private PhotonView _photonView;
     private bool _subscribed = false;
 
+    private bool IsBlocked => GameManager.Instance.GameState == EGameState.TextInput;
+    
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -63,8 +66,26 @@ public class UIInputHandler : MonoBehaviour, IPunOwnershipCallbacks
         _playerInput.actions["Menu"].performed -= OnMenu;
     }
 
-    private void OnInventory(InputAction.CallbackContext context) => UIManager.Instance.OnInventoryPanel();
-    private void OnQeust(InputAction.CallbackContext context) => UIManager.Instance.OnQuestPanel();
-    private void OnParty(InputAction.CallbackContext context) => UIManager.Instance.OnPartySearchPanel();
-    private void OnMenu(InputAction.CallbackContext context) => UIManager.Instance.OnMenuPanel();
+    private void OnInventory(InputAction.CallbackContext context)
+    {
+        if (IsBlocked) return;
+        UIManager.Instance.OnInventoryPanel();
+    }
+    private void OnQeust(InputAction.CallbackContext context)
+    {
+        if (IsBlocked) return;
+        UIManager.Instance.OnQuestPanel();
+    }
+
+    private void OnParty(InputAction.CallbackContext context)
+    {
+        if (IsBlocked) return;
+        UIManager.Instance.OnPartySearchPanel();
+    }
+
+    private void OnMenu(InputAction.CallbackContext context)
+    {
+        if (IsBlocked) return;
+        UIManager.Instance.OnMenuPanel();
+    }
 }

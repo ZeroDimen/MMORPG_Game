@@ -1,7 +1,9 @@
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Constants;
 
 public class PartyCreateView : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class PartyCreateView : MonoBehaviour
     {
         confirmButton.onClick.AddListener(OnConfirmButton);
         cancelButton.onClick.AddListener(OnCancelButton);
+        
+        title.onSelect.AddListener(OnFieldSelect);
+        title.onDeselect.AddListener(OnFieldDeselect);
 
         instantToggle.isOn = true;
         requestToggle.isOn = false;
@@ -33,6 +38,12 @@ public class PartyCreateView : MonoBehaviour
         title.text = "";
         instantToggle.isOn = true;
         requestToggle.isOn = false;
+        
+        if (EventSystem.current.currentSelectedGameObject == title.gameObject)
+            EventSystem.current.SetSelectedGameObject(null);
+        
+        GameManager.Instance.PopState(EGameState.Interaction);
+        
         gameObject.SetActive(false);
     }
 
@@ -40,4 +51,13 @@ public class PartyCreateView : MonoBehaviour
     {
         return instantToggle.isOn ? JoinType.Instant : JoinType.Request;
     }
+
+    private void OnDestroy()
+    {
+        title.onSelect.RemoveListener(OnFieldSelect);
+        title.onDeselect.RemoveListener(OnFieldDeselect);
+    }
+
+    private void OnFieldSelect(string _) => GameManager.Instance.PushState(Constants.EGameState.TextInput);
+    private void OnFieldDeselect(string _) => GameManager.Instance.PopState(Constants.EGameState.TextInput);
 }

@@ -10,10 +10,10 @@ public class DungeonBossTrigger : MonoBehaviour
         _pv = GetComponent<PhotonView>();
     }
 
-    // 보스 소환, 컷씬 등 요청 함수
-    public void BossTrigger()
+    [PunRPC]
+    public void BossTrigger(PhotonMessageInfo info)
     {
-        
+        DungeonSystem.instance.RequestSpawnBoss(info.Sender.NickName);
     }
     
     private void OnTriggerEnter(Collider other)

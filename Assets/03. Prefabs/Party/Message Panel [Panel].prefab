@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5719984126717321352}
   - component: {fileID: 8609427512425483514}
   - component: {fileID: 8180558340123676527}
+  - component: {fileID: -7357923791205039323}
   m_Layer: 5
   m_Name: 'Message Panel [Panel]'
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PartyMessageView
   context: {fileID: 631578479987547008}
   confirm: {fileID: 6240032131945203651}
+--- !u!114 &-7357923791205039323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671836523927022135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c607e2929d06c24787638a4d678ac37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorInteraction
 --- !u!1 &4054804861420894422
 GameObject:
   m_ObjectHideFlags: 0

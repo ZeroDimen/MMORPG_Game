@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public partial class DungeonSystem 
+public partial class DungeonSystem
 {
     public void OnDungeonPanel()
     {
@@ -157,9 +160,6 @@ public partial class DungeonSystem
     }
 
 #if UNITY_EDITOR
-    // [임시 디버그] 던전 안에서 F9 → 보스 클리어 연출/복귀 강제 실행 (단독 에디터 테스트용)
-    // 단일 에디터는 곧 마스터라 OnBossClear가 가드로 막히므로, BossClearRoutine을 직접 호출해 우회.
-    // 테스트 후 이 #if UNITY_EDITOR 블록만 삭제하면 됨.
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F9))
@@ -167,37 +167,118 @@ public partial class DungeonSystem
             Debug.Log("[DEBUG] Boss Clear 강제 실행 (F9)");
             StartCoroutine(BossClearRoutine());
         }
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            DungeonCutsceneController.instance.OnFogFadeOut();
+            var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
+            if (player != null)
+            {
+                CharacterController cc = player.GetComponent<CharacterController>();
+                if (cc != null) cc.enabled = false;
+                player.transform.position = cheat.position;
+                if (cc != null) cc.enabled = true;
+            }
+        }
     }
 #endif
 
-    // 보스 처치 → 파티 전원에게 브로드캐스트되는 던전 클리어 연출 + 자동 복귀
     [PunRPC]
     public void OnBossClear()
     {
-        if (PhotonNetwork.IsMasterClient) return; // 마스터는 호스트 전용(입장 Teleport와 동일 가드)
+        if (PhotonNetwork.IsMasterClient) return; 
 
         StartCoroutine(BossClearRoutine());
     }
 
     private IEnumerator BossClearRoutine()
     {
+        UIManager.Instance.OnBossHpBar();
+        float origFixed = Time.fixedDeltaTime;
+        Time.timeScale = 0.4f;
+        Time.fixedDeltaTime = origFixed * Time.timeScale;
+        yield return new WaitForSecondsRealtime(6.5f);
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = origFixed;
+
         QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 100, 1);
-        
-        // 1) 승리 사운드 (클립 미등록 시 SfxPlay가 로그만 남기고 무시)
+
         if (AudioManager._instance != null)
             AudioManager._instance.SfxPlay("DungeonClear");
 
-        // 2) 클리어 배너 노출
         if (clearBanner != null) clearBanner.SetActive(true);
         yield return new WaitForSeconds(3f);
         if (clearBanner != null) clearBanner.SetActive(false);
 
-        // 3) 자동 복귀 — 기존 ExitDungeonCoroutine 재사용(페이드 + fieldSpawnPos 이동 + 라이팅 복원 + exitButton off)
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
         if (player != null)
             yield return StartCoroutine(ExitDungeonCoroutine(player));
 
-        // 4) 파티 탈퇴 (기존 ExitDungeon과 동일)
         PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
+    }
+
+    [PunRPC]
+    public void OnBossSpawnEffect()
+    {
+        if (PhotonNetwork.IsMasterClient) return; 
+
+        StartCoroutine(BossSpawnEffectRoutine());
+    }
+
+    private IEnumerator BossSpawnEffectRoutine()
+    {
+        GameManager.Instance.PushState(Constants.EGameState.Cutscene);
+        
+        fadePanel.color = new Color(0, 0, 0, 1);
+        yield return new WaitForSeconds(1f);
+        
+        CutTo(bossCam);
+        fadePanel.color = new Color(0, 0, 0, 0);
+        yield return _letterbox.Show();
+        StartCoroutine(CameraShake(0.8f, 0.6f)); 
+        
+        yield return new WaitForSeconds(4f);
+
+        CutTo(bossCam2);
+        yield return new WaitForSeconds(3f);
+
+        CutTo(bossCam3);
+        yield return new WaitForSeconds(3f);
+        
+        yield return StartCoroutine(_letterbox.Hide());
+        CutTo(null);
+        UIManager.Instance.OnBossHpBar();
+        GameManager.Instance.PopState(Constants.EGameState.Cutscene);
+    }
+
+    private IEnumerator CameraShake(float duration, float magnitude)
+    {
+        if (impulseSource == null) yield break;
+
+        float elapsed = 0f;
+        const float interval = 0.04f; 
+        while (elapsed < duration)
+        {
+            float falloff = 1f - (elapsed / duration);          
+            Vector3 dir = Random.insideUnitSphere;
+            dir.z *= 0.3f;                                       
+            impulseSource.GenerateImpulseWithVelocity(dir * magnitude * falloff);
+            elapsed += interval;
+            yield return new WaitForSecondsRealtime(interval);  
+        }
+    }
+    
+    private void CutTo(CinemachineCamera cam)
+    {
+        brain.DefaultBlend = new CinemachineBlendDefinition(
+            CinemachineBlendDefinition.Styles.Cut, 0f);
+
+        bossCam.Priority.Value = 0;
+        bossCam2.Priority.Value = 0;
+        bossCam3.Priority.Value  = 0;
+
+        if (cam != null) cam.Priority.Value = 100;
+        else
+            brain.DefaultBlend = new CinemachineBlendDefinition(
+                CinemachineBlendDefinition.Styles.EaseIn, 1f);
     }
 }
