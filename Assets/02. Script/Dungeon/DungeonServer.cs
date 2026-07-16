@@ -140,4 +140,11 @@ public partial class DungeonSystem
 
         SendRpcToPartyMembers(party, nameof(PlayTimeline));
     }
+
+    [PunRPC]
+    public void RequestBossIdleState()
+    {
+        if(CurrentBoss != null)
+            CurrentBoss.SetState(Constants.EEnemyState.Idle);
+    }
 }

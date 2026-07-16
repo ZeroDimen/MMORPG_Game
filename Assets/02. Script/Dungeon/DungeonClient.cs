@@ -152,6 +152,8 @@ public partial class DungeonSystem
         player.transform.position = fieldSpawnPos.position;
         if (cc != null) cc.enabled = true;
         dungeonLight.ExitDungeon();
+        Destroy(CurrentBoss.gameObject);
+        UIManager.Instance.OnBossHpBar();
 
         exitDungeonButton.SetActive(false);
 
@@ -232,22 +234,35 @@ public partial class DungeonSystem
         yield return new WaitForSeconds(1f);
         
         CutTo(bossCam);
+        bossCam.LookAt = CurrentBoss.transform;
         fadePanel.color = new Color(0, 0, 0, 0);
         yield return _letterbox.Show();
-        StartCoroutine(CameraShake(0.8f, 0.6f)); 
+        StartCoroutine(CameraShake(0.8f, 0.6f));
         
         yield return new WaitForSeconds(4f);
 
         CutTo(bossCam2);
+        StartCoroutine(MoveCamera(bossCam2.transform,
+            bossCam2.transform.position + bossCam2.transform.forward * 4f, 3f));
         yield return new WaitForSeconds(3f);
 
         CutTo(bossCam3);
         yield return new WaitForSeconds(3f);
+
+        if (CurrentBoss != null)
+            RequestBossIdleStateToMaster();
+
         
         yield return StartCoroutine(_letterbox.Hide());
         CutTo(null);
         UIManager.Instance.OnBossHpBar();
+
         GameManager.Instance.PopState(Constants.EGameState.Cutscene);
+    }
+
+    public void RequestBossIdleStateToMaster()
+    {
+        photonView.RPC(nameof(RequestBossIdleState), RpcTarget.MasterClient);
     }
 
     private IEnumerator CameraShake(float duration, float magnitude)
@@ -280,5 +295,34 @@ public partial class DungeonSystem
         else
             brain.DefaultBlend = new CinemachineBlendDefinition(
                 CinemachineBlendDefinition.Styles.EaseIn, 1f);
+    }
+    
+    private IEnumerator MoveCamera(Transform camT, Vector3 to, float duration)
+    {
+        Vector3 from = camT.position;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.SmoothStep(0f, 1f, t / duration);
+            camT.position = Vector3.Lerp(from, to, k);
+            yield return null;
+        }
+        camT.position = to;
+    }
+    
+    
+    private IEnumerator RotateCamera(Transform camT, Quaternion to, float duration)
+    {
+        Quaternion from = camT.rotation;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.SmoothStep(0f, 1f, t / duration);
+            camT.rotation = Quaternion.Slerp(from, to, k);
+            yield return null;
+        }
+        camT.rotation = to;
     }
 }
