@@ -1424,7 +1424,6 @@ GameObject:
   - component: {fileID: 8709772650974127278}
   - component: {fileID: 4543295856906587018}
   - component: {fileID: 3320936225927333983}
-  - component: {fileID: 3104831817741509129}
   - component: {fileID: 6000534468769843255}
   - component: {fileID: 4406289058964229510}
   - component: {fileID: 6563627838747531739}
@@ -1492,17 +1491,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   patrolWaitTime: 1
   patrolChance: 30
-  patrolDetectionDistance: 10
+  patrolDetectionDistance: 15
   detactionTargetLayerMask:
     serializedVersion: 2
     m_Bits: 256
   chaseWaitTime: 1
-  detectionSightAngle: 30
+  detectionSightAngle: 180
   minimumRunDistance: 2
   attackWaitTime: 0
   enemyStatus:
-    maxHp: 150
-    hp: 150
+    maxHp: 500
+    hp: 500
     damage: 20
     exp: 100
   partyId: 
@@ -1513,19 +1512,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1c8a79fea35d3d4aaf8b85490e7b538, type: 3}
   State: 0
   isDungeon: 0
---- !u!114 &3104831817741509129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6696997337170151127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959e4b506c3449408727ca856a838f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHPBarController
-  hpBarPrefab: {fileID: 4790710304328600567, guid: 6adb7818d3bc2d34ebccb0e48906b8b5, type: 3}
 --- !u!136 &6000534468769843255
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1546,9 +1532,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.85
+  m_Height: 2.3
   m_Direction: 1
-  m_Center: {x: 0, y: 0.85, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!54 &4406289058964229510
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1571,8 +1557,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1590,11 +1576,11 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
-  m_AutoTraverseOffMeshLink: 1
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.45
   m_BaseOffset: 0.15
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

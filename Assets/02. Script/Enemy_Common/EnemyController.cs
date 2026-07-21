@@ -123,47 +123,48 @@ public class EnemyController : MonoBehaviourPun
     public int SetHit(int damage)
     {
         if (State == EEnemyState.Dead) return 0;
-        if (_enemyHpBarController)
+        
+        enemyStatus.hp -= damage;
+        float result = (float)enemyStatus.hp / enemyStatus.maxHp;
+        if (_enemyHpBarController != null)
         {
-            enemyStatus.hp -= damage;
-            float result = (float)enemyStatus.hp / enemyStatus.maxHp;
             _enemyHpBarController.SetHp(result);
-            if (this is BossController)
-                UIManager.Instance.UpdateBossHpBar(result);
+        }
+        if (this is BossController)
+            UIManager.Instance.UpdateBossHpBar(result);
                 
 
-            if (enemyStatus.hp <= 0)
+        if (enemyStatus.hp <= 0)
+        {
+            // 사망 처리
+            SetState(EEnemyState.Dead);
+
+            _rigidbody.isKinematic = false;
+            _rigidbody.useGravity = true;
+
+            var direction = transform.forward;
+            direction.y = 1f;
+            direction = direction.normalized;
+            var force = direction * 3f;
+
+            _rigidbody.AddForce(force, ForceMode.Impulse);
+            _collider.isTrigger = false;
+
+            // 2초 후 비활성화
+            StartCoroutine(DisableAfterDelay(3f));
+
+            return enemyStatus.exp;
+        }
+        else
+        {
+            // 피격 처리
+            SetState(EEnemyState.Hit);
+            if (enemyStatus.maxHp / 3 <= damage)
             {
-                // 사망 처리
-                SetState(EEnemyState.Dead);
-
-                _rigidbody.isKinematic = false;
-                _rigidbody.useGravity = true;
-
-                var direction = transform.forward;
-                direction.y = 1f;
-                direction = direction.normalized;
-                var force = direction * 3f;
-
-                _rigidbody.AddForce(force, ForceMode.Impulse);
-                _collider.isTrigger = false;
-
-                // 2초 후 비활성화
-                StartCoroutine(DisableAfterDelay(3f));
-
-                return enemyStatus.exp;
-            }
-            else
-            {
-                // 피격 처리
-                SetState(EEnemyState.Hit);
-                if (enemyStatus.maxHp / 3 <= damage)
-                {
-                    StartCoroutine(Knockback(transform.forward));
-                }
+                StartCoroutine(Knockback(transform.forward));
             }
         }
-
+        
         return 0;
     }
 
