@@ -1496,7 +1496,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   chaseWaitTime: 1
-  detectionSightAngle: 180
+  detectionSightAngle: 90
   minimumRunDistance: 2
   attackWaitTime: 0
   enemyStatus:

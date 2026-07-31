@@ -306,8 +306,8 @@ public class EnemyController : MonoBehaviourPun
         }
 
         transform.position = endPos;
-        _navMeshAgent.isStopped = false;
         _navMeshAgent.Warp(endPos);
+        _navMeshAgent.isStopped = false;   _navMeshAgent.Warp(endPos);
     }
 
     private void OnAnimatorMove()
