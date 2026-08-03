@@ -10,6 +10,7 @@ public class EnemyStateSkill1: EnemyState, ICharacterState
 public void Enter()
     {
         _enemyController.RpcSetTrigger(EnemyAniParamSkill1);
+;
         if (!Photon.Pun.PhotonNetwork.IsMasterClient) return;
         var target = _enemyController.TargetTransform;
         if (target != null)
@@ -34,6 +35,7 @@ private System.Collections.IEnumerator JumpWithDelay(Vector3 targetPos)
 
         // 착지 → 인디케이터 제거 + 데미지 판정
         _enemyController.HideJumpIndicator();
+;
 
         // halfExtents = BoxCollider 월드 크기(6x6)의 절반, 데미지 = 10
         Vector3 landPos     = _enemyController.transform.position;

@@ -59,6 +59,9 @@ public class EnemyController : MonoBehaviourPun
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        // 평소(생존) 상태엔 Kinematic으로 두어, 루트모션/스크립트 이동과 PhysX 충돌 계산이 서로 충돌하지 않게 함
+        _rigidbody.isKinematic = true;
+        _rigidbody.useGravity = false;
         Audio = GetComponent<AudioSource>();
 
         // NavMeshAgent 설정
@@ -97,6 +100,15 @@ public class EnemyController : MonoBehaviourPun
             AudioPanelView.instance.mySfxAudioSources.Add(Audio);
         else
             AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
+        // Boss 몸통 콜라이더와 모든 플레이어의 CharacterController 간 물리 충돌만 무시 (공격 판정은 별도 무기 트리거/OverlapBox 방식이라 영향 없음)
+        foreach (var player in FindObjectsOfType<PlayerController>())
+        {
+            var cc = player.GetComponent<CharacterController>();
+            if (cc != null)
+            {
+                Physics.IgnoreCollision(_collider, cc, true);
+            }
+        }
     }
 
     private void Update()
@@ -216,6 +228,18 @@ public class EnemyController : MonoBehaviourPun
         photonView.RPC(nameof(RpcHideJumpIndicator), RpcTarget.All);
     }
 
+    // MasterClient가 호출 → 모든 클라이언트의 Collider Trigger 상태 동기화 (점프 공격 중 플레이어와의 물리 충돌/넣백 방지용)
+    public void RpcSetColliderTrigger(bool value)
+    {
+        photonView.RPC(nameof(RPC_SetColliderTrigger), RpcTarget.All, value);
+    }
+
+    [PunRPC]
+    public void RPC_SetColliderTrigger(bool value)
+    {
+        _collider.isTrigger = value;
+    }
+
 // 점프 착지 시 데미지 판정 RPC (MasterClient 호출 → 모든 클라이언트 동시 처리)
     public void RpcJumpLandingDamage(Vector3 landPos, Vector3 halfExtents, int damage)
     {
@@ -306,8 +330,16 @@ public class EnemyController : MonoBehaviourPun
         }
 
         transform.position = endPos;
-        _navMeshAgent.Warp(endPos);
-        _navMeshAgent.isStopped = false;   _navMeshAgent.Warp(endPos);
+        bool warped = _navMeshAgent.Warp(endPos);
+        if (!warped && NavMesh.SamplePosition(endPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
+        {
+            transform.position = navHit.position;
+            warped = _navMeshAgent.Warp(navHit.position);
+        }
+        if (warped && _navMeshAgent.isOnNavMesh)
+        {
+            _navMeshAgent.isStopped = false;
+        }
     }
 
     private void OnAnimatorMove()
