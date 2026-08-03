@@ -32,6 +32,7 @@ public partial class DungeonSystem
     [PunRPC]
     public void UpdatePanelUI(int acceptMember, int totalMember)
     {
+        if (PhotonNetwork.IsMasterClient) return;
         if(!dungeonPanel.activeSelf) dungeonPanel.SetActive(true);
         dungeonPanel.GetComponent<DungeonPanelView>().UpdateUI(acceptMember, totalMember);
     }
@@ -39,6 +40,7 @@ public partial class DungeonSystem
     [PunRPC]
     public void OnMessagePanel(string message)
     {
+        if (PhotonNetwork.IsMasterClient) return;
         var messagePanel = Instantiate(messagePrefab, transform);
         messagePanel.GetComponent<MessageView>().ViewText(message);
     }
@@ -46,6 +48,7 @@ public partial class DungeonSystem
     [PunRPC]
     public void OnCancel(string message)
     {
+        if (PhotonNetwork.IsMasterClient) return;
         dungeonPanel.SetActive(false);
         OnMessagePanel(message);
     }
@@ -139,8 +142,6 @@ public partial class DungeonSystem
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
         if (player != null)
             StartCoroutine(ExitDungeonCoroutine(player));
-        
-        PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
     }
 
     private IEnumerator ExitDungeonCoroutine(PlayerController player)
@@ -152,13 +153,18 @@ public partial class DungeonSystem
         player.transform.position = fieldSpawnPos.position;
         if (cc != null) cc.enabled = true;
         dungeonLight.ExitDungeon();
-        Destroy(CurrentBoss.gameObject);
-        UIManager.Instance.OnBossHpBar();
+        RequestDestroyBoss();
+        UIManager.Instance.OffBossHpBar();
 
         exitDungeonButton.SetActive(false);
-
+        PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(FadeOut(3f));
+    }
+
+    public void RequestDestroyBoss()
+    {
+        pv.RPC(nameof(DestroyBoss), RpcTarget.MasterClient, PhotonNetwork.NickName);
     }
 
 #if UNITY_EDITOR
@@ -194,7 +200,7 @@ public partial class DungeonSystem
 
     private IEnumerator BossClearRoutine()
     {
-        UIManager.Instance.OnBossHpBar();
+        UIManager.Instance.OffBossHpBar();
         float origFixed = Time.fixedDeltaTime;
         Time.timeScale = 0.4f;
         Time.fixedDeltaTime = origFixed * Time.timeScale;
@@ -214,8 +220,6 @@ public partial class DungeonSystem
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
         if (player != null)
             yield return StartCoroutine(ExitDungeonCoroutine(player));
-
-        PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
     }
 
     [PunRPC]

@@ -54,7 +54,7 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
         partyKillCount = new Dictionary<string, int>();
     }
 
-    private void SendRpcToPartyMembers(Party party, string rpcName, params object[] parameters)
+    public void SendRpcToPartyMembers(Party party, string rpcName, params object[] parameters)
     {
         foreach (var player in PhotonNetwork.PlayerList)
         {

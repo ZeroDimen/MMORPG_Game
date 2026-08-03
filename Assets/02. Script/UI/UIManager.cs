@@ -44,8 +44,13 @@ public class UIManager : MonoBehaviour
 
     public void OnBossHpBar()
     {
-        BossHpBar.SetActive(!BossHpBar.activeSelf);
+        BossHpBar.SetActive(true);
         _bossHpBar.SetMaxHp();
+    }
+    
+    public void OffBossHpBar()
+    {
+        BossHpBar.SetActive(false);
     }
     
     public void UpdateBossHpBar(float hp)

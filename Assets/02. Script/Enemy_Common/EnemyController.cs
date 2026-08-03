@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AI;
@@ -118,6 +119,17 @@ public class EnemyController : MonoBehaviourPun
         if (State != EEnemyState.None) _states[State].Exit();
         State = state;
         if (State != EEnemyState.None) _states[State].Enter();
+        
+        photonView.RPC(nameof(RPC_SetState), RpcTarget.Others, (int)state);
+    }
+
+    [PunRPC]
+    public void RPC_SetState(int state)
+    {
+        if (State == (EEnemyState)state) return;
+        if (State == EEnemyState.Dead) return;
+
+        State = (EEnemyState)state;
     }
 
     public int SetHit(int damage)
