@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using Photon.Realtime;
@@ -113,10 +112,8 @@ public partial class DungeonSystem
     public void RequestSpawnBoss(string playerName)
     {
         if (!PhotonNetwork.IsMasterClient) return;
-
         Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
         if (party == null) return;
-
         // HashSet.Add는 이미 있으면 false 반환 → 한 줄로 파티별 중복 차단
         if (!bossSpawnedParties.Add(party._manager)) return;
 
@@ -139,5 +136,32 @@ public partial class DungeonSystem
         if (!PhotonNetwork.IsMasterClient) return;
 
         SendRpcToPartyMembers(party, nameof(PlayTimeline));
+    }
+
+    [PunRPC]
+    public void RequestBossIdleState()
+    {
+        if(CurrentBoss != null)
+            CurrentBoss.SetState(Constants.EEnemyState.Idle);
+    }
+
+    [PunRPC]
+    public void DestroyBoss(string member)
+    {
+        Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(member));
+        string manager = party._manager;
+        
+        if (!string.IsNullOrEmpty(manager))
+        {
+            bossSpawnedParties.Remove(manager);
+            partyKillCount.Remove(manager);
+        }
+
+        dungeonPartyList.Remove(party);
+        if (CurrentBoss != null)
+        {
+            PhotonNetwork.Destroy(CurrentBoss.gameObject);   
+            CurrentBoss = null;                              
+        }
     }
 }

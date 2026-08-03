@@ -1,3 +1,4 @@
+using System;
 using static Constants;
 
 public class BossController : EnemyController
@@ -13,5 +14,17 @@ public class BossController : EnemyController
             _states[EEnemyState.Chase] = bossStateChase;
         }
         _states.Add(EEnemyState.Skill1 , enemyStateSkill1);
+    }
+
+    private void Start()
+    {
+        SetState(EEnemyState.None);
+        DungeonSystem.instance.RegisterBoss(this);
+    }
+
+    private void OnDestroy()
+    {
+        if(DungeonSystem.instance != null)
+            DungeonSystem.instance.UnregisterBoss(this);
     }
 }

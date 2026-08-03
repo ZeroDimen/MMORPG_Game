@@ -35,6 +35,8 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     public CinemachineCamera bossCam3;
 
     [SerializeField] private Letterbox _letterbox;
+    
+    public BossController CurrentBoss { get; private set; }
 
     public Transform cheat;
     private void Awake()
@@ -52,12 +54,22 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
         partyKillCount = new Dictionary<string, int>();
     }
 
-    private void SendRpcToPartyMembers(Party party, string rpcName, params object[] parameters)
+    public void SendRpcToPartyMembers(Party party, string rpcName, params object[] parameters)
     {
         foreach (var player in PhotonNetwork.PlayerList)
         {
             foreach (var member in party._member.Where(member => player.NickName == member))
                 pv.RPC(rpcName, player, parameters);
         }
+    }
+
+    public void RegisterBoss(BossController boss)
+    {
+        CurrentBoss = boss;
+    }
+
+    public void UnregisterBoss(BossController boss)
+    {
+        if (CurrentBoss == boss) CurrentBoss = null;
     }
 }
