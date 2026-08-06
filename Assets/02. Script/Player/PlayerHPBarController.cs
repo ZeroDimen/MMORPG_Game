@@ -20,6 +20,7 @@ public class PlayerHPBarController : MonoBehaviourPun
             _playerController = photonView.GetComponent<PlayerController>();
             // 캔버스 자식 중 가장 아래로 이동
             _hpBar.transform.SetAsFirstSibling();
+            GameEvents.OnPlayerHpChanged += ChangeHp;
 
             StartCoroutine(Init());
         }
@@ -51,5 +52,13 @@ public class PlayerHPBarController : MonoBehaviourPun
         if (_hpBar == null) return;
 
         _hpBar.SetExpText(text);
+    }
+
+    public void ChangeHp(PlayerStatus status)
+    {
+        SetHp($"{status.HP} / {status.MAXHP}");
+        float result = (float)status.HP / status.MAXHP;
+
+        SetHp(result);
     }
 }

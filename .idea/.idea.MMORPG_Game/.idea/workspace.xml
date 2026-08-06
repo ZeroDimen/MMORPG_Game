@@ -7,15 +7,13 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameEvents.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Enemy_Common/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Enemy_Common/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/UI/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/UI/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/ItemDatabase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/ItemDatabase.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerHPBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Quest/Quest 2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,6 +273,7 @@
       <workItem from="1785483549675" duration="3681000" />
       <workItem from="1785495491199" duration="1982000" />
       <workItem from="1785748977507" duration="2161000" />
+      <workItem from="1786001004344" duration="3855000" />
     </task>
     <servers />
   </component>

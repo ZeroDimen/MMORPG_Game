@@ -155,6 +155,7 @@ public partial class DungeonSystem
         dungeonLight.ExitDungeon();
         RequestDestroyBoss();
         UIManager.Instance.OffBossHpBar();
+        AudioManager._instance.BgmPlay("Forest");
 
         exitDungeonButton.SetActive(false);
         PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
