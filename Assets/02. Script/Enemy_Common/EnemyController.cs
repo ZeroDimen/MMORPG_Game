@@ -341,13 +341,13 @@ public class EnemyController : MonoBehaviourPun
             yield return null;
         }
 
-        transform.position = endPos;
-        bool warped = _navMeshAgent.Warp(endPos);
-        if (!warped && NavMesh.SamplePosition(endPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
+        Vector3 finalPos = endPos;
+        if (NavMesh.SamplePosition(endPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
         {
-            transform.position = navHit.position;
-            warped = _navMeshAgent.Warp(navHit.position);
+            finalPos = navHit.position;
         }
+        transform.position = finalPos;
+        bool warped = _navMeshAgent.Warp(finalPos);
         if (warped && _navMeshAgent.isOnNavMesh)
         {
             _navMeshAgent.isStopped = false;

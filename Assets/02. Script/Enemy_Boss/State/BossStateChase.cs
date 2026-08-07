@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 using static Constants;
 
@@ -6,6 +6,7 @@ public class BossStateChase: EnemyState, ICharacterState
 {
     private float _waitTime;
     private int attacknum = 0;
+    private float _lastSkill1Time = -999f; // Skill1(점프공격) 쿸다운 관리용
 
     public BossStateChase(EnemyController enemyController, Animator animator, NavMeshAgent navMeshAgent,
         EnemyStatus enemyStatus)
@@ -16,7 +17,11 @@ public class BossStateChase: EnemyState, ICharacterState
 
     public void Enter()
     {
-        _navMeshAgent.isStopped = false;
+        // NavMesh에 정상 배치된 상태일 때만 Resume(isStopped=false) 호출 - 점프 착지 직후 등 아직 온메쉬에 안정적으로 올라오지 않았을 때 예외 방지
+        if (_navMeshAgent.isOnNavMesh)
+        {
+            _navMeshAgent.isStopped = false;
+        }
         _enemyController.RpcSetBool(EnemyAniParamChase, true); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
 
         _waitTime = 0f;
@@ -53,32 +58,34 @@ public class BossStateChase: EnemyState, ICharacterState
         var detectionTargetTransform = _enemyController.DetectionTargetInCircle();
         if (detectionTargetTransform)
         {
-            // 공격
-            if (!_navMeshAgent.pathPending &&
-                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance * 1.75f &&
+            // remainingDistance/stoppingDistance 대신 실측 거리(직선 거리)로 판정
+            float distanceToTarget = Vector3.Distance(_enemyController.transform.position, detectionTargetTransform.position);
+            bool inSight = DetectionTargetInSight(detectionTargetTransform.position);
+
+            // 공격 (특정거리 = MinimumRunDistance 안)
+            if (distanceToTarget <= _enemyController.MinimumRunDistance &&
                 _waitTime > _enemyController.AttackWaitTime &&
-                DetectionTargetInSight(detectionTargetTransform.position))
-            
+                inSight)
             {
                 _enemyController.SetState(EEnemyState.Attack);
             }
-            // 공격
-            else if (!_navMeshAgent.pathPending &&
-                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance * 20f &&
-                _waitTime > _enemyController.AttackWaitTime &&
-                // DetectionTargetInSight(detectionTargetTransform.position) &&
-                _enemyStatus.hp <= _enemyStatus.maxHp / 2)
+            // 스킬1 (특정거리 밖 + 체력 50% 이하 + 시야각 안 + 쿨타임 5초)
+            else if (distanceToTarget > _enemyController.MinimumRunDistance &&
+                     _waitTime > _enemyController.AttackWaitTime &&
+                     inSight &&
+                     _enemyStatus.hp <= _enemyStatus.maxHp / 2 &&
+                     Time.time - _lastSkill1Time >= 5f)
             {
                 _enemyController.SetState(EEnemyState.Skill1);
+                _lastSkill1Time = Time.time;
             }
             else
             {
                 _waitTime = 0f;
             }
-            
+
             // 달리기 구현
-            if (DetectionTargetInSight(detectionTargetTransform.position)
-                && _navMeshAgent.remainingDistance > _enemyController.MinimumRunDistance)
+            if (inSight && distanceToTarget > _enemyController.MinimumRunDistance)
             {
                 _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 1f);
             }
@@ -86,14 +93,14 @@ public class BossStateChase: EnemyState, ICharacterState
             {
                 _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 0f);
             }
-            
+
             _navMeshAgent.SetDestination(detectionTargetTransform.position);
         }
         else
         {
             _enemyController.SetState(EEnemyState.Idle);
         }
-        
+
         _waitTime += Time.deltaTime;
     }
 }

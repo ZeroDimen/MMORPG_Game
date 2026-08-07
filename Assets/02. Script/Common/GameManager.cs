@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Photon.Pun;
 using Unity.Cinemachine;
 using Unity.Mathematics;
@@ -66,7 +67,6 @@ public class GameManager :  MonoBehaviourPun
             yield break;
         }
         Set_Spawner("Maria");
-        // Set_Spawner("Boss");
     }
 
     public void Set_Spawner(string prefabName)
@@ -181,7 +181,12 @@ public class GameManager :  MonoBehaviourPun
     Vector3 GetRandomPosition(Transform point, float radius)
     {
         Vector2 randomCircle = Random.insideUnitCircle * radius;
-        return point.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+        Vector3 rawPos = point.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+        if (NavMesh.SamplePosition(rawPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
+        {
+            return navHit.position;
+        }
+        return rawPos;
     }
 
     public void PushState(EGameState state)

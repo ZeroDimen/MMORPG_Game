@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 using static Constants;
 
@@ -11,7 +11,11 @@ public class EnemyStateChase: EnemyState, ICharacterState
 
     public void Enter()
     {
-        _navMeshAgent.isStopped = false;
+        // NavMesh에 정상 배치된 상태일 때만 Resume(isStopped=false) 호출 - 예외 방지
+        if (_navMeshAgent.isOnNavMesh)
+        {
+            _navMeshAgent.isStopped = false;
+        }
         _enemyController.RpcSetBool(EnemyAniParamChase, true); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
 
         _waitTime = 0f;
