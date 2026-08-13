@@ -35,6 +35,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         nextButton.interactable = false;
         serverButton.interactable = false;
         serverImage.color = Color.red;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void ConnectRoom() 

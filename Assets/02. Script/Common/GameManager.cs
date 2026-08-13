@@ -16,6 +16,7 @@ public class GameManager :  MonoBehaviourPun
     private static GameManager instance;
     private bool _isCursorLock;
     [SerializeField] private SpawnZone[] spawnPoints;
+    public IReadOnlyList<SpawnZone> SpawnPoints => spawnPoints;
     [SerializeField] private GameObject chattingInputField;
     [SerializeField] private GameObject playerCam;
 
@@ -178,7 +179,7 @@ public class GameManager :  MonoBehaviourPun
         photonView.RPC(nameof(RPC_Spawner), RpcTarget.MasterClient,"Boss" ,Name, actorNumber);
     }
 
-    Vector3 GetRandomPosition(Transform point, float radius)
+    public Vector3 GetRandomPosition(Transform point, float radius)
     {
         Vector2 randomCircle = Random.insideUnitCircle * radius;
         return point.position + new Vector3(randomCircle.x, 0, randomCircle.y);

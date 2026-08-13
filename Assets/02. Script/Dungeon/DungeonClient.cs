@@ -90,7 +90,7 @@ public partial class DungeonSystem
         player.transform.position = new Vector3(-500, 5, 0);
         if (cc != null) cc.enabled = true;
         dungeonLight.EnterDungeon();
-        
+        player.SetLocationState(Constants.ELocationState.DungeonPreBoss);
         exitDungeonButton.SetActive(true);
 
         yield return new WaitForSeconds(2f);
@@ -153,6 +153,7 @@ public partial class DungeonSystem
         player.transform.position = fieldSpawnPos.position;
         if (cc != null) cc.enabled = true;
         dungeonLight.ExitDungeon();
+        player.SetLocationState(Constants.ELocationState.Field);
         RequestDestroyBoss();
         UIManager.Instance.OffBossHpBar();
         AudioManager._instance.BgmPlay("Forest");
@@ -234,7 +235,10 @@ public partial class DungeonSystem
     private IEnumerator BossSpawnEffectRoutine()
     {
         GameManager.Instance.PushState(Constants.EGameState.Cutscene);
-        
+
+        var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
+        if(player != null)
+            player.SetLocationState(Constants.ELocationState.DungeonBoss);
         fadePanel.color = new Color(0, 0, 0, 1);
         yield return new WaitForSeconds(1f);
         

@@ -24,14 +24,14 @@ public class FadeManager : MonoBehaviour
     }
     
 
-    public IEnumerator Fade(float targetAlpha)
+    public IEnumerator Fade(float targetAlpha, float duration = 1f)
     {
         float startAlpha = fadePanel.alpha;
         float time = 0f;
 
-        while (time < fadeDuration)
+        while (time < duration)
         {
-            fadePanel.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration);
+            fadePanel.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / duration);
             time += Time.deltaTime;
             yield return null;
         }

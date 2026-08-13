@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviourPun
 
     // 캐릭터 이동 정보
     private float _velocityY;
-    
+
+
+    public ELocationState LocationState { get; private set; } = ELocationState.Field;
     private bool _cursorHeld = false;
 
     private void Awake()
@@ -130,6 +132,11 @@ public class PlayerController : MonoBehaviourPun
         if (State != EPlayerState.None && photonView.IsMine)
         {
             _states[State].Update();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SetHit(150);
         }
     }
 
@@ -228,8 +235,6 @@ public class PlayerController : MonoBehaviourPun
             GameEvents.OnPlayerLevelUpEvent?.Invoke();
             SetExp(0);
         }
-
-
     }
 
     // 점프
@@ -241,7 +246,7 @@ public class PlayerController : MonoBehaviourPun
 
     private void OnAnimatorMove()
     {
-        if (State == EPlayerState.None) return;
+        if (State == EPlayerState.None || !_characterController.enabled) return;
 
         Vector3 movePosition;
         if (_characterController.isGrounded)
@@ -261,6 +266,58 @@ public class PlayerController : MonoBehaviourPun
         _characterController.Move(movePosition);
     }
 
+    public void OnDeathAnimationEnd()
+    {
+        if (!photonView.IsMine) return;
+        UIManager.Instance.OnGameOverPanel(OnRespawn);
+    }
+
+    private void OnRespawn()
+    {
+        StartCoroutine(RespawnRoutine());
+    }
+
+    IEnumerator RespawnRoutine()
+    {
+        Vector3 pos = Vector3.zero;
+        switch (LocationState)
+        {
+            case ELocationState.Field :
+                pos = GameManager.Instance.GetRandomPosition(GameManager.Instance.SpawnPoints[0].point,
+                    GameManager.Instance.SpawnPoints[0].radius);
+                break;
+            case ELocationState.DungeonPreBoss :
+                pos = GameManager.Instance.GetRandomPosition(GameManager.Instance.SpawnPoints[4].point,
+                    GameManager.Instance.SpawnPoints[4].radius);
+                break;
+            case ELocationState.DungeonBoss :
+                pos = GameManager.Instance.GetRandomPosition(GameManager.Instance.SpawnPoints[5].point,
+                    GameManager.Instance.SpawnPoints[5].radius);
+                break;
+        }
+        
+        yield return StartCoroutine(FadeManager.Instance.Fade(1f));
+        
+        _characterController.enabled = false;
+        transform.position = pos;
+        
+        Status.SetStatus("HP", Status.MAXHP);
+        _playerHpBarController.SetHp($"{Status.MAXHP} / {Status.MAXHP}");
+        _playerHpBarController.SetHp(Status.MAXHP);
+        yield return new WaitForSeconds(1.5f);
+        
+        SetState(EPlayerState.Spawn);
+        yield return new WaitForSeconds(1.5f);
+        yield return StartCoroutine(FadeManager.Instance.Fade(0f));
+        _characterController.enabled = true;
+    }
+
+    public void SetLocationState(ELocationState state)
+    {
+        if (!photonView.IsMine) return;
+        LocationState = state;
+    }
+    
     [PunRPC]
     public void GiveSfxPlay(string clipName, bool islong = false)
     {
