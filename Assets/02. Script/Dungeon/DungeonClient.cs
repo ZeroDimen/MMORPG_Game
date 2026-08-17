@@ -83,7 +83,8 @@ public partial class DungeonSystem
 
     private IEnumerator Teleport(PlayerController player)
     {
-        yield return StartCoroutine(FadeIn(3f));
+        yield return StartCoroutine(FadeManager.Instance.Fade(1f, 3f));
+
         
         CharacterController cc = player.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
@@ -95,39 +96,9 @@ public partial class DungeonSystem
 
         yield return new WaitForSeconds(2f);
         AudioManager._instance.BgmPlay("Dungeon");
-        yield return StartCoroutine(FadeOut(3f));
+        yield return StartCoroutine(FadeManager.Instance.Fade(0f, 3f));
+
     }
-    
-    // 페이드 아웃 (밝아짐)
-    public IEnumerator FadeOut(float duration)
-    {
-        float elapsed = 0f;
-        fadePanel.color = new Color(0, 0, 0, 1); // 검정
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
-            fadePanel.color = new Color(0, 0, 0, alpha);
-            yield return null;
-        }
-    }
-
-    // 페이드 인 (어두워짐)
-    public IEnumerator FadeIn(float duration)
-    {
-        float elapsed = 0f;
-        fadePanel.color = new Color(0, 0, 0, 0); // 투명
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(0f, 1f, elapsed / duration);
-            fadePanel.color = new Color(0, 0, 0, alpha);
-            yield return null;
-        }
-    }
-
     [PunRPC]
     public void PlayTimeline()
     {
@@ -146,7 +117,8 @@ public partial class DungeonSystem
 
     private IEnumerator ExitDungeonCoroutine(PlayerController player)
     {
-        yield return StartCoroutine(FadeIn(3f));
+        yield return StartCoroutine(FadeManager.Instance.Fade(1f, 3f));
+
 
         CharacterController cc = player.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
@@ -161,7 +133,8 @@ public partial class DungeonSystem
         exitDungeonButton.SetActive(false);
         PartySystem.instance.RequestSecede(PhotonNetwork.NickName);
         yield return new WaitForSeconds(2f);
-        yield return StartCoroutine(FadeOut(3f));
+        yield return StartCoroutine(FadeManager.Instance.Fade(0f, 3f));
+
     }
 
     public void RequestDestroyBoss()
