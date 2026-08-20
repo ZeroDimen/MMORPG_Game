@@ -451,7 +451,7 @@ Transform:
   m_GameObject: {fileID: 2908329152724868232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.08, y: 0.09, z: -2.11}
+  m_LocalPosition: {x: 4.08, y: 0, z: -2.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -507,7 +507,7 @@ MonoBehaviour:
     maxHp: 100
     hp: 100
     damage: 15
-    exp: 20
+    exp: 12
   partyId: 
   _audioClips:
   - {fileID: 8300000, guid: bdc79805d2416614fb1bdf2fa8908c9a, type: 3}
@@ -572,7 +572,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &3192849785324130212
 Rigidbody:
   m_ObjectHideFlags: 0
