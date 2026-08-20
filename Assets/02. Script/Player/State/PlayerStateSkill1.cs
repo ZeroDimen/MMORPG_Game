@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using static Constants;
 
@@ -13,7 +13,7 @@ public class PlayerStateSkill1: PlayerState, ICharacterState
 
     public void Enter()
     {
-        if (!_skillManager.GetSkillUse(0))
+        if (!_skillManager.IsSkillUnlocked(0) || !_skillManager.GetSkillUse(0))
         {
             Debug.Log("스킬 1을 사용할 수 없습니다.");
             _playerController.SetState(EPlayerState.Idle);

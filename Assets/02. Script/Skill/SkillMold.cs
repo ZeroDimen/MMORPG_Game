@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Image = UnityEngine.UI.Image;
 
-public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public GameObject skillInfoObj;
     
@@ -18,6 +18,16 @@ public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     
     public Image skillIcon;
     public Image skillIconCooltime;
+
+    public Image skillNewBadge;   // 우상단 해금/강화 배지 (Exclamation_Gray)
+    [HideInInspector] public int skillIndex;
+    private SkillManager _skillManager;
+
+    public void Init(SkillManager manager, int index)
+    {
+        _skillManager = manager;
+        skillIndex = index;
+    }
 
     private Vector3 skillInfoPos;
 
@@ -46,5 +56,10 @@ public class SkillMold : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         skillInfoObj.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        _skillManager.TrySpendSkillPoint(skillIndex);
     }
 }

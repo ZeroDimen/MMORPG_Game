@@ -225,6 +225,7 @@ public class PlayerController : MonoBehaviourPun
         {
             Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);
             Status.SetStatus("LV", Status.LV + 1);
+            Status.SetStatus("SkillPoint", Status.SkillPoint + 1);;
             GameEvents.OnPlayerLevelUpEvent?.Invoke();
             SetExp(0);
         }

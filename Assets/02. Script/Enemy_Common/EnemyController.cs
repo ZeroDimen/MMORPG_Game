@@ -165,8 +165,9 @@ public class EnemyController : MonoBehaviourPun
 
             _rigidbody.isKinematic = false;
             _rigidbody.useGravity = true;
-
-            var direction = transform.forward;
+            
+            var direction = -transform.forward;
+            
             direction.y = 1f;
             direction = direction.normalized;
             var force = direction * 3f;
@@ -185,7 +186,7 @@ public class EnemyController : MonoBehaviourPun
             SetState(EEnemyState.Hit);
             if (enemyStatus.maxHp / 3 <= damage)
             {
-                StartCoroutine(Knockback(transform.forward));
+                StartCoroutine(Knockback(-transform.forward));
             }
         }
         
@@ -202,7 +203,7 @@ public class EnemyController : MonoBehaviourPun
     private IEnumerator Knockback(Vector3 direction)
     {
         Vector3 knockbackDirection = direction;
-        float knockbackDistance = 1f;
+        float knockbackDistance = 0.5f;
         float knockbackDuration = 0.2f;
         float elapsed = 0f;
 
@@ -341,13 +342,13 @@ public class EnemyController : MonoBehaviourPun
             yield return null;
         }
 
-        transform.position = endPos;
-        bool warped = _navMeshAgent.Warp(endPos);
-        if (!warped && NavMesh.SamplePosition(endPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
+        Vector3 finalPos = endPos;
+        if (NavMesh.SamplePosition(endPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
         {
-            transform.position = navHit.position;
-            warped = _navMeshAgent.Warp(navHit.position);
+            finalPos = navHit.position;
         }
+        transform.position = finalPos;
+        bool warped = _navMeshAgent.Warp(finalPos);
         if (warped && _navMeshAgent.isOnNavMesh)
         {
             _navMeshAgent.isStopped = false;
