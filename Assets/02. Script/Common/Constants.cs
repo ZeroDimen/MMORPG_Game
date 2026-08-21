@@ -36,6 +36,13 @@ public class Constants
         Skill1,
         Skill2,
     }
+
+    public enum ELocationState
+    {
+        Field,
+        DungeonPreBoss,
+        DungeonBoss
+    }
     
     // Player 애니메이터 파라미터
     public static readonly int PlayerAniParamIdle = Animator.StringToHash("idle");

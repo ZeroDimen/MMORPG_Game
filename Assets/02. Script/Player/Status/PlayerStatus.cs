@@ -85,6 +85,8 @@ public class PlayerStatus
             {
                 case StatType.HP :
                     HP += status.value;
+                    MAXHP += status.value;
+                    GameEvents.OnPlayerHpChanged?.Invoke(this);
                     break;
                 case StatType.ATK :
                     ATK += status.value;
@@ -108,6 +110,8 @@ public class PlayerStatus
             {
                 case StatType.HP :
                     HP -= status.value;
+                    MAXHP -= status.value;
+                    GameEvents.OnPlayerHpChanged?.Invoke(this);
                     break;
                 case StatType.ATK :
                     ATK -= status.value;

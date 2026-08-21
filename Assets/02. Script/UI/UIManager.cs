@@ -1,4 +1,7 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,9 +13,11 @@ public class UIManager : MonoBehaviour
     public GameObject PartySearchPanel;
     public GameObject MenuPanel;
     public GameObject BossHpBar;
+    public GameObject GameOverPanel;
 
     [SerializeField]
     public BossHpBar _bossHpBar;
+    [SerializeField] private Button _respawnButton;
 
     void Awake()
     {
@@ -56,5 +61,15 @@ public class UIManager : MonoBehaviour
     public void UpdateBossHpBar(float hp)
     {
         _bossHpBar.SetHp(hp);
+    }
+
+    public void OnGameOverPanel(Action action)
+    {
+        GameOverPanel.SetActive(true);
+        _respawnButton.onClick.AddListener(() =>
+        {
+            GameOverPanel.SetActive(false);
+            action?.Invoke();
+        });
     }
 }
