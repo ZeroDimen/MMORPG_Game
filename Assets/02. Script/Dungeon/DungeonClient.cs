@@ -88,7 +88,7 @@ public partial class DungeonSystem
         
         CharacterController cc = player.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
-        player.transform.position = new Vector3(-500, 5, 0);
+        player.transform.position = GameManager.Instance.SpawnPoints[4].point.position;
         if (cc != null) cc.enabled = true;
         dungeonLight.EnterDungeon();
         player.SetLocationState(Constants.ELocationState.DungeonPreBoss);
