@@ -7,9 +7,14 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03. Prefabs/Party/Meber Info [Empty].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonServer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Maria.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Maria.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Mutant.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,28 +81,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Map",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dungeon&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\00052\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\00052\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Build_Test\MMORPG Game_2026-01-02.exe" />
@@ -279,6 +284,9 @@
       <workItem from="1786944939598" duration="2548000" />
       <workItem from="1786965805641" duration="1619000" />
       <workItem from="1787213211021" duration="3935000" />
+      <workItem from="1787305567633" duration="1549000" />
+      <workItem from="1787716255587" duration="4202000" />
+      <workItem from="1787736072040" duration="2674000" />
     </task>
     <servers />
   </component>

@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviourPun
 
     public ELocationState LocationState { get; private set; } = ELocationState.Field;
     private bool _cursorHeld = false;
+    
+    [SerializeField] private float interactDistance = 2.5f;
 
     private void Awake()
     {
@@ -137,6 +139,11 @@ public class PlayerController : MonoBehaviourPun
         if (Input.GetKeyDown(KeyCode.F1))
         {
             SetHit(150);
+        }
+        
+        if (photonView.IsMine && Input.GetKeyDown(KeyCode.E))
+        {
+            TryInteract();
         }
     }
 
@@ -407,6 +414,21 @@ public class PlayerController : MonoBehaviourPun
 
         GameManager.Instance.PopState(EGameState.Interaction);
         _cursorHeld = false;
+    }
+    
+    private void TryInteract()
+    {
+        // 플레이어 주변 짧은 범위에서 문 찾기
+        Collider[] hits = Physics.OverlapSphere(transform.position, interactDistance);
+        foreach (var hit in hits)
+        {
+            var door = hit.GetComponent<InteractableDoor>();
+            if (door != null)
+            {
+                door.Interact();
+                break; // 하나만 상호작용
+            }
+        }
     }
     
     private void OnDestroy()

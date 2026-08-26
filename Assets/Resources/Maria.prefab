@@ -782,6 +782,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d7d27e5e95230ee44b17d0ed8458cf1c, type: 3}
   - {fileID: 8300000, guid: 8563350b79f8b3c4aa751ac9baee3bf0, type: 3}
   State: 0
+  interactDistance: 2.5
   playerName: {fileID: 2997760728349481453}
   Maria_Head: {fileID: 640950517893958634}
 --- !u!114 &2583507576718065381

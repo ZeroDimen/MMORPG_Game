@@ -164,4 +164,41 @@ public partial class DungeonSystem
             CurrentBoss = null;                              
         }
     }
+    
+    [PunRPC]
+    public void RequestAmbush(string playerName, PhotonMessageInfo info)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        Debug.Log(3);
+
+        Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
+        if (party == null) return;
+
+        // 중복 방지 (한 파티가 한 번만) — bossSpawnedParties처럼 HashSet 재사용해도 됨
+        if (!ambushedParties.Add(party._manager)) return;
+
+        // 4개의 작은 방에서 몬스터 스폰 후, 가운데 방을 목적지로 지정
+        foreach (var room in ambushRooms)
+        {
+            for (int i = 0; i < room.monsterCount; i++)
+            {
+                Vector3 pos = GameManager.Instance.GetRandomPosition(room.spawnPoint, room.spawnRadius);
+                GameObject monster = PhotonNetwork.Instantiate("Mutant", pos, Quaternion.identity);
+
+                var ec = monster.GetComponent<EnemyController>();
+                if (ec != null)
+                {
+                    ec.partyId = party._manager; // 기존 스폰과 동일하게 파티 소속 지정
+                    
+                    // NavMesh 목적지를 가운데 방으로 → 몬스터가 걸어 들어옴
+                    // var agent = monster.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                    // if (agent != null && agent.isOnNavMesh)
+                    //     agent.SetDestination(ambushCenterPoint.position);
+                }
+            }
+        }
+
+        // 파티 전원에게 문 열림 + 연출 broadcast
+        SendRpcToPartyMembers(party, nameof(PlayerAmbushEffect));
+    }
 }
