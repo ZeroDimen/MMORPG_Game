@@ -69,11 +69,6 @@ public partial class DungeonSystem
     [PunRPC]
     public void TeleportPlayer()
     {
-        // var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
-        // if(player != null)
-        //     player.transform.position = new Vector3(-500, 5, 0);
-        // dungeonLight.EnterDungeon();
-
         if (PhotonNetwork.IsMasterClient) return;
         
         var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
@@ -140,6 +135,33 @@ public partial class DungeonSystem
     public void RequestDestroyBoss()
     {
         pv.RPC(nameof(DestroyBoss), RpcTarget.MasterClient, PhotonNetwork.NickName);
+    }
+
+    public void OnAmbush(string playerName)
+    {
+        pv.RPC(nameof(RequestAmbush), RpcTarget.MasterClient, playerName);
+    }
+
+    [PunRPC]
+    public void PlayerAmbushEffect()
+    {
+        StartCoroutine(AmbushEffectRoutine());
+    }
+
+    private IEnumerator AmbushEffectRoutine()
+    {
+        GameManager.Instance.PushState(Constants.EGameState.Cutscene);
+
+        foreach (var door in ambushDoors)
+        {
+            if (door != null) door.SetTrigger("Open");
+            yield return new WaitForSeconds(ambushDoorDelay);
+        }
+
+        // 몬스터가 걸어 들어오는 시간
+        yield return new WaitForSeconds(ambushChargeTime);
+
+        GameManager.Instance.PopState(Constants.EGameState.Cutscene);
     }
 
 #if UNITY_EDITOR

@@ -15,6 +15,7 @@ public class DungeonPortal : MonoBehaviour
     private void PortalInteraction()
     {
         DungeonSystem.instance.OnDungeonPanel();
+        isPlayerNearby = false;
     }
 
     private void OnTriggerEnter(Collider other)

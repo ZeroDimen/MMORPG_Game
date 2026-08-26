@@ -36,6 +36,23 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
 
     [SerializeField] private Letterbox _letterbox;
     
+    [Header("매복 컷씬")]
+    [SerializeField] private Animator[] ambushDoors;      // 문 4개 (회전 애니메이션)
+    [SerializeField] private Transform ambushCenterPoint; // 가운데 방 목적지
+    [SerializeField] private float ambushDoorDelay = 0.3f;  // 문 순차 열림 간격
+    [SerializeField] private float ambushChargeTime = 2.5f; // 몬스터 입장 대기시간
+    [SerializeField] private AmbushRoom[] ambushRooms;    // 작은 방 4개 정보
+
+    private HashSet<string> ambushedParties = new HashSet<string>();
+
+    [System.Serializable]
+    public class AmbushRoom
+    {
+        public Transform spawnPoint;   // 이 방 몬스터 스폰 위치
+        public float spawnRadius = 1f; // 스폰 반경
+        public int monsterCount = 2;   // 이 방에서 나올 몬스터 수
+    }
+    
     public BossController CurrentBoss { get; private set; }
 
     public Transform cheat;
