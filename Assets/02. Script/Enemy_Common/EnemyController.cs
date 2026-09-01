@@ -135,6 +135,12 @@ public class EnemyController : MonoBehaviourPun
         photonView.RPC(nameof(RPC_SetState), RpcTarget.Others, (int)state);
     }
 
+    public void SetAngleAndDistance(float angle, float distance)
+    {
+        detectionSightAngle = angle;
+        patrolDetectionDistance = distance;
+    }
+
     [PunRPC]
     public void RPC_SetState(int state)
     {

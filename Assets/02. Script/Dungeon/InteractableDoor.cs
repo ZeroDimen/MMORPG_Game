@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InteractableDoor : MonoBehaviour
 {
+    public bool enable = true;
     [SerializeField] private float openAngle = 90f;
     [SerializeField] private float rotateSpeed = 3f;
 
@@ -23,6 +24,7 @@ public class InteractableDoor : MonoBehaviour
     // 플레이어(로컬)가 E를 눌렀을 때 호출 → 마스터에게 요청만 보냄
     public void Interact()
     {
+        if (enable == false) return;
         pv.RPC(nameof(RPC_RequestToggle), RpcTarget.MasterClient);
     }
 

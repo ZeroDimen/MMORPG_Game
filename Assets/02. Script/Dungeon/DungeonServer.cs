@@ -169,7 +169,6 @@ public partial class DungeonSystem
     public void RequestAmbush(string playerName, PhotonMessageInfo info)
     {
         if (!PhotonNetwork.IsMasterClient) return;
-        Debug.Log(3);
 
         Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(playerName));
         if (party == null) return;
@@ -189,11 +188,7 @@ public partial class DungeonSystem
                 if (ec != null)
                 {
                     ec.partyId = party._manager; // 기존 스폰과 동일하게 파티 소속 지정
-                    
-                    // NavMesh 목적지를 가운데 방으로 → 몬스터가 걸어 들어옴
-                    // var agent = monster.GetComponent<UnityEngine.AI.NavMeshAgent>();
-                    // if (agent != null && agent.isOnNavMesh)
-                    //     agent.SetDestination(ambushCenterPoint.position);
+                    ec.SetAngleAndDistance(180, 30);
                 }
             }
         }
