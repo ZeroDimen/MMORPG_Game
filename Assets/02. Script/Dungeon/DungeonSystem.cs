@@ -44,7 +44,11 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     [SerializeField] private AmbushRoom[] ambushRooms;    // 작은 방 4개 정보
 
     private HashSet<string> ambushedParties = new HashSet<string>();
+    private Dictionary<string, int> ambushKillCount = new Dictionary<string, int>();
+    private const int AmbushMonsterNum = 4;
 
+    public InteractableDoor bossDoor;
+    
     [System.Serializable]
     public class AmbushRoom
     {

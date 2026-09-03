@@ -116,6 +116,8 @@ public class GameManager :  MonoBehaviourPun
             {
                 if (enemyController is BossController)
                     DungeonSystem.instance.OnBossDefeated(enemyController.partyId); // 보스 전용: 던전 클리어
+                else if (enemyController.isAmbushMonster)
+                    DungeonSystem.instance.KillAmbushMonster(enemyController.partyId);
                 else
                     DungeonSystem.instance.KillMonster(enemyController.partyId);     // 일반 몹: 엘리베이터 카운트
             }

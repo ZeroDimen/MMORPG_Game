@@ -220,6 +220,12 @@ public partial class DungeonSystem
     }
 
     [PunRPC]
+    public void OnBossDoorOpen()
+    {
+        bossDoor.enable = true;
+    }
+
+    [PunRPC]
     public void OnBossSpawnEffect()
     {
         if (PhotonNetwork.IsMasterClient) return; 

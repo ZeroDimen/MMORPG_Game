@@ -188,6 +188,7 @@ public partial class DungeonSystem
                 if (ec != null)
                 {
                     ec.partyId = party._manager; // 기존 스폰과 동일하게 파티 소속 지정
+                    ec.isAmbushMonster = true;
                     ec.SetAngleAndDistance(180, 30);
                 }
             }
@@ -195,5 +196,19 @@ public partial class DungeonSystem
 
         // 파티 전원에게 문 열림 + 연출 broadcast
         SendRpcToPartyMembers(party, nameof(PlayerAmbushEffect));
+    }
+    
+    public void KillAmbushMonster(string partyId)
+    {
+        if (!ambushKillCount.ContainsKey(partyId))
+            ambushKillCount[partyId] = 0;
+
+        ambushKillCount[partyId]++;
+
+        if (ambushKillCount[partyId] >= AmbushMonsterNum)
+        {
+            Party party = PartySystem.instance.partyList.Find(i => i.IsMyParty(partyId));
+            SendRpcToPartyMembers(party, nameof(OnBossDoorOpen)); // 보스 문 열기
+        }
     }
 }
