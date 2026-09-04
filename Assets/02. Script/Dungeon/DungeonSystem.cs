@@ -47,6 +47,7 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     private Dictionary<string, int> ambushKillCount = new Dictionary<string, int>();
     private const int AmbushMonsterNum = 4;
 
+    public InteractableDoor bossFrontDoor;
     public InteractableDoor bossDoor;
     
     [System.Serializable]

@@ -1511,7 +1511,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c6dd6833f202eb489b1f9fa86ceddc2, type: 3}
   - {fileID: 8300000, guid: d1c8a79fea35d3d4aaf8b85490e7b538, type: 3}
   State: 0
-  isDungeon: 0
+  isAmbushMonster: 0
 --- !u!136 &6000534468769843255
 CapsuleCollider:
   m_ObjectHideFlags: 0
