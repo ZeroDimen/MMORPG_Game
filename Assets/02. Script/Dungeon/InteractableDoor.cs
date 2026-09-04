@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class InteractableDoor : MonoBehaviour
+public class InteractableDoor : MonoBehaviourPun
 {
     public enum DoorMode
     {
@@ -17,6 +17,8 @@ public class InteractableDoor : MonoBehaviour
     [SerializeField] private float rotateSpeed = 3f;
     [SerializeField] private float closeY = 0f;
     [SerializeField] private float openY = 3.5f;
+    public AudioSource Audio { get; private set; }
+    [SerializeField] private AudioClip[] _audioClips;
     
     private bool _isOpen = false;   // 실제 상태 — 마스터가 소유
     private Quaternion _closedRot;
@@ -27,6 +29,7 @@ public class InteractableDoor : MonoBehaviour
     private void Start()
     {
         pv = GetComponent<PhotonView>();
+        Audio = GetComponent<AudioSource>();
         _closedRot = transform.localRotation;
         _openRot = _closedRot * Quaternion.Euler(0f, openAngle, 0f);
     }
@@ -63,8 +66,47 @@ public class InteractableDoor : MonoBehaviour
         }
         
     }
+    [PunRPC]
+    public void GiveSfxPlay(string clipName, bool islong = false)
+    {
+        SfxPlay(clipName, islong);
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(ReceiveSfxPlay), RpcTarget.Others, clipName, id, islong);
+    }
+
+    [PunRPC]
+    public void ReceiveSfxPlay(string clipName, int viewId, bool islong)
+    {
+        if (photonView.ViewID == viewId)
+            SfxPlay(clipName, islong);
+    }
+    public void SfxPlay(string clipName, bool islong) // 효과음을 출력하는 함수
+    {
+        foreach (var clip in _audioClips)
+        {
+            if (clip.name == clipName)
+            {
+                if (!islong)
+                {
+                    Audio.PlayOneShot(clip);
+                    return;
+                }
+                else
+                {
+                    Audio.clip = clip;
+                    Audio.Play();
+                    return;
+                }
+            }
+        }
+        Debug.Log($"{clipName} not found");
+    }
     private IEnumerator RotateDoor(Quaternion target)
     {
+        if (_isOpen)
+        {
+            GiveSfxPlay("Sliding Door Open");
+        }
         while (Quaternion.Angle(transform.localRotation, target) > 0.5f)
         {
             transform.localRotation = Quaternion.Slerp(
@@ -72,10 +114,22 @@ public class InteractableDoor : MonoBehaviour
             yield return null;
         }
         transform.localRotation = target;
+        if (!_isOpen)
+        {
+            GiveSfxPlay("Sliding Door Close");
+        }
     }
     
     private IEnumerator OverheadDoor(float targetY)
     {
+        if (_isOpen)
+        {
+            GiveSfxPlay("Overhead Door Open");
+        }
+        else
+        {
+            GiveSfxPlay("Overhead Door Close");
+        }
         Vector3 target = new Vector3(
             transform.localPosition.x,
             targetY,

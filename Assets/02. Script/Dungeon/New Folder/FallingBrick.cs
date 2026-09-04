@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
+using Photon.Pun;
 using UnityEngine;
 
-public class FallingBrick : MonoBehaviour
+public class FallingBrick : MonoBehaviourPun
 {
     [Header("위치 설정")]
     public float waitHeight = 8f;
@@ -24,9 +25,13 @@ public class FallingBrick : MonoBehaviour
     private Vector3 groundPos;
     private Coroutine loopCoroutine;
     private bool isRunning = false;
+    
+    public AudioSource Audio { get; private set; }
+    [SerializeField] private AudioClip[] _audioClips;
 
     void Start()
     {
+        Audio = GetComponent<AudioSource>();
         startPos = transform.position;
         groundPos = new Vector3(
             startPos.x,
@@ -99,6 +104,7 @@ public class FallingBrick : MonoBehaviour
     // ─────────────────────────────────────────
     IEnumerator MoveTo(Vector3 target, float speed)
     {
+        GiveSfxPlay("Spike Trap");
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(
@@ -143,5 +149,40 @@ public class FallingBrick : MonoBehaviour
         Vector3 bottom = transform.position + Vector3.down * (waitHeight - groundOffset);
         Gizmos.DrawLine(transform.position, bottom);
         Gizmos.DrawWireCube(bottom, transform.localScale);
+    }
+    [PunRPC]
+    public void GiveSfxPlay(string clipName, bool islong = false)
+    {
+        SfxPlay(clipName, islong);
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(ReceiveSfxPlay), RpcTarget.Others, clipName, id, islong);
+    }
+
+    [PunRPC]
+    public void ReceiveSfxPlay(string clipName, int viewId, bool islong)
+    {
+        if (photonView.ViewID == viewId)
+            SfxPlay(clipName, islong);
+    }
+    public void SfxPlay(string clipName, bool islong) // 효과음을 출력하는 함수
+    {
+        foreach (var clip in _audioClips)
+        {
+            if (clip.name == clipName)
+            {
+                if (!islong)
+                {
+                    Audio.PlayOneShot(clip);
+                    return;
+                }
+                else
+                {
+                    Audio.clip = clip;
+                    Audio.Play();
+                    return;
+                }
+            }
+        }
+        Debug.Log($"{clipName} not found");
     }
 }
