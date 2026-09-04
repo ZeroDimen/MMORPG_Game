@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviourPun
     private Collider _collider;
 
     // 스폰 위치
-    public bool isDungeon = false;
+    public bool isAmbushMonster = false;
 
     protected virtual void Awake()
     {

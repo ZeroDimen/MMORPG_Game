@@ -174,7 +174,7 @@ public partial class DungeonSystem
         }
         if (Input.GetKeyDown(KeyCode.F8))
         {
-            DungeonCutsceneController.instance.OnFogFadeOut();
+            // DungeonCutsceneController.instance.OnFogFadeOut();
             var player = PhotonNetwork.LocalPlayer.TagObject as PlayerController;
             if (player != null)
             {
@@ -220,6 +220,12 @@ public partial class DungeonSystem
     }
 
     [PunRPC]
+    public void OnBossDoorOpen()
+    {
+        bossFrontDoor.enable = true;
+    }
+
+    [PunRPC]
     public void OnBossSpawnEffect()
     {
         if (PhotonNetwork.IsMasterClient) return; 
@@ -259,6 +265,7 @@ public partial class DungeonSystem
         
         yield return StartCoroutine(_letterbox.Hide());
         CutTo(null);
+        bossDoor.Interact();
         UIManager.Instance.OnBossHpBar();
 
         GameManager.Instance.PopState(Constants.EGameState.Cutscene);
