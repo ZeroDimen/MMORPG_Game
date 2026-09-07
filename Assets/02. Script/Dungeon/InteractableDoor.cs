@@ -10,11 +10,11 @@ public class InteractableDoor : MonoBehaviourPun
         SlidingDoor,
         OverheadDoor
     }
-
+    
     [SerializeField] private DoorMode doorMode;
     public bool enable = true;
     [SerializeField] private float openAngle = 90f;
-    [SerializeField] private float rotateSpeed = 3f;
+    [SerializeField] private float openTime = 1.5f; // 문이 열리고 닫히는 데 걸리는 시간(초)
     [SerializeField] private float closeY = 0f;
     [SerializeField] private float openY = 3.5f;
     public AudioSource Audio { get; private set; }
@@ -56,6 +56,7 @@ public class InteractableDoor : MonoBehaviourPun
     private void RPC_SetDoor(bool open)
     {
         StopAllCoroutines();
+        _isOpen = open;
         if (doorMode == DoorMode.SlidingDoor)
         {
             StartCoroutine(RotateDoor(open ? _openRot : _closedRot));
@@ -101,18 +102,33 @@ public class InteractableDoor : MonoBehaviourPun
         }
         Debug.Log($"{clipName} not found");
     }
+
     private IEnumerator RotateDoor(Quaternion target)
     {
         if (_isOpen)
         {
             GiveSfxPlay("Sliding Door Open");
         }
-        while (Quaternion.Angle(transform.localRotation, target) > 0.5f)
+
+        Quaternion start = transform.localRotation;
+        float elapsed = 0f;
+
+        // openTime이 0 이하로 설정된 경우를 대비한 안전장치
+        if (openTime <= 0f)
         {
-            transform.localRotation = Quaternion.Slerp(
-                transform.localRotation, target, Time.deltaTime * rotateSpeed);
-            yield return null;
+            transform.localRotation = target;
         }
+        else
+        {
+            while (elapsed < openTime)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / openTime);
+                transform.localRotation = Quaternion.Slerp(start, target, t);
+                yield return null;
+            }
+        }
+
         transform.localRotation = target;
         if (!_isOpen)
         {
@@ -124,27 +140,31 @@ public class InteractableDoor : MonoBehaviourPun
     {
         if (_isOpen)
         {
-            GiveSfxPlay("Overhead Door Open");
+            GiveSfxPlay("Overhead Door Open 2");
         }
         else
         {
-            GiveSfxPlay("Overhead Door Close");
+            GiveSfxPlay("Overhead Door Close 2");
         }
-        Vector3 target = new Vector3(
-            transform.localPosition.x,
-            targetY,
-            transform.localPosition.z
-        );
 
-        while (Vector3.Distance(transform.localPosition, target) > 0.01f)
+        Vector3 start = transform.localPosition;
+        Vector3 target = new Vector3(start.x, targetY, start.z);
+        float elapsed = 0f;
+
+        // openTime이 0 이하로 설정된 경우를 대비한 안전장치
+        if (openTime <= 0f)
         {
-            transform.localPosition = Vector3.Lerp(
-                transform.localPosition,
-                target,
-                Time.deltaTime * rotateSpeed
-            );
-
-            yield return null;
+            transform.localPosition = target;
+        }
+        else
+        {
+            while (elapsed < openTime)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / openTime);
+                transform.localPosition = Vector3.Lerp(start, target, t);
+                yield return null;
+            }
         }
 
         transform.localPosition = target;
