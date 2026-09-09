@@ -313,7 +313,8 @@ public class EnemyController : MonoBehaviourPun
         _jumpIndicator = GameObject.CreatePrimitive(PrimitiveType.Cube);
         _jumpIndicator.name = "JumpAttackIndicator";
         Destroy(_jumpIndicator.GetComponent<Collider>());
-        _jumpIndicator.transform.position = new Vector3(worldPos.x, 0.05f, worldPos.z);
+        // _jumpIndicator.transform.position = new Vector3(worldPos.x, 0.05f, worldPos.z);
+        _jumpIndicator.transform.position = new Vector3(worldPos.x, 15.5f, worldPos.z); // Dungeon에서 발판이 너무 낮게 나와 수정
         _jumpIndicator.transform.localScale = new Vector3(sizeX, 0.02f, sizeZ);
         _jumpIndicator.AddComponent<JumpAttackIndicator>();
     }

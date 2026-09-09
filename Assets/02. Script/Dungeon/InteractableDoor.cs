@@ -14,9 +14,10 @@ public class InteractableDoor : MonoBehaviourPun
     [SerializeField] private DoorMode doorMode;
     public bool enable = true;
     [SerializeField] private float openAngle = 90f;
-    [SerializeField] private float openTime = 1.5f; // 문이 열리고 닫히는 데 걸리는 시간(초)
+    [SerializeField] private float openTime = 1f; // 문이 열리고 닫히는 데 걸리는 시간(초).
     [SerializeField] private float closeY = 0f;
     [SerializeField] private float openY = 3.5f;
+    [SerializeField] private float overheadEaseInPower = 2.5f; // 1이면 등속, 클수록 처음엔 느리고 끝에 급가속하는 정도가 커짐
     public AudioSource Audio { get; private set; }
     [SerializeField] private AudioClip[] _audioClips;
     
@@ -140,11 +141,11 @@ public class InteractableDoor : MonoBehaviourPun
     {
         if (_isOpen)
         {
-            GiveSfxPlay("Overhead Door Open 2");
+            GiveSfxPlay("Overhead Door Open");
         }
         else
         {
-            GiveSfxPlay("Overhead Door Close 2");
+            GiveSfxPlay("Overhead Door Close");
         }
 
         Vector3 start = transform.localPosition;
@@ -162,7 +163,8 @@ public class InteractableDoor : MonoBehaviourPun
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / openTime);
-                transform.localPosition = Vector3.Lerp(start, target, t);
+                float easedT = Mathf.Pow(t, overheadEaseInPower); // 처음엔 느리게, 끝에서 빠르게
+                transform.localPosition = Vector3.Lerp(start, target, easedT);
                 yield return null;
             }
         }
