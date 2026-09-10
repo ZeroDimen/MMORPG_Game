@@ -56,6 +56,7 @@ public class InteractableDoor : MonoBehaviourPun
     private void RPC_SetDoor(bool open)
     {
         StopAllCoroutines();
+        _isOpen = open;
         if (doorMode == DoorMode.SlidingDoor)
         {
             StartCoroutine(RotateDoor(open ? _openRot : _closedRot));
@@ -105,7 +106,9 @@ public class InteractableDoor : MonoBehaviourPun
     {
         if (_isOpen)
         {
-            GiveSfxPlay("Sliding Door Open");
+            SfxPlay("Sliding Door Open", false);
+            Debug.Log("Open");
+
         }
         while (Quaternion.Angle(transform.localRotation, target) > 0.5f)
         {
@@ -116,7 +119,8 @@ public class InteractableDoor : MonoBehaviourPun
         transform.localRotation = target;
         if (!_isOpen)
         {
-            GiveSfxPlay("Sliding Door Close");
+            SfxPlay("Sliding Door Close", false);
+            Debug.Log("Close");
         }
     }
     

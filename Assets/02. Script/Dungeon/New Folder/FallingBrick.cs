@@ -76,6 +76,9 @@ public class FallingBrick : MonoBehaviourPun
 
         while (isRunning)
         {
+            // GiveSfxPlay("Spike Trap");
+            SfxPlay("Spike Trap", false);
+
             // 1. 빠르게 낙하
             yield return StartCoroutine(MoveTo(groundPos, fallSpeed));
 
@@ -104,7 +107,6 @@ public class FallingBrick : MonoBehaviourPun
     // ─────────────────────────────────────────
     IEnumerator MoveTo(Vector3 target, float speed)
     {
-        GiveSfxPlay("Spike Trap");
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.MoveTowards(
