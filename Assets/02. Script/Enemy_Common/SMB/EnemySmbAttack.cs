@@ -24,8 +24,9 @@ public class EnemySmbAttack : StateMachineBehaviour
     }
 
 
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _enemyController.SetState(Constants.EEnemyState.Chase);
+        if (_enemyController.State == Constants.EEnemyState.Attack)
+            _enemyController.SetState(Constants.EEnemyState.Chase);
     }
 }

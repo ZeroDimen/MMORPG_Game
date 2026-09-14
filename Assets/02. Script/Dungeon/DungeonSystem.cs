@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
@@ -13,6 +14,9 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     private PhotonView pv;
     private List<Party> dungeonPartyList;
     [SerializeField] private DungeonLight dungeonLight;
+    [SerializeField] private Light hangingCageLight; // Dungeon/Room4/Room4 Obj/Hanging_Cage/Point Light
+    [SerializeField] private float fadeInDuration = 2f; // 조명 복귀 시 서서히 밝아지는 시간
+    private float _originalIntensity;
     [SerializeField] private Image fadePanel;
 
     [SerializeField] private GameObject messagePrefab;
@@ -69,11 +73,14 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
             Destroy(gameObject);
     }
 
-    private void Start()
+private void Start()
     {
         pv = GetComponent<PhotonView>();
         dungeonPartyList = new List<Party>();
         partyKillCount = new Dictionary<string, int>();
+
+        if (hangingCageLight != null)
+            _originalIntensity = hangingCageLight.intensity;
     }
 
     public void SendRpcToPartyMembers(Party party, string rpcName, params object[] parameters)
@@ -94,4 +101,34 @@ public partial class DungeonSystem : MonoBehaviourPunCallbacks
     {
         if (CurrentBoss == boss) CurrentBoss = null;
     }
+
+public void TriggerHangingCageDarkness(float duration = 5f)
+    {
+        pv.RPC(nameof(RPC_TriggerHangingCageDarkness), RpcTarget.All, duration);
+    }
+
+    [PunRPC]
+    private void RPC_TriggerHangingCageDarkness(float duration)
+    {
+        StartCoroutine(HangingCageDarknessRoutine(duration));
+    }
+
+private IEnumerator HangingCageDarknessRoutine(float duration)
+    {
+        if (hangingCageLight == null) yield break;
+
+        hangingCageLight.enabled = false;
+        
+        yield return new WaitForSeconds(duration);
+        hangingCageLight.enabled = true;
+        float elapsed = 0f;
+        while (elapsed < fadeInDuration)
+        {
+            elapsed += Time.deltaTime;
+            hangingCageLight.intensity = Mathf.Lerp(0f, _originalIntensity, elapsed / fadeInDuration);
+            yield return null;
+        }
+        hangingCageLight.intensity = _originalIntensity;
+    }
+
 }

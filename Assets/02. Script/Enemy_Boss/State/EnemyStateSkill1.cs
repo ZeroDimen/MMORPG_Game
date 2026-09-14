@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using static Constants;
@@ -7,10 +8,17 @@ public class EnemyStateSkill1: EnemyState, ICharacterState
     public EnemyStateSkill1(EnemyController enemyController, Animator animator, NavMeshAgent navMeshAgent) 
         : base(enemyController, animator, navMeshAgent) { }
 
+    private int attacknum = 0;
+    private int attacknum2 = 0;
+
 public void Enter()
     {
+        _enemyController.StopCoroutine(nameof(JumpWithDelay));
         _enemyController.RpcSetTrigger(EnemyAniParamSkill1);
-;
+
+        _navMeshAgent.isStopped = true;
+        _enemyController.RpcSetFloat(EnemyAniParamMoveSpeed, 0f); // Chase 블렌드트리 잔여 속도 제거
+
         if (!Photon.Pun.PhotonNetwork.IsMasterClient) return;
         var target = _enemyController.TargetTransform;
         if (target != null)
@@ -21,9 +29,9 @@ public void Enter()
         }
     }
 
-private System.Collections.IEnumerator JumpWithDelay(Vector3 targetPos)
+private IEnumerator JumpWithDelay(Vector3 targetPos)
     {
-        yield return new WaitForSeconds(1.0f); // 준비 자세 대기
+        yield return new WaitForSeconds(1f); // 준비 자세 대기
 
         // 체공 시작 → AoE 인디케이터 표시
         _enemyController.ShowJumpIndicator(targetPos, 6.0f, 6.0f);
@@ -42,6 +50,25 @@ private System.Collections.IEnumerator JumpWithDelay(Vector3 targetPos)
         Vector3 halfExtents = new Vector3(3.0f, 0.5f, 3.0f);
         _enemyController.RpcJumpLandingDamage(landPos, halfExtents, 30);
         _enemyController.GiveSfxPlay("Boss_Jump");
+        attacknum++;
+        attacknum2++;
+
+        if (attacknum >= 2)
+        {
+            _enemyController.SetState(EEnemyState.Groggy);
+            attacknum = 0;
+        }
+        else if (attacknum2 >= 3)
+        {
+            attacknum2 = 0;
+            DungeonSystem.instance.TriggerHangingCageDarkness();
+            _enemyController.SetState(EEnemyState.Chase);
+        }
+        else
+        {
+            // 그로기로 넘어가지 않으면 정상 AI 루프(Phase1)로 복귀
+            _enemyController.SetState(EEnemyState.Chase);
+        }
     }
 
 
@@ -49,5 +76,8 @@ private System.Collections.IEnumerator JumpWithDelay(Vector3 targetPos)
     {
     }
 
-public void Exit() { }
+    public void Exit()
+    {
+        _enemyController.StopCoroutine(nameof(JumpWithDelay));
+    }
 }

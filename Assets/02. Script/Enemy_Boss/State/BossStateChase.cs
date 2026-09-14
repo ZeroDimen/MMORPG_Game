@@ -53,7 +53,7 @@ public class BossStateChase: EnemyState, ICharacterState
         }
     }
 
-    private void Phase1()
+private void Phase1()
     {
         var detectionTargetTransform = _enemyController.DetectionTargetInCircle();
         if (detectionTargetTransform)
@@ -62,22 +62,26 @@ public class BossStateChase: EnemyState, ICharacterState
             float distanceToTarget = Vector3.Distance(_enemyController.transform.position, detectionTargetTransform.position);
             bool inSight = DetectionTargetInSight(detectionTargetTransform.position);
 
-            // 공격 (특정거리 = MinimumRunDistance 안)
+            // 공격 (특정거리 = MinimumRunDistance 안 + 그로기 상태 x)
             if (distanceToTarget <= _enemyController.MinimumRunDistance &&
                 _waitTime > _enemyController.AttackWaitTime &&
-                inSight)
+                inSight && _enemyController.State != EEnemyState.Groggy)
             {
                 _enemyController.SetState(EEnemyState.Attack);
+                _waitTime += Time.deltaTime;
+                return; // 전환 직후 아래 이동/속도 로직이 같은 프레임에 덮어쓰지 않도록 종료
             }
-            // 스킬1 (특정거리 밖 + 체력 50% 이하 + 시야각 안 + 쿨타임 5초)
+            // 스킬1 (특정거리 밖 + 그로기 상태 x + 체력 50% 이하 + 시야각 안 + 쿨타임 5초)
             else if (distanceToTarget > _enemyController.MinimumRunDistance &&
                      _waitTime > _enemyController.AttackWaitTime &&
-                     inSight &&
+                     inSight && _enemyController.State != EEnemyState.Groggy &&
                      _enemyStatus.hp <= _enemyStatus.maxHp / 2 &&
                      Time.time - _lastSkill1Time >= 5f)
             {
                 _enemyController.SetState(EEnemyState.Skill1);
                 _lastSkill1Time = Time.time;
+                _waitTime += Time.deltaTime;
+                return; // 전환 직후 아래 이동/속도 로직이 같은 프레임에 덮어쓰지 않도록 종료
             }
             else
             {
