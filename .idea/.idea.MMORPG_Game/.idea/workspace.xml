@@ -6,11 +6,1083 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/AmbushTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/AmbushTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/LightingData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/LightingData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_dir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_dir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_light.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-0_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-100_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-100_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-100_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-100_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-101_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-101_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-101_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-101_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-102_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-102_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-102_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-102_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-103_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-103_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-103_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-103_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-104_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-104_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-104_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-104_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-10_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-10_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-10_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-10_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-11_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-11_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-11_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-11_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-12_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-12_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-12_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-12_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-13_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-13_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-13_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-13_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-14_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-14_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-14_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-14_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-15_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-15_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-15_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-15_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-16_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-16_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-16_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-16_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-17_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-17_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-17_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-17_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-18_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-18_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-18_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-18_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-19_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-19_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-19_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-19_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_dir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_dir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_light.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-1_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-20_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-20_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-20_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-20_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-21_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-21_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-21_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-21_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-22_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-22_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-22_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-22_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-23_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-23_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-23_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-23_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-24_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-24_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-24_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-24_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-25_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-25_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-25_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-25_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-26_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-26_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-26_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-26_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-27_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-27_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-27_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-27_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-28_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-28_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-28_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-28_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-29_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-29_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-29_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-29_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_dir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_dir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_light.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-2_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-30_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-30_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-30_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-30_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-31_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-31_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-31_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-31_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-32_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-32_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-32_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-32_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-33_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-33_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-33_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-33_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-34_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-34_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-34_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-34_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-35_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-35_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-35_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-35_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-36_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-36_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-36_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-36_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-37_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-37_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-37_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-37_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-38_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-38_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-38_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-38_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-39_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-39_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-39_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-39_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_dir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_dir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_light.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-3_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-40_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-40_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-40_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-40_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-41_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-41_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-41_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-41_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-42_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-42_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-42_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-42_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-43_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-43_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-43_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-43_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-44_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-44_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-44_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-44_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-45_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-45_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-45_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-45_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-46_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-46_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-46_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-46_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-47_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-47_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-47_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-47_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-48_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-48_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-48_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-48_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-49_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-49_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-49_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-49_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_dir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_dir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_light.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-4_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-50_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-50_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-50_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-50_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-51_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-51_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-51_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-51_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-52_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-52_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-52_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-52_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-53_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-53_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-53_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-53_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-54_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-54_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-54_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-54_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-55_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-55_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-55_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-55_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-56_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-56_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-56_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-56_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-57_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-57_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-57_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-57_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-58_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-58_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-58_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-58_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-59_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-59_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-59_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-59_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_dir.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_dir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_dir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_dir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_light.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_light.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_light.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-5_comp_light.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-60_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-60_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-60_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-60_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-61_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-61_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-61_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-61_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-62_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-62_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-62_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-62_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-63_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-63_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-63_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-63_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-64_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-64_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-64_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-64_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-65_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-65_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-65_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-65_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-66_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-66_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-66_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-66_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-67_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-67_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-67_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-67_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-68_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-68_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-68_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-68_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-69_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-69_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-69_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-69_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-6_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-6_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-6_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-6_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-70_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-70_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-70_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-70_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-71_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-71_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-71_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-71_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-72_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-72_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-72_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-72_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-73_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-73_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-73_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-73_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-74_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-74_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-74_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-74_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-75_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-75_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-75_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-75_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-76_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-76_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-76_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-76_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-77_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-77_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-77_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-77_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-78_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-78_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-78_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-78_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-79_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-79_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-79_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-79_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-7_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-7_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-7_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-7_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-80_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-80_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-80_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-80_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-81_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-81_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-81_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-81_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-82_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-82_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-82_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-82_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-83_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-83_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-83_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-83_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-84_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-84_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-84_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-84_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-85_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-85_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-85_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-85_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-86_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-86_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-86_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-86_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-87_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-87_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-87_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-87_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-88_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-88_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-88_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-88_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-89_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-89_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-89_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-89_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-8_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-8_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-8_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-8_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-90_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-90_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-90_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-90_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-91_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-91_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-91_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-91_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-92_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-92_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-92_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-92_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-93_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-93_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-93_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-93_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-94_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-94_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-94_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-94_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-95_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-95_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-95_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-95_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-96_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-96_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-96_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-96_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-97_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-97_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-97_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-97_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-98_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-98_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-98_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-98_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-99_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-99_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-99_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-99_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-9_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-9_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-9_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/Lightmap-9_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/ReflectionProbe-0.exr" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/ReflectionProbe-0.exr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main/ReflectionProbe-0.exr.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main/ReflectionProbe-0.exr.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/New Lighting Settings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/New Lighting Settings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dialogue/NPC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Decals.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Decals.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Doors.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Doors.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Doorways.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Doorways.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Floors.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Floors.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Pillars.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Pillars.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Props.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Props.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Stairs.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Stairs.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Walls.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Decrepit Dungeon LITE/Meshes/Walls.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_Nothing Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_Nothing Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_Nothing.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_Nothing.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_Nothing.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_Nothing.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_NothingSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Day_BlueSky_NothingSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base BlueSky/Sky_Day_BlueSky_Nothing_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSkySettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSkySettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cartoon Base NightSky/Cartoon Base NightSky_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold NightSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold NightSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Night/Cold Night__Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold SunsetSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold SunsetSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Cold Sunset/Cold Sunset__Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep DuskSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep DuskSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Deep Dusk/Deep Dusk__Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunsetSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunsetSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_EquiRect_flat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_BlueSunset/Epic_BlueSunset_EquiRect_flat.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPinkSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPinkSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_EquiRect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Epic_GloriousPink/Epic_GloriousPink_EquiRect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/AllSky_Night_MoonBurst Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/AllSky_Night_MoonBurst Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/AllSky_Night_MoonBurst Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/AllSky_Night_MoonBurst Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon BurstSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon BurstSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Night MoonBurst/Night Moon Burst_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_Low.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_LowSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/AllSky_Overcast4_LowSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Overcast Low/Sky_AllSky_Overcast4_Low_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet Equirect.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet Equirect.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet Equirect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet Equirect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanetSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanetSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_0_Front+Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_0_Front+Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_1_Back-Z.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_1_Back-Z.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_2_Left+X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_2_Left+X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_3_Right-X.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_3_Right-X.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_4_Up+Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_4_Up+Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_5_Down-Y.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/Space_AnotherPlanet/AllSky_Space_AnotherPlanet_Cam_5_Down-Y.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AdditiveSprite.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AdditiveSprite.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSkyFreeDemoEnvironment.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSkyFreeDemoEnvironment.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment02.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment02.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment_Center.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment_Center.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment_Light.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment_Light.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Building.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Building.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_FlagGreen.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_FlagGreen.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Flag_Blue.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Flag_Blue.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Flag_Gold.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Flag_Gold.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Flag_Red.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Flag_Red.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Landscape.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Landscape.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_LightIllum.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_LightIllum.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_LightMetal.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_LightMetal.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_MountainGlow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_MountainGlow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Rock.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_Rock.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_TreeLeaves.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_TreeLeaves.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_TreeTrunk.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/AllSkyDemoEnv_TreeTrunk.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/Landscape.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/Landscape.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/TreeLeaves.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/TreeLeaves.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/TreeTrunk.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/TreeTrunk.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/rock.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/Materials/rock.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFree_Documentation.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AllSkyFree/_AllSkyFree_Documentation.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Demo fire 1Settings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Demo fire 1Settings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Lightmap-0_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Lightmap-0_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Lightmap-0_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Lightmap-0_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Magic effects demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Magic effects demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Magic effects second demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Magic effects second demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/Readme.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/ReflectionProbe-0.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/ReflectionProbe-1.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Demo scene/ReflectionProbe-1.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Additive.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Additive.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Arrow1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Arrow1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Circle.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Circle.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Circle2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Circle2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Crack.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Crack.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/CraterFree1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/CraterFree1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Crystal1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Crystal1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/CrystalFree1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/CrystalFree1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/DistortionPoint.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/DistortionPoint.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Electro.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Electro.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Flare.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Flare.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Flash.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Flash.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/FlashFree1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/FlashFree1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/FlashFree2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/FlashFree2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/FlashFree3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/FlashFree3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Floor3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/GlowFree1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/GlowFree1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Gradient.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Gradient.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Gradient2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Gradient2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Heart.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Heart.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/MagicCircle.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/MagicCircle.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/MagicCircle2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/MagicCircle2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Mask1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Mask1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Point.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Point.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/ProjectileFree1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/ProjectileFree1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Slash.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Slash.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Smoke26.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Smoke26.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/SmokeFree1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/SmokeFree1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Snowflake.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Snowflake.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Star.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Star.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Stone.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Stone.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/TechCircle.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/TechCircle.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/TechCircle2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/TechCircle2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Trail67.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/Trail67.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/VFXatlas.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Materials/VFXatlas.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Crystal1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Crystal1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Cylinder.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Cylinder.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Slash.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Slash.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Torus1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Models/Torus1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/AoE slash blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/AoE slash blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/AoE slash green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/AoE slash green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/AoE slash orange.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/AoE slash orange.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Crystals crossfade 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Crystals crossfade 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Crystals crossfade.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Crystals crossfade.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Crystals front attack.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Crystals front attack.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Ground AOE explosion.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Ground AOE explosion.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Laser AOE.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Laser AOE.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Meteors AOE.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Meteors AOE.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Plexus AoE.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Plexus AoE.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Red energy explosion.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Red energy explosion.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Smoke AOE explosion.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Smoke AOE explosion.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Snow AOE.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/AoE effects/Snow AOE.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Buff.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Buff.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Debuff.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Debuff.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Healing.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Healing.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Lightning aura.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Lightning aura.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Love aura.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Love aura.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Plexus.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Plexus.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Star aura.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Character auras/Star aura.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Crystal effect blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Crystal effect blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Crystal effect green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Crystal effect green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Crystal effect red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Crystal effect red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Teleport.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Environment/Teleport.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Electro hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Electro hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Explosion.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Explosion.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Green hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Green hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Holy hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Holy hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Love hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Love hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Snow hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Snow hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Star hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Star hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Stones hit.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Hits and explosions/Stones hit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Freeze circle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Freeze circle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Healing circle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Healing circle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Magic circle 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Magic circle 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Magic circle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic circles/Magic circle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields/Magic shield blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields/Magic shield blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields/Magic shield pink.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields/Magic shield pink.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields/Magic shield yellow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Magic shields/Magic shield yellow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal yellow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Portals/Portal yellow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Charge slash blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Charge slash blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Charge slash purple.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Charge slash purple.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Charge slash red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Charge slash red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Electro slash.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Electro slash.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Snow slash.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Snow slash.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Stone slash.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Slash effects/Stone slash.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust ground.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust ground.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust hemisphere loop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust hemisphere loop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust loop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust loop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust puff.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Dust puff.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke ground.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke ground.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke hemisphere loop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke hemisphere loop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke loop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke loop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke puff.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke puff.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke vortex.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Smoke effects/Smoke vortex.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode pink.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode pink.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode white.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode white.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode yellow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks explode yellow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing blue.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing blue.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing pink.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing pink.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing white.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing white.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing yellow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks flashing yellow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks pink.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks pink.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks red.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks red.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks white.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks white.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks yellow.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Prefabs/Sparks/Sparks yellow.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Settings.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Settings/PP low.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Settings/PP low.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Arrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Arrow1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Circle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Circle2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Circle2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab_Height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab_Height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab_MetallicSmoothness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab_MetallicSmoothness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Concrete slab_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crack.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/CraterFree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/CraterFree1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crystal1_Base.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crystal1_Base.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crystal1_MS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crystal1_MS.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crystal1_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Crystal1_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/CrystalFree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/CrystalFree1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Electro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Electro.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Flare.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Flare.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Flash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Flash.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/FlashFree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/FlashFree1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/FlashFree2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/FlashFree2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/FlashFree3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/FlashFree3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/GlowFree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/GlowFree1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Gradient.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Gradient.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Gradient2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Gradient2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Heart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Heart.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/MagicCircle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/MagicCircle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/MagicCircle2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/MagicCircle2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Mask1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Mask1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Point1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Point1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Point1n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Point1n.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/ProjectileFree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/ProjectileFree1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Slash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Slash.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Smoke26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Smoke26.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/SmokeFree1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/SmokeFree1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Snowflake.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Snowflake.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Splat.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Splat.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Star.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Star.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Stone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Stone.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/TechCircle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/TechCircle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/TechCircle2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/TechCircle2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Trail67.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/Magic effects pack/Textures/Trail67.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/blood_red_bar_border.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/blood_red_bar_border.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/blood_red_bar_fill.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/blood_red_bar_fill.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/clipart1645181.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/clipart1645181.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/crown-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NoobGameDev/Health System For Dummies/System/Bar/Images/crown-icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Mobile_RPAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,6 +1358,8 @@
       <workItem from="1788502756485" duration="583000" />
       <workItem from="1788506231852" duration="470000" />
       <workItem from="1788515171054" duration="3908000" />
+      <workItem from="1789040174857" duration="1286000" />
+      <workItem from="1789350989812" duration="2166000" />
     </task>
     <servers />
   </component>

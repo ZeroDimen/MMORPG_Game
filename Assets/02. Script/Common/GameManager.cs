@@ -158,7 +158,7 @@ public class GameManager :  MonoBehaviourPun
                 break;
             case "Boss":
                 spownPos = GetRandomPosition(spawnPoints[3].point, spawnPoints[3].radius);
-                var boss = PhotonNetwork.Instantiate("Boss", spownPos, Quaternion.identity);
+                var boss = PhotonNetwork.Instantiate("Boss", spownPos, Quaternion.Euler(0, 90, 0));
                 boss.GetComponent<EnemyController>().partyId = objName; // 보스 처치 → 클리어 감지의 핵심
                 break;
             default:
