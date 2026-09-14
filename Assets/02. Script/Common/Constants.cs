@@ -66,7 +66,7 @@ public class Constants
     public enum EEnemyState
     {
         None, Idle, Patrol, Chase, Attack, Hit, Dead,
-        Skill1,
+        Skill1, Groggy
     }
     
     // ----------------------------------------
@@ -81,6 +81,7 @@ public class Constants
     
     // Boss 애니메이터 파라미터
     public static readonly int EnemyAniParamSkill1 = Animator.StringToHash("skill1");
+    public static readonly int EnemyAniParamGroggy = Animator.StringToHash("groggy");
     
     [Serializable]
     public class SpawnZone

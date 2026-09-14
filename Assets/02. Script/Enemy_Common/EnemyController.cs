@@ -122,7 +122,7 @@ public class EnemyController : MonoBehaviourPun
         }
     }
 
-    public void SetState(EEnemyState state)
+public void SetState(EEnemyState state)
     {
         if (!PhotonNetwork.IsMasterClient) return; // IsMasterClient만 State를 수정
         if (State == state) return;
@@ -150,10 +150,13 @@ public class EnemyController : MonoBehaviourPun
         State = (EEnemyState)state;
     }
 
-    public int SetHit(int damage)
+public int SetHit(int damage)
     {
         if (State == EEnemyState.Dead) return 0;
-        
+
+        if (State == EEnemyState.Groggy)
+            damage *= 2;
+
         enemyStatus.hp -= damage;
         float result = (float)enemyStatus.hp / enemyStatus.maxHp;
         if (_enemyHpBarController != null)
@@ -188,11 +191,14 @@ public class EnemyController : MonoBehaviourPun
         }
         else
         {
-            // 피격 처리
-            SetState(EEnemyState.Hit);
-            if (enemyStatus.maxHp / 3 <= damage)
+            // 피격 처리 (그로기 중에는 Hit 전환/넉백 없이 그로기 유지)
+            if (State != EEnemyState.Groggy)
             {
-                StartCoroutine(Knockback(-transform.forward));
+                SetState(EEnemyState.Hit);
+                if (enemyStatus.maxHp / 3 <= damage)
+                {
+                    StartCoroutine(Knockback(-transform.forward));
+                }
             }
         }
         
