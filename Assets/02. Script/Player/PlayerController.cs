@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviourPun
     public PlayerStatus Status;
 
     [Header("이동")]
-    [SerializeField][Range(1, 5)] private float breakForce = 1f;
+    [SerializeField] private float breakTime = 0.5f; // 풀스피드에서 정지까지 걸리는 시간(초)
 
     [SerializeField] private float jumpHeight = 2f;
 
-    public float BreakForce => breakForce;
+    public float BreakTime => breakTime;
 
     [SerializeField] private AudioClip[] _audioClips;
     public AudioSource Audio { get; private set; }
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviourPun
 
     // 상태 정보
     public EPlayerState State;
+    public bool IsAttacking { get; set; }
     private Dictionary<EPlayerState, ICharacterState> _states;
 
     // 캐릭터 이동 정보

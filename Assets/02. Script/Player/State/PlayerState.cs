@@ -9,8 +9,6 @@ public class PlayerState
     protected PlayerInput _playerInput;
     protected SkillManager _skillManager;
 
-    private bool isAttacking = false;
-    
     public PlayerState(PlayerController playerController, Animator animator, PlayerInput playerInput)
     {
         _playerController = playerController;
@@ -18,9 +16,9 @@ public class PlayerState
         _playerInput = playerInput;
     }
 
-    protected void Attack(InputAction.CallbackContext context)
+protected void Attack(InputAction.CallbackContext context)
     {
-        if (isAttacking) return;
+        if (_playerController.IsAttacking) return;
         _playerController.SetState(EPlayerState.Attack);
     }
     

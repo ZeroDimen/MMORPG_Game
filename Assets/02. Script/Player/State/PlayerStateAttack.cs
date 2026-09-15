@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using static Constants;
 
@@ -7,8 +7,9 @@ public class PlayerStateAttack: PlayerState, ICharacterState
     public PlayerStateAttack(PlayerController playerController, Animator animator, PlayerInput playerInput) 
         : base(playerController, animator, playerInput) { }
     
-    public void Enter()
+public void Enter()
     {
+        _playerController.IsAttacking = true;
         _animator.SetTrigger(PlayerAniParamAttack);
         _playerController.GiveSfxPlay("Attack");
         
@@ -18,8 +19,9 @@ public class PlayerStateAttack: PlayerState, ICharacterState
 
     public void Update() { }
 
-    public void Exit()
+public void Exit()
     {
+        _playerController.IsAttacking = false;
         // _playerInput.actions["Fire"].performed -= AttackTrigger;
     }
 
