@@ -21,6 +21,20 @@ public class PlayerController : MonoBehaviourPun
 
     public float BreakTime => breakTime;
 
+    [Header("공격")]
+    [Range(0f, 1f)]
+    [SerializeField] private float attackCancelThreshold = 1f; // 공격 애니메이션 진행률이 이 값을 넘어야 이동으로 캔슬 가능 (0=즉시, 1=끝까지 불가)
+
+    public float AttackCancelThreshold => attackCancelThreshold;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float skill1CancelThreshold = 1f; // Skill1(Fire Strike) 진행률이 이 값을 넘어야 이동으로 캔슬 가능
+    [Range(0f, 1f)]
+    [SerializeField] private float skill2CancelThreshold = 1f; // Skill2(Water Spin) 진행률이 이 값을 넘어야 이동으로 캔슬 가능
+
+    public float Skill1CancelThreshold => skill1CancelThreshold;
+    public float Skill2CancelThreshold => skill2CancelThreshold;
+
     [SerializeField] private AudioClip[] _audioClips;
     public AudioSource Audio { get; private set; }
 

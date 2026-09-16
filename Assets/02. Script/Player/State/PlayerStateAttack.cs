@@ -17,7 +17,16 @@ public void Enter()
         // _playerInput.actions["Fire"].performed += AttackTrigger;
     }
 
-    public void Update() { }
+public void Update()
+    {
+        // 공격 애니메이션 진행률이 AttackCancelThreshold를 넘으면 이동 입력으로 캔슬 가능
+        if (_playerInput.actions["Move"].IsPressed())
+        {
+            var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= _playerController.AttackCancelThreshold)
+                _playerController.SetState(EPlayerState.Move);
+        }
+    }
 
 public void Exit()
     {

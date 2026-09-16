@@ -25,8 +25,15 @@ public class PlayerStateSkill1: PlayerState, ICharacterState
         _skillManager.StartCooltime(0);
     }
 
-    public void Update()
+public void Update()
     {
+        // Skill1 애니메이션 진행률이 Skill1CancelThreshold를 넘으면 이동 입력으로 캔슬 가능
+        if (_playerInput.actions["Move"].IsPressed())
+        {
+            var stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Skill Fire Strike") && stateInfo.normalizedTime >= _playerController.Skill1CancelThreshold)
+                _playerController.SetState(EPlayerState.Move);
+        }
     }
 
     public void Exit()
