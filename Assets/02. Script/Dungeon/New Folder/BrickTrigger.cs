@@ -15,7 +15,6 @@ public class BrickTrigger : MonoBehaviour
         foreach (var brick in bricks)
             if (brick != null) brick.StartLoop();
 
-        Debug.Log("[BrickTrigger] 벽돌 작동 시작!");
     }
 
     // ─────────────────────────────────────────
@@ -28,6 +27,5 @@ public class BrickTrigger : MonoBehaviour
         foreach (var brick in bricks)
             if (brick != null) brick.StopLoop();
 
-        Debug.Log("[BrickTrigger] 벽돌 작동 중단!");
     }
 }

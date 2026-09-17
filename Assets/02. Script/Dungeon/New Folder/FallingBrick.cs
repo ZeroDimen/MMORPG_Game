@@ -99,7 +99,6 @@ public class FallingBrick : MonoBehaviourPun
     IEnumerator ReturnToStart()
     {
         yield return StartCoroutine(MoveTo(startPos, riseSpeed));
-        Debug.Log("[FallingBrick] 원위치 복귀 완료");
     }
 
     // ─────────────────────────────────────────
