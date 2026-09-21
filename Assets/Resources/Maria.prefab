@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee38758ef218f9b41b0f5c8f51bd45b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordAttack
-  Damage: 30
+  Damage: 15
   mariaPlayerController: {fileID: 1352892008713876386}
 --- !u!1 &917560205457156218
 GameObject:

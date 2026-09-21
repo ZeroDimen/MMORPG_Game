@@ -46,6 +46,8 @@ public class EnemyController : MonoBehaviourPun
     // 상태 관리
     public EEnemyState State;
     public float LastGroggyEndTime = float.NegativeInfinity; // 그로기 종료 시각 (재시작 쿨타임 기준)
+    private int _attackPoiseDamage = 0; // Attack(일반 전투) 중 누적 피격 데미지 - 임계값 넘으면 Hit으로 끊김
+    public void ResetAttackPoise() => _attackPoiseDamage = 0;
     protected internal Dictionary<EEnemyState, ICharacterState> _states;
 
     // Dead 연출
@@ -192,9 +194,28 @@ public int SetHit(int damage)
         }
         else
         {
-            // 피격 처리 (그로기 중에는 Hit 전환/넉백 없이 그로기 유지)
-            if (State != EEnemyState.Groggy)
+            // 피격 처리
+            // - 그로기: Hit 전환/넉백 없이 그로기 유지
+            // - Skill1: 하이퍼아머로 완전 면역 (애니메이션 안 끊김, 데미지는 정상 적용)
+            // - Attack(일반 전투): 포이즈 누적, 임계값(45) 넘을 때만 Hit으로 끊김
+            bool shouldInterrupt;
+            if (State == EEnemyState.Groggy || State == EEnemyState.Skill1)
             {
+                shouldInterrupt = false;
+            }
+            else if (State == EEnemyState.Attack)
+            {
+                _attackPoiseDamage += damage;
+                shouldInterrupt = _attackPoiseDamage >= 45;
+            }
+            else
+            {
+                shouldInterrupt = true;
+            }
+
+            if (shouldInterrupt)
+            {
+                _attackPoiseDamage = 0; // Hit 발동 시 포이즈 완전 리셋
                 SetState(EEnemyState.Hit);
                 if (enemyStatus.maxHp / 3 <= damage)
                 {

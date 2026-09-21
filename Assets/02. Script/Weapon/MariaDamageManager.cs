@@ -27,12 +27,15 @@ public class MariaDamageManager : MonoBehaviour
         DamageSetting(ObjName);
     }
 
-    private void OnTriggerEnter(Collider other)
+private void OnTriggerEnter(Collider other)
     {
         if (!playerPV.IsMine) return;
         var enemyController = other.GetComponent<EnemyController>();
         if (enemyController)
         {
+            if (ObjName == "Attack")
+                Debug.Log($"일반 공격 데미지: {Damage}");
+
             PhotonView enemyView = enemyController.photonView;
             GameManager.Instance.HitEnemy(enemyView,playerPV, Damage);
         }
