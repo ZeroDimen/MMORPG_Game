@@ -24,6 +24,7 @@ protected void Attack(InputAction.CallbackContext context)
     
     protected void Jump(InputAction.CallbackContext context)
     {
+        if (!_playerController.IsGrounded) return; // 접지 상태가 아니면 Jump 상태로 전환하지 않음
         _playerController.Jump();
         _playerController.SetState(EPlayerState.Jump);
     }

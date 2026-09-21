@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviourPun
 
     // 상태 관리
     public EEnemyState State;
+    public float LastGroggyEndTime = float.NegativeInfinity; // 그로기 종료 시각 (재시작 쿨타임 기준)
     protected internal Dictionary<EEnemyState, ICharacterState> _states;
 
     // Dead 연출
@@ -155,7 +156,7 @@ public int SetHit(int damage)
         if (State == EEnemyState.Dead) return 0;
 
         if (State == EEnemyState.Groggy)
-            damage *= 2;
+            damage = Mathf.RoundToInt(damage * 1.5f); // 그로기 중 데미지 1.5배
 
         enemyStatus.hp -= damage;
         float result = (float)enemyStatus.hp / enemyStatus.maxHp;

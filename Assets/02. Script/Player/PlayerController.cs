@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviourPun
     private PlayerInput _playerInput;
     private CharacterController _characterController;
     public PlayerHPBarController _playerHpBarController { get; private set; }
+    public bool IsGrounded => _characterController.isGrounded;
 
     // 상태 정보
     public EPlayerState State;

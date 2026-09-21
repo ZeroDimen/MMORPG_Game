@@ -19,5 +19,6 @@ public void Enter()
 
 public void Exit()
     {
+        _enemyController.LastGroggyEndTime = Time.time;
     }
 }
