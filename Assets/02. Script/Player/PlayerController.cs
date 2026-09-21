@@ -105,11 +105,9 @@ public class PlayerController : MonoBehaviourPun
 
         if (photonView.IsMine)
         {
-            AudioPanelView.instance.mySfxAudioSources.Add(Audio);
             PhotonNetwork.LocalPlayer.TagObject = this;
         }
         else
-            AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
         // Boss 등 모든 EnemyController와 내 CharacterController 간 물리 충돌만 무시 (무기 트리거 판정에는 영향 없음)
         foreach (var enemy in FindObjectsOfType<EnemyController>())
         {
