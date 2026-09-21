@@ -7,7 +7,8 @@
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Photon/ChatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Photon/ChatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/UI/OnInputField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/UI/OnInputField.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,6 +288,7 @@
       <workItem from="1789350989812" duration="2166000" />
       <workItem from="1789602784319" duration="1758000" />
       <workItem from="1789643271600" duration="1088000" />
+      <workItem from="1789956713224" duration="2350000" />
     </task>
     <servers />
   </component>
