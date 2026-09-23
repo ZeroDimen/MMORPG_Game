@@ -232,7 +232,8 @@ public class GameManager :  MonoBehaviourPun
         Cursor.visible = !hideCursor;
         Cursor.lockState = hideCursor ? CursorLockMode.Locked : CursorLockMode.None;
         
-        // AudioManager._instance.BgmVolume(isPlay ? 1f : 0.3f);
+        float userBgmVolume = PlayerPrefs.GetFloat("MyBGMslider", 1f);
+        AudioManager._instance.BgmVolume(isPlay ? userBgmVolume : userBgmVolume * 0.3f);
         
         if (isPlay && !wasPlay)
         {

@@ -9,10 +9,8 @@
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Intro.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Enemy_Common/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Enemy_Common/EnemyController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Sound/AudioPanelView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +291,8 @@
       <workItem from="1789602784319" duration="1758000" />
       <workItem from="1789643271600" duration="1088000" />
       <workItem from="1789956713224" duration="2350000" />
-      <workItem from="1789978005976" duration="6466000" />
+      <workItem from="1789978005976" duration="7611000" />
+      <workItem from="1790148677083" duration="2287000" />
     </task>
     <servers />
   </component>

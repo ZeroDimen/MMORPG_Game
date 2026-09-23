@@ -106,15 +106,19 @@ public class PlayerController : MonoBehaviourPun
         if (photonView.IsMine)
         {
             PhotonNetwork.LocalPlayer.TagObject = this;
+            Audio.outputAudioMixerGroup = AudioManager._instance.SfxGroup;
         }
         else
-        // Boss 등 모든 EnemyController와 내 CharacterController 간 물리 충돌만 무시 (무기 트리거 판정에는 영향 없음)
-        foreach (var enemy in FindObjectsOfType<EnemyController>())
         {
-            var enemyCollider = enemy.GetComponent<Collider>();
-            if (enemyCollider != null)
+            Audio.outputAudioMixerGroup = AudioManager._instance.OtherSfxGroup;
+            // Boss 등 모든 EnemyController와 내 CharacterController 간 물리 충돌만 무시 (무기 트리거 판정에는 영향 없음)
+            foreach (var enemy in FindObjectsOfType<EnemyController>())
             {
-                Physics.IgnoreCollision(_characterController, enemyCollider, true);
+                var enemyCollider = enemy.GetComponent<Collider>();
+                if (enemyCollider != null)
+                {
+                    Physics.IgnoreCollision(_characterController, enemyCollider, true);
+                }
             }
         }
     }

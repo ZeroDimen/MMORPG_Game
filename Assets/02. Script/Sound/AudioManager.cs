@@ -5,6 +5,9 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviourPunCallbacks
 {
+    public AudioMixerGroup SfxGroup;
+    public AudioMixerGroup OtherSfxGroup;
+    
     [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private AudioClip[] sfxClips;
 

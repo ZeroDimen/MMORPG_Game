@@ -1869,6 +1869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00835cf3472f5f48adee1c119808974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  SfxGroup: {fileID: -3345975835569391068, guid: 27b1e824e43cb53478a143160d4b5bc3, type: 2}
+  OtherSfxGroup: {fileID: -5247186097537797442, guid: 27b1e824e43cb53478a143160d4b5bc3, type: 2}
   bgmClips:
   - {fileID: 8300000, guid: 4903b6adca2e991408dc9a23cf05b961, type: 3}
   - {fileID: 8300000, guid: f408995b2d69e5e4ea2882d275d61fe6, type: 3}
