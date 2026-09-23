@@ -9,8 +9,6 @@ public class PlayerState
     protected PlayerInput _playerInput;
     protected SkillManager _skillManager;
 
-    private bool isAttacking = false;
-    
     public PlayerState(PlayerController playerController, Animator animator, PlayerInput playerInput)
     {
         _playerController = playerController;
@@ -18,14 +16,15 @@ public class PlayerState
         _playerInput = playerInput;
     }
 
-    protected void Attack(InputAction.CallbackContext context)
+protected void Attack(InputAction.CallbackContext context)
     {
-        if (isAttacking) return;
+        if (_playerController.IsAttacking) return;
         _playerController.SetState(EPlayerState.Attack);
     }
     
     protected void Jump(InputAction.CallbackContext context)
     {
+        if (!_playerController.IsGrounded) return; // 접지 상태가 아니면 Jump 상태로 전환하지 않음
         _playerController.Jump();
         _playerController.SetState(EPlayerState.Jump);
     }

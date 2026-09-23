@@ -15,11 +15,25 @@ public class PlayerController : MonoBehaviourPun
     public PlayerStatus Status;
 
     [Header("이동")]
-    [SerializeField][Range(1, 5)] private float breakForce = 1f;
+    [SerializeField] private float breakTime = 0.5f; // 풀스피드에서 정지까지 걸리는 시간(초)
 
     [SerializeField] private float jumpHeight = 2f;
 
-    public float BreakForce => breakForce;
+    public float BreakTime => breakTime;
+
+    [Header("공격")]
+    [Range(0f, 1f)]
+    [SerializeField] private float attackCancelThreshold = 1f; // 공격 애니메이션 진행률이 이 값을 넘어야 이동으로 캔슬 가능 (0=즉시, 1=끝까지 불가)
+
+    public float AttackCancelThreshold => attackCancelThreshold;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float skill1CancelThreshold = 1f; // Skill1(Fire Strike) 진행률이 이 값을 넘어야 이동으로 캔슬 가능
+    [Range(0f, 1f)]
+    [SerializeField] private float skill2CancelThreshold = 1f; // Skill2(Water Spin) 진행률이 이 값을 넘어야 이동으로 캔슬 가능
+
+    public float Skill1CancelThreshold => skill1CancelThreshold;
+    public float Skill2CancelThreshold => skill2CancelThreshold;
 
     [SerializeField] private AudioClip[] _audioClips;
     public AudioSource Audio { get; private set; }
@@ -29,9 +43,11 @@ public class PlayerController : MonoBehaviourPun
     private PlayerInput _playerInput;
     private CharacterController _characterController;
     public PlayerHPBarController _playerHpBarController { get; private set; }
+    public bool IsGrounded => _characterController.isGrounded;
 
     // 상태 정보
     public EPlayerState State;
+    public bool IsAttacking { get; set; }
     private Dictionary<EPlayerState, ICharacterState> _states;
 
     // 캐릭터 이동 정보
@@ -236,7 +252,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (Status == null) return;
         Status.SetStatus("MAXEXP", Status.LV * 10);
-        Status.SetStatus("ATK", (int)Math.Round((Status.LV * 2.5) + 50)); // 2.5는 래벨당 성장 공격력
+        Status.SetStatus("ATK", 10 + 2 * Status.LV + Status.ATKBonus); // 고정 10 + 레벨당 2 성장 + 장비 보너스 유지
         if (Status.EXP >= Status.MAXEXP)
         {
             Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);

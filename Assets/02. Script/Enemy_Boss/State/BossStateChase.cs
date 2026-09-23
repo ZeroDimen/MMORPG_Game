@@ -6,7 +6,7 @@ public class BossStateChase: EnemyState, ICharacterState
 {
     private float _waitTime;
     private int attacknum = 0;
-    private float _lastSkill1Time = -999f; // Skill1(점프공격) 쿸다운 관리용
+    private float _nextSkill1RollTime = 0f; // 체력 50% 초과 구간에서 확률 판정 재시도 간격 관리용
 
     public BossStateChase(EnemyController enemyController, Animator animator, NavMeshAgent navMeshAgent,
         EnemyStatus enemyStatus)
@@ -71,15 +71,15 @@ private void Phase1()
                 _waitTime += Time.deltaTime;
                 return; // 전환 직후 아래 이동/속도 로직이 같은 프레임에 덮어쓰지 않도록 종료
             }
-            // 스킬1 (특정거리 밖 + 그로기 상태 x + 체력 50% 이하 + 시야각 안 + 쿨타임 5초)
+            // 스킬1 (특정거리 밖 + 그로기 상태 x + 그로기 종료 후 쿨타임 7초)
+            // 체력 50% 이하면 확정 발동(풀 콤보), 초과면 3초 간격으로 25% 확률 판정(견제용 단발 점프)
             else if (distanceToTarget > _enemyController.MinimumRunDistance &&
                      _waitTime > _enemyController.AttackWaitTime &&
                      inSight && _enemyController.State != EEnemyState.Groggy &&
-                     _enemyStatus.hp <= _enemyStatus.maxHp / 2 &&
-                     Time.time - _lastSkill1Time >= 5f)
+                     Time.time - _enemyController.LastGroggyEndTime >= 7f &&
+                     TrySkill1Trigger())
             {
                 _enemyController.SetState(EEnemyState.Skill1);
-                _lastSkill1Time = Time.time;
                 _waitTime += Time.deltaTime;
                 return; // 전환 직후 아래 이동/속도 로직이 같은 프레임에 덮어쓰지 않도록 종료
             }
@@ -106,5 +106,16 @@ private void Phase1()
         }
 
         _waitTime += Time.deltaTime;
+    }
+
+    // 체력 50% 이하: 항상 발동(풀 콤보). 초과: 3초 간격으로 25% 확률 판정(견제용 단발 점프)
+    private bool TrySkill1Trigger()
+    {
+        if (_enemyStatus.hp <= _enemyStatus.maxHp / 2) return true;
+
+        if (Time.time < _nextSkill1RollTime) return false;
+
+        _nextSkill1RollTime = Time.time + 3f;
+        return Random.value < 0.25f;
     }
 }

@@ -52,7 +52,8 @@ public class SkillManager : MonoBehaviour
             skillmoldObj[i].skillIcon.sprite = skillDatas[i].skillIcon;
             skillmoldObj[i].skillName = skillDatas[i].skillName;
             skillmoldObj[i].skillCooltime = skillDatas[i].skillCooltime;
-            skillmoldObj[i].skillDamage = skillDatas[i].skillBaseDamage + skillDatas[i].skillLVDamage * skillRanks[i];
+            // 랭크0/1 = skillBaseDamage 그대로, 랭크2부터 skillLVDamage만큼 증가
+            skillmoldObj[i].skillDamage = skillDatas[i].skillBaseDamage + skillDatas[i].skillLVDamage * Mathf.Max(skillRanks[i] - 1, 0);
             skillmoldObj[i].skillScript = skillDatas[i].skillDescription;
         }
 

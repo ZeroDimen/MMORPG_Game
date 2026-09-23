@@ -45,6 +45,8 @@ public class EnemyController : MonoBehaviourPun
 
     // 상태 관리
     public EEnemyState State;
+    public float LastGroggyEndTime = float.NegativeInfinity; // 그로기 종료 시각 (재시작 쿨타임 기준)
+    public virtual void ResetAttackPoise() { } // 기본(Mutant 등)은 포이즈 개념 없음 - Boss에서 오버라이드
     protected internal Dictionary<EEnemyState, ICharacterState> _states;
 
     // Dead 연출
@@ -151,7 +153,7 @@ public int SetHit(int damage)
         if (State == EEnemyState.Dead) return 0;
 
         if (State == EEnemyState.Groggy)
-            damage *= 2;
+            damage = Mathf.RoundToInt(damage * 1.5f); // 그로기 중 데미지 1.5배
 
         enemyStatus.hp -= damage;
         float result = (float)enemyStatus.hp / enemyStatus.maxHp;
@@ -187,9 +189,10 @@ public int SetHit(int damage)
         }
         else
         {
-            // 피격 처리 (그로기 중에는 Hit 전환/넉백 없이 그로기 유지)
-            if (State != EEnemyState.Groggy)
+            // 피격 처리 - 끊을지 여부는 ShouldInterruptOnHit()에서 판단 (Boss는 오버라이드해서 하이퍼아머/포이즈 적용)
+            if (ShouldInterruptOnHit(damage))
             {
+                ResetAttackPoise(); // Hit 발동 시 포이즈 완전 리셋
                 SetState(EEnemyState.Hit);
                 if (enemyStatus.maxHp / 3 <= damage)
                 {
@@ -199,6 +202,12 @@ public int SetHit(int damage)
         }
         
         return 0;
+    }
+
+    // 피격 시 Hit으로 끊을지 여부. 기본은 그로기만 예외. Boss는 오버라이드해서 Skill1 면역 + Attack 포이즈 적용
+    protected virtual bool ShouldInterruptOnHit(int damage)
+    {
+        return State != EEnemyState.Groggy;
     }
 
 

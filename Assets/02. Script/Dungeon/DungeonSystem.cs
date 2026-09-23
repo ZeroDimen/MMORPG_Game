@@ -102,24 +102,34 @@ private void Start()
         if (CurrentBoss == boss) CurrentBoss = null;
     }
 
-public void TriggerHangingCageDarkness(float duration = 5f)
+public void SetHangingCageDark()
     {
-        pv.RPC(nameof(RPC_TriggerHangingCageDarkness), RpcTarget.All, duration);
+        pv.RPC(nameof(RPC_SetHangingCageDark), RpcTarget.All);
     }
 
     [PunRPC]
-    private void RPC_TriggerHangingCageDarkness(float duration)
+    private void RPC_SetHangingCageDark()
     {
-        StartCoroutine(HangingCageDarknessRoutine(duration));
+        if (hangingCageLight != null)
+            hangingCageLight.enabled = false;
     }
 
-private IEnumerator HangingCageDarknessRoutine(float duration)
+    public void RestoreHangingCageLight(Action onComplete = null)
+    {
+        pv.RPC(nameof(RPC_RestoreHangingCageLight), RpcTarget.All);
+        onComplete?.Invoke(); // 페이드인이 끝나는 시점이 아니라, 불이 켜지기 '시작'하는 시점에 즉시 호출
+    }
+
+    [PunRPC]
+    private void RPC_RestoreHangingCageLight()
+    {
+        StartCoroutine(HangingCageFadeInRoutine());
+    }
+
+    private IEnumerator HangingCageFadeInRoutine()
     {
         if (hangingCageLight == null) yield break;
 
-        hangingCageLight.enabled = false;
-        
-        yield return new WaitForSeconds(duration);
         hangingCageLight.enabled = true;
         float elapsed = 0f;
         while (elapsed < fadeInDuration)
@@ -130,5 +140,26 @@ private IEnumerator HangingCageDarknessRoutine(float duration)
         }
         hangingCageLight.intensity = _originalIntensity;
     }
+
+    private IEnumerator InvokeAfter(float delay, Action callback)
+    {
+        yield return new WaitForSeconds(delay);
+        callback?.Invoke();
+    }
+
+    public void TriggerCameraShake()
+    {
+        pv.RPC(nameof(RPC_TriggerCameraShake), RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void RPC_TriggerCameraShake()
+    {
+        if (impulseSource != null)
+            impulseSource.GenerateImpulse(0.5f); // 흔들림 세기 절반
+    }
+
+
+
 
 }
