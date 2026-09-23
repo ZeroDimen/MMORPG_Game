@@ -18,9 +18,6 @@ public class AudioPanelView : MonoBehaviour
     public TextMeshProUGUI MySFXvalue;
     public TextMeshProUGUI OtherSFXvalue;
 
-    public List<AudioSource> mySfxAudioSources;
-    public List<AudioSource> otherSfxAudioSources;
-
     private void Awake()
     {
         if (instance == null)
@@ -33,22 +30,22 @@ public class AudioPanelView : MonoBehaviour
     {
         MyBGMslider.onValueChanged.AddListener((value) =>
         {
+            if (Mathf.Approximately(value, 1f))
+                Debug.Log($"[슬라이더=1 범인]\n{System.Environment.StackTrace}");
             AudioManager._instance.BgmVolume(value);
             MyBGMvalue.text = Mathf.RoundToInt(value * 100).ToString();
         });
         MySFXslider.onValueChanged.AddListener((value) =>
         {
             AudioManager._instance.SFXVolume(value);
-            MySfxValueChange(value);
             MySFXvalue.text = Mathf.RoundToInt(value * 100).ToString();
         });
         OtherSFXslider.onValueChanged.AddListener((value) =>
         {
-            OtherSfxValueChange(value);
+            AudioManager._instance.OtherSFXVolume(value);
             OtherSFXvalue.text = Mathf.RoundToInt(value * 100).ToString();
         });
-        
-        
+
         MyBGMtoggle.onValueChanged.AddListener((value) =>
         {
             AudioManager._instance.IsSoundMute(value, "BGM");
@@ -56,46 +53,13 @@ public class AudioPanelView : MonoBehaviour
         MySFXtoggle.onValueChanged.AddListener((value) =>
         {
             AudioManager._instance.IsSoundMute(value, "SFX");
-            MySfxMute(value);
         });
-        OtherSFXtoggle.onValueChanged.AddListener(OtherSfxMute);
-    }
-
-    private void MySfxValueChange(float value)
-    {
-        foreach (var sound in mySfxAudioSources)
+        OtherSFXtoggle.onValueChanged.AddListener((value) =>
         {
-            if(sound != null)
-                sound.volume = value;
-        }
+            AudioManager._instance.IsSoundMute(value, "OtherSFX");
+        });
     }
-
-    private void MySfxMute(bool value)
-    {
-        foreach (var sound in mySfxAudioSources)
-        {
-            if (sound != null)
-                sound.mute = !value;
-        }
-    }
-
-    private void OtherSfxValueChange(float value)
-    {
-        foreach (var sound in otherSfxAudioSources)
-        {
-            if(sound != null)
-                sound.volume = value;
-        }
-    }
-    private void OtherSfxMute(bool value)
-    {
-        foreach (var sound in otherSfxAudioSources)
-        {
-            if (sound != null)
-                sound.mute = !value;
-        }
-    }
-
+    
     public void DataSave()
     {
         // Slider
@@ -138,10 +102,9 @@ public class AudioPanelView : MonoBehaviour
         // Audio Function
         AudioManager._instance.BgmVolume(bgmVol);
         AudioManager._instance.SFXVolume(sfxVol);
+        AudioManager._instance.OtherSFXVolume(otherSfxVol);
         AudioManager._instance.IsSoundMute(bgmOn, "BGM");
         AudioManager._instance.IsSoundMute(sfxOn, "SFX");
-        
-        MySfxValueChange(sfxVol);
-        OtherSfxValueChange(otherSfxVol);
+        AudioManager._instance.IsSoundMute(otherSfxOn, "OtherSFX");
     }
 }

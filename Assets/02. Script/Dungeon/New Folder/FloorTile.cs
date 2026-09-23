@@ -64,6 +64,5 @@ public class FloorTile : MonoBehaviour
         col.enabled = true;
         isShaking = false;
 
-        Debug.Log("[FloorTile] 바닥 복귀!");
     }
 }

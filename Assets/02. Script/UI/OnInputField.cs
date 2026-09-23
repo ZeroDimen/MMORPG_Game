@@ -18,11 +18,13 @@ public class OnInputField : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(inputField.gameObject);
         // 키보드 입력 대기 상태 진입
         inputField.ActivateInputField();
+        chatManager.OnChatInputOpen();
     }
 
     private void OnDisable()
     {
         // 메시지 전송
         chatManager.SendMsg();
+        chatManager.OnChatInputClose();
     }
 }

@@ -114,7 +114,10 @@ public partial class DungeonSystem
     {
         yield return StartCoroutine(FadeManager.Instance.Fade(1f, 3f));
 
-
+        var bricks = FindObjectsOfType<FallingBrick>();
+        foreach (var brick in bricks)
+            brick.StopLoop();
+        
         CharacterController cc = player.GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
         player.transform.position = fieldSpawnPos.position;

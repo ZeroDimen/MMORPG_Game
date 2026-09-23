@@ -109,7 +109,6 @@ public class InteractableDoor : MonoBehaviourPun
         if (_isOpen)
         {
             SfxPlay("Sliding Door Open", false);
-            Debug.Log("Open");
 
         }
 
@@ -136,7 +135,6 @@ public class InteractableDoor : MonoBehaviourPun
         if (!_isOpen)
         {
             SfxPlay("Sliding Door Close", false);
-            Debug.Log("Close");
         }
     }
     

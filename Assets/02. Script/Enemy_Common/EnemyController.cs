@@ -97,10 +97,6 @@ public class EnemyController : MonoBehaviourPun
 
     private void Start()
     {
-        if (photonView.IsMine)
-            AudioPanelView.instance.mySfxAudioSources.Add(Audio);
-        else
-            AudioPanelView.instance.otherSfxAudioSources.Add(Audio);
         // Boss 몸통 콜라이더와 모든 플레이어의 CharacterController 간 물리 충돌만 무시 (공격 판정은 별도 무기 트리거/OverlapBox 방식이라 영향 없음)
         foreach (var player in FindObjectsOfType<PlayerController>())
         {
