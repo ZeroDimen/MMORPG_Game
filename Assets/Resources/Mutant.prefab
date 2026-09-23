@@ -504,9 +504,9 @@ MonoBehaviour:
   minimumRunDistance: 2
   attackWaitTime: 0
   enemyStatus:
-    maxHp: 100
-    hp: 100
-    damage: 15
+    maxHp: 30
+    hp: 30
+    damage: 13
     exp: 12
   partyId: 
   _audioClips:

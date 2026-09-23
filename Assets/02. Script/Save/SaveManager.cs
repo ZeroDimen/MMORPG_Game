@@ -136,7 +136,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
     private void RPC_ReceiveLoadEmptyData(string targetName)
     {
         if (PhotonNetwork.LocalPlayer.NickName != targetName || !_player.photonView.IsMine) return;
-        _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 50, 10, 10);
+        _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 12, 10, 10); // ATK = 10 + 2*LV(1) = 12
         _player._playerHpBarController.SetHp($"{100} / {100}");
         Debug.Log("Working");
     }

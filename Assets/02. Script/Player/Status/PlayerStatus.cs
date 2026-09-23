@@ -10,6 +10,7 @@ public class PlayerStatus
     public int MAXEXP;
     public int EXP;
     public int ATK;     // 공격력
+    public int ATKBonus; // 장비로 인한 ATK 보너스 누적치 (레벨 재계산 시 유지하기 위함)
     public int DEF;     // 방어력
     public int DEX;     // 이동속도
     public int SkillPoint; // 레벨업으로 획득하는 스킬 포인트도
@@ -90,6 +91,7 @@ public class PlayerStatus
                     break;
                 case StatType.ATK :
                     ATK += status.value;
+                    ATKBonus += status.value;
                     break;
                 case StatType.DEF :
                     DEF += status.value;
@@ -115,6 +117,7 @@ public class PlayerStatus
                     break;
                 case StatType.ATK :
                     ATK -= status.value;
+                    ATKBonus -= status.value;
                     break;
                 case StatType.DEF :
                     DEF -= status.value;

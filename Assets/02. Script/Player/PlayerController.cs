@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (Status == null) return;
         Status.SetStatus("MAXEXP", Status.LV * 10);
-        Status.SetStatus("ATK", (int)Math.Round((Status.LV * 2.5) + 15)); // 2.5는 래벨당 성장 공격력
+        Status.SetStatus("ATK", 10 + 2 * Status.LV + Status.ATKBonus); // 고정 10 + 레벨당 2 성장 + 장비 보너스 유지
         if (Status.EXP >= Status.MAXEXP)
         {
             Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);
