@@ -7,21 +7,17 @@ public class BossController : EnemyController
 
     public override void ResetAttackPoise() => _attackPoiseDamage = 0;
 
-    protected override bool ShouldInterruptOnHit(int damage)
+protected override bool ShouldInterruptOnHit(int damage)
     {
         // - 그로기: Hit 전환/넉백 없이 그로기 유지
         // - Skill1: 하이퍼아머로 완전 면역 (애니메이션 안 끊김, 데미지는 정상 적용)
-        // - Attack(일반 전투): 포이즈 누적, 임계값(45) 넘을 때만 Hit으로 끊김
+        // - 그 외 모든 State(Attack/Chase/Idle/Patrol 등): 포이즈 누적, 임계값(45) 넘을 때만 Hit으로 끊김
+        // 포이즈는 State 전환과 무관하게 하나로 이어짐 (Hit이 실제로 발동할 때만 0으로 리셋됨)
         if (State == EEnemyState.Groggy || State == EEnemyState.Skill1)
             return false;
 
-        if (State == EEnemyState.Attack)
-        {
-            _attackPoiseDamage += damage;
-            return _attackPoiseDamage >= 45;
-        }
-
-        return true;
+        _attackPoiseDamage += damage;
+        return _attackPoiseDamage >= 45;
     }
 
     protected override void Awake()
