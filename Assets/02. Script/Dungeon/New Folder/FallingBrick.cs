@@ -21,6 +21,7 @@ public class FallingBrick : MonoBehaviourPun
     [Header("데미지")]
     public int damage = 30;
 
+    private bool damageflag = false;
     private Vector3 startPos;
     private Vector3 groundPos;
     private Coroutine loopCoroutine;
@@ -78,10 +79,12 @@ public class FallingBrick : MonoBehaviourPun
         {
             // GiveSfxPlay("Spike Trap");
             SfxPlay("Spike Trap", false);
+            damageflag = true;
 
             // 1. 빠르게 낙하
             yield return StartCoroutine(MoveTo(groundPos, fallSpeed));
 
+            damageflag = false;
             // 2. 바닥에서 대기
             yield return new WaitForSeconds(waitAtBottom);
 
@@ -137,11 +140,12 @@ public class FallingBrick : MonoBehaviourPun
     {
         if (!other.gameObject.CompareTag("Player")) return;
         if (!isRunning) return;
+        if(!damageflag) return;
         
         var player = other.transform.GetComponent<PlayerController>();
         if (!player.photonView.IsMine) return;
         if(player != null)
-            player.SetHit(15);
+            player.SetHit(damage);
     }
 
     void OnDrawGizmos()

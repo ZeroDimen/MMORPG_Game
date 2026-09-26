@@ -142,11 +142,13 @@ public class InteractableDoor : MonoBehaviourPun
     {
         if (_isOpen)
         {
+            enable = false;
             GiveSfxPlay("Overhead Door Open");
         }
         else
         {
             GiveSfxPlay("Overhead Door Close");
+            enable = true;
         }
 
         Vector3 start = transform.localPosition;
