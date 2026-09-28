@@ -61,7 +61,6 @@ public class AudioManager : MonoBehaviourPunCallbacks
     // ───── 볼륨 (0~1 슬라이더 → dB 변환) ─────
     public void BgmVolume(float value)
     {
-        Debug.Log($"[BGM] slider value = {value}");
         _bgmVolume = value;
         SetVolume(BGM_PARAM, value);
     }
@@ -83,7 +82,6 @@ public class AudioManager : MonoBehaviourPunCallbacks
         float dB = (value <= 0.0001f) ? -80f : Mathf.Log10(value) * 20f;
         mixer.SetFloat(param, dB);
         bool ok = mixer.SetFloat(param, dB);
-        Debug.Log($"[SetVolume] {param} = {dB}dB, success={ok}");
     }
 
     // ───── 음소거 (토글 isOn: true=소리켜짐, false=음소거) ─────

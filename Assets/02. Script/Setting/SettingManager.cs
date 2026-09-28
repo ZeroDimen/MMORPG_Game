@@ -12,6 +12,10 @@ public class SettingManager : MonoBehaviour
     [SerializeField] private Button[] TabButtons;
     [SerializeField] private GameObject[] TabMenu;
     
+    [Header("탭 글자 색")]
+    [SerializeField] private Color selectedTextColor = Color.white;
+    [SerializeField] private Color normalTextColor = Color.gray;
+    
     private int currentTabIndex;
 
     public Volume globalVolume;
@@ -46,6 +50,8 @@ public class SettingManager : MonoBehaviour
         globalVolume.profile.TryGet(out colorAdjustments);
 
         StartCoroutine(LoadData());
+        
+        UpdateTabTextColor(0);
     }
 
     IEnumerator LoadData()
@@ -67,9 +73,23 @@ public class SettingManager : MonoBehaviour
 
     private void SelectTab(int index)
     {
+        AudioManager._instance.SfxPlay("Button");
         TabMenu[currentTabIndex].gameObject.SetActive(false);
         TabMenu[index].gameObject.SetActive(true);
         currentTabIndex = index;
+        
+        UpdateTabTextColor(index);
+    }
+    
+    private void UpdateTabTextColor(int selectedIndex)
+    {
+        for (int i = 0; i < TabButtons.Length; i++)
+        {
+            // 버튼의 자식에서 TMP 텍스트를 찾음
+            var text = TabButtons[i].GetComponentInChildren<TMPro.TMP_Text>();
+            if (text != null)
+                text.color = (i == selectedIndex) ? selectedTextColor : normalTextColor;
+        }
     }
     
     public void OnGraphicsSettingChanged(GraphicSetting type, int index, string option)
