@@ -69,7 +69,7 @@ public class GameManager :  MonoBehaviourPun
         }
         Set_Spawner("Maria");
     }
-
+    
     public void Set_Spawner(string prefabName)
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
@@ -122,7 +122,26 @@ public class GameManager :  MonoBehaviourPun
                     DungeonSystem.instance.KillMonster(enemyController.partyId);     // 일반 몹: 엘리베이터 카운트
             }
             else
-                photonView.RPC("RPC_MonsterKillQuest", info.Sender);
+            {
+                string killerName = info.Sender.NickName;
+                Party party = PartySystem.instance.partyList.Find(p => p.IsMyParty(killerName));
+
+                if (party != null)
+                {
+                    // 파티원 각각의 Photon Player를 찾아서 RPC 전송
+                    foreach (var member in party._member)
+                    {
+                        var targetPlayer = System.Array.Find(
+                            PhotonNetwork.PlayerList, p => p.NickName == member);
+                        if (targetPlayer != null)
+                            photonView.RPC("RPC_MonsterKillQuest", targetPlayer);
+                    }
+                }
+                else
+                {
+                    photonView.RPC("RPC_MonsterKillQuest", info.Sender);
+                }
+            }
         }
     }
 

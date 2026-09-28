@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
@@ -14,6 +15,7 @@ public class SkillManager : MonoBehaviour
     private SkillMold[] skillmoldObj;
     private int[] skillRanks; // 스킬별 랭크 (0 = 미해금)
     
+    
     private void SetGraphicVisible(Image graphic, bool visible)
     {
         graphic.color = visible ? Color.white : new Color(0.3f, 0.3f, 0.3f, 1f); // 잠기해도 보이게 하되 회색톤으로 구분 (클릭은 계속 가능)
@@ -23,18 +25,34 @@ public class SkillManager : MonoBehaviour
     {
         return skillRanks != null && index >= 0 && index < skillRanks.Length && skillRanks[index] > 0;
     }
+    
+    private static SkillManager _instance;
+    public static SkillManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindFirstObjectByType<SkillManager>(FindObjectsInactive.Include);
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     private void Start()
     {
         skillmoldObj = new SkillMold[skillDatas.Length];
-        skillRanks = new int[skillDatas.Length];
-        
-        for (int i = 0; i < skillDatas.Length; i++) // 수정필요 skillData 수 많큼 출력
+        if (skillRanks == null) skillRanks = new int[skillDatas.Length]; // 이미 로드된 랭크가 있으면 유지
+
+        for (int i = 0; i < skillDatas.Length; i++)
         {
             GameObject moldObj = Instantiate(Skill_mold, Skill_mold.transform.parent);
             skillmoldObj[i] = moldObj.GetComponent<SkillMold>();
             skillmoldObj[i].Init(this, i);
-            
+
             moldObj.SetActive(true);
         }
 
@@ -43,6 +61,8 @@ public class SkillManager : MonoBehaviour
 
     public void SetSkillData(int LV = 1)
     {
+        if (skillmoldObj == null || skillRanks == null) return;
+        
         for (int i = 0; i < skillDatas.Length; i++) // 수정필요 skillData 수 많큼 출력
         {
             bool unlocked = skillRanks[i] > 0;
@@ -120,5 +140,41 @@ public class SkillManager : MonoBehaviour
     public bool GetSkillUse(int num)
     {
         return skillmoldObj[num].skillUse;
+    }
+    
+    public List<SkillSaveData> GetSkillSaveData()
+    {
+        var list = new List<SkillSaveData>();
+        if (skillRanks == null) return list;
+
+        for (int i = 0; i < skillDatas.Length; i++)
+            list.Add(new SkillSaveData(skillDatas[i].skillName, skillRanks[i]));
+        return list;
+    }
+
+    public void LoadSkillData(List<SkillSaveData> saved)
+    {
+        if (saved == null) return;
+
+        if (skillRanks == null) skillRanks = new int[skillDatas.Length];
+        ApplySkillData(saved);
+
+        if (skillmoldObj != null) SetSkillData(); // 스킬창 UI가 이미 만들어졌을 때만 갱신
+    }
+
+    private void ApplySkillData(List<SkillSaveData> saved)
+    {
+        for (int i = 0; i < skillDatas.Length; i++)
+        {
+            skillRanks[i] = 0;
+            foreach (var s in saved)
+            {
+                if (s.skillName == skillDatas[i].skillName)
+                {
+                    skillRanks[i] = s.rank;
+                    break;
+                }
+            }
+        }
     }
 }

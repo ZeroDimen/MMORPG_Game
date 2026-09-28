@@ -51,6 +51,21 @@ public class InteractableDoor : MonoBehaviourPun
         _isOpen = !_isOpen;
         pv.RPC(nameof(RPC_SetDoor), RpcTarget.All, _isOpen);
     }
+    
+    public void Close()
+    {
+        pv.RPC(nameof(RPC_RequestSet), RpcTarget.MasterClient, false);
+    }
+
+    [PunRPC]
+    private void RPC_RequestSet(bool open)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        if (_isOpen == open) return;
+
+        _isOpen = open;
+        pv.RPC(nameof(RPC_SetDoor), RpcTarget.All, open);
+    }
 
     // 전원(마스터 포함)이 실제 회전 실행
     [PunRPC]
@@ -66,7 +81,6 @@ public class InteractableDoor : MonoBehaviourPun
         {
             StartCoroutine(OverheadDoor(open ? openY : closeY));
         }
-        
     }
     [PunRPC]
     public void GiveSfxPlay(string clipName, bool islong = false)
@@ -142,11 +156,11 @@ public class InteractableDoor : MonoBehaviourPun
     {
         if (_isOpen)
         {
-            GiveSfxPlay("Overhead Door Open");
+            SfxPlay("Overhead Door Open", false);
         }
         else
         {
-            GiveSfxPlay("Overhead Door Close");
+            SfxPlay("Overhead Door Close", false);
         }
 
         Vector3 start = transform.localPosition;

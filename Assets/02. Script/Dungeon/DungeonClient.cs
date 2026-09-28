@@ -268,7 +268,7 @@ public partial class DungeonSystem
         
         yield return StartCoroutine(_letterbox.Hide());
         CutTo(null);
-        bossDoor.Interact();
+        bossDoor.Close();
         UIManager.Instance.OnBossHpBar();
 
         GameManager.Instance.PopState(Constants.EGameState.Cutscene);

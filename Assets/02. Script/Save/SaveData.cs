@@ -34,6 +34,8 @@ public class CharacterSaveData
     public List<InstanceItem> equipmentItems = new List<InstanceItem>();
     public List<QuestSaveData> activeQuests = new List<QuestSaveData>();
     public List<int> completedQuestIDs = new List<int>();
+    public int SkillPoint;                                          
+    public List<SkillSaveData> skills = new List<SkillSaveData>();  
 }
 
 [Serializable]
@@ -48,6 +50,19 @@ public class QuestSaveData
         questID = id;
         taskProgresses = progresses;
         isPinned = pinned;
+    }
+}
+
+[Serializable]
+public class SkillSaveData
+{
+    public string skillName;
+    public int rank;
+
+    public SkillSaveData(string skillName, int rank)
+    {
+        this.skillName = skillName;
+        this.rank = rank;
     }
 }
 

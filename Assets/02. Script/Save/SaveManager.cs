@@ -64,16 +64,20 @@ public class SaveManager : MonoBehaviourPunCallbacks
             data.ATK = _player.Status.ATK;
             data.DEF = _player.Status.DEF;
             data.DEX = _player.Status.DEX;
+            data.SkillPoint = _player.Status.SkillPoint;
         }
         
         if (_inventoryModel != null)
             data.inventoryItems = _inventoryModel.GetSaveData();
-
+        
         if (QuestManager.Instance != null)
         {
             data.activeQuests = QuestManager.Instance.GetActiveQuestSaveData();
             data.completedQuestIDs = QuestManager.Instance.completedQuestIDs;
         }
+        
+        if (SkillManager.Instance != null)
+            data.skills = SkillManager.Instance.GetSkillSaveData();
 
         // 2. JSON 직렬화
         string json = JsonUtility.ToJson(data, true);
@@ -156,6 +160,7 @@ public class SaveManager : MonoBehaviourPunCallbacks
             if (!_player.photonView.IsMine) return;
             _player.Status = new PlayerStatus(data.HP, data.MAXHP, data.LV, data.MAXEXP,
                 data.EXP, data.ATK, data.DEF, data.DEX);
+            _player.Status.SetStatus("SkillPoint", data.SkillPoint);
             _player._playerHpBarController.SetHp((float)data.HP / data.MAXHP);
             _player._playerHpBarController.SetHp($"{data.HP} / {data.MAXHP}");
             PlayerStatusView.Instance.UpdateStatusUI(_player.Status);
@@ -170,6 +175,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
             {
                 QuestManager.Instance.LoadQuestData(data.activeQuests, data.completedQuestIDs);
             }
+            
+            if (SkillManager.Instance != null)
+                SkillManager.Instance.LoadSkillData(data.skills);
             
             Debug.Log($"[Client] 방장으로부터 데이터를 받아 복구 완료: {targetName}");
         }
