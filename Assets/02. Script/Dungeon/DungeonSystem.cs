@@ -156,7 +156,7 @@ public void SetHangingCageDark()
     private void RPC_TriggerCameraShake()
     {
         if (impulseSource != null)
-            impulseSource.GenerateImpulse(0.5f); // 흔들림 세기 절반
+            impulseSource.GenerateImpulse(0.3f); // 흔들림 세기 절반
     }
 
 

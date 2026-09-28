@@ -30,6 +30,8 @@ private IEnumerator JumpCombo()
 
         if (isFullCombo)
             DungeonSystem.instance.SetHangingCageDark(); // 즉시 암전 (지속시간 타이머 없음 - 콤보가 끝날 때까지 유지됨)
+        else
+            _enemyController.RerollTarget(); // 단발 점프 시작 시 어그로 리롤 (50% 초과 구간용)
 
         for (int i = 0; i < jumpCount; i++)
         {
@@ -64,7 +66,25 @@ private IEnumerator JumpCombo()
     {
         _enemyController.RpcSetTrigger(EnemyAniParamSkill1);
 
-        yield return new WaitForSeconds(1f); // 준비 자세 대기
+        // 준비 자세(1초) 동안 점프 방향으로 서서히 회전
+        Vector3 direction = targetPos - _enemyController.transform.position;
+        direction.y = 0f;
+        if (direction.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction.normalized);
+            float rotElapsed = 0f;
+            while (rotElapsed < 1f)
+            {
+                rotElapsed += Time.deltaTime;
+                _enemyController.transform.rotation = Quaternion.Slerp(_enemyController.transform.rotation, targetRotation, rotElapsed / 1f);
+                yield return null;
+            }
+            _enemyController.transform.rotation = targetRotation;
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f); // 준비 자세 대기
+        }
 
         // 체공 시작 → AoE 인디케이터 표시
         _enemyController.ShowJumpIndicator(targetPos, 6.0f, 6.0f);

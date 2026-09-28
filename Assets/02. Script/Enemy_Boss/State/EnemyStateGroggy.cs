@@ -20,5 +20,6 @@ public void Enter()
 public void Exit()
     {
         _enemyController.LastGroggyEndTime = Time.time;
+        _enemyController.RerollTarget(); // 그로기 종료 시 타겟(어그로) 재추첨
     }
 }

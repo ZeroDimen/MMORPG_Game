@@ -208,6 +208,8 @@ public class GameManager :  MonoBehaviourPun
         {
             return navHit.position;
         }
+        Debug.Log($"rawPos: {rawPos}");
+        Debug.Log($"navHit: {navHit.position}");
         return rawPos;
     }
 

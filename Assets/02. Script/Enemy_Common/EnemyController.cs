@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviourPun
     public float MinimumRunDistance => minimumRunDistance;
     public float AttackWaitTime => attackWaitTime;
 
-    private Collider[] _detectionResults = new Collider[1];
+    private Collider[] _detectionResults = new Collider[4]; // 파티 인원 수만큼 동시 감지 (어그로 재추첨용)
 
     protected Animator _animator;
     protected NavMeshAgent _navMeshAgent;
@@ -242,6 +242,18 @@ public int SetHit(int damage)
 
 // 타겟 Transform 외부 접근용
     public Transform TargetTransform => _targetTransform;
+
+    // 감지 범위 안의 플레이어 중 하나를 무작위로 새 타겟으로 재선정 (어그로 변경 연출용)
+    public void RerollTarget()
+    {
+        int count = Physics.OverlapSphereNonAlloc(transform.position,
+            PatrolDetectionDistance, _detectionResults, detactionTargetLayerMask);
+
+        if (count == 0) return; // 감지된 플레이어 없으면 기존 타겟 유지
+
+        int index = Random.Range(0, count);
+        _targetTransform = _detectionResults[index].transform;
+    }
 
     // 점프 공격 이동 코루틴 (MasterClient 전용)
 // AoE 인디케이터
