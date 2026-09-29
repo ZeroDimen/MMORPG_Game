@@ -35,7 +35,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // Destory될때까지 기다리기
         yield return new WaitForSeconds(0.2f);
         PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("Intro");
         yield return new WaitForSeconds(0.2f);
+        
         
         #if UNITY_EDITOR
             EditorApplication.isPlaying = false;

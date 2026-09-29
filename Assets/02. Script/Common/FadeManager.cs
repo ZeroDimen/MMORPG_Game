@@ -51,6 +51,11 @@ public class FadeManager : MonoBehaviour
             PhotonNetwork.IsMessageQueueRunning = true; // Scene 변경시 네트워크 메시지 일시정지 해제
             StartCoroutine(FadeOut());
         }
+        else if (scene.name == "Intro")
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         else
         {
             Debug.Log("씬 로드 성공: " + scene.name);
