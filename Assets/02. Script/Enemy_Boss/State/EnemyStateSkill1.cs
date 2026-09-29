@@ -30,11 +30,10 @@ private IEnumerator JumpCombo()
 
         if (isFullCombo)
             DungeonSystem.instance.SetHangingCageDark(); // 즉시 암전 (지속시간 타이머 없음 - 콤보가 끝날 때까지 유지됨)
-        else
-            _enemyController.RerollTarget(); // 단발 점프 시작 시 어그로 리롤 (50% 초과 구간용)
 
         for (int i = 0; i < jumpCount; i++)
         {
+            _enemyController.RerollTarget(); // 매 점프 직전 어그로 리롤 (단발/콤보 공통)
             var target = _enemyController.TargetTransform;
             if (target == null)
             {
