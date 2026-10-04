@@ -1,0 +1,191 @@
+using System.Collections;
+using System.Collections.Generic;
+using Photon.Pun;
+using UnityEngine;
+
+public class InteractableDoor : MonoBehaviourPun
+{
+    public enum DoorMode
+    {
+        SlidingDoor,
+        OverheadDoor
+    }
+    
+    [SerializeField] private DoorMode doorMode;
+    public bool enable = true;
+    [SerializeField] private float openAngle = 90f;
+    [SerializeField] private float openTime = 1f; // 문이 열리고 닫히는 데 걸리는 시간(초).
+    [SerializeField] private float closeY = 0f;
+    [SerializeField] private float openY = 3.5f;
+    [SerializeField] private float overheadEaseInPower = 2.5f; // 1이면 등속, 클수록 처음엔 느리고 끝에 급가속하는 정도가 커짐
+    public AudioSource Audio { get; private set; }
+    [SerializeField] private AudioClip[] _audioClips;
+    
+    private bool _isOpen = false;   // 실제 상태 — 마스터가 소유
+    private Quaternion _closedRot;
+    private Quaternion _openRot;
+
+    private PhotonView pv;
+
+    private void Start()
+    {
+        pv = GetComponent<PhotonView>();
+        Audio = GetComponent<AudioSource>();
+        _closedRot = transform.localRotation;
+        _openRot = _closedRot * Quaternion.Euler(0f, openAngle, 0f);
+    }
+
+    // 플레이어(로컬)가 E를 눌렀을 때 호출 → 마스터에게 요청만 보냄
+    public void Interact()
+    {
+        if (enable == false) return;
+        pv.RPC(nameof(RPC_RequestToggle), RpcTarget.MasterClient);
+    }
+
+    // 마스터에서만 실행 — 상태를 결정하고 전원에게 broadcast
+    [PunRPC]
+    private void RPC_RequestToggle()
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        _isOpen = !_isOpen;
+        pv.RPC(nameof(RPC_SetDoor), RpcTarget.All, _isOpen);
+    }
+    
+    public void Close()
+    {
+        pv.RPC(nameof(RPC_RequestSet), RpcTarget.MasterClient, false);
+    }
+
+    [PunRPC]
+    private void RPC_RequestSet(bool open)
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+        if (_isOpen == open) return;
+
+        _isOpen = open;
+        pv.RPC(nameof(RPC_SetDoor), RpcTarget.All, open);
+    }
+
+    // 전원(마스터 포함)이 실제 회전 실행
+    [PunRPC]
+    private void RPC_SetDoor(bool open)
+    {
+        StopAllCoroutines();
+        _isOpen = open;
+        if (doorMode == DoorMode.SlidingDoor)
+        {
+            StartCoroutine(RotateDoor(open ? _openRot : _closedRot));
+        }
+        else if (doorMode == DoorMode.OverheadDoor)
+        {
+            StartCoroutine(OverheadDoor(open ? openY : closeY));
+        }
+    }
+    [PunRPC]
+    public void GiveSfxPlay(string clipName, bool islong = false)
+    {
+        SfxPlay(clipName, islong);
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(ReceiveSfxPlay), RpcTarget.Others, clipName, id, islong);
+    }
+
+    [PunRPC]
+    public void ReceiveSfxPlay(string clipName, int viewId, bool islong)
+    {
+        if (photonView.ViewID == viewId)
+            SfxPlay(clipName, islong);
+    }
+    public void SfxPlay(string clipName, bool islong) // 효과음을 출력하는 함수
+    {
+        foreach (var clip in _audioClips)
+        {
+            if (clip.name == clipName)
+            {
+                if (!islong)
+                {
+                    Audio.PlayOneShot(clip);
+                    return;
+                }
+                else
+                {
+                    Audio.clip = clip;
+                    Audio.Play();
+                    return;
+                }
+            }
+        }
+        Debug.Log($"{clipName} not found");
+    }
+
+    private IEnumerator RotateDoor(Quaternion target)
+    {
+        if (_isOpen)
+        {
+            SfxPlay("Sliding Door Open", false);
+
+        }
+
+        Quaternion start = transform.localRotation;
+        float elapsed = 0f;
+
+        // openTime이 0 이하로 설정된 경우를 대비한 안전장치
+        if (openTime <= 0f)
+        {
+            transform.localRotation = target;
+        }
+        else
+        {
+            while (elapsed < openTime)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / openTime);
+                transform.localRotation = Quaternion.Slerp(start, target, t);
+                yield return null;
+            }
+        }
+
+        transform.localRotation = target;
+        if (!_isOpen)
+        {
+            SfxPlay("Sliding Door Close", false);
+        }
+    }
+    
+    private IEnumerator OverheadDoor(float targetY)
+    {
+        if (_isOpen)
+        {
+            SfxPlay("Overhead Door Open", false);
+            enable = false;
+        }
+        else
+        {
+            SfxPlay("Overhead Door Close", false);
+            enable = true;
+        }
+
+        Vector3 start = transform.localPosition;
+        Vector3 target = new Vector3(start.x, targetY, start.z);
+        float elapsed = 0f;
+
+        // openTime이 0 이하로 설정된 경우를 대비한 안전장치
+        if (openTime <= 0f)
+        {
+            transform.localPosition = target;
+        }
+        else
+        {
+            while (elapsed < openTime)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / openTime);
+                float easedT = Mathf.Pow(t, overheadEaseInPower); // 처음엔 느리게, 끝에서 빠르게
+                transform.localPosition = Vector3.Lerp(start, target, easedT);
+                yield return null;
+            }
+        }
+
+        transform.localPosition = target;
+    }
+}

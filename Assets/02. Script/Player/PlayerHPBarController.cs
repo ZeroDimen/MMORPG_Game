@@ -15,10 +15,12 @@ public class PlayerHPBarController : MonoBehaviourPun
         if (photonView.IsMine)
         {
             _canvas = GameManager.Instance.Canvas;
-            _hpBar = Instantiate(hpBarPrefab,_canvas.transform).GetComponent<PlayerHpBar>();
+            Transform canvasGroup = _canvas.GetComponentInChildren<CanvasGroup>().transform;
+            _hpBar = Instantiate(hpBarPrefab,canvasGroup).GetComponent<PlayerHpBar>();
             _playerController = photonView.GetComponent<PlayerController>();
             // 캔버스 자식 중 가장 아래로 이동
             _hpBar.transform.SetAsFirstSibling();
+            GameEvents.OnPlayerHpChanged += ChangeHp;
 
             StartCoroutine(Init());
         }
@@ -33,16 +35,30 @@ public class PlayerHPBarController : MonoBehaviourPun
     
     public void SetHp(float hp)
     {
+        if (_hpBar == null) return;
+
         _hpBar.SetHPGauge(hp);
     }
 
     public void SetHp(string text)
     {
+        if (_hpBar == null) return;
+
         _hpBar.SetHpText(text);
     }
 
     public void SetExp(string text)
     {
+        if (_hpBar == null) return;
+
         _hpBar.SetExpText(text);
+    }
+
+    public void ChangeHp(PlayerStatus status)
+    {
+        SetHp($"{status.HP} / {status.MAXHP}");
+        float result = (float)status.HP / status.MAXHP;
+
+        SetHp(result);
     }
 }

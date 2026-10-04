@@ -35,7 +35,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // Destory될때까지 기다리기
         yield return new WaitForSeconds(0.2f);
         PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("Intro");
         yield return new WaitForSeconds(0.2f);
+        
         
         #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
@@ -64,16 +66,20 @@ public class SaveManager : MonoBehaviourPunCallbacks
             data.ATK = _player.Status.ATK;
             data.DEF = _player.Status.DEF;
             data.DEX = _player.Status.DEX;
+            data.SkillPoint = _player.Status.SkillPoint;
         }
         
         if (_inventoryModel != null)
             data.inventoryItems = _inventoryModel.GetSaveData();
-
+        
         if (QuestManager.Instance != null)
         {
             data.activeQuests = QuestManager.Instance.GetActiveQuestSaveData();
             data.completedQuestIDs = QuestManager.Instance.completedQuestIDs;
         }
+        
+        if (SkillManager.Instance != null)
+            data.skills = SkillManager.Instance.GetSkillSaveData();
 
         // 2. JSON 직렬화
         string json = JsonUtility.ToJson(data, true);
@@ -107,8 +113,8 @@ public class SaveManager : MonoBehaviourPunCallbacks
     // [클라이언트가 호출] 게임 시작 시 혹은 복구 시 방장에게 데이터를 달라고 요청함
     public void LoadGameFromMaster(PlayerController player)
     {
-        if (!PhotonNetwork.InRoom) return;
-
+        if (!PhotonNetwork.InRoom || !player.photonView.IsMine) return;
+        
         _player = player;
         photonView.RPC("RPC_RequestLoadData", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.NickName);
     }
@@ -135,8 +141,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_ReceiveLoadEmptyData(string targetName)
     {
-        if (PhotonNetwork.LocalPlayer.NickName != targetName) return;
-        _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 50, 10, 10);
+        if (PhotonNetwork.LocalPlayer.NickName != targetName || !_player.photonView.IsMine) return;
+        _player.Status = new PlayerStatus(100, 100, 1, 10, 0, 12, 10, 10); // ATK = 10 + 2*LV(1) = 12
+        _player._playerHpBarController.SetHp($"{100} / {100}");
         Debug.Log("Working");
     }
 
@@ -152,8 +159,12 @@ public class SaveManager : MonoBehaviourPunCallbacks
         // 2. 실제 게임 시스템에 데이터 적용 (기존 LoadGame의 역할)
         if (data != null)
         {
+            if (!_player.photonView.IsMine) return;
             _player.Status = new PlayerStatus(data.HP, data.MAXHP, data.LV, data.MAXEXP,
                 data.EXP, data.ATK, data.DEF, data.DEX);
+            _player.Status.SetStatus("SkillPoint", data.SkillPoint);
+            _player._playerHpBarController.SetHp((float)data.HP / data.MAXHP);
+            _player._playerHpBarController.SetHp($"{data.HP} / {data.MAXHP}");
             PlayerStatusView.Instance.UpdateStatusUI(_player.Status);
             
             // 인벤토리 복구
@@ -166,6 +177,9 @@ public class SaveManager : MonoBehaviourPunCallbacks
             {
                 QuestManager.Instance.LoadQuestData(data.activeQuests, data.completedQuestIDs);
             }
+            
+            if (SkillManager.Instance != null)
+                SkillManager.Instance.LoadSkillData(data.skills);
             
             Debug.Log($"[Client] 방장으로부터 데이터를 받아 복구 완료: {targetName}");
         }

@@ -1,0 +1,84 @@
+using UnityEngine;
+using UnityEngine.AI;
+using static Constants;
+
+public class EnemyStateChase: EnemyState, ICharacterState
+{
+    private float _waitTime;
+    
+    public EnemyStateChase(EnemyController enemyController, Animator animator, NavMeshAgent navMeshAgent) 
+        : base(enemyController, animator, navMeshAgent) { }
+
+    public void Enter()
+    {
+        // NavMesh에 정상 배치된 상태일 때만 Resume(isStopped=false) 호출 - 예외 방지
+        if (_navMeshAgent.isOnNavMesh)
+        {
+            _navMeshAgent.isStopped = false;
+        }
+        _enemyController.RpcSetBool(EnemyAniParamChase, true); // 로컬에서 직접 수정하지 않고, RPC로 모든 클라이언트의 Animator에 동기화
+
+        _waitTime = 0f;
+    }
+
+    public void Update()
+    {
+        var detectionTargetTransform = _enemyController.DetectionTargetInCircle();
+        if (detectionTargetTransform)
+        {
+            // 공격
+            if (!_navMeshAgent.pathPending &&
+                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
+                _waitTime > _enemyController.AttackWaitTime &&
+                DetectionTargetInSight(detectionTargetTransform.position))
+            {
+                _enemyController.SetState(EEnemyState.Attack);
+            }
+            else
+            {
+                _waitTime = 0f;
+            }
+            
+            // 달리기 구현
+            if (DetectionTargetInSight(detectionTargetTransform.position)
+                && _navMeshAgent.remainingDistance > _enemyController.MinimumRunDistance)
+            {
+                _animator.SetFloat(EnemyAniParamMoveSpeed, 1);
+            }
+            else
+            {
+                _animator.SetFloat(EnemyAniParamMoveSpeed, 0);
+            }
+            
+            _navMeshAgent.SetDestination(detectionTargetTransform.position);
+        }
+        else
+        {
+            _enemyController.SetState(EEnemyState.Idle);
+        }
+        
+        _waitTime += Time.deltaTime;
+    }
+
+    public void Exit()
+    {
+        _enemyController.RpcSetBool(EnemyAniParamChase, false);
+    }
+    
+    //
+    private bool DetectionTargetInSight(Vector3 position)
+    {
+        var cosTheta = Vector3.Dot(_enemyController.transform.forward,
+            (position - _enemyController.transform.position).normalized);
+        var angle = Mathf.Acos(cosTheta) * Mathf.Rad2Deg;
+
+        if (angle < _enemyController.DetectionSightAngle)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}

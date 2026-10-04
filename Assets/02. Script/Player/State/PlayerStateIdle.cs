@@ -16,7 +16,9 @@ public class PlayerStateIdle: PlayerState, ICharacterState
         _playerInput.actions["Fire"].performed += Attack;
         _playerInput.actions["Jump"].performed += Jump;
         _playerInput.actions["Emotion1"].performed += Emotion1;
-        _playerInput.actions["Emotion2"].performed += Emotion2;
+        _playerInput.actions["Skill1"].performed += Skill1;
+        _playerInput.actions["Skill2"].performed += Skill2;
+        
     }
 
     public void Update()
@@ -36,6 +38,7 @@ public class PlayerStateIdle: PlayerState, ICharacterState
         _playerInput.actions["Fire"].performed -= Attack;
         _playerInput.actions["Jump"].performed -= Jump;
         _playerInput.actions["Emotion1"].performed -= Emotion1;
-        _playerInput.actions["Emotion2"].performed -= Emotion2;
+        _playerInput.actions["Skill1"].performed -= Skill1;
+        _playerInput.actions["Skill2"].performed -= Skill2;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -10,31 +11,54 @@ using static Constants;
 public class PlayerController : MonoBehaviourPun
 {
     [SerializeField] private Transform headTransform;
+    public SkillManager skillManager;
     public PlayerStatus Status;
-    
-    [Header("이동")] 
-    [SerializeField] [Range(1, 5)] private float breakForce = 1f;
-    
+
+    [Header("이동")]
+    [SerializeField] private float breakTime = 0.5f; // 풀스피드에서 정지까지 걸리는 시간(초)
+
     [SerializeField] private float jumpHeight = 2f;
-    
-    public float BreakForce => breakForce;
+
+    public float BreakTime => breakTime;
+
+    [Header("공격")]
+    [Range(0f, 1f)]
+    [SerializeField] private float attackCancelThreshold = 1f; // 공격 애니메이션 진행률이 이 값을 넘어야 이동으로 캔슬 가능 (0=즉시, 1=끝까지 불가)
+
+    public float AttackCancelThreshold => attackCancelThreshold;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float skill1CancelThreshold = 1f; // Skill1(Fire Strike) 진행률이 이 값을 넘어야 이동으로 캔슬 가능
+    [Range(0f, 1f)]
+    [SerializeField] private float skill2CancelThreshold = 1f; // Skill2(Water Spin) 진행률이 이 값을 넘어야 이동으로 캔슬 가능
+
+    public float Skill1CancelThreshold => skill1CancelThreshold;
+    public float Skill2CancelThreshold => skill2CancelThreshold;
 
     [SerializeField] private AudioClip[] _audioClips;
     public AudioSource Audio { get; private set; }
-    
+
     // 컴포넌트 캐싱
     private Animator _animator;
     private PlayerInput _playerInput;
     private CharacterController _characterController;
-    private PlayerHPBarController _playerHpBarController;
-    
+    public PlayerHPBarController _playerHpBarController { get; private set; }
+    public bool IsGrounded => _characterController.isGrounded;
+
     // 상태 정보
-    public EPlayerState State; 
-    private Dictionary<EPlayerState,ICharacterState> _states;
-    
+    public EPlayerState State;
+    public bool IsAttacking { get; set; }
+    private Dictionary<EPlayerState, ICharacterState> _states;
+
     // 캐릭터 이동 정보
     private float _velocityY;
+
+
+    public ELocationState LocationState { get; private set; } = ELocationState.Field;
+    private bool _cursorHeld = false;
     
+    [SerializeField] private float interactDistance = 2.5f;
+
     private void Awake()
     {
         // 컴포넌트 초기화
@@ -42,53 +66,84 @@ public class PlayerController : MonoBehaviourPun
         _playerInput = GetComponent<PlayerInput>();
         _characterController = GetComponent<CharacterController>();
         Audio = GetComponent<AudioSource>();
-        
-        
+        skillManager = GameObject.FindWithTag("SkillManager").GetComponent<SkillManager>();
+
+
         // 상태 객체 초기화
-        var playerStateIdle = new PlayerStateIdle(this,  _animator, _playerInput);
-        var playerStateMove = new PlayerStateMove(this,  _animator, _playerInput);
-        var playerStateJump = new PlayerStateJump(this,  _animator, _playerInput);
+        var playerStateIdle = new PlayerStateIdle(this, _animator, _playerInput);
+        var playerStateMove = new PlayerStateMove(this, _animator, _playerInput);
+        var playerStateJump = new PlayerStateJump(this, _animator, _playerInput);
+        var playerStateSpawn = new PlayerStateSpawn(this, _animator, _playerInput);
         var playerStateAttack = new PlayerStateAttack(this, _animator, _playerInput);
         var playerStateHit = new PlayerStateHit(this, _animator, _playerInput);
         var playerStateDead = new PlayerStateDead(this, _animator, _playerInput);
         var playerStateEmotion1 = new PlayerStateEmotion1(this, _animator, _playerInput);
-        var playerStateEmotion2 = new PlayerStateEmotion2(this, _animator, _playerInput);
+        var playerStateSkill1 = new PlayerStateSkill1(this, _animator, _playerInput, skillManager);
+        var playerStateSkill2 = new PlayerStateSkill2(this, _animator, _playerInput, skillManager);
 
         _states = new Dictionary<EPlayerState, ICharacterState>
         {
             { EPlayerState.Idle, playerStateIdle },
             { EPlayerState.Move, playerStateMove },
             { EPlayerState.Jump, playerStateJump },
+            { EPlayerState.Spawn , playerStateSpawn },
             { EPlayerState.Attack, playerStateAttack },
             { EPlayerState.Hit, playerStateHit },
             { EPlayerState.Dead, playerStateDead },
             { EPlayerState.Emotion1, playerStateEmotion1 },
-            { EPlayerState.Emotion2, playerStateEmotion2 },
+            { EPlayerState.Skill1, playerStateSkill1 },
+            { EPlayerState.Skill2, playerStateSkill2 },
         };
-        
+
         _playerHpBarController = GetComponent<PlayerHPBarController>();
-        GameManager.Instance.SetGameState(EGameState.Play);
     }
 
     protected virtual void Start()
     {
         if (photonView.IsMine)
         {
+            SetSpawn();
+
             // chatting 상호작용
-            _playerInput.actions["Chat"].performed += _ => GameManager.Instance.SetChattingInputField();
+            _playerInput.actions["Chat"].performed += OnChat;
             
+            _playerInput.actions["Cursor"].performed += OnCursor;
+            _playerInput.actions["Cursor"].canceled += OffCursor;
+
             // GameManager에서 LocalPlayer → PlayerController 접근할 수 있도록 설정
             PhotonNetwork.LocalPlayer.TagObject = this;
-            
+
+            GameManager.Instance.ResetToPlay();
+            SaveManager.Instance.LoadGameFromMaster(this);
+            StartCoroutine(GetPlayerStatus());
         }
         SaveManager.Instance.LoadGameFromMaster(this);
+
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.LocalPlayer.TagObject = this;
+            Audio.outputAudioMixerGroup = AudioManager._instance.SfxGroup;
+        }
+        else
+        {
+            Audio.outputAudioMixerGroup = AudioManager._instance.OtherSfxGroup;
+            // Boss 등 모든 EnemyController와 내 CharacterController 간 물리 충돌만 무시 (무기 트리거 판정에는 영향 없음)
+            foreach (var enemy in FindObjectsOfType<EnemyController>())
+            {
+                var enemyCollider = enemy.GetComponent<Collider>();
+                if (enemyCollider != null)
+                {
+                    Physics.IgnoreCollision(_characterController, enemyCollider, true);
+                }
+            }
+        }
     }
 
     private void OnEnable()
     {
         // 상태 초기화
         State = EPlayerState.None;
-        
+
         _playerInput.camera = Camera.main;
     }
 
@@ -98,8 +153,18 @@ public class PlayerController : MonoBehaviourPun
         {
             _states[State].Update();
         }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SetHit(150);
+        }
+        
+        if (photonView.IsMine && Input.GetKeyDown(KeyCode.E))
+        {
+            TryInteract();
+        }
     }
-    
+
     // 새로운 상태를 할당하는 함수
     public void SetState(EPlayerState state)
     {
@@ -108,7 +173,7 @@ public class PlayerController : MonoBehaviourPun
         State = state;
         if (State != EPlayerState.None) _states[State].Enter();
     }
-    
+
     // EGameState.Interaction일때 조작 비활성화 
     public void SetPlayerInputEnabled(bool enabled)
     {
@@ -120,28 +185,42 @@ public class PlayerController : MonoBehaviourPun
             _playerInput.actions.FindAction("Fire").Enable();
             _playerInput.actions.FindAction("Look").Enable();
             _playerInput.actions.FindAction("Move").Enable();
+            _playerInput.actions.FindAction("Skill1").Enable();
+            _playerInput.actions.FindAction("Skill2").Enable();
+
         }
         else
         {
+            if (State == EPlayerState.Move)
+                SetState(EPlayerState.Idle);
+            
+            GiveSfxStop();
+            
             _playerInput.actions.FindAction("Jump").Disable();
             _playerInput.actions.FindAction("Fire").Disable();
             _playerInput.actions.FindAction("Look").Disable();
             _playerInput.actions.FindAction("Move").Disable();
+            _playerInput.actions.FindAction("Skill1").Disable();
+            _playerInput.actions.FindAction("Skill2").Disable();
         }
     }
-    
-    
+
+
     public void SetHit(int damage)
     {
-        if (!photonView.IsMine) return;
-        
+        if (!photonView.IsMine || Status == null) return;
+
         int processDamage = damage - Status.DEF;
-        Status.HP -= processDamage;
+        if (processDamage <= 0)
+        {
+            processDamage = 1;
+        }
+        Status.SetStatus("HP", Status.HP - processDamage);
 
         float result = (float)Status.HP / Status.MAXHP;
 
         _playerHpBarController.SetHp(result);
-        
+
         if (Status.HP <= 0)
         {
             SetState(EPlayerState.Dead);
@@ -156,52 +235,115 @@ public class PlayerController : MonoBehaviourPun
 
     public void SetExp(int amount)
     {
-        if (!photonView.IsMine) return;
-        GameEvents.OnSetExp?.Invoke(Status.EXP + amount);
+        if (!photonView.IsMine || Status == null) return;
+
+        if (amount != 0)
+            Status.SetStatus("EXP", Status.EXP + amount);
+        else
+            Status.SetStatus("EXP", 0);
+
         SetLevel();
         _playerHpBarController.SetExp($"LV : {Status.LV} | {Status.EXP} / {Status.MAXEXP}");
         PlayerStatusView.Instance.UpdateStatusUI(Status);
+        skillManager.SetSkillData(Status.LV);
     }
 
     private void SetLevel()
     {
-        GameEvents.OnSetMaxExp?.Invoke(Status.LV * 10);
+        if (Status == null) return;
+        Status.SetStatus("MAXEXP", Status.LV * 10);
+        Status.SetStatus("ATK", 10 + 2 * Status.LV + Status.ATKBonus); // 고정 10 + 레벨당 2 성장 + 장비 보너스 유지
         if (Status.EXP >= Status.MAXEXP)
         {
-            GameEvents.OnSetExp?.Invoke(Status.EXP - Status.MAXEXP);
-            GameEvents.OnSetLevel?.Invoke(Status.LV + 1);
+            Status.SetStatus("EXP", Status.EXP - Status.MAXEXP);
+            Status.SetStatus("LV", Status.LV + 1);
+            Status.SetStatus("SkillPoint", Status.SkillPoint + 1);;
             GameEvents.OnPlayerLevelUpEvent?.Invoke();
             SetExp(0);
         }
-        
     }
-    
+
     // 점프
     public void Jump()
     {
         if (!_characterController.isGrounded) return;
         _velocityY = Mathf.Sqrt(jumpHeight * -2f * Gravity);
     }
-    
+
     private void OnAnimatorMove()
     {
-        if (State == EPlayerState.None) return;
-        
+        if (State == EPlayerState.None || !_characterController.enabled) return;
+
         Vector3 movePosition;
         if (_characterController.isGrounded)
         {
-            movePosition = _animator.deltaPosition;            
+            movePosition = _animator.deltaPosition;
+
+            if (_velocityY < 0f)
+                _velocityY = -2f;
         }
         else
         {
             movePosition = _characterController.velocity * Time.deltaTime;
         }
-        
+
         _velocityY += Gravity * Time.deltaTime;
         movePosition.y = _velocityY * Time.deltaTime;
         _characterController.Move(movePosition);
     }
 
+    public void OnDeathAnimationEnd()
+    {
+        if (!photonView.IsMine) return;
+        UIManager.Instance.OnGameOverPanel(OnRespawn);
+    }
+
+    private void OnRespawn()
+    {
+        StartCoroutine(RespawnRoutine());
+    }
+
+    IEnumerator RespawnRoutine()
+    {
+        Vector3 pos = Vector3.zero;
+        switch (LocationState)
+        {
+            case ELocationState.Field :
+                pos = GameManager.Instance.GetRandomPosition(GameManager.Instance.SpawnPoints[0].point,
+                    GameManager.Instance.SpawnPoints[0].radius);
+                break;
+            case ELocationState.DungeonPreBoss :
+                pos = GameManager.Instance.GetRandomPosition(GameManager.Instance.SpawnPoints[4].point,
+                    GameManager.Instance.SpawnPoints[4].radius);
+                break;
+            case ELocationState.DungeonBoss :
+                pos = GameManager.Instance.GetRandomPosition(GameManager.Instance.SpawnPoints[5].point,
+                    GameManager.Instance.SpawnPoints[5].radius);
+                break;
+        }
+        
+        yield return StartCoroutine(FadeManager.Instance.Fade(1f));
+        
+        _characterController.enabled = false;
+        transform.position = pos;
+        
+        Status.SetStatus("HP", Status.MAXHP);
+        _playerHpBarController.SetHp($"{Status.MAXHP} / {Status.MAXHP}");
+        _playerHpBarController.SetHp(Status.MAXHP);
+        yield return new WaitForSeconds(1.5f);
+        
+        SetState(EPlayerState.Spawn);
+        yield return new WaitForSeconds(1.5f);
+        yield return StartCoroutine(FadeManager.Instance.Fade(0f));
+        _characterController.enabled = true;
+    }
+
+    public void SetLocationState(ELocationState state)
+    {
+        if (!photonView.IsMine) return;
+        LocationState = state;
+    }
+    
     [PunRPC]
     public void GiveSfxPlay(string clipName, bool islong = false)
     {
@@ -213,10 +355,10 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     public void ReceiveSfxPlay(string clipName, int viewId, bool islong)
     {
-        if(photonView.ViewID == viewId)
+        if (photonView.ViewID == viewId)
             SfxPlay(clipName, islong);
     }
-    
+
     public void SfxPlay(string clipName, bool islong) // 효과음을 출력하는 함수
     {
         foreach (var clip in _audioClips)
@@ -250,8 +392,72 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     public void RecieveSfxStop(int viewID)
     {
-        if(photonView.ViewID == viewID)
+        if (photonView.ViewID == viewID)
             Audio.Stop();
     }
+
+    private void SetSpawn()
+    {
+        var id = photonView.ViewID;
+        photonView.RPC(nameof(ReceiveSpawn), RpcTarget.Others, id);
+    }
+
+    [PunRPC]
+    public void ReceiveSpawn(int viewID)
+    {
+        if (photonView.ViewID == viewID)
+        {
+            SetState(EPlayerState.Spawn);
+        }
+    }
+
+    IEnumerator GetPlayerStatus()
+    {
+        yield return new WaitUntil((() => Status != null));
+        skillManager.SetSkillData(Status.LV);
+    }
+
+    private void OnCursor(InputAction.CallbackContext _)
+    {
+        if (_cursorHeld) return;
+        if (GameManager.Instance.GameState != EGameState.Play) return;
+
+        GameManager.Instance.PushState(EGameState.Interaction);
+        _cursorHeld = true;
+    }
     
+    private void OffCursor(InputAction.CallbackContext _)
+    {
+        if (!_cursorHeld) return;
+
+        GameManager.Instance.PopState(EGameState.Interaction);
+        _cursorHeld = false;
+    }
+    
+    private void TryInteract()
+    {
+        // 플레이어 주변 짧은 범위에서 문 찾기
+        Collider[] hits = Physics.OverlapSphere(transform.position, interactDistance);
+        foreach (var hit in hits)
+        {
+            var door = hit.GetComponent<InteractableDoor>();
+            if (door != null)
+            {
+                door.Interact();
+                break; // 하나만 상호작용
+            }
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        if (!photonView.IsMine) return;
+
+        _playerInput.actions["Chat"].performed -= OnChat;
+        _playerInput.actions["Cursor"].performed -= OnCursor;
+        _playerInput.actions["Cursor"].canceled  -= OffCursor;
+    }
+    
+    private void OnChat(InputAction.CallbackContext _)
+        => GameManager.Instance.SetChattingInputField();
 }

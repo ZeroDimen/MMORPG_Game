@@ -1,3 +1,5 @@
+using ExitGames.Client.Photon;
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerStatus
@@ -8,8 +10,11 @@ public class PlayerStatus
     public int MAXEXP;
     public int EXP;
     public int ATK;     // 공격력
+    public int ATKBonus; // 장비로 인한 ATK 보너스 누적치 (레벨 재계산 시 유지하기 위함)
     public int DEF;     // 방어력
     public int DEX;     // 이동속도
+    public int SkillPoint; // 레벨업으로 획득하는 스킬 포인트도
+    
 
     public PlayerStatus(int hp, int maxhp, int lv, int maxexp, int exp, int atk, int def, int dex)
     {
@@ -26,24 +31,51 @@ public class PlayerStatus
 
         GameEvents.OnItemEquipped += AddStatus;
         GameEvents.OnItemUnEquipped += RemoveStatus;
-        GameEvents.OnSetExp += SetExp;
-        GameEvents.OnSetMaxExp += SetMaxExp;
-        GameEvents.OnSetLevel += SetLevel;
+        SetProperties();
     }
 
-    public void SetExp(int Exp)
+    public void SetStatus(string status, int value)
     {
-        EXP = Exp;
+        switch (status)
+        {
+            case "EXP" :
+                EXP = value;
+                break;
+            case "MAXEXP" :
+                MAXEXP = value;
+                break;
+            case "LV" :
+                LV = value;
+                break;
+            case "HP" :
+                HP = value;
+                break;
+            case "MAXHP" :
+                MAXHP = value;
+                break;
+            case "ATK" :
+                ATK = value;
+                break;
+            case "SkillPoint" :
+                SkillPoint = value;
+                break;
+        }
+
+        SetProperties();
     }
 
-    public void SetMaxExp(int MaxExp)
+    private void SetProperties()
     {
-        MAXEXP = MaxExp;
-    }
-
-    public void SetLevel(int Level)
-    {
-        LV = Level;
+        var props = new Hashtable
+        {
+            { "Hp", HP },
+            { "MaxHp", MAXHP },
+            { "ATK", ATK },
+            { "DEF", DEF },
+            { "DEX", DEX },
+            { "LV", LV }
+        };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
     }
 
     private void AddStatus(InstanceItem item)
@@ -54,9 +86,12 @@ public class PlayerStatus
             {
                 case StatType.HP :
                     HP += status.value;
+                    MAXHP += status.value;
+                    GameEvents.OnPlayerHpChanged?.Invoke(this);
                     break;
                 case StatType.ATK :
                     ATK += status.value;
+                    ATKBonus += status.value;
                     break;
                 case StatType.DEF :
                     DEF += status.value;
@@ -77,9 +112,12 @@ public class PlayerStatus
             {
                 case StatType.HP :
                     HP -= status.value;
+                    MAXHP -= status.value;
+                    GameEvents.OnPlayerHpChanged?.Invoke(this);
                     break;
                 case StatType.ATK :
                     ATK -= status.value;
+                    ATKBonus -= status.value;
                     break;
                 case StatType.DEF :
                     DEF -= status.value;

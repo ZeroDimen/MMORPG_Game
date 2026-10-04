@@ -1,15 +1,23 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Photon.Pun;
 using Unity.Cinemachine;
+using Unity.Mathematics;
+using Unity.Mathematics.Geometry;
 using UnityEngine.UI;
 using static Constants;
+using Random = UnityEngine.Random;
 
 public class GameManager :  MonoBehaviourPun
 {
+    public static GameObject LocalPlayer;
     private static GameManager instance;
     private bool _isCursorLock;
     [SerializeField] private SpawnZone[] spawnPoints;
+    public IReadOnlyList<SpawnZone> SpawnPoints => spawnPoints;
     [SerializeField] private GameObject chattingInputField;
     [SerializeField] private GameObject playerCam;
 
@@ -21,16 +29,13 @@ public class GameManager :  MonoBehaviourPun
     
     public Canvas Canvas => GetCanvas();
     
-    public EGameState GameState { get; private set; }
-    
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null) instance = new GameManager();
-            return instance;
-        }
-    }
+    public List<PhotonView> playerList;
+
+    private readonly List<EGameState> _stateStack = new();
+    public EGameState GameState =>_stateStack.Count > 0 ? _stateStack[^1] : EGameState.Play;
+    private EGameState _lastApplied = EGameState.Play;
+
+    public static GameManager Instance => instance;
     
     private void Awake()
     {
@@ -64,22 +69,22 @@ public class GameManager :  MonoBehaviourPun
         }
         Set_Spawner("Maria");
     }
-
+    
     public void Set_Spawner(string prefabName)
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         string Name = PhotonNetwork.LocalPlayer.NickName;
-        photonView.RPC("RPC_Spawner", RpcTarget.MasterClient,prefabName ,Name, actorNumber);
+        photonView.RPC(nameof(RPC_Spawner), RpcTarget.MasterClient,prefabName ,Name, actorNumber);
     }
 
     public void HitEnemy(PhotonView enemyView,PhotonView playerView, int damage)
     {
-        photonView.RPC("RPC_RequestEnemyDamage", RpcTarget.All,enemyView.ViewID, playerView.ViewID, damage);
+        photonView.RPC(nameof(RPC_RequestEnemyDamage), RpcTarget.All,enemyView.ViewID, playerView.ViewID, damage);
     }
 
     public void HitPlayer(PhotonView playerView, int damage)
     {
-        photonView.RPC("RPC_RequestPlayerDamage", RpcTarget.All,playerView.ViewID, damage);
+        photonView.RPC(nameof(RPC_RequestPlayerDamage), RpcTarget.All,playerView.ViewID, damage);
     }
 
    
@@ -92,7 +97,7 @@ public class GameManager :  MonoBehaviourPun
     }
     
     [PunRPC]
-    private void RPC_RequestEnemyDamage(int enemyView, int playerView,  int damage)
+    private void RPC_RequestEnemyDamage(int enemyView, int playerView,  int damage, PhotonMessageInfo info)
     {
         PhotonView enemyPV = PhotonView.Find(enemyView);
         
@@ -104,8 +109,48 @@ public class GameManager :  MonoBehaviourPun
             PhotonView playerPV = PhotonView.Find(playerView);
             PlayerController playerController = playerPV.GetComponent<PlayerController>();
             playerController.SetExp(exp);
+            
+            if (!photonView.IsMine) return;
+            // 보스 스폰 시 partyId(파티장 이름)가 반드시 세팅돼 있어야 클리어 처리가 동작한다.
+            if(!string.IsNullOrEmpty(enemyController.partyId))
+            {
+                if (enemyController is BossController)
+                    DungeonSystem.instance.OnBossDefeated(enemyController.partyId); // 보스 전용: 던전 클리어
+                else if (enemyController.isAmbushMonster)
+                    DungeonSystem.instance.KillAmbushMonster(enemyController.partyId);
+                else
+                    DungeonSystem.instance.KillMonster(enemyController.partyId);     // 일반 몹: 엘리베이터 카운트
+            }
+            else
+            {
+                string killerName = info.Sender.NickName;
+                Party party = PartySystem.instance.partyList.Find(p => p.IsMyParty(killerName));
+
+                if (party != null)
+                {
+                    // 파티원 각각의 Photon Player를 찾아서 RPC 전송
+                    foreach (var member in party._member)
+                    {
+                        var targetPlayer = System.Array.Find(
+                            PhotonNetwork.PlayerList, p => p.NickName == member);
+                        if (targetPlayer != null)
+                            photonView.RPC("RPC_MonsterKillQuest", targetPlayer);
+                    }
+                }
+                else
+                {
+                    photonView.RPC("RPC_MonsterKillQuest", info.Sender);
+                }
+            }
         }
     }
+
+    [PunRPC]
+    private void RPC_MonsterKillQuest()
+    {
+        QuestManager.Instance.HandleProgressUpdate(QuestType.Kill, 0, 1);
+    }
+    
     [PunRPC]
     private void RPC_Spawner(string prefabName, string objName, int actorNumber)
     {
@@ -118,13 +163,22 @@ public class GameManager :  MonoBehaviourPun
                 spownPos = GetRandomPosition(spawnPoints[0].point, spawnPoints[0].radius);
                 PhotonNetwork.NickName = objName;
                 obj = PhotonNetwork.Instantiate("Maria", spownPos , Quaternion.identity);
-                
                 PhotonView pv =  obj.GetComponent<PhotonView>();
+                
+                string name = $"(Maria)_{objName}";
+                photonView.RPC(nameof(RPC_SetName), RpcTarget.AllBuffered, pv.ViewID, name);
+                
                 pv.TransferOwnership(actorNumber);
+                playerList.Add(pv);
                 break;
             case "Mutant":
                 spownPos = GetRandomPosition(spawnPoints[1].point, spawnPoints[1].radius);
                 PhotonNetwork.Instantiate("Mutant", spownPos, Quaternion.identity);
+                break;
+            case "Boss":
+                spownPos = GetRandomPosition(spawnPoints[3].point, spawnPoints[3].radius);
+                var boss = PhotonNetwork.Instantiate("Boss", spownPos, Quaternion.Euler(0, 90, 0));
+                boss.GetComponent<EnemyController>().partyId = objName; // 보스 처치 → 클리어 감지의 핵심
                 break;
             default:
                 Debug.Log("파일 없음");
@@ -132,56 +186,99 @@ public class GameManager :  MonoBehaviourPun
         }
     }
 
-    Vector3 GetRandomPosition(Transform point, float radius)
+    public void SpawnMonsterInDungeon(int index, string manager)
     {
-        Vector2 randomCircle = Random.insideUnitCircle * radius;
-        return point.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+        var spawnPos = GetRandomPosition(spawnPoints[index].point, spawnPoints[index].radius);
+        GameObject monster = PhotonNetwork.Instantiate("Mutant", spawnPos, Quaternion.identity);
+        monster.GetComponent<EnemyController>().partyId = manager;
+    }
+    
+    public void SpawnBossInDungeon(string manager)
+    {
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        string Name = PhotonNetwork.LocalPlayer.NickName;
+        photonView.RPC(nameof(RPC_Spawner), RpcTarget.MasterClient,"Boss" ,Name, actorNumber);
     }
 
-    public void SetGameState(EGameState state)
+    public Vector3 GetRandomPosition(Transform point, float radius)
     {
-        if (state == EGameState.Interaction || state == EGameState.Alt)
+        Vector2 randomCircle = Random.insideUnitCircle * radius;
+        Vector3 rawPos = point.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+        if (NavMesh.SamplePosition(rawPos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
         {
-            Cursor.visible  = true;
-            Cursor.lockState = CursorLockMode.None;
-
-            float currentH = cinemachineOrbitalFollow.HorizontalAxis.Value; 
-            float currentV = cinemachineOrbitalFollow.VerticalAxis.Value;
-
-            cinemachineOrbitalFollow.HorizontalAxis.Range = new Vector2(currentH, currentH);
-            cinemachineOrbitalFollow.VerticalAxis.Range = new Vector2(currentV, currentV);
-            
-            AudioManager._instance.BgmVolume(0.3f);
+            return navHit.position;
         }
-        else if (state == EGameState.Play)
-        {
-            Cursor.visible  = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log($"rawPos: {rawPos}");
+        Debug.Log($"navHit: {navHit.position}");
+        return rawPos;
+    }
 
+    public void PushState(EGameState state)
+    {
+        if (state == EGameState.Play) return;
+        _stateStack.Add(state);
+        RefreshState();
+    }
+
+    public void PopState(EGameState state)
+    {
+        int idx = _stateStack.LastIndexOf(state);
+        if (idx < 0) return;
+        _stateStack.RemoveAt(idx);
+        RefreshState();
+    }
+
+    private void RefreshState()
+    {
+        var current = GameState;
+        ApplyStateEffects(current);
+        
+        if(PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
+            pc.SetPlayerInputEnabled(current == EGameState.Play);
+    }
+    
+    public void ResetToPlay()
+    {
+        _stateStack.Clear();
+        RefreshState();
+    }
+
+    private void ApplyStateEffects(EGameState state)
+    {
+        bool isPlay = state == EGameState.Play;
+        bool wasPlay = _lastApplied == EGameState.Play;
+        bool isCutscene = state == EGameState.Cutscene;
+
+        bool hideCursor = isPlay || isCutscene;
+        Cursor.visible = !hideCursor;
+        Cursor.lockState = hideCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        
+        float userBgmVolume = PlayerPrefs.GetFloat("MyBGMslider", 1f);
+        AudioManager._instance.BgmVolume(isPlay ? userBgmVolume : userBgmVolume * 0.3f);
+        
+        if (isPlay && !wasPlay)
+        {
             cinemachineOrbitalFollow.HorizontalAxis.Range = cinemachineObitalHRange;
-            cinemachineOrbitalFollow.VerticalAxis.Range = cinemachineObitalVRange;
-            
-            AudioManager._instance.BgmVolume(1f);
+            cinemachineOrbitalFollow.VerticalAxis.Range   = cinemachineObitalVRange;
+        }
+        else if (!isPlay && wasPlay)
+        {
+            float h = cinemachineOrbitalFollow.HorizontalAxis.Value;
+            float v = cinemachineOrbitalFollow.VerticalAxis.Value;
+            cinemachineOrbitalFollow.HorizontalAxis.Range = new Vector2(h, h);
+            cinemachineOrbitalFollow.VerticalAxis.Range   = new Vector2(v, v);
         }
 
-        GameState = state;
-        if (PhotonNetwork.LocalPlayer?.TagObject is PlayerController pc)
-        {
-            pc.SetPlayerInputEnabled(state == EGameState.Play);
-        }
+        _lastApplied = state;
     }
     
     public void SetChattingInputField()
     {
-        chattingInputField.SetActive(!chattingInputField.activeSelf);
-        if (chattingInputField.activeSelf)
-        {
-            SetGameState(EGameState.Interaction);
-        }
-        else
-        {
-            SetGameState(EGameState.Play);
-        }
+        bool willOpen = !chattingInputField.activeSelf;
+        chattingInputField.SetActive(willOpen);
+        
+        if(willOpen) PushState(EGameState.TextInput);
+        else PopState(EGameState.TextInput);
     }
 
     
@@ -207,6 +304,17 @@ public class GameManager :  MonoBehaviourPun
         }
 
         return result;
+    }
+
+    [PunRPC]
+    private void RPC_SetName(int viewID , string name)
+    {
+        PhotonView pv = PhotonView.Find(viewID);
+
+        if (pv != null)
+        {
+            pv.gameObject.name = name;
+        }
     }
     
 }

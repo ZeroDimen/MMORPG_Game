@@ -1,13 +1,30 @@
+using System;
+using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviourPunCallbacks
 {
+    public AudioMixerGroup SfxGroup;
+    public AudioMixerGroup OtherSfxGroup;
+    
     [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private AudioClip[] sfxClips;
-    
-    [SerializeField] private AudioSource[] audioSources;
-    
+
+    public AudioSource[] audioSources;
+
+    [SerializeField] private AudioMixer mixer;   // 인스펙터에서 MainMixer 연결
+
+    private const string BGM_PARAM = "BGMVolume";
+    private const string SFX_PARAM = "SFXVolume";
+    private const string OTHER_SFX_PARAM = "OtherSFXVolume";
+
+    private float _bgmVolume = 1f;
+    private float _sfxVolume = 1f;
+    private float _otherSfxVolume = 1f;
+
     public static AudioManager _instance;
+
     void Awake()
     {
         if (_instance == null)
@@ -20,8 +37,14 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    public void BgmPlay(string clipName) // 효과음을 출력하는 함수
+
+    public override void OnJoinedRoom()
+    {
+        if (PhotonNetwork.IsMasterClient)
+            AudioListener.pause = true;
+    }
+
+    public void BgmPlay(string clipName)
     {
         foreach (var clip in bgmClips)
         {
@@ -35,17 +58,58 @@ public class AudioManager : MonoBehaviour
         Debug.Log($"{clipName} not found");
     }
 
-    public void BgmVolume(float volume)
+    // ───── 볼륨 (0~1 슬라이더 → dB 변환) ─────
+    public void BgmVolume(float value)
     {
-        audioSources[0].volume = volume;
+        _bgmVolume = value;
+        SetVolume(BGM_PARAM, value);
     }
 
+    public void SFXVolume(float value)
+    {
+        _sfxVolume = value;
+        SetVolume(SFX_PARAM, value);
+    }
+
+    public void OtherSFXVolume(float value)
+    {
+        _otherSfxVolume = value;
+        SetVolume(OTHER_SFX_PARAM, value);
+    }
+
+    private void SetVolume(string param, float value)
+    {
+        float dB = (value <= 0.0001f) ? -80f : Mathf.Log10(value) * 20f;
+        mixer.SetFloat(param, dB);
+        bool ok = mixer.SetFloat(param, dB);
+    }
+
+    // ───── 음소거 (토글 isOn: true=소리켜짐, false=음소거) ─────
+    public void IsSoundMute(bool isOn, string target)
+    {
+        if (target == "BGM")
+            ApplyMute(BGM_PARAM, isOn, _bgmVolume);
+        else if (target == "SFX")
+            ApplyMute(SFX_PARAM, isOn, _sfxVolume);
+        else if (target == "OtherSFX")
+            ApplyMute(OTHER_SFX_PARAM, isOn, _otherSfxVolume);
+    }
+
+    private void ApplyMute(string param, bool isOn, float restoreValue)
+    {
+        if (!isOn)
+            mixer.SetFloat(param, -80f);
+        else
+            SetVolume(param, restoreValue);
+    }
+
+    // ───── SFX ─────
     public void SfxStop()
     {
         audioSources[1].Stop();
     }
-    
-    public void SfxPlay(string clipName) // 효과음을 출력하는 함수
+
+    public void SfxPlay(string clipName)
     {
         foreach (var clip in sfxClips)
         {
@@ -55,7 +119,6 @@ public class AudioManager : MonoBehaviour
                 return;
             }
         }
-
         Debug.Log($"{clipName} not found");
     }
 }

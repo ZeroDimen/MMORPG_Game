@@ -1,3 +1,4 @@
+using System.Collections;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -17,9 +18,17 @@ public class ChatManager : MonoBehaviourPunCallbacks
     
     private string chatters; // 접속 중인 플레이어 목록 문자열
     
+    [Header("자동 페이드")]
+    [SerializeField] private CanvasGroup chatCanvasGroup;
+    [SerializeField] private float visibleDuration = 4f;
+    [SerializeField] private float fadeDuration = 1f;
+
+    private Coroutine _fadeCoroutine;
+    
     private void Start()
     {
         PhotonNetwork.IsMessageQueueRunning = true; // Photon의 메시지 큐가 작동하도록 설정
+        ShowChat();
     }
     
     public void SendMsg() // 메시지 전송 함수
@@ -90,5 +99,47 @@ public class ChatManager : MonoBehaviourPunCallbacks
         {
             scrollRect.verticalNormalizedPosition = 0.0f;
         }
+
+        ShowChat();
+    }
+    
+    private void ShowChat()
+    {
+        if (_fadeCoroutine != null)
+            StopCoroutine(_fadeCoroutine);
+        _fadeCoroutine = StartCoroutine(ShowAndFade());
+    }
+
+    private IEnumerator ShowAndFade()
+    {
+        // 즉시 완전히 보이게
+        chatCanvasGroup.alpha = 1f;
+
+        // 유지 시간 대기
+        yield return new WaitForSeconds(visibleDuration);
+
+        // 서서히 사라지기
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            chatCanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            yield return null;
+        }
+        chatCanvasGroup.alpha = 0f;
+    }
+    
+    // 입력창을 열 때
+    public void OnChatInputOpen()
+    {
+        if (_fadeCoroutine != null)
+            StopCoroutine(_fadeCoroutine);
+        chatCanvasGroup.alpha = 1f; // 입력 중엔 계속 보이게
+    }
+
+    // 입력창을 닫을 때 (전송 후 등)
+    public void OnChatInputClose()
+    {
+        ShowChat(); // 이제 타이머 시작해서 페이드
     }
 }

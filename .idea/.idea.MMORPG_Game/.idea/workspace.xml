@@ -6,22 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e61137fb-1dc2-4c37-9ae5-b9796963351b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MMORPG_Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/Equipment/EquipmentSlotView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/InventoryModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemDataBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Inventory/SO/ItemDataBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/01_Armor.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/01_Armor.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/02_Apple.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/02_Apple.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/03_Axe.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/03_Axe.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/04_Book.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/04_Book.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/05_Coins.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/05_Coins.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/06_Boots.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/06_Boots.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/07_HP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/07_HP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/08_MP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99. Resources/Inventory/SO/08_MP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetGroupSortSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01. Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Common/FadeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Common/FadeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/BrickTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/BrickTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02. Script/Save/SaveManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +20,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/6000.3.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.render-pipelines.universal/Runtime/2D/Clipper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.collab-proxy@2.10.2/Editor/ViewSwitcher.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/da/206d9925/RuntimeMethodInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/493b407efcb64dddad59f28bb0b831d3212400/0b/21e12c48/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5cfde8b21d0644f0861815f320cfc1092b400/69/fc55a31e/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d9024bdc2a414b3c81b047ea3e343594a66a00/23/83b37bf6/EditorWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e0525d8228db4b5da20c0396fc5fbfc73ac00/25/43a98312/PhotonPeer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CameraCut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Camera/CutSceneCamera.cs" root0="FORCE_HIGHLIGHTING" />
@@ -40,6 +34,21 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialoguePresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/DialogueView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dialogue/SimplePlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonBossTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonLight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPanelView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/DungeonPortal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/FloorTile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/FloorTileTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Dungeon/New Folder/MovingPlatform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Editor/TerrainOptimizer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Enemy_Boss/BossHpBar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/Party Information/PartyMemberInformationView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyCreateView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartyListView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySearchView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpPanelView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Party/PartySignUpStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Player/Status/PlayerStatusView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -49,10 +58,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestMenuPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/Quest/QuestTrackerPresenter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Setting/SettingManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02. Script/Setting/SettingSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02. Script/UI/ButtonUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@02433b2481ab/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/TMP/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@52e65280e89e/Runtime/UGUI/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -65,30 +77,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\00052\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\00052\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\00052\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/바탕 화면/새 폴더\MMORPG Game_2026-01-02.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../test\MMORPG Game_2026-01-02.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\00052\OneDrive\바탕 화면\새 폴더" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -175,6 +188,116 @@
       <workItem from="1770205982481" duration="1729000" />
       <workItem from="1770472350587" duration="1865000" />
       <workItem from="1770496768881" duration="1470000" />
+      <workItem from="1770732742231" duration="2512000" />
+      <workItem from="1770769469550" duration="495000" />
+      <workItem from="1770782085914" duration="4006000" />
+      <workItem from="1770804262962" duration="3364000" />
+      <workItem from="1772092408318" duration="4878000" />
+      <workItem from="1772101429357" duration="3631000" />
+      <workItem from="1772497523911" duration="1950000" />
+      <workItem from="1772500571708" duration="822000" />
+      <workItem from="1772501415497" duration="12000" />
+      <workItem from="1772535372358" duration="352000" />
+      <workItem from="1772756319328" duration="1210000" />
+      <workItem from="1772783151470" duration="9844000" />
+      <workItem from="1772981121903" duration="8972000" />
+      <workItem from="1773048934877" duration="3342000" />
+      <workItem from="1773296773678" duration="4446000" />
+      <workItem from="1773307577621" duration="7553000" />
+      <workItem from="1773472204726" duration="3376000" />
+      <workItem from="1773480947435" duration="3675000" />
+      <workItem from="1773635604870" duration="1292000" />
+      <workItem from="1773640726852" duration="606000" />
+      <workItem from="1773641428235" duration="2195000" />
+      <workItem from="1773643687547" duration="9843000" />
+      <workItem from="1773654460111" duration="5235000" />
+      <workItem from="1773822183218" duration="2263000" />
+      <workItem from="1773831335760" duration="1538000" />
+      <workItem from="1773907669539" duration="7013000" />
+      <workItem from="1774006357674" duration="1059000" />
+      <workItem from="1774228694302" duration="4181000" />
+      <workItem from="1774336881950" duration="3828000" />
+      <workItem from="1774347310016" duration="2563000" />
+      <workItem from="1774397388654" duration="4083000" />
+      <workItem from="1774518202348" duration="1654000" />
+      <workItem from="1774589440185" duration="8929000" />
+      <workItem from="1774607256393" duration="5483000" />
+      <workItem from="1774888797811" duration="1953000" />
+      <workItem from="1774944649925" duration="7290000" />
+      <workItem from="1775034543621" duration="540000" />
+      <workItem from="1775035215941" duration="29000" />
+      <workItem from="1775159896444" duration="3482000" />
+      <workItem from="1775163646199" duration="4620000" />
+      <workItem from="1775192330753" duration="611000" />
+      <workItem from="1775534548174" duration="18452000" />
+      <workItem from="1775660066273" duration="1300000" />
+      <workItem from="1775732056112" duration="95000" />
+      <workItem from="1776061159409" duration="4575000" />
+      <workItem from="1776071912759" duration="1852000" />
+      <workItem from="1776815149048" duration="4461000" />
+      <workItem from="1776964668149" duration="967000" />
+      <workItem from="1776998188774" duration="1670000" />
+      <workItem from="1777273269531" duration="4050000" />
+      <workItem from="1777287676762" duration="975000" />
+      <workItem from="1777502124629" duration="3079000" />
+      <workItem from="1777850146524" duration="4017000" />
+      <workItem from="1778157597385" duration="2596000" />
+      <workItem from="1778160263524" duration="150000" />
+      <workItem from="1778160484237" duration="369000" />
+      <workItem from="1778632263486" duration="1313000" />
+      <workItem from="1779819948031" duration="1638000" />
+      <workItem from="1779851463280" duration="487000" />
+      <workItem from="1780272650050" duration="6619000" />
+      <workItem from="1780508703650" duration="1494000" />
+      <workItem from="1780682184151" duration="631000" />
+      <workItem from="1780809778509" duration="972000" />
+      <workItem from="1781862312235" duration="1362000" />
+      <workItem from="1781866631909" duration="1404000" />
+      <workItem from="1782463655180" duration="5508000" />
+      <workItem from="1782728556473" duration="1966000" />
+      <workItem from="1782983707410" duration="5108000" />
+      <workItem from="1783329167466" duration="4515000" />
+      <workItem from="1783339176576" duration="11000" />
+      <workItem from="1783340195090" duration="12000" />
+      <workItem from="1783572384274" duration="1925000" />
+      <workItem from="1783580886028" duration="3438000" />
+      <workItem from="1783670823818" duration="4638000" />
+      <workItem from="1783678035887" duration="1205000" />
+      <workItem from="1783930156044" duration="3178000" />
+      <workItem from="1783940247014" duration="299000" />
+      <workItem from="1784197720638" duration="1386000" />
+      <workItem from="1784579655066" duration="850000" />
+      <workItem from="1784624467163" duration="2725000" />
+      <workItem from="1785232810161" duration="3775000" />
+      <workItem from="1785483549675" duration="3681000" />
+      <workItem from="1785495491199" duration="1982000" />
+      <workItem from="1785748977507" duration="2161000" />
+      <workItem from="1786001004344" duration="3855000" />
+      <workItem from="1786353555500" duration="2392000" />
+      <workItem from="1786582514930" duration="9824000" />
+      <workItem from="1786598676908" duration="2432000" />
+      <workItem from="1786941210825" duration="713000" />
+      <workItem from="1786944939598" duration="2548000" />
+      <workItem from="1786965805641" duration="1619000" />
+      <workItem from="1787213211021" duration="3935000" />
+      <workItem from="1787305567633" duration="1549000" />
+      <workItem from="1787716255587" duration="4202000" />
+      <workItem from="1787736072040" duration="2674000" />
+      <workItem from="1788502756485" duration="583000" />
+      <workItem from="1788506231852" duration="470000" />
+      <workItem from="1788515171054" duration="3908000" />
+      <workItem from="1789040174857" duration="1286000" />
+      <workItem from="1789350989812" duration="2166000" />
+      <workItem from="1789602784319" duration="1758000" />
+      <workItem from="1789643271600" duration="1088000" />
+      <workItem from="1789956713224" duration="2350000" />
+      <workItem from="1789978005976" duration="7611000" />
+      <workItem from="1790148677083" duration="2287000" />
+      <workItem from="1790428505581" duration="665000" />
+      <workItem from="1790563386107" duration="2910000" />
+      <workItem from="1790580188054" duration="377000" />
+      <workItem from="1790584054875" duration="1486000" />
+      <workItem from="1790692067076" duration="2131000" />
     </task>
     <servers />
   </component>

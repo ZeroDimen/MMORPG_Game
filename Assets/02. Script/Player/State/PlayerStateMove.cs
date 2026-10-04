@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using static Constants;
 
@@ -6,6 +6,7 @@ public class PlayerStateMove: PlayerState, ICharacterState
 {
     private float _moveSpeed;
     private bool currentIsRunning;
+    private const float RunAccelTime = 0.5f; // 풀스피드(달리기) 도달까지 걸리는 시간
     
     public PlayerStateMove(PlayerController playerController, Animator animator, PlayerInput playerInput) 
         : base(playerController, animator, playerInput) { }
@@ -27,7 +28,7 @@ public class PlayerStateMove: PlayerState, ICharacterState
         _moveSpeed = 0f;
     }
 
-    public void Update()
+public void Update()
     {
         // 캐릭터 방향 설정
         var moveVector = _playerInput.actions["Move"].ReadValue<Vector2>();
@@ -44,13 +45,14 @@ public class PlayerStateMove: PlayerState, ICharacterState
         var isRun = _playerInput.actions["Run"].IsPressed();
         if (isRun && _moveSpeed < 1f)
         {
-            _moveSpeed += Time.deltaTime;
+            // 0.5초에 걸쳐 풀스피드로 가속
+            _moveSpeed += Time.deltaTime / RunAccelTime;
             _moveSpeed = Mathf.Clamp01(_moveSpeed);
             wakingAudio(true);
         }
         else if (!isRun && _moveSpeed > 0f)
         {
-            _moveSpeed -= Time.deltaTime * _playerController.BreakForce;
+            _moveSpeed -= Time.deltaTime / _playerController.BreakTime;
             _moveSpeed = Mathf.Clamp01(_moveSpeed);
             wakingAudio(false);
         }
